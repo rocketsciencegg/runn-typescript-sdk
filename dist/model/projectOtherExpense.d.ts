@@ -1,0 +1,17 @@
+export declare class ProjectOtherExpense {
+    'cost': number;
+    'charge': number;
+    'name': string;
+    'date': string;
+    static discriminator: string | undefined;
+    static attributeTypeMap: Array<{
+        name: string;
+        baseName: string;
+        type: string;
+    }>;
+    static getAttributeTypeMap(): {
+        name: string;
+        baseName: string;
+        type: string;
+    }[];
+}

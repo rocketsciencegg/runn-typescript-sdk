@@ -16,6 +16,12 @@ help: ## Show this help message
 install: ## Install dependencies
 	@brew install openjdk
 
+build: ## Build SDK
+	@npm run build
+
+clean: ## Clean
+	@npm run clean
+
 generate: ## Generate RUNN SDK from OpenAPI spec
 	@if [ ! -f "runn.json" ]; then \
 		echo "Error: runn.json not found. Please add your OpenAPI spec file."; \
