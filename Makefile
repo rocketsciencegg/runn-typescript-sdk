@@ -13,16 +13,13 @@ help: ## Show this help message
 	@echo "Available commands:"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
+clean: ## Clean generated files
+	@rm -rf src
+
 install: ## Install dependencies
-	@brew install openjdk
+	@brew install openjdk typescript
 
-build: ## Build SDK
-	@npm run build
-
-clean: ## Clean
-	@npm run clean
-
-generate: ## Generate RUNN SDK from OpenAPI spec
+build: ## Generate RUNN SDK from OpenAPI spec
 	@if [ ! -f "runn.json" ]; then \
 		echo "Error: runn.json not found. Please add your OpenAPI spec file."; \
 		exit 1; \
@@ -31,8 +28,10 @@ generate: ## Generate RUNN SDK from OpenAPI spec
 	@export PATH="/opt/homebrew/opt/openjdk/bin:$$PATH" && \
 	npx @openapitools/openapi-generator-cli generate \
 		-i runn.json \
-		-g typescript-node \
+		-g typescript-axios \
 		-o . \
-		--additional-properties=npmName=runn-typescript-sdk,modelPropertyNaming=camelCase
+		--additional-properties=npmName=runn-typescript-sdk,modelPropertyNaming=camelCase,useSingleRequestParameter=true
 	@echo "SDK generated in src/api/generated/"
+	@echo "Compiling TypeScript to generate .d.ts files..."
+	npx tsc
 
