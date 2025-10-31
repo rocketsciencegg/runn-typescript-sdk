@@ -1,0 +1,346 @@
+# RUNN SDK Usage Guide for LLMs
+
+## Overview
+The RUNN TypeScript SDK (`runn-typescript-sdk`) is an auto-generated OpenAPI client for the Runn API, which provides resource planning and project management capabilities. The SDK uses **Bearer token authentication** via the Runn API key.
+
+## 1. Initialization Pattern
+
+**Always initialize the SDK with this pattern:**
+
+```typescript
+import { DefaultApi, Configuration } from 'runn-typescript-sdk';
+
+const config = new Configuration({
+  accessToken: 'your_runn_api_key',  // Required: Runn API key
+  basePath: 'https://api.runn.io'    // Optional: defaults to this
+});
+
+const runnApi = new DefaultApi(config);
+```
+
+**Security Context:**
+- Authentication: Bearer token (`Authorization: Bearer <token>`)
+- The `accessToken` is automatically added to all requests
+- HTTPS is required (default base path uses HTTPS)
+- Can provide token as string, Promise, or function
+
+## 2. Required Headers
+
+**Every request MUST include:**
+```typescript
+{
+  acceptVersion: '1.0.0' as const  // Required for API versioning
+}
+```
+
+This is added to the request parameters object for every method call.
+
+## 3. Method Signature Pattern
+
+**All SDK methods follow this signature:**
+```typescript
+runnApi.methodName(requestParameters, options?)
+```
+
+- **requestParameters**: Object containing `acceptVersion` + method-specific params
+- **options**: Optional Axios config override (timeout, custom headers, etc.)
+- **Returns**: Promise of AxiosResponse with typed data
+
+## 4. Common Request Parameters
+
+### Pagination Parameters (most list methods)
+```typescript
+{
+  cursor?: string,          // For cursor-based pagination
+  limit?: number,           // Results per page (default: 25)
+}
+```
+
+### Sorting Parameters
+```typescript
+{
+  sortBy?: 'createdAt' | 'updatedAt' | 'id',
+  order?: 'asc' | 'desc',
+}
+```
+
+### Common Filters
+```typescript
+{
+  modifiedAfter?: string,     // ISO 8601 timestamp
+  includeArchived?: boolean,  // Include archived entities
+  personId?: number,          // Filter by person
+  projectId?: number,         // Filter by project
+  roleId?: number,            // Filter by role
+  clientId?: number,          // Filter by client
+}
+```
+
+## 5. Response Structure
+
+All methods return Axios responses:
+```typescript
+const response = await runnApi.listPeople(params);
+
+// Access data
+const people = response.data;
+
+// Response also includes:
+response.status     // HTTP status code
+response.headers    // Response headers
+```
+
+List methods return paginated data:
+```typescript
+{
+  values: Array<T>,       // Array of entities
+  nextCursor?: string,    // Cursor for next page
+  hasMore: boolean        // More results available
+}
+```
+
+## 6. Common Usage Patterns
+
+### Pattern 1: Get Current User
+```typescript
+const user = await runnApi.getCurrentUser({
+  acceptVersion: '1.0.0'
+});
+```
+
+### Pattern 2: List Resources with Filters
+```typescript
+const projects = await runnApi.listProjects({
+  acceptVersion: '1.0.0',
+  limit: 50,
+  sortBy: 'createdAt',
+  order: 'desc',
+  includeArchived: false
+});
+```
+
+### Pattern 3: Get Specific Entity by ID
+```typescript
+const person = await runnApi.getPerson({
+  acceptVersion: '1.0.0',
+  personId: 12345
+});
+```
+
+### Pattern 4: List with Relationship Filtering
+```typescript
+// Get assignments for a specific person and project
+const assignments = await runnApi.listAssignments({
+  acceptVersion: '1.0.0',
+  personId: 12345,
+  projectId: 67890,
+  limit: 100
+});
+```
+
+### Pattern 5: Create Resource
+```typescript
+const actual = await runnApi.createActual({
+  acceptVersion: '1.0.0',
+  actualInput: {
+    date: '2025-10-31',
+    personId: 12345,
+    projectId: 67890,
+    roleId: 111,
+    billableMinutes: 480,
+    nonbillableMinutes: 0,
+    billableNote: 'Client work'
+  }
+});
+```
+
+### Pattern 6: Update Resource
+```typescript
+const updated = await runnApi.updatePerson({
+  acceptVersion: '1.0.0',
+  personId: 12345,
+  personInput: {
+    firstName: 'John',
+    lastName: 'Doe',
+    email: 'john.doe@example.com'
+  }
+});
+```
+
+### Pattern 7: Pagination Loop
+```typescript
+let cursor: string | undefined;
+let allPeople: any[] = [];
+
+do {
+  const response = await runnApi.listPeople({
+    acceptVersion: '1.0.0',
+    cursor,
+    limit: 100
+  });
+
+  allPeople = allPeople.concat(response.data.values);
+  cursor = response.data.nextCursor;
+} while (cursor);
+```
+
+## 7. Key API Categories
+
+### People & Teams
+- `getCurrentUser()` - Get authenticated user info
+- `listPeople()` - List all people
+- `getPerson({ personId })` - Get specific person
+- `createPerson({ personInput })` - Create new person
+- `updatePerson({ personId, personInput })` - Update person
+- `listTeams()` - List teams
+- `addPersonToTeam({ personId, teamId })` - Add person to team
+
+### Projects & Clients
+- `listProjects()` - List all projects
+- `getProject({ projectId })` - Get specific project
+- `createProject({ projectInput })` - Create new project
+- `listClients()` - List all clients
+- `getClient({ clientId })` - Get specific client
+
+### Assignments (Resource Allocation)
+- `listAssignments()` - List all assignments
+- `listPersonAssignments({ personId })` - Get assignments for person
+- `listProjectAssignments({ projectId })` - Get assignments for project
+- `createAssignment({ assignmentInput })` - Create assignment
+
+### Actuals (Time Tracking)
+- `listActuals()` - List all time entries
+- `listPersonActuals({ personId })` - Get actuals for person
+- `listProjectActuals({ projectId })` - Get actuals for project
+- `createActual({ actualInput })` - Create time entry
+- `createActualsBulk({ actualsInput })` - Bulk create (up to 100)
+
+### Roles & Skills
+- `listRoles()` - List all roles
+- `getRole({ roleId })` - Get specific role
+- `listSkills()` - List all skills
+- `listPersonSkills({ personId })` - Get skills for person
+- `addPersonSkill({ personId, skillId })` - Add skill to person
+
+### Reporting
+- `getPersonHoursReport({ personId, startDate, endDate })` - Hours report
+- `getProjectHoursReport({ projectId, startDate, endDate })` - Project hours
+- `getProjectTotalsReport({ projectId })` - Project totals
+
+## 8. Important Data Types
+
+### Date Format
+**All dates use ISO 8601 format:** `YYYY-MM-DD`
+```typescript
+startDate: '2025-10-31'
+endDate: '2025-12-31'
+```
+
+### Time Format
+**Minutes are used for time tracking:**
+```typescript
+billableMinutes: 480      // 8 hours
+minutesPerDay: 480        // 8 hours per day
+```
+
+### Common Entity IDs
+All entity IDs are **numbers:**
+```typescript
+personId: 12345
+projectId: 67890
+roleId: 111
+clientId: 222
+```
+
+## 9. Error Handling
+
+The SDK may throw errors with these structures:
+```typescript
+// 400 Bad Request
+{ error: 'Bad Request', message: string, statusCode: 400 }
+
+// 401 Unauthorized (invalid API key)
+{ error: 'Unauthorized', message: string, statusCode: 401 }
+
+// 404 Not Found
+{ error: 'Not Found', message: string, statusCode: 404 }
+```
+
+**Handle errors with try/catch:**
+```typescript
+try {
+  const person = await runnApi.getPerson({
+    acceptVersion: '1.0.0',
+    personId: 12345
+  });
+} catch (error) {
+  if (error.response?.status === 404) {
+    console.error('Person not found');
+  } else if (error.response?.status === 401) {
+    console.error('Invalid API key');
+  }
+}
+```
+
+## 10. Best Practices
+
+1. **Always include `acceptVersion: '1.0.0'`** in every request
+2. **Use pagination** for large datasets (set appropriate `limit`)
+3. **Filter early** - use personId/projectId filters to reduce data transfer
+4. **Batch operations** - use `createActualsBulk()` instead of multiple `createActual()` calls
+5. **Check for archived** - set `includeArchived: false` when you only want active entities
+6. **Use specific getters** - `getPerson()` is faster than `listPeople()` with filters
+7. **Handle pagination properly** - check `hasMore` and use `nextCursor`
+
+## 11. Complete Working Example
+
+```typescript
+import { DefaultApi, Configuration } from 'runn-typescript-sdk';
+
+// Initialize SDK
+const config = new Configuration({
+  accessToken: process.env.RUNN_API_KEY
+});
+const runnApi = new DefaultApi(config);
+
+async function getPersonProjects(personId: number) {
+  // Get person details
+  const person = await runnApi.getPerson({
+    acceptVersion: '1.0.0',
+    personId
+  });
+
+  console.log(`Person: ${person.data.firstName} ${person.data.lastName}`);
+
+  // Get all assignments for this person
+  const assignments = await runnApi.listPersonAssignments({
+    acceptVersion: '1.0.0',
+    personId,
+    limit: 100
+  });
+
+  // For each assignment, get project details
+  const projects = await Promise.all(
+    assignments.data.values.map(assignment =>
+      runnApi.getProject({
+        acceptVersion: '1.0.0',
+        projectId: assignment.projectId
+      })
+    )
+  );
+
+  return projects.map(p => p.data);
+}
+```
+
+## 12. Security Reminders
+
+- **Never log or expose** the `accessToken` / API key
+- **Use environment variables** for API key storage
+- **HTTPS only** - never override with HTTP base path
+- **Validate inputs** before sending to API
+- **Check authorization** - ensure users have permission for sensitive operations
+
+---
+
+**Key Takeaway:** Every method requires `acceptVersion: '1.0.0'` as the first parameter. Build request objects with this field plus method-specific parameters, then access response data via `response.data`.
