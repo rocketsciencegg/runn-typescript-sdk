@@ -1,20 +1,20 @@
-# AddPeopleToSkillRequestPeopleInner
+# AddPlaceholderSkillRequest
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**personId** | **number** |  | [default to undefined]
+**skillId** | **number** |  | [default to undefined]
 **level** | **number** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { AddPeopleToSkillRequestPeopleInner } from 'runn-typescript-sdk';
+import { AddPlaceholderSkillRequest } from 'runn-typescript-sdk';
 
-const instance: AddPeopleToSkillRequestPeopleInner = {
-    personId,
+const instance: AddPlaceholderSkillRequest = {
+    skillId,
     level,
 };
 ```

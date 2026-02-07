@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **skillId** | **number** |  | [default to undefined]
-**level** | [**AddPersonSkillRequestLevel**](AddPersonSkillRequestLevel.md) |  | [optional] [default to undefined]
+**level** | **number** |  | [optional] [default to undefined]
 
 ## Example
 

@@ -1,6 +1,3 @@
-.gitignore
-.npmignore
-README.md
 api.ts
 base.ts
 common.ts
@@ -19,9 +16,9 @@ docs/AddPeopleToSkill201Response.md
 docs/AddPeopleToSkillRequest.md
 docs/AddPeopleToSkillRequestPeopleInner.md
 docs/AddPersonSkillRequest.md
-docs/AddPersonSkillRequestLevel.md
 docs/AddPersonToProjectRequest.md
 docs/AddPersonToTeamRequest.md
+docs/AddPlaceholderSkillRequest.md
 docs/Assignment.md
 docs/BadRequest.md
 docs/Client.md
@@ -148,7 +145,6 @@ docs/ModifiedAfter.md
 docs/NotFound.md
 docs/Person.md
 docs/PersonCompetency.md
-docs/PersonCompetencyAllOfLevel.md
 docs/PersonCustomField.md
 docs/PersonCustomFieldCustomFieldsInner.md
 docs/PersonCustomFields.md
@@ -230,7 +226,4 @@ docs/User.md
 docs/UserPermissions.md
 docs/View.md
 docs/Workstream.md
-git_push.sh
 index.ts
-package.json
-tsconfig.json

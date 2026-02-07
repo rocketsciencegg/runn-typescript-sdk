@@ -436,7 +436,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addPlaceholderSkill**
-> Competency addPlaceholderSkill(addPersonSkillRequest)
+> Competency addPlaceholderSkill(addPlaceholderSkillRequest)
 
 
 ### Example
@@ -445,7 +445,7 @@ void (empty response body)
 import {
     DefaultApi,
     Configuration,
-    AddPersonSkillRequest
+    AddPlaceholderSkillRequest
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
@@ -453,12 +453,12 @@ const apiInstance = new DefaultApi(configuration);
 
 let placeholderId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let addPersonSkillRequest: AddPersonSkillRequest; //
+let addPlaceholderSkillRequest: AddPlaceholderSkillRequest; //
 
 const { status, data } = await apiInstance.addPlaceholderSkill(
     placeholderId,
     acceptVersion,
-    addPersonSkillRequest
+    addPlaceholderSkillRequest
 );
 ```
 
@@ -466,7 +466,7 @@ const { status, data } = await apiInstance.addPlaceholderSkill(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **addPersonSkillRequest** | **AddPersonSkillRequest**|  | |
+| **addPlaceholderSkillRequest** | **AddPlaceholderSkillRequest**|  | |
 | **placeholderId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 

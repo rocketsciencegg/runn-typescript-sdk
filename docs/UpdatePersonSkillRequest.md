@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**level** | [**AddPersonSkillRequestLevel**](AddPersonSkillRequestLevel.md) |  | [default to undefined]
+**level** | **number** |  | [default to undefined]
 
 ## Example
 

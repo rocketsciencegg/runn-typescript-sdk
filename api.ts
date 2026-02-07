@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from './common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction, replaceWithSerializableTypeIfNeeded } from './common';
 import type { RequestArgs } from './base';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerMap } from './base';
@@ -323,14 +323,32 @@ export interface AddPeopleToSkillRequest {
 }
 export interface AddPeopleToSkillRequestPeopleInner {
     'personId': number;
-    'level'?: AddPersonSkillRequestLevel;
+    'level'?: AddPeopleToSkillRequestPeopleInnerLevelEnum;
 }
+
+export const AddPeopleToSkillRequestPeopleInnerLevelEnum = {
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3,
+    NUMBER_4: 4
+} as const;
+
+export type AddPeopleToSkillRequestPeopleInnerLevelEnum = typeof AddPeopleToSkillRequestPeopleInnerLevelEnum[keyof typeof AddPeopleToSkillRequestPeopleInnerLevelEnum];
+
 export interface AddPersonSkillRequest {
     'skillId': number;
-    'level'?: AddPersonSkillRequestLevel;
+    'level'?: AddPersonSkillRequestLevelEnum;
 }
-export interface AddPersonSkillRequestLevel {
-}
+
+export const AddPersonSkillRequestLevelEnum = {
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3,
+    NUMBER_4: 4
+} as const;
+
+export type AddPersonSkillRequestLevelEnum = typeof AddPersonSkillRequestLevelEnum[keyof typeof AddPersonSkillRequestLevelEnum];
+
 export interface AddPersonToProjectRequest {
     'projectId': number;
     'roleId': number;
@@ -339,6 +357,20 @@ export interface AddPersonToProjectRequest {
 export interface AddPersonToTeamRequest {
     'teamId': number;
 }
+export interface AddPlaceholderSkillRequest {
+    'skillId': number;
+    'level'?: AddPlaceholderSkillRequestLevelEnum;
+}
+
+export const AddPlaceholderSkillRequestLevelEnum = {
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3,
+    NUMBER_4: 4
+} as const;
+
+export type AddPlaceholderSkillRequestLevelEnum = typeof AddPlaceholderSkillRequestLevelEnum[keyof typeof AddPlaceholderSkillRequestLevelEnum];
+
 export interface Assignment {
     /**
      * The unique identifier for the assignment.
@@ -464,7 +496,7 @@ export interface CollectionPersonManagersInner {
     'id': number;
 }
 export interface Competency {
-    'level'?: AddPersonSkillRequestLevel;
+    'level'?: CompetencyLevelEnum;
     'skillId': number;
     /**
      * Timestamp of when the object was created.
@@ -475,6 +507,16 @@ export interface Competency {
      */
     'updatedAt': string;
 }
+
+export const CompetencyLevelEnum = {
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3,
+    NUMBER_4: 4
+} as const;
+
+export type CompetencyLevelEnum = typeof CompetencyLevelEnum[keyof typeof CompetencyLevelEnum];
+
 export interface Conflict {
     'error': ConflictErrorEnum;
     'message': string;
@@ -2244,7 +2286,7 @@ export interface Person {
 }
 export interface PersonCompetency {
     'personId': number;
-    'level'?: PersonCompetencyAllOfLevel;
+    'level'?: PersonCompetencyLevelEnum;
     'skillId': number;
     /**
      * Timestamp of when the object was created.
@@ -2255,8 +2297,16 @@ export interface PersonCompetency {
      */
     'updatedAt': string;
 }
-export interface PersonCompetencyAllOfLevel {
-}
+
+export const PersonCompetencyLevelEnum = {
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3,
+    NUMBER_4: 4
+} as const;
+
+export type PersonCompetencyLevelEnum = typeof PersonCompetencyLevelEnum[keyof typeof PersonCompetencyLevelEnum];
+
 export interface PersonCustomField {
     'personId': number;
     'customFields': Array<PersonCustomFieldCustomFieldsInner>;
@@ -3061,8 +3111,18 @@ export interface UpdatePersonSelectCustomFieldRequestValuesInner {
     'id': number;
 }
 export interface UpdatePersonSkillRequest {
-    'level': AddPersonSkillRequestLevel;
+    'level': UpdatePersonSkillRequestLevelEnum;
 }
+
+export const UpdatePersonSkillRequestLevelEnum = {
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3,
+    NUMBER_4: 4
+} as const;
+
+export type UpdatePersonSkillRequestLevelEnum = typeof UpdatePersonSkillRequestLevelEnum[keyof typeof UpdatePersonSkillRequestLevelEnum];
+
 export interface UpdatePersonTextCustomFieldRequest {
     'id': number;
     'value': string;
@@ -3389,9 +3449,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -3439,9 +3498,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -3489,9 +3547,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -3539,9 +3596,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -3561,17 +3617,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Add a skill to a placeholder
          * @param {number} placeholderId 
          * @param {AddPlaceholderSkillAcceptVersionEnum} acceptVersion 
-         * @param {AddPersonSkillRequest} addPersonSkillRequest 
+         * @param {AddPlaceholderSkillRequest} addPlaceholderSkillRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addPlaceholderSkill: async (placeholderId: number, acceptVersion: AddPlaceholderSkillAcceptVersionEnum, addPersonSkillRequest: AddPersonSkillRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        addPlaceholderSkill: async (placeholderId: number, acceptVersion: AddPlaceholderSkillAcceptVersionEnum, addPlaceholderSkillRequest: AddPlaceholderSkillRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'placeholderId' is not null or undefined
             assertParamExists('addPlaceholderSkill', 'placeholderId', placeholderId)
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('addPlaceholderSkill', 'acceptVersion', acceptVersion)
-            // verify required parameter 'addPersonSkillRequest' is not null or undefined
-            assertParamExists('addPlaceholderSkill', 'addPersonSkillRequest', addPersonSkillRequest)
+            // verify required parameter 'addPlaceholderSkillRequest' is not null or undefined
+            assertParamExists('addPlaceholderSkill', 'addPlaceholderSkillRequest', addPlaceholderSkillRequest)
             const localVarPath = `/placeholders/{placeholderId}/skills/`
                 .replace(`{${"placeholderId"}}`, encodeURIComponent(String(placeholderId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3589,9 +3645,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -3599,7 +3654,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(addPersonSkillRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(addPlaceholderSkillRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -3639,9 +3694,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -3690,8 +3744,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -3738,8 +3792,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -3786,8 +3840,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -3834,8 +3888,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -3875,9 +3929,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -3921,9 +3974,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -3967,9 +4019,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4013,9 +4064,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4057,9 +4107,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4103,9 +4152,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4149,9 +4197,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4193,9 +4240,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4237,9 +4283,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4281,9 +4326,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4327,9 +4371,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4377,9 +4420,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4423,9 +4465,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4469,9 +4510,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4517,9 +4557,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4563,9 +4602,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4607,9 +4645,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4655,9 +4692,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4705,9 +4741,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4755,9 +4790,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4805,9 +4839,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4855,9 +4888,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4901,9 +4933,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4947,9 +4978,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -4993,9 +5023,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -5039,9 +5068,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -5089,9 +5117,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -5135,9 +5162,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -5181,9 +5207,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -5227,9 +5252,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -5273,9 +5297,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -5320,8 +5343,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -5364,8 +5387,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -5408,8 +5431,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -5452,8 +5475,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -5496,8 +5519,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -5540,8 +5563,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -5584,8 +5607,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -5627,9 +5650,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -5674,8 +5696,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -5725,8 +5747,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['force'] = force;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -5773,8 +5795,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -5817,8 +5839,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -5865,8 +5887,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -5913,8 +5935,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -5961,8 +5983,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6005,8 +6027,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6049,8 +6071,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6093,8 +6115,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6141,8 +6163,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6185,8 +6207,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6229,8 +6251,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6273,8 +6295,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6317,8 +6339,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6361,8 +6383,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6405,8 +6427,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6445,8 +6467,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6489,8 +6511,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6533,8 +6555,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6577,8 +6599,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6621,8 +6643,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6665,8 +6687,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6719,8 +6741,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['limit'] = limit;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6787,8 +6809,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                     endDate;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6831,8 +6853,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6879,8 +6901,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6947,8 +6969,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                     endDate;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -6995,8 +7017,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -7043,8 +7065,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -7087,8 +7109,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -7131,8 +7153,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -7175,8 +7197,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -7223,8 +7245,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -7267,8 +7289,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -7311,8 +7333,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -7355,8 +7377,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -7399,8 +7421,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -7443,8 +7465,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -7487,8 +7509,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -7588,8 +7610,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -7684,8 +7706,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -7741,8 +7763,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -7796,8 +7818,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['model'] = model;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -7864,8 +7886,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -7938,8 +7960,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -8007,8 +8029,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['order'] = order;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -8062,8 +8084,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['model'] = model;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -8129,8 +8151,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['orderBy'] = orderBy;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -8183,8 +8205,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['limit'] = limit;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -8243,8 +8265,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['order'] = order;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -8317,8 +8339,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -8377,8 +8399,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['order'] = order;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -8465,8 +8487,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -8522,8 +8544,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -8576,8 +8598,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['limit'] = limit;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -8633,8 +8655,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -8725,8 +8747,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['externalId'] = externalId;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -8782,8 +8804,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -8839,8 +8861,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -8896,8 +8918,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -8958,8 +8980,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -9025,8 +9047,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -9096,8 +9118,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -9181,8 +9203,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -9235,8 +9257,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['limit'] = limit;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -9289,8 +9311,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['limit'] = limit;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -9343,8 +9365,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['limit'] = limit;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -9397,8 +9419,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['limit'] = limit;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -9454,8 +9476,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -9508,8 +9530,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['limit'] = limit;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -9569,8 +9591,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -9626,8 +9648,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -9693,8 +9715,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -9764,8 +9786,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -9849,8 +9871,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -9903,8 +9925,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['limit'] = limit;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -9960,8 +9982,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -10017,8 +10039,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -10085,8 +10107,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                     endDate;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -10142,8 +10164,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -10196,8 +10218,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['limit'] = limit;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -10257,8 +10279,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['includeArchived'] = includeArchived;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -10311,8 +10333,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['limit'] = limit;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -10365,8 +10387,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['limit'] = limit;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -10422,8 +10444,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -10476,8 +10498,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['limit'] = limit;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -10548,8 +10570,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -10605,8 +10627,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['includeArchived'] = includeArchived;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -10662,8 +10684,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -10723,8 +10745,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['includeArchived'] = includeArchived;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -10807,8 +10829,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['name'] = name;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -10874,8 +10896,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -10946,8 +10968,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11020,8 +11042,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11075,8 +11097,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['model'] = model;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11129,8 +11151,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['limit'] = limit;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11198,8 +11220,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11252,8 +11274,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['limit'] = limit;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11319,8 +11341,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['order'] = order;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11374,8 +11396,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['model'] = model;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11428,8 +11450,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['limit'] = limit;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11485,8 +11507,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11542,8 +11564,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11609,8 +11631,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 }
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11667,8 +11689,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['limit'] = limit;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11715,8 +11737,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11763,8 +11785,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11811,8 +11833,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11859,8 +11881,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11907,8 +11929,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11955,8 +11977,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
             }
@@ -11996,9 +12018,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12044,9 +12065,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12092,9 +12112,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12140,9 +12159,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12188,9 +12206,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12238,9 +12255,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12286,9 +12302,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12336,9 +12351,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12386,9 +12400,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12436,9 +12449,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12490,9 +12502,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12540,9 +12551,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12588,9 +12598,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12640,9 +12649,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12690,9 +12698,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12740,9 +12747,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12792,9 +12798,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12844,9 +12849,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12898,9 +12902,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -12950,9 +12953,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -13004,9 +13006,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -13054,9 +13055,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -13104,9 +13104,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -13154,9 +13153,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -13202,9 +13200,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -13250,9 +13247,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -13298,9 +13294,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -13352,9 +13347,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -13402,9 +13396,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -13452,9 +13445,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -13500,9 +13492,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -13548,9 +13539,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             if (acceptVersion != null) {
                 localVarHeaderParameter['accept-version'] = String(acceptVersion);
@@ -13639,12 +13629,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @summary Add a skill to a placeholder
          * @param {number} placeholderId 
          * @param {AddPlaceholderSkillAcceptVersionEnum} acceptVersion 
-         * @param {AddPersonSkillRequest} addPersonSkillRequest 
+         * @param {AddPlaceholderSkillRequest} addPlaceholderSkillRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addPlaceholderSkill(placeholderId: number, acceptVersion: AddPlaceholderSkillAcceptVersionEnum, addPersonSkillRequest: AddPersonSkillRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Competency>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.addPlaceholderSkill(placeholderId, acceptVersion, addPersonSkillRequest, options);
+        async addPlaceholderSkill(placeholderId: number, acceptVersion: AddPlaceholderSkillAcceptVersionEnum, addPlaceholderSkillRequest: AddPlaceholderSkillRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Competency>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addPlaceholderSkill(placeholderId, acceptVersion, addPlaceholderSkillRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.addPlaceholderSkill']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -16637,7 +16627,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         addPlaceholderSkill(requestParameters: DefaultApiAddPlaceholderSkillRequest, options?: RawAxiosRequestConfig): AxiosPromise<Competency> {
-            return localVarFp.addPlaceholderSkill(requestParameters.placeholderId, requestParameters.acceptVersion, requestParameters.addPersonSkillRequest, options).then((request) => request(axios, basePath));
+            return localVarFp.addPlaceholderSkill(requestParameters.placeholderId, requestParameters.acceptVersion, requestParameters.addPlaceholderSkillRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -18574,7 +18564,7 @@ export interface DefaultApiAddPlaceholderSkillRequest {
 
     readonly acceptVersion: AddPlaceholderSkillAcceptVersionEnum
 
-    readonly addPersonSkillRequest: AddPersonSkillRequest
+    readonly addPlaceholderSkillRequest: AddPlaceholderSkillRequest
 }
 
 /**
@@ -21559,7 +21549,7 @@ export class DefaultApi extends BaseAPI {
      * @throws {RequiredError}
      */
     public addPlaceholderSkill(requestParameters: DefaultApiAddPlaceholderSkillRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).addPlaceholderSkill(requestParameters.placeholderId, requestParameters.acceptVersion, requestParameters.addPersonSkillRequest, options).then((request) => request(this.axios, this.basePath));
+        return DefaultApiFp(this.configuration).addPlaceholderSkill(requestParameters.placeholderId, requestParameters.acceptVersion, requestParameters.addPlaceholderSkillRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
