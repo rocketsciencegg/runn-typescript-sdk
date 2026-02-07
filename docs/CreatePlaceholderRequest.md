@@ -1,0 +1,24 @@
+# CreatePlaceholderRequest
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**roleId** | **number** |  | [default to undefined]
+**costPerHour** | **number** | Defaults to the role\&#39;s cost per hour | [optional] [default to undefined]
+**tags** | [**Array&lt;UpdatePersonRequestTagsInner&gt;**](UpdatePersonRequestTagsInner.md) |  | [optional] [default to undefined]
+
+## Example
+
+```typescript
+import { CreatePlaceholderRequest } from 'runn-typescript-sdk';
+
+const instance: CreatePlaceholderRequest = {
+    roleId,
+    costPerHour,
+    tags,
+};
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
