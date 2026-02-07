@@ -34,7 +34,7 @@ All methods follow the pattern `api.methodName({ acceptVersion, ...params }, axi
 
 ## API Reference
 
-See the [generated docs](docs/) for all available methods and models, or consult `LLMs.txt` for a comprehensive method reference with working examples.
+See the [generated docs](docs/) for all available methods and models.
 
 ## How This SDK Is Generated
 
@@ -49,7 +49,7 @@ just compile   # TypeScript only
 ## Generated Files
 
 All `.ts` source files and `docs/` are auto-generated. Do not edit manually.
-Custom files (README, justfile, .github/, CLAUDE.md, LLMs.txt) are protected via `.openapi-generator-ignore`.
+Custom files (README, justfile, .github/, CLAUDE.md) are protected via `.openapi-generator-ignore`.
 
 ## License
 
