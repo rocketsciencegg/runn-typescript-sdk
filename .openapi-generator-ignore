@@ -1,7 +1,6 @@
 # Preserve custom files from being overwritten by the generator
 README.md
 CLAUDE.md
-LLMs.txt
 LICENSE
 justfile
 .github/**

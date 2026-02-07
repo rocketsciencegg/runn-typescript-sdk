@@ -34,7 +34,6 @@ All TypeScript source files in the root directory are **auto-generated** from th
 **Key files that are NOT auto-generated:**
 - `justfile` — build/generation orchestration
 - `runn.json` — OpenAPI spec (source of truth for the SDK)
-- `LLMs.txt` — comprehensive SDK usage guide with examples
 - `.openapi-generator-ignore` — controls which files the generator preserves
 - `.github/` — CI/CD workflows and Dependabot config
 - `LICENSE` — MIT license
@@ -60,4 +59,4 @@ All methods follow the pattern: `api.methodName({ acceptVersion, ...params }, ax
 - Entity IDs are numbers, dates are ISO 8601 `YYYY-MM-DD`, time values are in minutes
 - API categories: People/Teams, Projects/Clients, Assignments, Actuals (time tracking), Roles/Skills, Reporting, Custom Fields, Time Off, Contracts, Views
 - Bulk operations available for actuals (`createActualsBulk`) and clients (`createClientsBulk`)
-- `LLMs.txt` contains the full method reference with working examples — consult it for detailed API usage
+- See `docs/` for the full method reference
