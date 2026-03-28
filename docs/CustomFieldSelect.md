@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **name** | **string** | Display name for the custom field select | [default to undefined]
 **description** | **string** |  | [default to undefined]
 **model** | **string** | The field type of the custom field | [default to undefined]
-**_options** | [**Array&lt;UpdateSelectCustomFieldOption200ResponseOption&gt;**](UpdateSelectCustomFieldOption200ResponseOption.md) | All selectable options | [default to undefined]
+**_options** | [**Array&lt;CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatch200ResponseOption&gt;**](CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatch200ResponseOption.md) | All selectable options | [default to undefined]
 **singleSelect** | **boolean** | Whether this select is a single or multi select | [default to undefined]
 **required** | **boolean** | Whether or not the select is a required field | [default to undefined]
 **showInPlanner** | **boolean** | Whether or not the custom field select is shown in the project or person planner in the app UI | [default to undefined]

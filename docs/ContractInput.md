@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **employmentType** | **string** | The type of employment for the contract. | [optional] [default to EmploymentTypeEnum_Employee]
 **costPerHour** | **number** | Defaults to the role\&#39;s cost per hour | [optional] [default to undefined]
 **minutesPerDay** | **number** | Defaults to the account\&#39;s default minutes per day | [optional] [default to undefined]
-**rosteredDays** | [**CreatePersonRequestRosteredDays**](CreatePersonRequestRosteredDays.md) |  | [optional] [default to undefined]
+**rosteredDays** | [**PeoplePostRequestRosteredDays**](PeoplePostRequestRosteredDays.md) |  | [optional] [default to undefined]
 **jobTitle** | **string** | This feature is currently hidden, and can not be seen in the app | [optional] [default to undefined]
 
 ## Example

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **name** | **string** |  | [default to undefined]
 **description** | **string** |  | [default to undefined]
 **isArchived** | **boolean** |  | [default to undefined]
-**references** | [**Array&lt;CreateRateCardRequestReferencesInner&gt;**](CreateRateCardRequestReferencesInner.md) |  | [default to undefined]
+**references** | [**Array&lt;RateCardsPostRequestReferencesInner&gt;**](RateCardsPostRequestReferencesInner.md) |  | [default to undefined]
 **isBlendedRateCard** | **boolean** |  | [default to undefined]
 **blendedRate** | **number** |  | [default to undefined]
 **rateType** | **string** |  | [default to undefined]

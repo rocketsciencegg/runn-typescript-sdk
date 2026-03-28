@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **string** |  | [default to undefined]
 **financial** | **string** |  | [default to undefined]
-**editProjects** | **string** |  | [default to undefined]
+**editProjects** | **string** | Edit projects permission (deprecated: use manageProjects) | [default to undefined]
 **manageProjects** | **string** |  | [default to undefined]
-**editOthers** | **string** |  | [default to undefined]
+**editOthers** | **string** | Edit others permission (deprecated: use managePeople) | [default to undefined]
 **managePeople** | **string** |  | [default to undefined]
 **manageAccount** | **boolean** |  | [default to undefined]
 **addAllPeopleToProjects** | **boolean** |  | [default to undefined]

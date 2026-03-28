@@ -4,559 +4,207 @@ All URIs are relative to *https://api.runn.io*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**addPeopleToSkill**](#addpeopletoskill) | **POST** /skills/{skillId}/people/ | Add people to a skill|
-|[**addPersonSkill**](#addpersonskill) | **POST** /people/{personId}/skills/ | Add a skill to a person|
-|[**addPersonToProject**](#addpersontoproject) | **POST** /people/{personId}/projects/ | Add project to a person|
-|[**addPersonToTeam**](#addpersontoteam) | **POST** /people/{personId}/teams/ | Add a person to a team|
-|[**addPlaceholderSkill**](#addplaceholderskill) | **POST** /placeholders/{placeholderId}/skills/ | Add a skill to a placeholder|
-|[**addPlaceholderToTeam**](#addplaceholdertoteam) | **POST** /placeholders/{placeholderId}/teams/ | Add a placeholder to a team|
-|[**addProjectTagToProject**](#addprojecttagtoproject) | **POST** /project-tags/{projectTagId}/project/{projectId} | Add a project tag to a project|
-|[**addWorkstreamToProject**](#addworkstreamtoproject) | **POST** /projects/{projectId}/project-workstreams/{workstreamId}/ | Add a workstream to a project|
-|[**allocateViewToUser**](#allocateviewtouser) | **POST** /users/{userId}/views/{viewId} | Allocate a view to a user|
-|[**convertLegacyId**](#convertlegacyid) | **GET** /legacy-id/{model}/{legacyId} | Convert a legacy ID from API v0 to a new ID|
-|[**createActual**](#createactual) | **POST** /actuals/ | Create or update an actual|
-|[**createActualsBulk**](#createactualsbulk) | **POST** /actuals/bulk/ | Create or update actuals in bulk|
-|[**createAssignment**](#createassignment) | **POST** /assignments/ | Create an assignment|
-|[**createCheckboxCustomField**](#createcheckboxcustomfield) | **POST** /custom-fields/checkbox/ | Create a checkbox custom field|
-|[**createClient**](#createclient) | **POST** /clients/ | Create a client|
-|[**createClientsBulk**](#createclientsbulk) | **POST** /clients/bulk/ | Create clients in bulk|
-|[**createDateCustomField**](#createdatecustomfield) | **POST** /custom-fields/date/ | Create a date custom field|
-|[**createHolidayTimeOff**](#createholidaytimeoff) | **POST** /time-offs/holidays/ | Create a holiday time off|
-|[**createInvitation**](#createinvitation) | **POST** /invitations/ | Create an invitation for a user|
-|[**createLeaveTimeOff**](#createleavetimeoff) | **POST** /time-offs/leave/ | Create a leave time off|
-|[**createLeaveTimeOffsBulk**](#createleavetimeoffsbulk) | **POST** /time-offs/leave/bulk/ | Create leave time offs in bulk|
-|[**createNoteForProject**](#createnoteforproject) | **POST** /projects/{projectId}/notes/ | Create a project note|
-|[**createPeopleTag**](#createpeopletag) | **POST** /people-tags/ | Create a people tag|
-|[**createPerson**](#createperson) | **POST** /people/ | Create a person|
-|[**createPersonContract**](#createpersoncontract) | **POST** /people/{personId}/contracts/ | Add a new contract to a person|
-|[**createPlaceholder**](#createplaceholder) | **POST** /placeholders/ | Create a placeholder|
-|[**createProject**](#createproject) | **POST** /projects/ | Create a project|
-|[**createProjectBudgetRole**](#createprojectbudgetrole) | **POST** /projects/{projectId}/budget-roles/ | Create a project budget role|
-|[**createProjectMilestone**](#createprojectmilestone) | **POST** /projects/{projectId}/milestones/ | Create a milestone for a project|
-|[**createProjectOtherExpense**](#createprojectotherexpense) | **POST** /projects/{projectId}/other-expenses/ | Create an other expense for a project|
-|[**createProjectPersonRequest**](#createprojectpersonrequest) | **POST** /projects/{projectId}/person-requests/ | Create a person request on a project|
-|[**createProjectPhase**](#createprojectphase) | **POST** /projects/{projectId}/phases/ | Create a phase for a project|
-|[**createProjectTag**](#createprojecttag) | **POST** /project-tags/ | Create a project tag|
-|[**createRateCard**](#createratecard) | **POST** /rate-cards/ | Create a rate card|
-|[**createRole**](#createrole) | **POST** /roles/ | Create a role|
-|[**createSelectCustomField**](#createselectcustomfield) | **POST** /custom-fields/select/ | Create a select custom field|
-|[**createSelectCustomFieldOption**](#createselectcustomfieldoption) | **POST** /custom-fields/select/{selectFieldId}/options | Create a select custom field option|
-|[**createSkill**](#createskill) | **POST** /skills/ | Create a skill|
-|[**createTeam**](#createteam) | **POST** /teams/ | Create a team|
-|[**createTextCustomField**](#createtextcustomfield) | **POST** /custom-fields/text/ | Create a text custom field|
-|[**createWorkstream**](#createworkstream) | **POST** /workstreams/ | Create a workstream|
-|[**deleteActual**](#deleteactual) | **DELETE** /actuals/{actualId}/ | Delete a specific actual|
-|[**deleteAssignment**](#deleteassignment) | **DELETE** /assignments/{assignmentId}/ | Delete an assignment|
-|[**deleteCheckboxCustomField**](#deletecheckboxcustomfield) | **DELETE** /custom-fields/checkbox/{checkboxFieldId} | Delete a checkbox custom field|
-|[**deleteDateCustomField**](#deletedatecustomfield) | **DELETE** /custom-fields/date/{dateFieldId} | Delete a date custom field|
-|[**deleteHolidayTimeOff**](#deleteholidaytimeoff) | **DELETE** /time-offs/holidays/{timeOffId} | Delete a holiday time off|
-|[**deleteInvitation**](#deleteinvitation) | **DELETE** /invitations/{invitationId} | Delete an invitation|
-|[**deleteLeaveTimeOff**](#deleteleavetimeoff) | **DELETE** /time-offs/leave/{timeOffId}/ | Delete a leave time off|
-|[**deleteLeaveTimeOffsBulk**](#deleteleavetimeoffsbulk) | **DELETE** /time-offs/leave/bulk/ | Delete leave time offs in bulk|
-|[**deletePeopleTag**](#deletepeopletag) | **DELETE** /people-tags/{peopleTagId} | Delete a people tag|
-|[**deletePerson**](#deleteperson) | **DELETE** /people/{personId} | Delete a person|
-|[**deletePersonContract**](#deletepersoncontract) | **DELETE** /people/{personId}/contracts/{contractId} | Delete a contract for a person|
-|[**deleteProject**](#deleteproject) | **DELETE** /projects/{projectId}/ | Delete a project|
-|[**deleteProjectBudgetRole**](#deleteprojectbudgetrole) | **DELETE** /projects/{projectId}/budget-roles/{roleId} | Delete a project budget role|
-|[**deleteProjectMilestone**](#deleteprojectmilestone) | **DELETE** /projects/{projectId}/milestones/{milestoneId} | Delete a milestone for a project|
-|[**deleteProjectPhase**](#deleteprojectphase) | **DELETE** /projects/{projectId}/phases/{phaseId} | Delete a phase for a project|
-|[**deleteRateCard**](#deleteratecard) | **DELETE** /rate-cards/{rateCardId} | Delete a rate card|
-|[**deleteRosteredTimeOff**](#deleterosteredtimeoff) | **DELETE** /time-offs/rostered-off/{timeOffId} | Delete a rostered time off|
-|[**deleteSelectCustomField**](#deleteselectcustomfield) | **DELETE** /custom-fields/select/{selectFieldId} | Delete a select custom field|
-|[**deleteSelectCustomFieldOption**](#deleteselectcustomfieldoption) | **DELETE** /custom-fields/select/{selectFieldId}/options/{selectOptionId} | Delete a select custom field option|
-|[**deleteSkill**](#deleteskill) | **DELETE** /skills/{skillId} | Delete a skill|
-|[**deleteTeam**](#deleteteam) | **DELETE** /teams/{teamId}/ | Delete a team|
-|[**deleteTextCustomField**](#deletetextcustomfield) | **DELETE** /custom-fields/text/{textFieldId} | Delete a text custom field|
-|[**deleteUser**](#deleteuser) | **DELETE** /users/{userId} | Delete a user|
-|[**deleteWorkstream**](#deleteworkstream) | **DELETE** /workstreams/{workstreamId}/ | Delete a workstream|
-|[**getClient**](#getclient) | **GET** /clients/{clientId} | Show a client|
-|[**getCurrentUser**](#getcurrentuser) | **GET** /me/ | Who am I?|
-|[**getHolidayGroup**](#getholidaygroup) | **GET** /holiday-groups/{holidayGroupId} | Show a holiday group|
-|[**getLeaveTimeOff**](#getleavetimeoff) | **GET** /time-offs/leave/{timeOffId}/ | Show a leave time off|
-|[**getPeopleTag**](#getpeopletag) | **GET** /people-tags/{peopleTagId} | Show a people tag|
-|[**getPerson**](#getperson) | **GET** /people/{personId} | Show a person|
-|[**getPersonCurrentContract**](#getpersoncurrentcontract) | **GET** /people/{personId}/contracts/current | Show current contract for a person|
-|[**getPersonCurrentTeam**](#getpersoncurrentteam) | **GET** /people/{personId}/teams/current | Show current team|
-|[**getPersonHoursReport**](#getpersonhoursreport) | **GET** /reports/hours/people/{personId} | Get by-day entries for a person with assignments and actuals|
-|[**getProject**](#getproject) | **GET** /projects/{projectId} | Show a project|
-|[**getProjectBudgetRole**](#getprojectbudgetrole) | **GET** /projects/{projectId}/budget-roles/{roleId} | Get a project budget role|
-|[**getProjectHoursReport**](#getprojecthoursreport) | **GET** /reports/hours/projects/{projectId} | Get by-day entries for a project with assignments and actuals|
-|[**getProjectPersonRequest**](#getprojectpersonrequest) | **GET** /projects/{projectId}/person-requests/{personRequestId} | Show a single person request for a project|
-|[**getProjectPhase**](#getprojectphase) | **GET** /projects/{projectId}/phases/{phaseId} | Show a phase for a project|
-|[**getProjectTag**](#getprojecttag) | **GET** /project-tags/{projectTagId} | Show a project tag|
-|[**getProjectTimesheetLock**](#getprojecttimesheetlock) | **GET** /projects/{projectId}/timesheet-lock/ | Show a timesheet lock for a project|
-|[**getProjectTotalsReport**](#getprojecttotalsreport) | **GET** /reports/totals/projects/{projectId} | Show totals for a project with assignments and actuals|
-|[**getProjectWorkstream**](#getprojectworkstream) | **GET** /projects/{projectId}/project-workstreams/{workstreamId}/ | View project workstream|
-|[**getRateCard**](#getratecard) | **GET** /rate-cards/{rateCardId} | Show a rate card|
-|[**getRole**](#getrole) | **GET** /roles/{roleId} | Show a role|
-|[**getSkill**](#getskill) | **GET** /skills/{skillId} | Show a skill|
-|[**getTeam**](#getteam) | **GET** /teams/{teamId}/ | Show a team|
-|[**getUser**](#getuser) | **GET** /users/{userId} | Show a user|
-|[**getWorkstream**](#getworkstream) | **GET** /workstreams/{workstreamId}/ | Show a workstream|
-|[**listActuals**](#listactuals) | **GET** /actuals/ | List actuals|
-|[**listAssignments**](#listassignments) | **GET** /assignments/ | List assignments|
-|[**listBudgetRoles**](#listbudgetroles) | **GET** /budget-roles/ | List budget roles|
-|[**listCheckboxCustomFields**](#listcheckboxcustomfields) | **GET** /custom-fields/checkbox/ | List checkbox custom fields|
-|[**listClientProjects**](#listclientprojects) | **GET** /clients/{clientId}/projects/ | List a client\&#39;s projects|
-|[**listClients**](#listclients) | **GET** /clients/ | List clients|
-|[**listContracts**](#listcontracts) | **GET** /contracts/ | List contracts|
-|[**listDateCustomFields**](#listdatecustomfields) | **GET** /custom-fields/date/ | List date custom fields|
-|[**listEvents**](#listevents) | **GET** /activity-log/ | List events|
-|[**listHolidayGroupHolidays**](#listholidaygroupholidays) | **GET** /holiday-groups/{holidayGroupId}/holidays | Show holidays for a holiday group|
-|[**listHolidayGroups**](#listholidaygroups) | **GET** /holiday-groups/ | List holiday groups|
-|[**listHolidayTimeOffs**](#listholidaytimeoffs) | **GET** /time-offs/holidays/ | List holiday time offs|
-|[**listInvitations**](#listinvitations) | **GET** /invitations/ | List invitations|
-|[**listLeaveTimeOffs**](#listleavetimeoffs) | **GET** /time-offs/leave/ | List leave time offs|
-|[**listMilestones**](#listmilestones) | **GET** /milestones/ | List project milestones|
-|[**listNotesForProject**](#listnotesforproject) | **GET** /projects/{projectId}/notes/ | List notes for a project|
-|[**listOtherExpenses**](#listotherexpenses) | **GET** /other-expenses/ | List other expenses|
-|[**listPeople**](#listpeople) | **GET** /people/ | List people|
-|[**listPeopleCurrentContracts**](#listpeoplecurrentcontracts) | **GET** /people/contracts/current | List people current contracts|
-|[**listPeopleCustomFields**](#listpeoplecustomfields) | **GET** /people/custom-fields | List people custom fields|
-|[**listPeopleNotes**](#listpeoplenotes) | **GET** /people/notes | List people notes|
-|[**listPeopleSkills**](#listpeopleskills) | **GET** /people/skills | List people skills|
-|[**listPeopleTags**](#listpeopletags) | **GET** /people-tags/ | List people tags|
-|[**listPersonActuals**](#listpersonactuals) | **GET** /people/{personId}/actuals/ | List actuals for a person|
-|[**listPersonAssignments**](#listpersonassignments) | **GET** /people/{personId}/assignments/ | List assignments for a person|
-|[**listPersonContracts**](#listpersoncontracts) | **GET** /people/{personId}/contracts/ | List contracts for a person|
-|[**listPersonHolidays**](#listpersonholidays) | **GET** /people/{personId}/time-offs/holidays | List holidays for a person|
-|[**listPersonLeave**](#listpersonleave) | **GET** /people/{personId}/time-offs/leave | List leave for a person|
-|[**listPersonProjects**](#listpersonprojects) | **GET** /people/{personId}/projects/ | List projects for a person|
-|[**listPersonRequests**](#listpersonrequests) | **GET** /person-requests/ | List person requests|
-|[**listPersonRosteredTimeOffs**](#listpersonrosteredtimeoffs) | **GET** /people/{personId}/time-offs/rostered-off | List rostered time offs for a person|
-|[**listPersonSkills**](#listpersonskills) | **GET** /people/{personId}/skills/ | List skills for a person|
-|[**listPhases**](#listphases) | **GET** /phases/ | List phases|
-|[**listPlaceholders**](#listplaceholders) | **GET** /placeholders/ | List placeholders|
-|[**listProjectActuals**](#listprojectactuals) | **GET** /projects/{projectId}/actuals/ | List actuals for a project|
-|[**listProjectAssignments**](#listprojectassignments) | **GET** /projects/{projectId}/assignments/ | List assignments for a project|
-|[**listProjectBudgetRoles**](#listprojectbudgetroles) | **GET** /projects/{projectId}/budget-roles/ | Get a paginated list of project budget roles for a project|
-|[**listProjectCustomFields**](#listprojectcustomfields) | **GET** /projects/custom-fields | List project custom fields|
-|[**listProjectMembers**](#listprojectmembers) | **GET** /project-members/ | List members of projects|
-|[**listProjectMilestones**](#listprojectmilestones) | **GET** /projects/{projectId}/milestones/ | List milestones for a project|
-|[**listProjectNotes**](#listprojectnotes) | **GET** /project-notes/ | List project notes|
-|[**listProjectOtherExpenses**](#listprojectotherexpenses) | **GET** /projects/{projectId}/other-expenses/ | List other expenses for a project|
-|[**listProjectPeople**](#listprojectpeople) | **GET** /projects/{projectId}/people/ | List people assigned to a project|
-|[**listProjectPersonRequests**](#listprojectpersonrequests) | **GET** /projects/{projectId}/person-requests/ | List the person requests for a project|
-|[**listProjectPhases**](#listprojectphases) | **GET** /projects/{projectId}/phases/ | List phases for a project|
-|[**listProjectRates**](#listprojectrates) | **GET** /project-rates/ | List role rates|
-|[**listProjectRoleRates**](#listprojectrolerates) | **GET** /projects/{projectId}/project-rates/ | List role rates for a project|
-|[**listProjectTags**](#listprojecttags) | **GET** /project-tags/ | List project tags|
-|[**listProjectTotalsReport**](#listprojecttotalsreport) | **GET** /reports/totals/projects/ | List totals for projects with assignments and actuals|
-|[**listProjectWorkstreams**](#listprojectworkstreams) | **GET** /project-workstreams/ | List project workstreams|
-|[**listProjectWorkstreamsForProject**](#listprojectworkstreamsforproject) | **GET** /projects/{projectId}/project-workstreams/ | List workstreams assigned to a project|
-|[**listProjects**](#listprojects) | **GET** /projects/ | List projects|
-|[**listRateCards**](#listratecards) | **GET** /rate-cards/ | List rate cards|
-|[**listRoles**](#listroles) | **GET** /roles/ | List roles|
-|[**listRosteredTimeOffs**](#listrosteredtimeoffs) | **GET** /time-offs/rostered-off/ | List rostered time offs|
-|[**listSelectCustomFields**](#listselectcustomfields) | **GET** /custom-fields/select/ | Show a select custom field|
-|[**listSkillPeople**](#listskillpeople) | **GET** /skills/{skillId}/people/ | List people for a skill|
-|[**listSkills**](#listskills) | **GET** /skills/ | List skills|
-|[**listTeamPeople**](#listteampeople) | **GET** /teams/{teamId}/people/ | List people in a team|
-|[**listTeams**](#listteams) | **GET** /teams/ | List teams|
-|[**listTextCustomFields**](#listtextcustomfields) | **GET** /custom-fields/text/ | Show a text custom field|
-|[**listUserViews**](#listuserviews) | **GET** /users/{userId}/views/ | List allocated views for a user|
-|[**listUsers**](#listusers) | **GET** /users/ | List users|
-|[**listViews**](#listviews) | **GET** /views/ | List views|
-|[**listWorkstreams**](#listworkstreams) | **GET** /workstreams/ | List workstreams|
-|[**removePersonFromTeam**](#removepersonfromteam) | **DELETE** /people/{personId}/teams/{teamId} | Remove a person from a team|
-|[**removePersonSkill**](#removepersonskill) | **DELETE** /people/{personId}/skills/{skillId} | Remove a skill from a person|
-|[**removePlaceholderFromTeam**](#removeplaceholderfromteam) | **DELETE** /placeholders/{placeholderId}/teams/{teamId} | Remove a placeholder from a team|
-|[**removePlaceholderSkill**](#removeplaceholderskill) | **DELETE** /placeholders/{placeholderId}/skills/{skillId} | Remove a skill from a placeholder|
-|[**removeProjectTagFromProject**](#removeprojecttagfromproject) | **DELETE** /project-tags/{projectTagId}/project/{projectId} | Remove a project tag from a project|
-|[**removeViewFromUser**](#removeviewfromuser) | **DELETE** /users/{userId}/views/{viewId}/ | Remove allocated view from user|
-|[**removeWorkstreamFromProject**](#removeworkstreamfromproject) | **DELETE** /projects/{projectId}/project-workstreams/{workstreamId}/ | Delete project workstream|
-|[**updateActualTimeEntry**](#updateactualtimeentry) | **POST** /actuals/time-entry | Update an actual|
-|[**updateCheckboxCustomField**](#updatecheckboxcustomfield) | **PATCH** /custom-fields/checkbox/{checkboxFieldId} | Update a checkbox custom field|
-|[**updateClient**](#updateclient) | **PATCH** /clients/{clientId} | Update a client|
-|[**updateContract**](#updatecontract) | **PATCH** /contracts/{contractId} | Update a contract|
-|[**updateDateCustomField**](#updatedatecustomfield) | **PATCH** /custom-fields/date/{dateFieldId} | Update a date custom field|
-|[**updatePeopleTag**](#updatepeopletag) | **PATCH** /people-tags/{peopleTagId} | Update a people tag|
-|[**updatePerson**](#updateperson) | **PATCH** /people/{personId} | Update a person|
-|[**updatePersonCheckboxCustomField**](#updatepersoncheckboxcustomfield) | **PATCH** /people/{personId}/custom-fields/checkbox/ | Add a checkbox custom value to a person|
-|[**updatePersonDateCustomField**](#updatepersondatecustomfield) | **PATCH** /people/{personId}/custom-fields/date/ | Add a date custom value to a person|
-|[**updatePersonSelectCustomField**](#updatepersonselectcustomfield) | **PATCH** /people/{personId}/custom-fields/select/ | Add custom select options to a person|
-|[**updatePersonSkill**](#updatepersonskill) | **PATCH** /people/{personId}/skills/{skillId} | Update a skill for a person|
-|[**updatePersonTextCustomField**](#updatepersontextcustomfield) | **PATCH** /people/{personId}/custom-fields/text/ | Add a text custom value to a person|
-|[**updateProject**](#updateproject) | **PATCH** /projects/{projectId} | Update a project|
-|[**updateProjectBudgetRole**](#updateprojectbudgetrole) | **PATCH** /projects/{projectId}/budget-roles/{roleId} | Update a project budget role|
-|[**updateProjectCheckboxCustomField**](#updateprojectcheckboxcustomfield) | **PATCH** /projects/{projectId}/custom-fields/checkbox/ | Add a checkbox custom value to a project|
-|[**updateProjectDateCustomField**](#updateprojectdatecustomfield) | **PATCH** /projects/{projectId}/custom-fields/date/ | Add a date custom field value to a project|
-|[**updateProjectMilestone**](#updateprojectmilestone) | **PATCH** /projects/{projectId}/milestones/{milestoneId} | Update a milestone for a project|
-|[**updateProjectOtherExpense**](#updateprojectotherexpense) | **PATCH** /projects/{projectId}/other-expenses/{otherExpenseId}/ | Update an other expense on a project|
-|[**updateProjectPersonRequest**](#updateprojectpersonrequest) | **PATCH** /projects/{projectId}/person-requests/{personRequestId} | Update the status of a person request on a project|
-|[**updateProjectPhase**](#updateprojectphase) | **PATCH** /projects/{projectId}/phases/{phaseId} | Update a phase for a project|
-|[**updateProjectRoleRate**](#updateprojectrolerate) | **PATCH** /projects/{projectId}/project-rates/{projectRateId}/ | Update a rate for a role on a project|
-|[**updateProjectSelectCustomField**](#updateprojectselectcustomfield) | **PATCH** /projects/{projectId}/custom-fields/select/ | Add a select custom field to a project|
-|[**updateProjectTag**](#updateprojecttag) | **PATCH** /project-tags/{projectTagId} | Update a project tag|
-|[**updateProjectTextCustomField**](#updateprojecttextcustomfield) | **PATCH** /projects/{projectId}/custom-fields/text/ | Add a text custom field value to a project|
-|[**updateProjectTimesheetLock**](#updateprojecttimesheetlock) | **PATCH** /projects/{projectId}/timesheet-lock/ | Update a timesheet lock for a project|
-|[**updateRole**](#updaterole) | **PATCH** /roles/{roleId} | Update a role|
-|[**updateSelectCustomField**](#updateselectcustomfield) | **PATCH** /custom-fields/select/{selectFieldId} | Update a select custom field|
-|[**updateSelectCustomFieldOption**](#updateselectcustomfieldoption) | **PATCH** /custom-fields/select/{selectFieldId}/options/{selectOptionId} | Update a select custom field option|
-|[**updateSkill**](#updateskill) | **PATCH** /skills/{skillId} | Update a skill|
-|[**updateTeam**](#updateteam) | **PATCH** /teams/{teamId}/ | Update a team|
-|[**updateTextCustomField**](#updatetextcustomfield) | **PATCH** /custom-fields/text/{textFieldId} | Update a text custom field|
-|[**updateWorkstream**](#updateworkstream) | **PATCH** /workstreams/{workstreamId}/ | Update a workstream|
-
-# **addPeopleToSkill**
-> AddPeopleToSkill201Response addPeopleToSkill(addPeopleToSkillRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    AddPeopleToSkillRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let skillId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let addPeopleToSkillRequest: AddPeopleToSkillRequest; //
-
-const { status, data } = await apiInstance.addPeopleToSkill(
-    skillId,
-    acceptVersion,
-    addPeopleToSkillRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **addPeopleToSkillRequest** | **AddPeopleToSkillRequest**|  | |
-| **skillId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**AddPeopleToSkill201Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **addPersonSkill**
-> Competency addPersonSkill(addPersonSkillRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    AddPersonSkillRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let addPersonSkillRequest: AddPersonSkillRequest; //
-
-const { status, data } = await apiInstance.addPersonSkill(
-    personId,
-    acceptVersion,
-    addPersonSkillRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **addPersonSkillRequest** | **AddPersonSkillRequest**|  | |
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Competency**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **addPersonToProject**
-> addPersonToProject(addPersonToProjectRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    AddPersonToProjectRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let addPersonToProjectRequest: AddPersonToProjectRequest; //
-
-const { status, data } = await apiInstance.addPersonToProject(
-    personId,
-    acceptVersion,
-    addPersonToProjectRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **addPersonToProjectRequest** | **AddPersonToProjectRequest**|  | |
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-|**409** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **addPersonToTeam**
-> addPersonToTeam(addPersonToTeamRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    AddPersonToTeamRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let addPersonToTeamRequest: AddPersonToTeamRequest; //
-
-const { status, data } = await apiInstance.addPersonToTeam(
-    personId,
-    acceptVersion,
-    addPersonToTeamRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **addPersonToTeamRequest** | **AddPersonToTeamRequest**|  | |
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **addPlaceholderSkill**
-> Competency addPlaceholderSkill(addPlaceholderSkillRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    AddPlaceholderSkillRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let placeholderId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let addPlaceholderSkillRequest: AddPlaceholderSkillRequest; //
-
-const { status, data } = await apiInstance.addPlaceholderSkill(
-    placeholderId,
-    acceptVersion,
-    addPlaceholderSkillRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **addPlaceholderSkillRequest** | **AddPlaceholderSkillRequest**|  | |
-| **placeholderId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Competency**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **addPlaceholderToTeam**
-> addPlaceholderToTeam(addPersonToTeamRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    AddPersonToTeamRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let placeholderId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let addPersonToTeamRequest: AddPersonToTeamRequest; //
-
-const { status, data } = await apiInstance.addPlaceholderToTeam(
-    placeholderId,
-    acceptVersion,
-    addPersonToTeamRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **addPersonToTeamRequest** | **AddPersonToTeamRequest**|  | |
-| **placeholderId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **addProjectTagToProject**
-> ProjectTag addProjectTagToProject()
-
+|[**activityLogGet**](#activitylogget) | **GET** /activity-log/ | List events|
+|[**actualsActualIdDelete**](#actualsactualiddelete) | **DELETE** /actuals/{actualId}/ | Delete a specific actual|
+|[**actualsBulkPost**](#actualsbulkpost) | **POST** /actuals/bulk/ | Create or update actuals in bulk|
+|[**actualsGet**](#actualsget) | **GET** /actuals/ | List actuals|
+|[**actualsPost**](#actualspost) | **POST** /actuals/ | Create or update an actual|
+|[**actualsTimeEntryPost**](#actualstimeentrypost) | **POST** /actuals/time-entry | Update an actual|
+|[**assignmentsAssignmentIdDelete**](#assignmentsassignmentiddelete) | **DELETE** /assignments/{assignmentId}/ | Delete an assignment|
+|[**assignmentsGet**](#assignmentsget) | **GET** /assignments/ | List assignments|
+|[**assignmentsPost**](#assignmentspost) | **POST** /assignments/ | Create an assignment|
+|[**budgetRolesGet**](#budgetrolesget) | **GET** /budget-roles/ | List budget roles|
+|[**clientsBulkPost**](#clientsbulkpost) | **POST** /clients/bulk/ | Create clients in bulk|
+|[**clientsClientIdGet**](#clientsclientidget) | **GET** /clients/{clientId} | Show a client|
+|[**clientsClientIdPatch**](#clientsclientidpatch) | **PATCH** /clients/{clientId} | Update a client|
+|[**clientsClientIdProjectsGet**](#clientsclientidprojectsget) | **GET** /clients/{clientId}/projects/ | List a client\&#39;s projects|
+|[**clientsGet**](#clientsget) | **GET** /clients/ | List clients|
+|[**clientsPost**](#clientspost) | **POST** /clients/ | Create a client|
+|[**contractsContractIdPatch**](#contractscontractidpatch) | **PATCH** /contracts/{contractId} | Update a contract|
+|[**contractsGet**](#contractsget) | **GET** /contracts/ | List contracts|
+|[**customFieldsCheckboxCheckboxFieldIdDelete**](#customfieldscheckboxcheckboxfieldiddelete) | **DELETE** /custom-fields/checkbox/{checkboxFieldId} | Delete a checkbox custom field|
+|[**customFieldsCheckboxCheckboxFieldIdPatch**](#customfieldscheckboxcheckboxfieldidpatch) | **PATCH** /custom-fields/checkbox/{checkboxFieldId} | Update a checkbox custom field|
+|[**customFieldsCheckboxGet**](#customfieldscheckboxget) | **GET** /custom-fields/checkbox/ | List checkbox custom fields|
+|[**customFieldsCheckboxPost**](#customfieldscheckboxpost) | **POST** /custom-fields/checkbox/ | Create a checkbox custom field|
+|[**customFieldsDateDateFieldIdPatch**](#customfieldsdatedatefieldidpatch) | **PATCH** /custom-fields/date/{dateFieldId} | Update a date custom field|
+|[**customFieldsDateGet**](#customfieldsdateget) | **GET** /custom-fields/date/ | List date custom fields|
+|[**customFieldsDateIdDelete**](#customfieldsdateiddelete) | **DELETE** /custom-fields/date/{id} | Delete a date custom field|
+|[**customFieldsDatePost**](#customfieldsdatepost) | **POST** /custom-fields/date/ | Create a date custom field|
+|[**customFieldsSelectGet**](#customfieldsselectget) | **GET** /custom-fields/select/ | Show a select custom field|
+|[**customFieldsSelectPost**](#customfieldsselectpost) | **POST** /custom-fields/select/ | Create a select custom field|
+|[**customFieldsSelectSelectFieldIdDelete**](#customfieldsselectselectfieldiddelete) | **DELETE** /custom-fields/select/{selectFieldId} | Delete a select custom field|
+|[**customFieldsSelectSelectFieldIdOptionsPost**](#customfieldsselectselectfieldidoptionspost) | **POST** /custom-fields/select/{selectFieldId}/options | Create a select custom field option|
+|[**customFieldsSelectSelectFieldIdOptionsSelectOptionIdDelete**](#customfieldsselectselectfieldidoptionsselectoptioniddelete) | **DELETE** /custom-fields/select/{selectFieldId}/options/{selectOptionId} | Delete a select custom field option|
+|[**customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatch**](#customfieldsselectselectfieldidoptionsselectoptionidpatch) | **PATCH** /custom-fields/select/{selectFieldId}/options/{selectOptionId} | Update a select custom field option|
+|[**customFieldsSelectSelectFieldIdPatch**](#customfieldsselectselectfieldidpatch) | **PATCH** /custom-fields/select/{selectFieldId} | Update a select custom field|
+|[**customFieldsTextGet**](#customfieldstextget) | **GET** /custom-fields/text/ | Show a text custom field|
+|[**customFieldsTextPost**](#customfieldstextpost) | **POST** /custom-fields/text/ | Create a text custom field|
+|[**customFieldsTextTextFieldIdDelete**](#customfieldstexttextfieldiddelete) | **DELETE** /custom-fields/text/{textFieldId} | Delete a text custom field|
+|[**customFieldsTextTextFieldIdPatch**](#customfieldstexttextfieldidpatch) | **PATCH** /custom-fields/text/{textFieldId} | Update a text custom field|
+|[**holidayGroupsGet**](#holidaygroupsget) | **GET** /holiday-groups/ | List holiday groups|
+|[**holidayGroupsHolidayGroupIdGet**](#holidaygroupsholidaygroupidget) | **GET** /holiday-groups/{holidayGroupId} | Show a holiday group|
+|[**holidayGroupsHolidayGroupIdHolidaysGet**](#holidaygroupsholidaygroupidholidaysget) | **GET** /holiday-groups/{holidayGroupId}/holidays | Show holidays for a holiday group|
+|[**invitationsGet**](#invitationsget) | **GET** /invitations/ | List invitations|
+|[**invitationsInvitationIdDelete**](#invitationsinvitationiddelete) | **DELETE** /invitations/{invitationId} | Delete an invitation|
+|[**invitationsPost**](#invitationspost) | **POST** /invitations/ | Create an invitation for a user|
+|[**legacyIdModelLegacyIdGet**](#legacyidmodellegacyidget) | **GET** /legacy-id/{model}/{legacyId} | Convert a legacy ID from API v0 to a new ID|
+|[**meGet**](#meget) | **GET** /me/ | Who am I?|
+|[**milestonesGet**](#milestonesget) | **GET** /milestones/ | List project milestones|
+|[**otherExpensesGet**](#otherexpensesget) | **GET** /other-expenses/ | List other expenses|
+|[**peopleContractsCurrentGet**](#peoplecontractscurrentget) | **GET** /people/contracts/current | List people current contracts|
+|[**peopleCustomFieldsGet**](#peoplecustomfieldsget) | **GET** /people/custom-fields | List people custom fields|
+|[**peopleGet**](#peopleget) | **GET** /people/ | List people|
+|[**peopleNotesGet**](#peoplenotesget) | **GET** /people/notes | List people notes|
+|[**peoplePersonIdActualsGet**](#peoplepersonidactualsget) | **GET** /people/{personId}/actuals/ | List actuals for a person|
+|[**peoplePersonIdAssignmentsGet**](#peoplepersonidassignmentsget) | **GET** /people/{personId}/assignments/ | List assignments for a person or placeholder|
+|[**peoplePersonIdContractsContractIdDelete**](#peoplepersonidcontractscontractiddelete) | **DELETE** /people/{personId}/contracts/{contractId} | Delete a contract for a person|
+|[**peoplePersonIdContractsCurrentGet**](#peoplepersonidcontractscurrentget) | **GET** /people/{personId}/contracts/current | Show current contract for a person|
+|[**peoplePersonIdContractsGet**](#peoplepersonidcontractsget) | **GET** /people/{personId}/contracts/ | List contracts for a person|
+|[**peoplePersonIdContractsPost**](#peoplepersonidcontractspost) | **POST** /people/{personId}/contracts/ | Add a new contract to a person|
+|[**peoplePersonIdCustomFieldsCheckboxPatch**](#peoplepersonidcustomfieldscheckboxpatch) | **PATCH** /people/{personId}/custom-fields/checkbox/ | Add a checkbox custom value to a person or placeholder|
+|[**peoplePersonIdCustomFieldsDatePatch**](#peoplepersonidcustomfieldsdatepatch) | **PATCH** /people/{personId}/custom-fields/date/ | Add a date custom value to a person or placeholder|
+|[**peoplePersonIdCustomFieldsSelectPatch**](#peoplepersonidcustomfieldsselectpatch) | **PATCH** /people/{personId}/custom-fields/select/ | Add custom select options to a person or placeholder|
+|[**peoplePersonIdCustomFieldsTextPatch**](#peoplepersonidcustomfieldstextpatch) | **PATCH** /people/{personId}/custom-fields/text/ | Add a text custom value to a person or placeholder|
+|[**peoplePersonIdDelete**](#peoplepersoniddelete) | **DELETE** /people/{personId} | Delete a person or placeholder|
+|[**peoplePersonIdGet**](#peoplepersonidget) | **GET** /people/{personId} | Show a person or placeholder|
+|[**peoplePersonIdPatch**](#peoplepersonidpatch) | **PATCH** /people/{personId} | Update a person or placeholder|
+|[**peoplePersonIdProjectsGet**](#peoplepersonidprojectsget) | **GET** /people/{personId}/projects/ | List projects for a person or placeholder|
+|[**peoplePersonIdProjectsPost**](#peoplepersonidprojectspost) | **POST** /people/{personId}/projects/ | Add project to a person or placeholder|
+|[**peoplePersonIdSkillsGet**](#peoplepersonidskillsget) | **GET** /people/{personId}/skills/ | List skills for a person or placeholder|
+|[**peoplePersonIdSkillsPost**](#peoplepersonidskillspost) | **POST** /people/{personId}/skills/ | Add a skill to a person or placeholder|
+|[**peoplePersonIdSkillsSkillIdDelete**](#peoplepersonidskillsskilliddelete) | **DELETE** /people/{personId}/skills/{skillId} | Remove a skill from a person or placeholder|
+|[**peoplePersonIdSkillsSkillIdPatch**](#peoplepersonidskillsskillidpatch) | **PATCH** /people/{personId}/skills/{skillId} | Update a skill for a person or placeholder|
+|[**peoplePersonIdTeamsCurrentGet**](#peoplepersonidteamscurrentget) | **GET** /people/{personId}/teams/current | Show current team for a person or placeholder|
+|[**peoplePersonIdTeamsPost**](#peoplepersonidteamspost) | **POST** /people/{personId}/teams/ | Add a person or placeholder to a team|
+|[**peoplePersonIdTeamsTeamIdDelete**](#peoplepersonidteamsteamiddelete) | **DELETE** /people/{personId}/teams/{teamId} | Remove a person or placeholder from a team|
+|[**peoplePersonIdTimeOffsHolidaysGet**](#peoplepersonidtimeoffsholidaysget) | **GET** /people/{personId}/time-offs/holidays | List holidays for a person|
+|[**peoplePersonIdTimeOffsLeaveGet**](#peoplepersonidtimeoffsleaveget) | **GET** /people/{personId}/time-offs/leave | List leave for a person|
+|[**peoplePersonIdTimeOffsRosteredOffGet**](#peoplepersonidtimeoffsrosteredoffget) | **GET** /people/{personId}/time-offs/rostered-off | List rostered time offs for a person|
+|[**peoplePost**](#peoplepost) | **POST** /people/ | Create a person|
+|[**peopleSkillsGet**](#peopleskillsget) | **GET** /people/skills | List people skills|
+|[**peopleTagsGet**](#peopletagsget) | **GET** /people-tags/ | List people tags|
+|[**peopleTagsPeopleTagIdDelete**](#peopletagspeopletagiddelete) | **DELETE** /people-tags/{peopleTagId} | Delete a people tag|
+|[**peopleTagsPeopleTagIdGet**](#peopletagspeopletagidget) | **GET** /people-tags/{peopleTagId} | Show a people tag|
+|[**peopleTagsPeopleTagIdPatch**](#peopletagspeopletagidpatch) | **PATCH** /people-tags/{peopleTagId} | Update a people tag|
+|[**peopleTagsPost**](#peopletagspost) | **POST** /people-tags/ | Create a people tag|
+|[**personRequestsGet**](#personrequestsget) | **GET** /person-requests/ | List person requests|
+|[**phasesGet**](#phasesget) | **GET** /phases/ | List phases|
+|[**placeholdersGet**](#placeholdersget) | **GET** /placeholders/ | List placeholders|
+|[**placeholdersPlaceholderIdSkillsPost**](#placeholdersplaceholderidskillspost) | **POST** /placeholders/{placeholderId}/skills/ | Add a skill to a placeholder|
+|[**placeholdersPlaceholderIdSkillsSkillIdDelete**](#placeholdersplaceholderidskillsskilliddelete) | **DELETE** /placeholders/{placeholderId}/skills/{skillId} | Remove a skill from a placeholder|
+|[**placeholdersPlaceholderIdTeamsPost**](#placeholdersplaceholderidteamspost) | **POST** /placeholders/{placeholderId}/teams/ | Add a placeholder to a team|
+|[**placeholdersPlaceholderIdTeamsTeamIdDelete**](#placeholdersplaceholderidteamsteamiddelete) | **DELETE** /placeholders/{placeholderId}/teams/{teamId} | Remove a placeholder from a team|
+|[**placeholdersPost**](#placeholderspost) | **POST** /placeholders/ | Create a placeholder|
+|[**projectMembersGet**](#projectmembersget) | **GET** /project-members/ | List members of projects|
+|[**projectNotesGet**](#projectnotesget) | **GET** /project-notes/ | List project notes|
+|[**projectRatesGet**](#projectratesget) | **GET** /project-rates/ | List role rates|
+|[**projectTagsGet**](#projecttagsget) | **GET** /project-tags/ | List project tags|
+|[**projectTagsPost**](#projecttagspost) | **POST** /project-tags/ | Create a project tag|
+|[**projectTagsProjectTagIdGet**](#projecttagsprojecttagidget) | **GET** /project-tags/{projectTagId} | Show a project tag|
+|[**projectTagsProjectTagIdPatch**](#projecttagsprojecttagidpatch) | **PATCH** /project-tags/{projectTagId} | Update a project tag|
+|[**projectTagsProjectTagIdProjectProjectIdDelete**](#projecttagsprojecttagidprojectprojectiddelete) | **DELETE** /project-tags/{projectTagId}/project/{projectId} | Remove a project tag from a project|
+|[**projectTagsProjectTagIdProjectProjectIdPost**](#projecttagsprojecttagidprojectprojectidpost) | **POST** /project-tags/{projectTagId}/project/{projectId} | Add a project tag to a project|
+|[**projectWorkstreamsGet**](#projectworkstreamsget) | **GET** /project-workstreams/ | List project workstreams|
+|[**projectsCustomFieldsGet**](#projectscustomfieldsget) | **GET** /projects/custom-fields | List project custom fields|
+|[**projectsGet**](#projectsget) | **GET** /projects/ | List projects|
+|[**projectsPost**](#projectspost) | **POST** /projects/ | Create a project|
+|[**projectsProjectIdActualsGet**](#projectsprojectidactualsget) | **GET** /projects/{projectId}/actuals/ | List actuals for a project|
+|[**projectsProjectIdAssignmentsGet**](#projectsprojectidassignmentsget) | **GET** /projects/{projectId}/assignments/ | List assignments for a project|
+|[**projectsProjectIdBudgetRolesGet**](#projectsprojectidbudgetrolesget) | **GET** /projects/{projectId}/budget-roles/ | Get a paginated list of project budget roles for a project|
+|[**projectsProjectIdBudgetRolesPost**](#projectsprojectidbudgetrolespost) | **POST** /projects/{projectId}/budget-roles/ | Create a project budget role|
+|[**projectsProjectIdBudgetRolesRoleIdDelete**](#projectsprojectidbudgetrolesroleiddelete) | **DELETE** /projects/{projectId}/budget-roles/{roleId} | Delete a project budget role|
+|[**projectsProjectIdBudgetRolesRoleIdGet**](#projectsprojectidbudgetrolesroleidget) | **GET** /projects/{projectId}/budget-roles/{roleId} | Get a project budget role|
+|[**projectsProjectIdBudgetRolesRoleIdPatch**](#projectsprojectidbudgetrolesroleidpatch) | **PATCH** /projects/{projectId}/budget-roles/{roleId} | Update a project budget role|
+|[**projectsProjectIdCustomFieldsCheckboxPatch**](#projectsprojectidcustomfieldscheckboxpatch) | **PATCH** /projects/{projectId}/custom-fields/checkbox/ | Add a checkbox custom value to a project|
+|[**projectsProjectIdCustomFieldsDatePatch**](#projectsprojectidcustomfieldsdatepatch) | **PATCH** /projects/{projectId}/custom-fields/date/ | Add a date custom field value to a project|
+|[**projectsProjectIdCustomFieldsSelectPatch**](#projectsprojectidcustomfieldsselectpatch) | **PATCH** /projects/{projectId}/custom-fields/select/ | Add a select custom field to a project|
+|[**projectsProjectIdCustomFieldsTextPatch**](#projectsprojectidcustomfieldstextpatch) | **PATCH** /projects/{projectId}/custom-fields/text/ | Add a text custom field value to a project|
+|[**projectsProjectIdDelete**](#projectsprojectiddelete) | **DELETE** /projects/{projectId}/ | Delete a project|
+|[**projectsProjectIdGet**](#projectsprojectidget) | **GET** /projects/{projectId} | Show a project|
+|[**projectsProjectIdMilestonesGet**](#projectsprojectidmilestonesget) | **GET** /projects/{projectId}/milestones/ | List milestones for a project|
+|[**projectsProjectIdMilestonesMilestoneIdDelete**](#projectsprojectidmilestonesmilestoneiddelete) | **DELETE** /projects/{projectId}/milestones/{milestoneId} | Delete a milestone for a project|
+|[**projectsProjectIdMilestonesMilestoneIdPatch**](#projectsprojectidmilestonesmilestoneidpatch) | **PATCH** /projects/{projectId}/milestones/{milestoneId} | Update a milestone for a project|
+|[**projectsProjectIdMilestonesPost**](#projectsprojectidmilestonespost) | **POST** /projects/{projectId}/milestones/ | Create a milestone for a project|
+|[**projectsProjectIdNotesGet**](#projectsprojectidnotesget) | **GET** /projects/{projectId}/notes/ | List notes for a project|
+|[**projectsProjectIdNotesPost**](#projectsprojectidnotespost) | **POST** /projects/{projectId}/notes/ | Create a project note|
+|[**projectsProjectIdOtherExpensesGet**](#projectsprojectidotherexpensesget) | **GET** /projects/{projectId}/other-expenses/ | List other expenses for a project|
+|[**projectsProjectIdOtherExpensesOtherExpenseIdPatch**](#projectsprojectidotherexpensesotherexpenseidpatch) | **PATCH** /projects/{projectId}/other-expenses/{otherExpenseId}/ | Update an other expense on a project|
+|[**projectsProjectIdOtherExpensesPost**](#projectsprojectidotherexpensespost) | **POST** /projects/{projectId}/other-expenses/ | Create an other expense for a project|
+|[**projectsProjectIdPatch**](#projectsprojectidpatch) | **PATCH** /projects/{projectId} | Update a project|
+|[**projectsProjectIdPeopleGet**](#projectsprojectidpeopleget) | **GET** /projects/{projectId}/people/ | List people assigned to a project|
+|[**projectsProjectIdPersonRequestsGet**](#projectsprojectidpersonrequestsget) | **GET** /projects/{projectId}/person-requests/ | List the person requests for a project|
+|[**projectsProjectIdPersonRequestsPersonRequestIdGet**](#projectsprojectidpersonrequestspersonrequestidget) | **GET** /projects/{projectId}/person-requests/{personRequestId} | Show a single person request for a project|
+|[**projectsProjectIdPersonRequestsPersonRequestIdPatch**](#projectsprojectidpersonrequestspersonrequestidpatch) | **PATCH** /projects/{projectId}/person-requests/{personRequestId} | Update the status of a person request on a project|
+|[**projectsProjectIdPersonRequestsPost**](#projectsprojectidpersonrequestspost) | **POST** /projects/{projectId}/person-requests/ | Create a person request on a project|
+|[**projectsProjectIdPhasesGet**](#projectsprojectidphasesget) | **GET** /projects/{projectId}/phases/ | List phases for a project|
+|[**projectsProjectIdPhasesPhaseIdDelete**](#projectsprojectidphasesphaseiddelete) | **DELETE** /projects/{projectId}/phases/{phaseId} | Delete a phase for a project|
+|[**projectsProjectIdPhasesPhaseIdGet**](#projectsprojectidphasesphaseidget) | **GET** /projects/{projectId}/phases/{phaseId} | Show a phase for a project|
+|[**projectsProjectIdPhasesPhaseIdPatch**](#projectsprojectidphasesphaseidpatch) | **PATCH** /projects/{projectId}/phases/{phaseId} | Update a phase for a project|
+|[**projectsProjectIdPhasesPost**](#projectsprojectidphasespost) | **POST** /projects/{projectId}/phases/ | Create a phase for a project|
+|[**projectsProjectIdProjectRatesGet**](#projectsprojectidprojectratesget) | **GET** /projects/{projectId}/project-rates/ | List role rates for a project|
+|[**projectsProjectIdProjectRatesProjectRateIdPatch**](#projectsprojectidprojectratesprojectrateidpatch) | **PATCH** /projects/{projectId}/project-rates/{projectRateId}/ | Update a rate for a role on a project|
+|[**projectsProjectIdProjectWorkstreamsGet**](#projectsprojectidprojectworkstreamsget) | **GET** /projects/{projectId}/project-workstreams/ | List workstreams assigned to a project|
+|[**projectsProjectIdProjectWorkstreamsWorkstreamIdDelete**](#projectsprojectidprojectworkstreamsworkstreamiddelete) | **DELETE** /projects/{projectId}/project-workstreams/{workstreamId}/ | Delete project workstream|
+|[**projectsProjectIdProjectWorkstreamsWorkstreamIdGet**](#projectsprojectidprojectworkstreamsworkstreamidget) | **GET** /projects/{projectId}/project-workstreams/{workstreamId}/ | View project workstream|
+|[**projectsProjectIdProjectWorkstreamsWorkstreamIdPost**](#projectsprojectidprojectworkstreamsworkstreamidpost) | **POST** /projects/{projectId}/project-workstreams/{workstreamId}/ | Add a workstream to a project|
+|[**projectsProjectIdTimesheetLockGet**](#projectsprojectidtimesheetlockget) | **GET** /projects/{projectId}/timesheet-lock/ | Show a timesheet lock for a project|
+|[**projectsProjectIdTimesheetLockPatch**](#projectsprojectidtimesheetlockpatch) | **PATCH** /projects/{projectId}/timesheet-lock/ | Update a timesheet lock for a project|
+|[**rateCardsGet**](#ratecardsget) | **GET** /rate-cards/ | List rate cards|
+|[**rateCardsPost**](#ratecardspost) | **POST** /rate-cards/ | Create a rate card|
+|[**rateCardsRateCardIdDelete**](#ratecardsratecardiddelete) | **DELETE** /rate-cards/{rateCardId} | Delete a rate card|
+|[**rateCardsRateCardIdGet**](#ratecardsratecardidget) | **GET** /rate-cards/{rateCardId} | Show a rate card|
+|[**rateCardsRateCardIdPatch**](#ratecardsratecardidpatch) | **PATCH** /rate-cards/{rateCardId} | Update a rate card|
+|[**reportsHoursPeoplePersonIdGet**](#reportshourspeoplepersonidget) | **GET** /reports/hours/people/{personId} | Get by-day entries for a person with assignments and actuals|
+|[**reportsHoursProjectsProjectIdGet**](#reportshoursprojectsprojectidget) | **GET** /reports/hours/projects/{projectId} | Get by-day entries for a project with assignments and actuals|
+|[**reportsPeoplePersonIdGet**](#reportspeoplepersonidget) | **GET** /reports/people/{personId}/ | Show metrics (beta)|
+|[**reportsProjectsProjectIdGet**](#reportsprojectsprojectidget) | **GET** /reports/projects/{projectId}/ | Show metrics (beta)|
+|[**reportsTotalsProjectsGet**](#reportstotalsprojectsget) | **GET** /reports/totals/projects/ | List totals for projects with assignments and actuals|
+|[**reportsTotalsProjectsProjectIdGet**](#reportstotalsprojectsprojectidget) | **GET** /reports/totals/projects/{projectId} | Show totals for a project with assignments and actuals|
+|[**rolesGet**](#rolesget) | **GET** /roles/ | List roles|
+|[**rolesPost**](#rolespost) | **POST** /roles/ | Create a role|
+|[**rolesRoleIdGet**](#rolesroleidget) | **GET** /roles/{roleId} | Show a role|
+|[**rolesRoleIdPatch**](#rolesroleidpatch) | **PATCH** /roles/{roleId} | Update a role|
+|[**skillsGet**](#skillsget) | **GET** /skills/ | List skills|
+|[**skillsPost**](#skillspost) | **POST** /skills/ | Create a skill|
+|[**skillsSkillIdDelete**](#skillsskilliddelete) | **DELETE** /skills/{skillId} | Delete a skill|
+|[**skillsSkillIdGet**](#skillsskillidget) | **GET** /skills/{skillId} | Show a skill|
+|[**skillsSkillIdPatch**](#skillsskillidpatch) | **PATCH** /skills/{skillId} | Update a skill|
+|[**skillsSkillIdPeopleGet**](#skillsskillidpeopleget) | **GET** /skills/{skillId}/people/ | List people for a skill|
+|[**skillsSkillIdPeoplePost**](#skillsskillidpeoplepost) | **POST** /skills/{skillId}/people/ | Add people to a skill|
+|[**teamsGet**](#teamsget) | **GET** /teams/ | List teams|
+|[**teamsPost**](#teamspost) | **POST** /teams/ | Create a team|
+|[**teamsTeamIdDelete**](#teamsteamiddelete) | **DELETE** /teams/{teamId}/ | Delete a team|
+|[**teamsTeamIdGet**](#teamsteamidget) | **GET** /teams/{teamId}/ | Show a team|
+|[**teamsTeamIdPatch**](#teamsteamidpatch) | **PATCH** /teams/{teamId}/ | Update a team|
+|[**teamsTeamIdPeopleGet**](#teamsteamidpeopleget) | **GET** /teams/{teamId}/people/ | List people in a team|
+|[**timeOffsHolidaysGet**](#timeoffsholidaysget) | **GET** /time-offs/holidays/ | List holiday time offs|
+|[**timeOffsHolidaysPost**](#timeoffsholidayspost) | **POST** /time-offs/holidays/ | Create a holiday time off|
+|[**timeOffsHolidaysTimeOffIdDelete**](#timeoffsholidaystimeoffiddelete) | **DELETE** /time-offs/holidays/{timeOffId} | Delete a holiday time off|
+|[**timeOffsLeaveBulkDelete**](#timeoffsleavebulkdelete) | **DELETE** /time-offs/leave/bulk/ | Delete leave time offs in bulk|
+|[**timeOffsLeaveBulkPost**](#timeoffsleavebulkpost) | **POST** /time-offs/leave/bulk/ | Create leave time offs in bulk|
+|[**timeOffsLeaveGet**](#timeoffsleaveget) | **GET** /time-offs/leave/ | List leave time offs|
+|[**timeOffsLeavePost**](#timeoffsleavepost) | **POST** /time-offs/leave/ | Create a leave time off|
+|[**timeOffsLeaveTimeOffIdDelete**](#timeoffsleavetimeoffiddelete) | **DELETE** /time-offs/leave/{timeOffId}/ | Delete a leave time off|
+|[**timeOffsLeaveTimeOffIdGet**](#timeoffsleavetimeoffidget) | **GET** /time-offs/leave/{timeOffId}/ | Show a leave time off|
+|[**timeOffsRosteredOffGet**](#timeoffsrosteredoffget) | **GET** /time-offs/rostered-off/ | List rostered time offs|
+|[**timeOffsRosteredOffTimeOffIdDelete**](#timeoffsrosteredofftimeoffiddelete) | **DELETE** /time-offs/rostered-off/{timeOffId} | Delete a rostered time off|
+|[**usersGet**](#usersget) | **GET** /users/ | List users|
+|[**usersUserIdDelete**](#usersuseriddelete) | **DELETE** /users/{userId} | Delete a user|
+|[**usersUserIdGet**](#usersuseridget) | **GET** /users/{userId} | Show a user|
+|[**usersUserIdViewsGet**](#usersuseridviewsget) | **GET** /users/{userId}/views/ | List allocated views for a user|
+|[**usersUserIdViewsViewIdDelete**](#usersuseridviewsviewiddelete) | **DELETE** /users/{userId}/views/{viewId}/ | Remove allocated view from user|
+|[**usersUserIdViewsViewIdPost**](#usersuseridviewsviewidpost) | **POST** /users/{userId}/views/{viewId} | Allocate a view to a user|
+|[**viewsGet**](#viewsget) | **GET** /views/ | List views|
+|[**workstreamsGet**](#workstreamsget) | **GET** /workstreams/ | List workstreams|
+|[**workstreamsPost**](#workstreamspost) | **POST** /workstreams/ | Create a workstream|
+|[**workstreamsWorkstreamIdDelete**](#workstreamsworkstreamiddelete) | **DELETE** /workstreams/{workstreamId}/ | Delete a workstream|
+|[**workstreamsWorkstreamIdGet**](#workstreamsworkstreamidget) | **GET** /workstreams/{workstreamId}/ | Show a workstream|
+|[**workstreamsWorkstreamIdPatch**](#workstreamsworkstreamidpatch) | **PATCH** /workstreams/{workstreamId}/ | Update a workstream|
+
+# **activityLogGet**
+> ActivityLogGet200Response activityLogGet()
+
+Get a list of events that have occurred. Expand the RESPONSES (200) panel below to see supported events from live accounts. Test accounts are not supported. More events will be added in the future.
 
 ### Example
 
@@ -569,14 +217,20 @@ import {
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
-let projectTagId: number; // (default to undefined)
-let projectId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let eventType: Array<'project_deleted' | 'person_deleted' | 'contract_deleted' | 'actual_deleted' | 'time_off_deleted' | 'assignment_deleted'>; //Filter by event type, e.g. project_deleted. If not provided, all event types are returned. (optional) (default to undefined)
+let occurredAfter: string; //Only return events that occurred after this time. ISO 8601 format. (optional) (default to undefined)
+let orderBy: 'asc' | 'desc'; //Order the events by when they occurred. (optional) (default to 'desc')
 
-const { status, data } = await apiInstance.addProjectTagToProject(
-    projectTagId,
-    projectId,
-    acceptVersion
+const { status, data } = await apiInstance.activityLogGet(
+    acceptVersion,
+    cursor,
+    limit,
+    eventType,
+    occurredAfter,
+    orderBy
 );
 ```
 
@@ -584,14 +238,17 @@ const { status, data } = await apiInstance.addProjectTagToProject(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **projectTagId** | [**number**] |  | defaults to undefined|
-| **projectId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **eventType** | **Array<&#39;project_deleted&#39; &#124; &#39;person_deleted&#39; &#124; &#39;contract_deleted&#39; &#124; &#39;actual_deleted&#39; &#124; &#39;time_off_deleted&#39; &#124; &#39;assignment_deleted&#39;>** | Filter by event type, e.g. project_deleted. If not provided, all event types are returned. | (optional) defaults to undefined|
+| **occurredAfter** | [**string**] | Only return events that occurred after this time. ISO 8601 format. | (optional) defaults to undefined|
+| **orderBy** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Order the events by when they occurred. | (optional) defaults to 'desc'|
 
 
 ### Return type
 
-**ProjectTag**
+**ActivityLogGet200Response**
 
 ### Authorization
 
@@ -606,15 +263,17 @@ const { status, data } = await apiInstance.addProjectTagToProject(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | Default Response |  -  |
+|**200** | Default Response |  -  |
 |**400** | Default Response |  -  |
 |**401** | Default Response |  -  |
+|**422** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **addWorkstreamToProject**
-> ProjectWorkstream addWorkstreamToProject()
+# **actualsActualIdDelete**
+> actualsActualIdDelete()
 
+Deletes the actual record identified by the provided unique identifier `actualId`. This operation is irreversible and removes the actual record from the system.
 
 ### Example
 
@@ -627,14 +286,146 @@ import {
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
-let projectId: number; // (default to undefined)
-let workstreamId: number; // (default to undefined)
+let actualId: number; //Unique identifier of the actual to be deleted. (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
 
-const { status, data } = await apiInstance.addWorkstreamToProject(
+const { status, data } = await apiInstance.actualsActualIdDelete(
+    actualId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **actualId** | [**number**] | Unique identifier of the actual to be deleted. | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Successful deletion of the actual record. |  -  |
+|**400** | Invalid actualId format. |  -  |
+|**401** | Default Response |  -  |
+|**404** | The actual record with the specified ID was not found. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **actualsBulkPost**
+> Array<Actual> actualsBulkPost(actualsBulkPostRequest)
+
+Create or update up to 100 \'actuals\' in a single API call. [Learn more](https://developer.runn.io/docs/actuals-notes).
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ActualsBulkPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let actualsBulkPostRequest: ActualsBulkPostRequest; //
+
+const { status, data } = await apiInstance.actualsBulkPost(
+    acceptVersion,
+    actualsBulkPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **actualsBulkPostRequest** | **ActualsBulkPostRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Array<Actual>**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **actualsGet**
+> ActualsGet200Response actualsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 100)
+let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
+let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
+let minDate: string; //Start date to filter by. Format: YYYY-MM-DD (optional) (default to undefined)
+let maxDate: string; //End date (inclusive). Format: YYYY-MM-DD (optional) (default to undefined)
+let projectId: number; // (optional) (default to undefined)
+let roleId: number; // (optional) (default to undefined)
+let personId: number; // (optional) (default to undefined)
+let workstreamId: number; // (optional) (default to undefined)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.actualsGet(
+    acceptVersion,
+    cursor,
+    limit,
+    sortBy,
+    order,
+    minDate,
+    maxDate,
     projectId,
+    roleId,
+    personId,
     workstreamId,
-    acceptVersion
+    modifiedAfter
 );
 ```
 
@@ -642,14 +433,23 @@ const { status, data } = await apiInstance.addWorkstreamToProject(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **workstreamId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
+| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
+| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
+| **minDate** | [**string**] | Start date to filter by. Format: YYYY-MM-DD | (optional) defaults to undefined|
+| **maxDate** | [**string**] | End date (inclusive). Format: YYYY-MM-DD | (optional) defaults to undefined|
+| **projectId** | [**number**] |  | (optional) defaults to undefined|
+| **roleId** | [**number**] |  | (optional) defaults to undefined|
+| **personId** | [**number**] |  | (optional) defaults to undefined|
+| **workstreamId** | [**number**] |  | (optional) defaults to undefined|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
 
 
 ### Return type
 
-**ProjectWorkstream**
+**ActualsGet200Response**
 
 ### Authorization
 
@@ -664,14 +464,128 @@ const { status, data } = await apiInstance.addWorkstreamToProject(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | Default Response |  -  |
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
 |**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **allocateViewToUser**
-> allocateViewToUser()
+# **actualsPost**
+> Actual actualsPost(actualInput)
+
+Minutes values represent the total time for a day and overwrite any previous actual on the same day (for the same project/person/role/workstream). [Learn more](https://developer.runn.io/docs/actuals-notes).
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ActualInput
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let actualInput: ActualInput; //
+
+const { status, data } = await apiInstance.actualsPost(
+    acceptVersion,
+    actualInput
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **actualInput** | **ActualInput**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Actual**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **actualsTimeEntryPost**
+> Actual actualsTimeEntryPost(actualTimeEntry)
+
+Returns Actual with updated minutes. Creates a new actual when there is none to update [Learn more](https://developer.runn.io/docs/actuals-notes).
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ActualTimeEntry
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let actualTimeEntry: ActualTimeEntry; //
+
+const { status, data } = await apiInstance.actualsTimeEntryPost(
+    acceptVersion,
+    actualTimeEntry
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **actualTimeEntry** | **ActualTimeEntry**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Actual**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **assignmentsAssignmentIdDelete**
+> Assignment assignmentsAssignmentIdDelete()
 
 
 ### Example
@@ -685,13 +599,11 @@ import {
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
-let userId: number; //The Id of the user to allocate the view to. (default to undefined)
-let viewId: number; //The Id of the view to allocate to the user. (default to undefined)
+let assignmentId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
 
-const { status, data } = await apiInstance.allocateViewToUser(
-    userId,
-    viewId,
+const { status, data } = await apiInstance.assignmentsAssignmentIdDelete(
+    assignmentId,
     acceptVersion
 );
 ```
@@ -700,8 +612,760 @@ const { status, data } = await apiInstance.allocateViewToUser(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **userId** | [**number**] | The Id of the user to allocate the view to. | defaults to undefined|
-| **viewId** | [**number**] | The Id of the view to allocate to the user. | defaults to undefined|
+| **assignmentId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Assignment**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **assignmentsGet**
+> AssignmentsGet200Response assignmentsGet()
+
+Get a list of assignments, paginated
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 100)
+let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
+let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
+let personId: number; // (optional) (default to undefined)
+let roleId: number; // (optional) (default to undefined)
+let projectId: number; // (optional) (default to undefined)
+let startDate: string; //Format: YYYY-MM-DD (optional) (default to undefined)
+let endDate: string; //Format: YYYY-MM-DD (optional) (default to undefined)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.assignmentsGet(
+    acceptVersion,
+    cursor,
+    limit,
+    sortBy,
+    order,
+    personId,
+    roleId,
+    projectId,
+    startDate,
+    endDate,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
+| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
+| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
+| **personId** | [**number**] |  | (optional) defaults to undefined|
+| **roleId** | [**number**] |  | (optional) defaults to undefined|
+| **projectId** | [**number**] |  | (optional) defaults to undefined|
+| **startDate** | [**string**] | Format: YYYY-MM-DD | (optional) defaults to undefined|
+| **endDate** | [**string**] | Format: YYYY-MM-DD | (optional) defaults to undefined|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**AssignmentsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **assignmentsPost**
+> Array<Assignment> assignmentsPost(assignmentsPostRequest)
+
+Creates a new assignment and returns a list of assignments. If the specified time period of the assignment overlaps with scheduled leave, the assignment is split into multiple segments. Each segment is returned as a separate assignment in the response.
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    AssignmentsPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let assignmentsPostRequest: AssignmentsPostRequest; //
+
+const { status, data } = await apiInstance.assignmentsPost(
+    acceptVersion,
+    assignmentsPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **assignmentsPostRequest** | **AssignmentsPostRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Array<Assignment>**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Assignment created successfully. Returns an array of assignment references, possibly multiple if split due to overlapping leave. |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **budgetRolesGet**
+> BudgetRolesGet200Response budgetRolesGet()
+
+List all budget roles across all projects
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 100)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.budgetRolesGet(
+    acceptVersion,
+    cursor,
+    limit,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**BudgetRolesGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **clientsBulkPost**
+> Array<Client> clientsBulkPost(clientsBulkPostRequest)
+
+Create up to 100 \'clients\' in a single API call. [Learn more](https://developer.runn.io/docs/clients-notes).
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ClientsBulkPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let clientsBulkPostRequest: ClientsBulkPostRequest; //
+
+const { status, data } = await apiInstance.clientsBulkPost(
+    acceptVersion,
+    clientsBulkPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **clientsBulkPostRequest** | **ClientsBulkPostRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Array<Client>**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **clientsClientIdGet**
+> Client clientsClientIdGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let clientId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.clientsClientIdGet(
+    clientId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **clientId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Client**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **clientsClientIdPatch**
+> Client clientsClientIdPatch(clientsClientIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ClientsClientIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let clientId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let clientsClientIdPatchRequest: ClientsClientIdPatchRequest; //
+
+const { status, data } = await apiInstance.clientsClientIdPatch(
+    clientId,
+    acceptVersion,
+    clientsClientIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **clientsClientIdPatchRequest** | **ClientsClientIdPatchRequest**|  | |
+| **clientId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Client**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **clientsClientIdProjectsGet**
+> ClientsClientIdProjectsGet200Response clientsClientIdProjectsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let includeArchived: boolean; // (default to false)
+let clientId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.clientsClientIdProjectsGet(
+    includeArchived,
+    clientId,
+    acceptVersion,
+    cursor,
+    limit,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **includeArchived** | [**boolean**] |  | defaults to false|
+| **clientId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**ClientsClientIdProjectsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **clientsGet**
+> ClientsGet200Response clientsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let sortBy: 'id' | 'createdAt' | 'updatedAt'; // (default to 'id')
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let name: string; //If provided, will only return clients with a name that is a substring of this value (case-insensitive). (optional) (default to undefined)
+let order: SortOrder; // (optional) (default to undefined)
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.clientsGet(
+    sortBy,
+    acceptVersion,
+    name,
+    order,
+    cursor,
+    limit,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **sortBy** | [**&#39;id&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39;**]**Array<&#39;id&#39; &#124; &#39;createdAt&#39; &#124; &#39;updatedAt&#39;>** |  | defaults to 'id'|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **name** | [**string**] | If provided, will only return clients with a name that is a substring of this value (case-insensitive). | (optional) defaults to undefined|
+| **order** | **SortOrder** |  | (optional) defaults to undefined|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**ClientsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **clientsPost**
+> Client clientsPost(clientInput)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ClientInput
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let clientInput: ClientInput; //
+
+const { status, data } = await apiInstance.clientsPost(
+    acceptVersion,
+    clientInput
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **clientInput** | **ClientInput**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Client**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **contractsContractIdPatch**
+> Contract contractsContractIdPatch(contractsContractIdPatchRequest)
+
+Update a contract
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ContractsContractIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let contractId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let contractsContractIdPatchRequest: ContractsContractIdPatchRequest; //
+
+const { status, data } = await apiInstance.contractsContractIdPatch(
+    contractId,
+    acceptVersion,
+    contractsContractIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **contractsContractIdPatchRequest** | **ContractsContractIdPatchRequest**|  | |
+| **contractId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Contract**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **contractsGet**
+> ContractsGet200Response contractsGet()
+
+See GET /people/{personId}/contracts to view all contracts for a specific person. See POST /people/{personId}/contracts to create a new contract for a person
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let sortBy: 'id' | 'createdAt' | 'updatedAt'; // (default to 'id')
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+let order: SortOrder; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.contractsGet(
+    sortBy,
+    acceptVersion,
+    cursor,
+    limit,
+    modifiedAfter,
+    order
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **sortBy** | [**&#39;id&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39;**]**Array<&#39;id&#39; &#124; &#39;createdAt&#39; &#124; &#39;updatedAt&#39;>** |  | defaults to 'id'|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+| **order** | **SortOrder** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**ContractsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customFieldsCheckboxCheckboxFieldIdDelete**
+> customFieldsCheckboxCheckboxFieldIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let checkboxFieldId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.customFieldsCheckboxCheckboxFieldIdDelete(
+    checkboxFieldId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **checkboxFieldId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 
 
@@ -722,15 +1386,1427 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | Default Response |  -  |
+|**204** | Default Response |  -  |
 |**401** | Default Response |  -  |
 |**404** | Default Response |  -  |
-|**409** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **convertLegacyId**
-> number convertLegacyId()
+# **customFieldsCheckboxCheckboxFieldIdPatch**
+> CustomFieldCheckbox customFieldsCheckboxCheckboxFieldIdPatch(customFieldsCheckboxCheckboxFieldIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    CustomFieldsCheckboxCheckboxFieldIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let checkboxFieldId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let customFieldsCheckboxCheckboxFieldIdPatchRequest: CustomFieldsCheckboxCheckboxFieldIdPatchRequest; //
+
+const { status, data } = await apiInstance.customFieldsCheckboxCheckboxFieldIdPatch(
+    checkboxFieldId,
+    acceptVersion,
+    customFieldsCheckboxCheckboxFieldIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **customFieldsCheckboxCheckboxFieldIdPatchRequest** | **CustomFieldsCheckboxCheckboxFieldIdPatchRequest**|  | |
+| **checkboxFieldId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**CustomFieldCheckbox**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customFieldsCheckboxGet**
+> CustomFieldsCheckboxGet200Response customFieldsCheckboxGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let model: 'PERSON' | 'PROJECT'; //The field type of the custom field (optional) (default to undefined)
+
+const { status, data } = await apiInstance.customFieldsCheckboxGet(
+    acceptVersion,
+    cursor,
+    limit,
+    model
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **model** | [**&#39;PERSON&#39; | &#39;PROJECT&#39;**]**Array<&#39;PERSON&#39; &#124; &#39;PROJECT&#39;>** | The field type of the custom field | (optional) defaults to undefined|
+
+
+### Return type
+
+**CustomFieldsCheckboxGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customFieldsCheckboxPost**
+> CustomFieldCheckbox customFieldsCheckboxPost(customFieldsCheckboxPostRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    CustomFieldsCheckboxPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let customFieldsCheckboxPostRequest: CustomFieldsCheckboxPostRequest; //
+
+const { status, data } = await apiInstance.customFieldsCheckboxPost(
+    acceptVersion,
+    customFieldsCheckboxPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **customFieldsCheckboxPostRequest** | **CustomFieldsCheckboxPostRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**CustomFieldCheckbox**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customFieldsDateDateFieldIdPatch**
+> CustomFieldDate customFieldsDateDateFieldIdPatch(customFieldsDateDateFieldIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    CustomFieldsDateDateFieldIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let dateFieldId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let customFieldsDateDateFieldIdPatchRequest: CustomFieldsDateDateFieldIdPatchRequest; //
+
+const { status, data } = await apiInstance.customFieldsDateDateFieldIdPatch(
+    dateFieldId,
+    acceptVersion,
+    customFieldsDateDateFieldIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **customFieldsDateDateFieldIdPatchRequest** | **CustomFieldsDateDateFieldIdPatchRequest**|  | |
+| **dateFieldId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**CustomFieldDate**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customFieldsDateGet**
+> CustomFieldsDateGet200Response customFieldsDateGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let model: 'PERSON' | 'PROJECT'; //The field type of the custom field (optional) (default to undefined)
+
+const { status, data } = await apiInstance.customFieldsDateGet(
+    acceptVersion,
+    cursor,
+    limit,
+    model
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **model** | [**&#39;PERSON&#39; | &#39;PROJECT&#39;**]**Array<&#39;PERSON&#39; &#124; &#39;PROJECT&#39;>** | The field type of the custom field | (optional) defaults to undefined|
+
+
+### Return type
+
+**CustomFieldsDateGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customFieldsDateIdDelete**
+> customFieldsDateIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let id: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.customFieldsDateIdDelete(
+    id,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **id** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customFieldsDatePost**
+> CustomFieldDate customFieldsDatePost(customFieldsDatePostRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    CustomFieldsDatePostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let customFieldsDatePostRequest: CustomFieldsDatePostRequest; //
+
+const { status, data } = await apiInstance.customFieldsDatePost(
+    acceptVersion,
+    customFieldsDatePostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **customFieldsDatePostRequest** | **CustomFieldsDatePostRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**CustomFieldDate**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customFieldsSelectGet**
+> CustomFieldsSelectGet200Response customFieldsSelectGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let model: 'PERSON' | 'PROJECT'; //The field type of the custom field (optional) (default to undefined)
+
+const { status, data } = await apiInstance.customFieldsSelectGet(
+    acceptVersion,
+    cursor,
+    limit,
+    model
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **model** | [**&#39;PERSON&#39; | &#39;PROJECT&#39;**]**Array<&#39;PERSON&#39; &#124; &#39;PROJECT&#39;>** | The field type of the custom field | (optional) defaults to undefined|
+
+
+### Return type
+
+**CustomFieldsSelectGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customFieldsSelectPost**
+> CustomFieldSelect customFieldsSelectPost(customFieldsSelectPostRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    CustomFieldsSelectPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let customFieldsSelectPostRequest: CustomFieldsSelectPostRequest; //
+
+const { status, data } = await apiInstance.customFieldsSelectPost(
+    acceptVersion,
+    customFieldsSelectPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **customFieldsSelectPostRequest** | **CustomFieldsSelectPostRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**CustomFieldSelect**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customFieldsSelectSelectFieldIdDelete**
+> customFieldsSelectSelectFieldIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let selectFieldId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.customFieldsSelectSelectFieldIdDelete(
+    selectFieldId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **selectFieldId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customFieldsSelectSelectFieldIdOptionsPost**
+> CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatch200Response customFieldsSelectSelectFieldIdOptionsPost(customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let selectFieldId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest: CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest; //
+
+const { status, data } = await apiInstance.customFieldsSelectSelectFieldIdOptionsPost(
+    selectFieldId,
+    acceptVersion,
+    customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest** | **CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest**|  | |
+| **selectFieldId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatch200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customFieldsSelectSelectFieldIdOptionsSelectOptionIdDelete**
+> customFieldsSelectSelectFieldIdOptionsSelectOptionIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let selectFieldId: number; // (default to undefined)
+let selectOptionId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.customFieldsSelectSelectFieldIdOptionsSelectOptionIdDelete(
+    selectFieldId,
+    selectOptionId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **selectFieldId** | [**number**] |  | defaults to undefined|
+| **selectOptionId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatch**
+> CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatch200Response customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatch(customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let selectFieldId: number; // (default to undefined)
+let selectOptionId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest: CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest; //
+
+const { status, data } = await apiInstance.customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatch(
+    selectFieldId,
+    selectOptionId,
+    acceptVersion,
+    customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest** | **CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest**|  | |
+| **selectFieldId** | [**number**] |  | defaults to undefined|
+| **selectOptionId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatch200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customFieldsSelectSelectFieldIdPatch**
+> CustomFieldSelect customFieldsSelectSelectFieldIdPatch(customFieldsCheckboxCheckboxFieldIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    CustomFieldsCheckboxCheckboxFieldIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let selectFieldId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let customFieldsCheckboxCheckboxFieldIdPatchRequest: CustomFieldsCheckboxCheckboxFieldIdPatchRequest; //
+
+const { status, data } = await apiInstance.customFieldsSelectSelectFieldIdPatch(
+    selectFieldId,
+    acceptVersion,
+    customFieldsCheckboxCheckboxFieldIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **customFieldsCheckboxCheckboxFieldIdPatchRequest** | **CustomFieldsCheckboxCheckboxFieldIdPatchRequest**|  | |
+| **selectFieldId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**CustomFieldSelect**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customFieldsTextGet**
+> CustomFieldsTextGet200Response customFieldsTextGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let model: 'PERSON' | 'PROJECT'; //The field type of the custom field (optional) (default to undefined)
+
+const { status, data } = await apiInstance.customFieldsTextGet(
+    acceptVersion,
+    cursor,
+    limit,
+    model
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **model** | [**&#39;PERSON&#39; | &#39;PROJECT&#39;**]**Array<&#39;PERSON&#39; &#124; &#39;PROJECT&#39;>** | The field type of the custom field | (optional) defaults to undefined|
+
+
+### Return type
+
+**CustomFieldsTextGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customFieldsTextPost**
+> CustomFieldText customFieldsTextPost(customFieldsCheckboxPostRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    CustomFieldsCheckboxPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let customFieldsCheckboxPostRequest: CustomFieldsCheckboxPostRequest; //
+
+const { status, data } = await apiInstance.customFieldsTextPost(
+    acceptVersion,
+    customFieldsCheckboxPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **customFieldsCheckboxPostRequest** | **CustomFieldsCheckboxPostRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**CustomFieldText**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customFieldsTextTextFieldIdDelete**
+> customFieldsTextTextFieldIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let textFieldId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.customFieldsTextTextFieldIdDelete(
+    textFieldId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **textFieldId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customFieldsTextTextFieldIdPatch**
+> CustomFieldText customFieldsTextTextFieldIdPatch(customFieldsCheckboxCheckboxFieldIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    CustomFieldsCheckboxCheckboxFieldIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let textFieldId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let customFieldsCheckboxCheckboxFieldIdPatchRequest: CustomFieldsCheckboxCheckboxFieldIdPatchRequest; //
+
+const { status, data } = await apiInstance.customFieldsTextTextFieldIdPatch(
+    textFieldId,
+    acceptVersion,
+    customFieldsCheckboxCheckboxFieldIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **customFieldsCheckboxCheckboxFieldIdPatchRequest** | **CustomFieldsCheckboxCheckboxFieldIdPatchRequest**|  | |
+| **textFieldId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**CustomFieldText**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **holidayGroupsGet**
+> HolidayGroupsGet200Response holidayGroupsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
+let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
+
+const { status, data } = await apiInstance.holidayGroupsGet(
+    acceptVersion,
+    cursor,
+    limit,
+    sortBy,
+    order
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
+| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
+
+
+### Return type
+
+**HolidayGroupsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **holidayGroupsHolidayGroupIdGet**
+> HolidayGroup holidayGroupsHolidayGroupIdGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let holidayGroupId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.holidayGroupsHolidayGroupIdGet(
+    holidayGroupId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **holidayGroupId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**HolidayGroup**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **holidayGroupsHolidayGroupIdHolidaysGet**
+> HolidayGroupsHolidayGroupIdHolidaysGet200Response holidayGroupsHolidayGroupIdHolidaysGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let holidayGroupId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+
+const { status, data } = await apiInstance.holidayGroupsHolidayGroupIdHolidaysGet(
+    holidayGroupId,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **holidayGroupId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+
+
+### Return type
+
+**HolidayGroupsHolidayGroupIdHolidaysGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **invitationsGet**
+> InvitationsGet200Response invitationsGet()
+
+Get a list of invitations. Does not contain the invitation token for security reasons
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let sortBy: 'createdAt' | 'sentAt' | 'id'; //Field to sort by: createdAt or sentAt or id (optional) (default to 'id')
+let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
+
+const { status, data } = await apiInstance.invitationsGet(
+    acceptVersion,
+    cursor,
+    limit,
+    sortBy,
+    order
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **sortBy** | [**&#39;createdAt&#39; | &#39;sentAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;sentAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or sentAt or id | (optional) defaults to 'id'|
+| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
+
+
+### Return type
+
+**InvitationsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **invitationsInvitationIdDelete**
+> invitationsInvitationIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let invitationId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.invitationsInvitationIdDelete(
+    invitationId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **invitationId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **invitationsPost**
+> Invitation invitationsPost(invitationsPostRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    InvitationsPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let invitationsPostRequest: InvitationsPostRequest; //
+
+const { status, data } = await apiInstance.invitationsPost(
+    acceptVersion,
+    invitationsPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **invitationsPostRequest** | **InvitationsPostRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Invitation**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **legacyIdModelLegacyIdGet**
+> number legacyIdModelLegacyIdGet()
 
 
 ### Example
@@ -748,7 +2824,7 @@ let model: 'accounts' | 'actuals' | 'assignments' | 'clients' | 'contracts' | 'h
 let legacyId: string; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
 
-const { status, data } = await apiInstance.convertLegacyId(
+const { status, data } = await apiInstance.legacyIdModelLegacyIdGet(
     model,
     legacyId,
     acceptVersion
@@ -787,29 +2863,26 @@ const { status, data } = await apiInstance.convertLegacyId(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createActual**
-> Actual createActual()
+# **meGet**
+> MeGet200Response meGet()
 
-Minutes values represent the total time for a day and overwrite any previous actual on the same day (for the same project/person/role/workstream). [Learn more](https://developer.runn.io/docs/actuals-notes).
+Get information about the currently authenticated user.
 
 ### Example
 
 ```typescript
 import {
     DefaultApi,
-    Configuration,
-    ActualInput
+    Configuration
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let actualInput: ActualInput; // (optional)
 
-const { status, data } = await apiInstance.createActual(
-    acceptVersion,
-    actualInput
+const { status, data } = await apiInstance.meGet(
+    acceptVersion
 );
 ```
 
@@ -817,13 +2890,12 @@ const { status, data } = await apiInstance.createActual(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **actualInput** | **ActualInput**|  | |
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 
 
 ### Return type
 
-**Actual**
+**MeGet200Response**
 
 ### Authorization
 
@@ -831,64 +2903,7 @@ const { status, data } = await apiInstance.createActual(
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createActualsBulk**
-> Array<Actual> createActualsBulk(createActualsBulkRequest)
-
-Create or update up to 100 \'actuals\' in a single API call. [Learn more](https://developer.runn.io/docs/actuals-notes).
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    CreateActualsBulkRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createActualsBulkRequest: CreateActualsBulkRequest; //
-
-const { status, data } = await apiInstance.createActualsBulk(
-    acceptVersion,
-    createActualsBulkRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **createActualsBulkRequest** | **CreateActualsBulkRequest**|  | |
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Array<Actual>**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
@@ -896,15 +2911,14 @@ const { status, data } = await apiInstance.createActualsBulk(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | Default Response |  -  |
-|**400** | Invalid actualId format. |  -  |
 |**401** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createAssignment**
-> Array<Assignment> createAssignment(createAssignmentRequest)
+# **milestonesGet**
+> MilestonesGet200Response milestonesGet()
 
-Creates a new assignment and returns a list of assignments. If the specified time period of the assignment overlaps with scheduled leave, the assignment is split into multiple segments. Each segment is returned as a separate assignment in the response.
+List all milestones across all projects
 
 ### Example
 
@@ -912,18 +2926,22 @@ Creates a new assignment and returns a list of assignments. If the specified tim
 import {
     DefaultApi,
     Configuration,
-    CreateAssignmentRequest
+    ModifiedAfter
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createAssignmentRequest: CreateAssignmentRequest; //
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 100)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
 
-const { status, data } = await apiInstance.createAssignment(
+const { status, data } = await apiInstance.milestonesGet(
     acceptVersion,
-    createAssignmentRequest
+    cursor,
+    limit,
+    modifiedAfter
 );
 ```
 
@@ -931,13 +2949,15 @@ const { status, data } = await apiInstance.createAssignment(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **createAssignmentRequest** | **CreateAssignmentRequest**|  | |
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
 
 
 ### Return type
 
-**Array<Assignment>**
+**MilestonesGet200Response**
 
 ### Authorization
 
@@ -945,175 +2965,7 @@ const { status, data } = await apiInstance.createAssignment(
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Assignment created successfully. Returns an array of assignment references, possibly multiple if split due to overlapping leave. |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createCheckboxCustomField**
-> CustomFieldCheckbox createCheckboxCustomField(createCheckboxCustomFieldRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    CreateCheckboxCustomFieldRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createCheckboxCustomFieldRequest: CreateCheckboxCustomFieldRequest; //
-
-const { status, data } = await apiInstance.createCheckboxCustomField(
-    acceptVersion,
-    createCheckboxCustomFieldRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **createCheckboxCustomFieldRequest** | **CreateCheckboxCustomFieldRequest**|  | |
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**CustomFieldCheckbox**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createClient**
-> Client createClient()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ClientInput
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let clientInput: ClientInput; // (optional)
-
-const { status, data } = await apiInstance.createClient(
-    acceptVersion,
-    clientInput
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **clientInput** | **ClientInput**|  | |
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Client**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createClientsBulk**
-> Array<Client> createClientsBulk(createClientsBulkRequest)
-
-Create up to 100 \'clients\' in a single API call. [Learn more](https://developer.runn.io/docs/clients-notes).
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    CreateClientsBulkRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createClientsBulkRequest: CreateClientsBulkRequest; //
-
-const { status, data } = await apiInstance.createClientsBulk(
-    acceptVersion,
-    createClientsBulkRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **createClientsBulkRequest** | **CreateClientsBulkRequest**|  | |
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Array<Client>**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
@@ -1126,9 +2978,10 @@ const { status, data } = await apiInstance.createClientsBulk(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createDateCustomField**
-> CustomFieldDate createDateCustomField(createDateCustomFieldRequest)
+# **otherExpensesGet**
+> OtherExpensesGet200Response otherExpensesGet()
 
+List all other expenses across all projects
 
 ### Example
 
@@ -1136,18 +2989,22 @@ const { status, data } = await apiInstance.createClientsBulk(
 import {
     DefaultApi,
     Configuration,
-    CreateDateCustomFieldRequest
+    ModifiedAfter
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createDateCustomFieldRequest: CreateDateCustomFieldRequest; //
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 100)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
 
-const { status, data } = await apiInstance.createDateCustomField(
+const { status, data } = await apiInstance.otherExpensesGet(
     acceptVersion,
-    createDateCustomFieldRequest
+    cursor,
+    limit,
+    modifiedAfter
 );
 ```
 
@@ -1155,13 +3012,15 @@ const { status, data } = await apiInstance.createDateCustomField(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **createDateCustomFieldRequest** | **CreateDateCustomFieldRequest**|  | |
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
 
 
 ### Return type
 
-**CustomFieldDate**
+**OtherExpensesGet200Response**
 
 ### Authorization
 
@@ -1169,22 +3028,23 @@ const { status, data } = await apiInstance.createDateCustomField(
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | Default Response |  -  |
+|**200** | Default Response |  -  |
 |**400** | Default Response |  -  |
 |**401** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createHolidayTimeOff**
-> TimeOff createHolidayTimeOff()
+# **peopleContractsCurrentGet**
+> ContractsGet200Response peopleContractsCurrentGet()
 
+List current contracts across all people
 
 ### Example
 
@@ -1192,18 +3052,22 @@ const { status, data } = await apiInstance.createDateCustomField(
 import {
     DefaultApi,
     Configuration,
-    TimeOffHolidayInput
+    ModifiedAfter
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let timeOffHolidayInput: TimeOffHolidayInput; // (optional)
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 100)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
 
-const { status, data } = await apiInstance.createHolidayTimeOff(
+const { status, data } = await apiInstance.peopleContractsCurrentGet(
     acceptVersion,
-    timeOffHolidayInput
+    cursor,
+    limit,
+    modifiedAfter
 );
 ```
 
@@ -1211,13 +3075,15 @@ const { status, data } = await apiInstance.createHolidayTimeOff(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **timeOffHolidayInput** | **TimeOffHolidayInput**|  | |
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
 
 
 ### Return type
 
-**TimeOff**
+**ContractsGet200Response**
 
 ### Authorization
 
@@ -1225,23 +3091,23 @@ const { status, data } = await apiInstance.createHolidayTimeOff(
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | Default Response |  -  |
+|**200** | Default Response |  -  |
 |**400** | Default Response |  -  |
 |**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createInvitation**
-> Invitation createInvitation()
+# **peopleCustomFieldsGet**
+> PeopleCustomFieldsGet200Response peopleCustomFieldsGet()
 
+List all custom fields across all people
 
 ### Example
 
@@ -1249,18 +3115,22 @@ const { status, data } = await apiInstance.createHolidayTimeOff(
 import {
     DefaultApi,
     Configuration,
-    CreateInvitationRequest
+    ModifiedAfter
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createInvitationRequest: CreateInvitationRequest; // (optional)
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 100)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
 
-const { status, data } = await apiInstance.createInvitation(
+const { status, data } = await apiInstance.peopleCustomFieldsGet(
     acceptVersion,
-    createInvitationRequest
+    cursor,
+    limit,
+    modifiedAfter
 );
 ```
 
@@ -1268,13 +3138,15 @@ const { status, data } = await apiInstance.createInvitation(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **createInvitationRequest** | **CreateInvitationRequest**|  | |
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
 
 
 ### Return type
 
-**Invitation**
+**PeopleCustomFieldsGet200Response**
 
 ### Authorization
 
@@ -1282,24 +3154,22 @@ const { status, data } = await apiInstance.createInvitation(
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | Default Response |  -  |
+|**200** | Default Response |  -  |
 |**400** | Default Response |  -  |
 |**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createLeaveTimeOff**
-> TimeOff createLeaveTimeOff()
+# **peopleGet**
+> PeopleGet200Response peopleGet()
 
- #### Create or Update  This endpoint may return an existing time off if the new time off is a subset of an existing one.  #### Automatic Merging  If one or more existing time offs overlap with the specified start/end date, they will be automatically merged.  #### Partial Time Offs  If the `minutesPerDay` field is provided, automatic merging will only occur if any overlapping time off has the same `minutesPerDay` value. If the `minutesPerDay` value differs, the request will fail.
 
 ### Example
 
@@ -1307,18 +3177,36 @@ const { status, data } = await apiInstance.createInvitation(
 import {
     DefaultApi,
     Configuration,
-    TimeOffLeaveInput
+    ModifiedAfter
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let timeOffLeaveInput: TimeOffLeaveInput; // (optional)
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
+let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
+let includePlaceholders: boolean; // (optional) (default to false)
+let email: string; //If provided, will only return people with an email that are a substring of this value (case-insensitive). (optional) (default to undefined)
+let firstName: string; //If provided, will only return people with a first name that is a substring of this value (case-insensitive). (optional) (default to undefined)
+let lastName: string; //If provided, will only return people with a last name that is a substring of this value (case-insensitive). (optional) (default to undefined)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+let externalId: string; //External ID value (optional) (default to undefined)
 
-const { status, data } = await apiInstance.createLeaveTimeOff(
+const { status, data } = await apiInstance.peopleGet(
     acceptVersion,
-    timeOffLeaveInput
+    cursor,
+    limit,
+    sortBy,
+    order,
+    includePlaceholders,
+    email,
+    firstName,
+    lastName,
+    modifiedAfter,
+    externalId
 );
 ```
 
@@ -1326,13 +3214,22 @@ const { status, data } = await apiInstance.createLeaveTimeOff(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **timeOffLeaveInput** | **TimeOffLeaveInput**|  | |
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
+| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
+| **includePlaceholders** | [**boolean**] |  | (optional) defaults to false|
+| **email** | [**string**] | If provided, will only return people with an email that are a substring of this value (case-insensitive). | (optional) defaults to undefined|
+| **firstName** | [**string**] | If provided, will only return people with a first name that is a substring of this value (case-insensitive). | (optional) defaults to undefined|
+| **lastName** | [**string**] | If provided, will only return people with a last name that is a substring of this value (case-insensitive). | (optional) defaults to undefined|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+| **externalId** | [**string**] | External ID value | (optional) defaults to undefined|
 
 
 ### Return type
 
-**TimeOff**
+**PeopleGet200Response**
 
 ### Authorization
 
@@ -1340,65 +3237,7 @@ const { status, data } = await apiInstance.createLeaveTimeOff(
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createLeaveTimeOffsBulk**
-> Array<TimeOff> createLeaveTimeOffsBulk(createLeaveTimeOffsBulkRequest)
-
- #### Create or Update  This endpoint may return existing time offs if the new time off is a subset of an existing one.  #### Automatic Merging  If one or more existing time offs overlap with the specified start/end date, they will be automatically merged.  #### Partial Time Offs  If the `minutesPerDay` field is provided, automatic merging will only occur if any overlapping time off has the same `minutesPerDay` value. If the `minutesPerDay` value differs, the request will fail.
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    CreateLeaveTimeOffsBulkRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createLeaveTimeOffsBulkRequest: CreateLeaveTimeOffsBulkRequest; //
-
-const { status, data } = await apiInstance.createLeaveTimeOffsBulk(
-    acceptVersion,
-    createLeaveTimeOffsBulkRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **createLeaveTimeOffsBulkRequest** | **CreateLeaveTimeOffsBulkRequest**|  | |
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Array<TimeOff>**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
@@ -1412,10 +3251,10 @@ const { status, data } = await apiInstance.createLeaveTimeOffsBulk(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createNoteForProject**
-> ProjectNote createNoteForProject(createNoteForProjectRequest)
+# **peopleNotesGet**
+> PeopleNotesGet200Response peopleNotesGet()
 
-Defaults creator to \'API\' user
+List all person notes across all people
 
 ### Example
 
@@ -1423,20 +3262,90 @@ Defaults creator to \'API\' user
 import {
     DefaultApi,
     Configuration,
-    CreateNoteForProjectRequest
+    ModifiedAfter
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
-let projectId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createNoteForProjectRequest: CreateNoteForProjectRequest; //
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 100)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
 
-const { status, data } = await apiInstance.createNoteForProject(
+const { status, data } = await apiInstance.peopleNotesGet(
+    acceptVersion,
+    cursor,
+    limit,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**PeopleNotesGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peoplePersonIdActualsGet**
+> ActualsGet200Response peoplePersonIdActualsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let projectId: number; // (optional) (default to undefined)
+let roleId: number; // (optional) (default to undefined)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.peoplePersonIdActualsGet(
+    personId,
+    acceptVersion,
+    cursor,
+    limit,
     projectId,
-    acceptVersion,
-    createNoteForProjectRequest
+    roleId,
+    modifiedAfter
 );
 ```
 
@@ -1444,14 +3353,18 @@ const { status, data } = await apiInstance.createNoteForProject(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **createNoteForProjectRequest** | **CreateNoteForProjectRequest**|  | |
-| **projectId** | [**number**] |  | defaults to undefined|
+| **personId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **projectId** | [**number**] |  | (optional) defaults to undefined|
+| **roleId** | [**number**] |  | (optional) defaults to undefined|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
 
 
 ### Return type
 
-**ProjectNote**
+**ActualsGet200Response**
 
 ### Authorization
 
@@ -1459,22 +3372,99 @@ const { status, data } = await apiInstance.createNoteForProject(
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | Default Response |  -  |
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peoplePersonIdAssignmentsGet**
+> AssignmentsGet200Response peoplePersonIdAssignmentsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let projectId: number; // (optional) (default to undefined)
+let roleId: number; // (optional) (default to undefined)
+let startDate: string; //Include assignments that start or overlap with this date. Format: YYYY-MM-DD (optional) (default to undefined)
+let endDate: string; //Include assignments that end on or overlap with this date. Format: YYYY-MM-DD (optional) (default to undefined)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.peoplePersonIdAssignmentsGet(
+    personId,
+    acceptVersion,
+    cursor,
+    limit,
+    projectId,
+    roleId,
+    startDate,
+    endDate,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **personId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **projectId** | [**number**] |  | (optional) defaults to undefined|
+| **roleId** | [**number**] |  | (optional) defaults to undefined|
+| **startDate** | [**string**] | Include assignments that start or overlap with this date. Format: YYYY-MM-DD | (optional) defaults to undefined|
+| **endDate** | [**string**] | Include assignments that end on or overlap with this date. Format: YYYY-MM-DD | (optional) defaults to undefined|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**AssignmentsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
 |**400** | Default Response |  -  |
 |**401** | Default Response |  -  |
 |**404** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createPeopleTag**
-> ListPeopleTags200ResponseValuesInner createPeopleTag(updateSelectCustomFieldOptionRequest)
+# **peoplePersonIdContractsContractIdDelete**
+> peoplePersonIdContractsContractIdDelete()
 
 
 ### Example
@@ -1482,19 +3472,20 @@ const { status, data } = await apiInstance.createNoteForProject(
 ```typescript
 import {
     DefaultApi,
-    Configuration,
-    UpdateSelectCustomFieldOptionRequest
+    Configuration
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
+let personId: number; // (default to undefined)
+let contractId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateSelectCustomFieldOptionRequest: UpdateSelectCustomFieldOptionRequest; //
 
-const { status, data } = await apiInstance.createPeopleTag(
-    acceptVersion,
-    updateSelectCustomFieldOptionRequest
+const { status, data } = await apiInstance.peoplePersonIdContractsContractIdDelete(
+    personId,
+    contractId,
+    acceptVersion
 );
 ```
 
@@ -1502,13 +3493,14 @@ const { status, data } = await apiInstance.createPeopleTag(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **updateSelectCustomFieldOptionRequest** | **UpdateSelectCustomFieldOptionRequest**|  | |
+| **personId** | [**number**] |  | defaults to undefined|
+| **contractId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 
 
 ### Return type
 
-**ListPeopleTags200ResponseValuesInner**
+void (empty response body)
 
 ### Authorization
 
@@ -1516,42 +3508,40 @@ const { status, data } = await apiInstance.createPeopleTag(
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
+|**204** | Default Response |  -  |
 |**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createPerson**
-> Person createPerson(createPersonRequest)
+# **peoplePersonIdContractsCurrentGet**
+> Contract peoplePersonIdContractsCurrentGet()
 
-Also creates a new contract for the person
 
 ### Example
 
 ```typescript
 import {
     DefaultApi,
-    Configuration,
-    CreatePersonRequest
+    Configuration
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
+let personId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createPersonRequest: CreatePersonRequest; //
 
-const { status, data } = await apiInstance.createPerson(
-    acceptVersion,
-    createPersonRequest
+const { status, data } = await apiInstance.peoplePersonIdContractsCurrentGet(
+    personId,
+    acceptVersion
 );
 ```
 
@@ -1559,13 +3549,13 @@ const { status, data } = await apiInstance.createPerson(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **createPersonRequest** | **CreatePersonRequest**|  | |
+| **personId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 
 
 ### Return type
 
-**Person**
+**Contract**
 
 ### Authorization
 
@@ -1573,21 +3563,81 @@ const { status, data } = await apiInstance.createPerson(
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peoplePersonIdContractsGet**
+> ContractsGet200Response peoplePersonIdContractsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 20)
+
+const { status, data } = await apiInstance.peoplePersonIdContractsGet(
+    personId,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **personId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 20|
+
+
+### Return type
+
+**ContractsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
 |**401** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createPersonContract**
-> Contract createPersonContract()
+# **peoplePersonIdContractsPost**
+> Contract peoplePersonIdContractsPost(contractInput)
 
 
 ### Example
@@ -1604,9 +3654,9 @@ const apiInstance = new DefaultApi(configuration);
 
 let personId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let contractInput: ContractInput; // (optional)
+let contractInput: ContractInput; //
 
-const { status, data } = await apiInstance.createPersonContract(
+const { status, data } = await apiInstance.peoplePersonIdContractsPost(
     personId,
     acceptVersion,
     contractInput
@@ -1646,66 +3696,8 @@ const { status, data } = await apiInstance.createPersonContract(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createPlaceholder**
-> PlaceholderInput createPlaceholder(createPlaceholderRequest)
-
-Also creates a contract that defaults to the role cost. Please note that placeholders with no project or assignments will be deleted within 24 hours.
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    CreatePlaceholderRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createPlaceholderRequest: CreatePlaceholderRequest; //
-
-const { status, data } = await apiInstance.createPlaceholder(
-    acceptVersion,
-    createPlaceholderRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **createPlaceholderRequest** | **CreatePlaceholderRequest**|  | |
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**PlaceholderInput**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createProject**
-> Project createProject()
+# **peoplePersonIdCustomFieldsCheckboxPatch**
+> PeoplePersonIdCustomFieldsCheckboxPatchRequest peoplePersonIdCustomFieldsCheckboxPatch(peoplePersonIdCustomFieldsCheckboxPatchRequest)
 
 
 ### Example
@@ -1714,18 +3706,20 @@ const { status, data } = await apiInstance.createPlaceholder(
 import {
     DefaultApi,
     Configuration,
-    CreateProjectRequest
+    PeoplePersonIdCustomFieldsCheckboxPatchRequest
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
+let personId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createProjectRequest: CreateProjectRequest; // (optional)
+let peoplePersonIdCustomFieldsCheckboxPatchRequest: PeoplePersonIdCustomFieldsCheckboxPatchRequest; //
 
-const { status, data } = await apiInstance.createProject(
+const { status, data } = await apiInstance.peoplePersonIdCustomFieldsCheckboxPatch(
+    personId,
     acceptVersion,
-    createProjectRequest
+    peoplePersonIdCustomFieldsCheckboxPatchRequest
 );
 ```
 
@@ -1733,255 +3727,14 @@ const { status, data } = await apiInstance.createProject(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **createProjectRequest** | **CreateProjectRequest**|  | |
+| **peoplePersonIdCustomFieldsCheckboxPatchRequest** | **PeoplePersonIdCustomFieldsCheckboxPatchRequest**|  | |
+| **personId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 
 
 ### Return type
 
-**Project**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createProjectBudgetRole**
-> createProjectBudgetRole()
-
-Create a project budget role for a project. You cannot create a              project budget role using estimated budget if a project rate does              not exist for the role because the project rate is used to set              the estimatedMinutes.
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    CreateProjectBudgetRoleRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createProjectBudgetRoleRequest: CreateProjectBudgetRoleRequest; // (optional)
-
-const { status, data } = await apiInstance.createProjectBudgetRole(
-    projectId,
-    acceptVersion,
-    createProjectBudgetRoleRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **createProjectBudgetRoleRequest** | **CreateProjectBudgetRoleRequest**|  | |
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-|**409** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createProjectMilestone**
-> Milestone createProjectMilestone(createProjectMilestoneRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    CreateProjectMilestoneRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createProjectMilestoneRequest: CreateProjectMilestoneRequest; //
-
-const { status, data } = await apiInstance.createProjectMilestone(
-    projectId,
-    acceptVersion,
-    createProjectMilestoneRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **createProjectMilestoneRequest** | **CreateProjectMilestoneRequest**|  | |
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Milestone**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createProjectOtherExpense**
-> ProjectOtherExpense createProjectOtherExpense(projectOtherExpense)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ProjectOtherExpense
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; //Unique identifier for the project the expense is for. (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let projectOtherExpense: ProjectOtherExpense; //A non-labour expense for a project.
-
-const { status, data } = await apiInstance.createProjectOtherExpense(
-    projectId,
-    acceptVersion,
-    projectOtherExpense
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectOtherExpense** | **ProjectOtherExpense**| A non-labour expense for a project. | |
-| **projectId** | [**number**] | Unique identifier for the project the expense is for. | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**ProjectOtherExpense**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | A non-labour expense for a project. |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createProjectPersonRequest**
-> PersonRequest createProjectPersonRequest(createProjectPersonRequestRequest)
-
-Person requests are used to request a placeholder role be filled with a person in the account or to request a new person be hired. This endpoint can be used to create a new person request.
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    CreateProjectPersonRequestRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createProjectPersonRequestRequest: CreateProjectPersonRequestRequest; //
-
-const { status, data } = await apiInstance.createProjectPersonRequest(
-    projectId,
-    acceptVersion,
-    createProjectPersonRequestRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **createProjectPersonRequestRequest** | **CreateProjectPersonRequestRequest**|  | |
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**PersonRequest**
+**PeoplePersonIdCustomFieldsCheckboxPatchRequest**
 
 ### Authorization
 
@@ -2003,8 +3756,8 @@ const { status, data } = await apiInstance.createProjectPersonRequest(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createProjectPhase**
-> ProjectPhase createProjectPhase(createProjectPhaseRequest)
+# **peoplePersonIdCustomFieldsDatePatch**
+> PeoplePersonIdCustomFieldsDatePatchRequest peoplePersonIdCustomFieldsDatePatch(peoplePersonIdCustomFieldsDatePatchRequest)
 
 
 ### Example
@@ -2013,20 +3766,20 @@ const { status, data } = await apiInstance.createProjectPersonRequest(
 import {
     DefaultApi,
     Configuration,
-    CreateProjectPhaseRequest
+    PeoplePersonIdCustomFieldsDatePatchRequest
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
-let projectId: number; // (default to undefined)
+let personId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createProjectPhaseRequest: CreateProjectPhaseRequest; //
+let peoplePersonIdCustomFieldsDatePatchRequest: PeoplePersonIdCustomFieldsDatePatchRequest; //
 
-const { status, data } = await apiInstance.createProjectPhase(
-    projectId,
+const { status, data } = await apiInstance.peoplePersonIdCustomFieldsDatePatch(
+    personId,
     acceptVersion,
-    createProjectPhaseRequest
+    peoplePersonIdCustomFieldsDatePatchRequest
 );
 ```
 
@@ -2034,14 +3787,14 @@ const { status, data } = await apiInstance.createProjectPhase(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **createProjectPhaseRequest** | **CreateProjectPhaseRequest**|  | |
-| **projectId** | [**number**] |  | defaults to undefined|
+| **peoplePersonIdCustomFieldsDatePatchRequest** | **PeoplePersonIdCustomFieldsDatePatchRequest**|  | |
+| **personId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 
 
 ### Return type
 
-**ProjectPhase**
+**PeoplePersonIdCustomFieldsDatePatchRequest**
 
 ### Authorization
 
@@ -2050,625 +3803,6 @@ const { status, data } = await apiInstance.createProjectPhase(
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Project phases divide your project into smaller sections so you can group similar tasks and assignments together. |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createProjectTag**
-> ProjectTag createProjectTag(updateSelectCustomFieldOptionRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdateSelectCustomFieldOptionRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateSelectCustomFieldOptionRequest: UpdateSelectCustomFieldOptionRequest; //
-
-const { status, data } = await apiInstance.createProjectTag(
-    acceptVersion,
-    updateSelectCustomFieldOptionRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updateSelectCustomFieldOptionRequest** | **UpdateSelectCustomFieldOptionRequest**|  | |
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**ProjectTag**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createRateCard**
-> RateCard createRateCard(createRateCardRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    CreateRateCardRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createRateCardRequest: CreateRateCardRequest; //
-
-const { status, data } = await apiInstance.createRateCard(
-    acceptVersion,
-    createRateCardRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **createRateCardRequest** | **CreateRateCardRequest**|  | |
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**RateCard**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createRole**
-> Role createRole(createRoleRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    CreateRoleRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createRoleRequest: CreateRoleRequest; //
-
-const { status, data } = await apiInstance.createRole(
-    acceptVersion,
-    createRoleRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **createRoleRequest** | **CreateRoleRequest**|  | |
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Role**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createSelectCustomField**
-> CustomFieldSelect createSelectCustomField(createSelectCustomFieldRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    CreateSelectCustomFieldRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createSelectCustomFieldRequest: CreateSelectCustomFieldRequest; //
-
-const { status, data } = await apiInstance.createSelectCustomField(
-    acceptVersion,
-    createSelectCustomFieldRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **createSelectCustomFieldRequest** | **CreateSelectCustomFieldRequest**|  | |
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**CustomFieldSelect**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createSelectCustomFieldOption**
-> UpdateSelectCustomFieldOption200Response createSelectCustomFieldOption(updateSelectCustomFieldOptionRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdateSelectCustomFieldOptionRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let selectFieldId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateSelectCustomFieldOptionRequest: UpdateSelectCustomFieldOptionRequest; //
-
-const { status, data } = await apiInstance.createSelectCustomFieldOption(
-    selectFieldId,
-    acceptVersion,
-    updateSelectCustomFieldOptionRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updateSelectCustomFieldOptionRequest** | **UpdateSelectCustomFieldOptionRequest**|  | |
-| **selectFieldId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**UpdateSelectCustomFieldOption200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createSkill**
-> Skill createSkill(updateSelectCustomFieldOptionRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdateSelectCustomFieldOptionRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateSelectCustomFieldOptionRequest: UpdateSelectCustomFieldOptionRequest; //
-
-const { status, data } = await apiInstance.createSkill(
-    acceptVersion,
-    updateSelectCustomFieldOptionRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updateSelectCustomFieldOptionRequest** | **UpdateSelectCustomFieldOptionRequest**|  | |
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Skill**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createTeam**
-> Team createTeam(updateSelectCustomFieldOptionRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdateSelectCustomFieldOptionRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateSelectCustomFieldOptionRequest: UpdateSelectCustomFieldOptionRequest; //
-
-const { status, data } = await apiInstance.createTeam(
-    acceptVersion,
-    updateSelectCustomFieldOptionRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updateSelectCustomFieldOptionRequest** | **UpdateSelectCustomFieldOptionRequest**|  | |
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Team**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createTextCustomField**
-> CustomFieldText createTextCustomField(createCheckboxCustomFieldRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    CreateCheckboxCustomFieldRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createCheckboxCustomFieldRequest: CreateCheckboxCustomFieldRequest; //
-
-const { status, data } = await apiInstance.createTextCustomField(
-    acceptVersion,
-    createCheckboxCustomFieldRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **createCheckboxCustomFieldRequest** | **CreateCheckboxCustomFieldRequest**|  | |
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**CustomFieldText**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createWorkstream**
-> Workstream createWorkstream(updateSelectCustomFieldOptionRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdateSelectCustomFieldOptionRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateSelectCustomFieldOptionRequest: UpdateSelectCustomFieldOptionRequest; //
-
-const { status, data } = await apiInstance.createWorkstream(
-    acceptVersion,
-    updateSelectCustomFieldOptionRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updateSelectCustomFieldOptionRequest** | **UpdateSelectCustomFieldOptionRequest**|  | |
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Workstream**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteActual**
-> deleteActual()
-
-Deletes the actual record identified by the provided unique identifier `actualId`. This operation is irreversible and removes the actual record from the system.
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let actualId: number; //Unique identifier of the actual to be deleted. (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.deleteActual(
-    actualId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **actualId** | [**number**] | Unique identifier of the actual to be deleted. | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**204** | Successful deletion of the actual record. |  -  |
-|**400** | Invalid actualId format. |  -  |
-|**401** | Default Response |  -  |
-|**404** | The actual record with the specified ID was not found. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteAssignment**
-> Assignment deleteAssignment()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let assignmentId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.deleteAssignment(
-    assignmentId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **assignmentId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Assignment**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
@@ -2676,288 +3810,14 @@ const { status, data } = await apiInstance.deleteAssignment(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteCheckboxCustomField**
-> deleteCheckboxCustomField()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let checkboxFieldId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.deleteCheckboxCustomField(
-    checkboxFieldId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **checkboxFieldId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**204** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteDateCustomField**
-> deleteDateCustomField()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let dateFieldId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.deleteDateCustomField(
-    dateFieldId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **dateFieldId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**204** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteHolidayTimeOff**
-> deleteHolidayTimeOff()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let timeOffId: number; //The unique identifier for the time-off. (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.deleteHolidayTimeOff(
-    timeOffId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **timeOffId** | [**number**] | The unique identifier for the time-off. | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**202** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteInvitation**
-> deleteInvitation()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let invitationId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.deleteInvitation(
-    invitationId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **invitationId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**204** | Default Response |  -  |
 |**400** | Default Response |  -  |
 |**401** | Default Response |  -  |
 |**404** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deleteLeaveTimeOff**
-> deleteLeaveTimeOff()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let timeOffId: number; //The unique identifier for the time-off. (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.deleteLeaveTimeOff(
-    timeOffId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **timeOffId** | [**number**] | The unique identifier for the time-off. | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**202** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteLeaveTimeOffsBulk**
-> deleteLeaveTimeOffsBulk(deleteLeaveTimeOffsBulkRequest)
+# **peoplePersonIdCustomFieldsSelectPatch**
+> PeoplePersonIdCustomFieldsSelectPatchRequest peoplePersonIdCustomFieldsSelectPatch(peoplePersonIdCustomFieldsSelectPatchRequest)
 
 
 ### Example
@@ -2966,18 +3826,20 @@ void (empty response body)
 import {
     DefaultApi,
     Configuration,
-    DeleteLeaveTimeOffsBulkRequest
+    PeoplePersonIdCustomFieldsSelectPatchRequest
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
+let personId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let deleteLeaveTimeOffsBulkRequest: DeleteLeaveTimeOffsBulkRequest; //
+let peoplePersonIdCustomFieldsSelectPatchRequest: PeoplePersonIdCustomFieldsSelectPatchRequest; //
 
-const { status, data } = await apiInstance.deleteLeaveTimeOffsBulk(
+const { status, data } = await apiInstance.peoplePersonIdCustomFieldsSelectPatch(
+    personId,
     acceptVersion,
-    deleteLeaveTimeOffsBulkRequest
+    peoplePersonIdCustomFieldsSelectPatchRequest
 );
 ```
 
@@ -2985,13 +3847,14 @@ const { status, data } = await apiInstance.deleteLeaveTimeOffsBulk(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **deleteLeaveTimeOffsBulkRequest** | **DeleteLeaveTimeOffsBulkRequest**|  | |
+| **peoplePersonIdCustomFieldsSelectPatchRequest** | **PeoplePersonIdCustomFieldsSelectPatchRequest**|  | |
+| **personId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 
 
 ### Return type
 
-void (empty response body)
+**PeoplePersonIdCustomFieldsSelectPatchRequest**
 
 ### Authorization
 
@@ -3006,15 +3869,15 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**202** | Default Response |  -  |
+|**200** | Default Response |  -  |
 |**400** | Default Response |  -  |
 |**401** | Default Response |  -  |
 |**404** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deletePeopleTag**
-> deletePeopleTag()
+# **peoplePersonIdCustomFieldsTextPatch**
+> PeoplePersonIdCustomFieldsTextPatchRequest peoplePersonIdCustomFieldsTextPatch(peoplePersonIdCustomFieldsTextPatchRequest)
 
 
 ### Example
@@ -3022,18 +3885,21 @@ void (empty response body)
 ```typescript
 import {
     DefaultApi,
-    Configuration
+    Configuration,
+    PeoplePersonIdCustomFieldsTextPatchRequest
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
-let peopleTagId: number; // (default to undefined)
+let personId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let peoplePersonIdCustomFieldsTextPatchRequest: PeoplePersonIdCustomFieldsTextPatchRequest; //
 
-const { status, data } = await apiInstance.deletePeopleTag(
-    peopleTagId,
-    acceptVersion
+const { status, data } = await apiInstance.peoplePersonIdCustomFieldsTextPatch(
+    personId,
+    acceptVersion,
+    peoplePersonIdCustomFieldsTextPatchRequest
 );
 ```
 
@@ -3041,13 +3907,14 @@ const { status, data } = await apiInstance.deletePeopleTag(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **peopleTagId** | [**number**] |  | defaults to undefined|
+| **peoplePersonIdCustomFieldsTextPatchRequest** | **PeoplePersonIdCustomFieldsTextPatchRequest**|  | |
+| **personId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 
 
 ### Return type
 
-void (empty response body)
+**PeoplePersonIdCustomFieldsTextPatchRequest**
 
 ### Authorization
 
@@ -3055,23 +3922,24 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**202** | Default Response |  -  |
+|**200** | Default Response |  -  |
 |**400** | Default Response |  -  |
 |**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deletePerson**
-> deletePerson()
+# **peoplePersonIdDelete**
+> peoplePersonIdDelete()
 
-Delete a person by their ID; fails when person has existing assignments or actuals to preserve           historical reports. Override this behaviour by using the force query flag.
+Delete a person or placeholder by their ID; fails when person has existing assignments or actuals to preserve           historical reports. Override this behaviour by using the force query flag.
 
 ### Example
 
@@ -3088,7 +3956,7 @@ let force: boolean; // (default to false)
 let personId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
 
-const { status, data } = await apiInstance.deletePerson(
+const { status, data } = await apiInstance.peoplePersonIdDelete(
     force,
     personId,
     acceptVersion
@@ -3128,8 +3996,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deletePersonContract**
-> deletePersonContract()
+# **peoplePersonIdGet**
+> Person peoplePersonIdGet()
 
 
 ### Example
@@ -3144,12 +4012,10 @@ const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
 let personId: number; // (default to undefined)
-let contractId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
 
-const { status, data } = await apiInstance.deletePersonContract(
+const { status, data } = await apiInstance.peoplePersonIdGet(
     personId,
-    contractId,
     acceptVersion
 );
 ```
@@ -3159,7 +4025,370 @@ const { status, data } = await apiInstance.deletePersonContract(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **personId** | [**number**] |  | defaults to undefined|
-| **contractId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Person**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peoplePersonIdPatch**
+> Person peoplePersonIdPatch(peoplePersonIdPatchRequest)
+
+To add a new role or job title to a person, see POST /people/{personId}/contracts
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    PeoplePersonIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let peoplePersonIdPatchRequest: PeoplePersonIdPatchRequest; //
+
+const { status, data } = await apiInstance.peoplePersonIdPatch(
+    personId,
+    acceptVersion,
+    peoplePersonIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **peoplePersonIdPatchRequest** | **PeoplePersonIdPatchRequest**|  | |
+| **personId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Person**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peoplePersonIdProjectsGet**
+> ClientsClientIdProjectsGet200Response peoplePersonIdProjectsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+
+const { status, data } = await apiInstance.peoplePersonIdProjectsGet(
+    personId,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **personId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+
+
+### Return type
+
+**ClientsClientIdProjectsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peoplePersonIdProjectsPost**
+> peoplePersonIdProjectsPost(peoplePersonIdProjectsPostRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    PeoplePersonIdProjectsPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let peoplePersonIdProjectsPostRequest: PeoplePersonIdProjectsPostRequest; //
+
+const { status, data } = await apiInstance.peoplePersonIdProjectsPost(
+    personId,
+    acceptVersion,
+    peoplePersonIdProjectsPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **peoplePersonIdProjectsPostRequest** | **PeoplePersonIdProjectsPostRequest**|  | |
+| **personId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+|**409** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peoplePersonIdSkillsGet**
+> PeoplePersonIdSkillsGet200Response peoplePersonIdSkillsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.peoplePersonIdSkillsGet(
+    personId,
+    acceptVersion,
+    cursor,
+    limit,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **personId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**PeoplePersonIdSkillsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peoplePersonIdSkillsPost**
+> Competency peoplePersonIdSkillsPost(peoplePersonIdSkillsPostRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    PeoplePersonIdSkillsPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let peoplePersonIdSkillsPostRequest: PeoplePersonIdSkillsPostRequest; //
+
+const { status, data } = await apiInstance.peoplePersonIdSkillsPost(
+    personId,
+    acceptVersion,
+    peoplePersonIdSkillsPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **peoplePersonIdSkillsPostRequest** | **PeoplePersonIdSkillsPostRequest**|  | |
+| **personId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Competency**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peoplePersonIdSkillsSkillIdDelete**
+> peoplePersonIdSkillsSkillIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let skillId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.peoplePersonIdSkillsSkillIdDelete(
+    personId,
+    skillId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **personId** | [**number**] |  | defaults to undefined|
+| **skillId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 
 
@@ -3186,8 +4415,2845 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deleteProject**
-> deleteProject()
+# **peoplePersonIdSkillsSkillIdPatch**
+> Competency peoplePersonIdSkillsSkillIdPatch(peoplePersonIdSkillsSkillIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    PeoplePersonIdSkillsSkillIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let skillId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let peoplePersonIdSkillsSkillIdPatchRequest: PeoplePersonIdSkillsSkillIdPatchRequest; //
+
+const { status, data } = await apiInstance.peoplePersonIdSkillsSkillIdPatch(
+    personId,
+    skillId,
+    acceptVersion,
+    peoplePersonIdSkillsSkillIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **peoplePersonIdSkillsSkillIdPatchRequest** | **PeoplePersonIdSkillsSkillIdPatchRequest**|  | |
+| **personId** | [**number**] |  | defaults to undefined|
+| **skillId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Competency**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peoplePersonIdTeamsCurrentGet**
+> PeoplePersonIdTeamsCurrentGet200Response peoplePersonIdTeamsCurrentGet()
+
+This endpoint is deprecated. You may view the current team for a person using the `GET /people/:personId/` endpoint.
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 20)
+
+const { status, data } = await apiInstance.peoplePersonIdTeamsCurrentGet(
+    personId,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **personId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 20|
+
+
+### Return type
+
+**PeoplePersonIdTeamsCurrentGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peoplePersonIdTeamsPost**
+> peoplePersonIdTeamsPost(peoplePersonIdTeamsPostRequest)
+
+This endpoint is deprecated. You may assign the person to a team using the `PATCH /people/:personId/` endpoint.
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    PeoplePersonIdTeamsPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let peoplePersonIdTeamsPostRequest: PeoplePersonIdTeamsPostRequest; //
+
+const { status, data } = await apiInstance.peoplePersonIdTeamsPost(
+    personId,
+    acceptVersion,
+    peoplePersonIdTeamsPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **peoplePersonIdTeamsPostRequest** | **PeoplePersonIdTeamsPostRequest**|  | |
+| **personId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peoplePersonIdTeamsTeamIdDelete**
+> peoplePersonIdTeamsTeamIdDelete()
+
+This endpoint is deprecated. You may remove the person from a team using the `PATCH /people/:personId/` endpoint.
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let teamId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 20)
+
+const { status, data } = await apiInstance.peoplePersonIdTeamsTeamIdDelete(
+    personId,
+    teamId,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **personId** | [**number**] |  | defaults to undefined|
+| **teamId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 20|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**202** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peoplePersonIdTimeOffsHolidaysGet**
+> PeoplePersonIdTimeOffsHolidaysGet200Response peoplePersonIdTimeOffsHolidaysGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+
+const { status, data } = await apiInstance.peoplePersonIdTimeOffsHolidaysGet(
+    personId,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **personId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+
+
+### Return type
+
+**PeoplePersonIdTimeOffsHolidaysGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peoplePersonIdTimeOffsLeaveGet**
+> PeoplePersonIdTimeOffsLeaveGet200Response peoplePersonIdTimeOffsLeaveGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+
+const { status, data } = await apiInstance.peoplePersonIdTimeOffsLeaveGet(
+    personId,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **personId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+
+
+### Return type
+
+**PeoplePersonIdTimeOffsLeaveGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peoplePersonIdTimeOffsRosteredOffGet**
+> PeoplePersonIdTimeOffsLeaveGet200Response peoplePersonIdTimeOffsRosteredOffGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+
+const { status, data } = await apiInstance.peoplePersonIdTimeOffsRosteredOffGet(
+    personId,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **personId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+
+
+### Return type
+
+**PeoplePersonIdTimeOffsLeaveGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peoplePost**
+> Person peoplePost(peoplePostRequest)
+
+Also creates a new contract for the person
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    PeoplePostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let peoplePostRequest: PeoplePostRequest; //
+
+const { status, data } = await apiInstance.peoplePost(
+    acceptVersion,
+    peoplePostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **peoplePostRequest** | **PeoplePostRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Person**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peopleSkillsGet**
+> PeopleSkillsGet200Response peopleSkillsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let includePlaceholders: boolean; // (optional) (default to false)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.peopleSkillsGet(
+    acceptVersion,
+    cursor,
+    limit,
+    includePlaceholders,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **includePlaceholders** | [**boolean**] |  | (optional) defaults to false|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**PeopleSkillsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peopleTagsGet**
+> PeopleTagsGet200Response peopleTagsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
+let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.peopleTagsGet(
+    acceptVersion,
+    cursor,
+    limit,
+    sortBy,
+    order,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
+| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**PeopleTagsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peopleTagsPeopleTagIdDelete**
+> peopleTagsPeopleTagIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let peopleTagId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.peopleTagsPeopleTagIdDelete(
+    peopleTagId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **peopleTagId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**202** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peopleTagsPeopleTagIdGet**
+> PeopleTagsGet200ResponseValuesInner peopleTagsPeopleTagIdGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let peopleTagId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.peopleTagsPeopleTagIdGet(
+    peopleTagId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **peopleTagId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**PeopleTagsGet200ResponseValuesInner**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peopleTagsPeopleTagIdPatch**
+> PeopleTagsGet200ResponseValuesInner peopleTagsPeopleTagIdPatch(peopleTagsPeopleTagIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    PeopleTagsPeopleTagIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let peopleTagId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let peopleTagsPeopleTagIdPatchRequest: PeopleTagsPeopleTagIdPatchRequest; //
+
+const { status, data } = await apiInstance.peopleTagsPeopleTagIdPatch(
+    peopleTagId,
+    acceptVersion,
+    peopleTagsPeopleTagIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **peopleTagsPeopleTagIdPatchRequest** | **PeopleTagsPeopleTagIdPatchRequest**|  | |
+| **peopleTagId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**PeopleTagsGet200ResponseValuesInner**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **peopleTagsPost**
+> PeopleTagsGet200ResponseValuesInner peopleTagsPost(customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest: CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest; //
+
+const { status, data } = await apiInstance.peopleTagsPost(
+    acceptVersion,
+    customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest** | **CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**PeopleTagsGet200ResponseValuesInner**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **personRequestsGet**
+> PersonRequestsGet200Response personRequestsGet()
+
+List all person requests across all projects
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 100)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.personRequestsGet(
+    acceptVersion,
+    cursor,
+    limit,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**PersonRequestsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **phasesGet**
+> PhasesGet200Response phasesGet()
+
+List all phases across all projects
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 100)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.phasesGet(
+    acceptVersion,
+    cursor,
+    limit,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**PhasesGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **placeholdersGet**
+> PlaceholdersGet200Response placeholdersGet()
+
+Note: The /people/_* endpoints also allows getting information on placeholders when using the `includePlaceholders` query parameter.
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
+let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.placeholdersGet(
+    acceptVersion,
+    cursor,
+    limit,
+    sortBy,
+    order,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
+| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**PlaceholdersGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **placeholdersPlaceholderIdSkillsPost**
+> Competency placeholdersPlaceholderIdSkillsPost(placeholdersPlaceholderIdSkillsPostRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    PlaceholdersPlaceholderIdSkillsPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let placeholderId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let placeholdersPlaceholderIdSkillsPostRequest: PlaceholdersPlaceholderIdSkillsPostRequest; //
+
+const { status, data } = await apiInstance.placeholdersPlaceholderIdSkillsPost(
+    placeholderId,
+    acceptVersion,
+    placeholdersPlaceholderIdSkillsPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **placeholdersPlaceholderIdSkillsPostRequest** | **PlaceholdersPlaceholderIdSkillsPostRequest**|  | |
+| **placeholderId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Competency**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **placeholdersPlaceholderIdSkillsSkillIdDelete**
+> placeholdersPlaceholderIdSkillsSkillIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let placeholderId: number; // (default to undefined)
+let skillId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.placeholdersPlaceholderIdSkillsSkillIdDelete(
+    placeholderId,
+    skillId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **placeholderId** | [**number**] |  | defaults to undefined|
+| **skillId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **placeholdersPlaceholderIdTeamsPost**
+> placeholdersPlaceholderIdTeamsPost(peoplePersonIdTeamsPostRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    PeoplePersonIdTeamsPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let placeholderId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let peoplePersonIdTeamsPostRequest: PeoplePersonIdTeamsPostRequest; //
+
+const { status, data } = await apiInstance.placeholdersPlaceholderIdTeamsPost(
+    placeholderId,
+    acceptVersion,
+    peoplePersonIdTeamsPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **peoplePersonIdTeamsPostRequest** | **PeoplePersonIdTeamsPostRequest**|  | |
+| **placeholderId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **placeholdersPlaceholderIdTeamsTeamIdDelete**
+> placeholdersPlaceholderIdTeamsTeamIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let placeholderId: number; // (default to undefined)
+let teamId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.placeholdersPlaceholderIdTeamsTeamIdDelete(
+    placeholderId,
+    teamId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **placeholderId** | [**number**] |  | defaults to undefined|
+| **teamId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**202** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **placeholdersPost**
+> PlaceholderInput placeholdersPost(placeholdersPostRequest)
+
+Also creates a contract that defaults to the role cost. Please note that placeholders with no project or assignments will be deleted within 24 hours.
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    PlaceholdersPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let placeholdersPostRequest: PlaceholdersPostRequest; //
+
+const { status, data } = await apiInstance.placeholdersPost(
+    acceptVersion,
+    placeholdersPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **placeholdersPostRequest** | **PlaceholdersPostRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**PlaceholderInput**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectMembersGet**
+> ProjectMembersGet200Response projectMembersGet()
+
+This endpoint excludes changes for when people are removed from a project
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 100)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.projectMembersGet(
+    acceptVersion,
+    cursor,
+    limit,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**ProjectMembersGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectNotesGet**
+> ProjectNotesGet200Response projectNotesGet()
+
+List all project notes across all projects
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 100)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.projectNotesGet(
+    acceptVersion,
+    cursor,
+    limit,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**ProjectNotesGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectRatesGet**
+> ProjectRatesGet200Response projectRatesGet()
+
+List all role rates across all projects
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 100)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.projectRatesGet(
+    acceptVersion,
+    cursor,
+    limit,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**ProjectRatesGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectTagsGet**
+> ProjectTagsGet200Response projectTagsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
+let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
+let includeArchived: boolean; // (optional) (default to false)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.projectTagsGet(
+    acceptVersion,
+    cursor,
+    limit,
+    sortBy,
+    order,
+    includeArchived,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
+| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
+| **includeArchived** | [**boolean**] |  | (optional) defaults to false|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**ProjectTagsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectTagsPost**
+> ProjectTag projectTagsPost(customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest: CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest; //
+
+const { status, data } = await apiInstance.projectTagsPost(
+    acceptVersion,
+    customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest** | **CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**ProjectTag**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectTagsProjectTagIdGet**
+> ProjectTag projectTagsProjectTagIdGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectTagId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.projectTagsProjectTagIdGet(
+    projectTagId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectTagId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**ProjectTag**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectTagsProjectTagIdPatch**
+> ProjectTag projectTagsProjectTagIdPatch(peopleTagsPeopleTagIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    PeopleTagsPeopleTagIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectTagId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let peopleTagsPeopleTagIdPatchRequest: PeopleTagsPeopleTagIdPatchRequest; //
+
+const { status, data } = await apiInstance.projectTagsProjectTagIdPatch(
+    projectTagId,
+    acceptVersion,
+    peopleTagsPeopleTagIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **peopleTagsPeopleTagIdPatchRequest** | **PeopleTagsPeopleTagIdPatchRequest**|  | |
+| **projectTagId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**ProjectTag**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectTagsProjectTagIdProjectProjectIdDelete**
+> projectTagsProjectTagIdProjectProjectIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectTagId: number; // (default to undefined)
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.projectTagsProjectTagIdProjectProjectIdDelete(
+    projectTagId,
+    projectId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectTagId** | [**number**] |  | defaults to undefined|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectTagsProjectTagIdProjectProjectIdPost**
+> ProjectTag projectTagsProjectTagIdProjectProjectIdPost()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectTagId: number; // (default to undefined)
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.projectTagsProjectTagIdProjectProjectIdPost(
+    projectTagId,
+    projectId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectTagId** | [**number**] |  | defaults to undefined|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**ProjectTag**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectWorkstreamsGet**
+> ProjectWorkstreamsGet200Response projectWorkstreamsGet()
+
+List all project workstreams across all projects
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.projectWorkstreamsGet(
+    acceptVersion,
+    cursor,
+    limit,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**ProjectWorkstreamsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsCustomFieldsGet**
+> ProjectsCustomFieldsGet200Response projectsCustomFieldsGet()
+
+List all custom fields across all projects
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 100)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.projectsCustomFieldsGet(
+    acceptVersion,
+    cursor,
+    limit,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**ProjectsCustomFieldsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsGet**
+> ClientsClientIdProjectsGet200Response projectsGet()
+
+See `GET /people/{id}/projects` for all projects by person
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let includeArchived: boolean; // (default to true)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
+let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+let externalId: string; //External ID value (optional) (default to undefined)
+let name: string; //Case-insensitive substring match on project name (e.g. `Acme`). (optional) (default to undefined)
+
+const { status, data } = await apiInstance.projectsGet(
+    includeArchived,
+    acceptVersion,
+    cursor,
+    limit,
+    sortBy,
+    order,
+    modifiedAfter,
+    externalId,
+    name
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **includeArchived** | [**boolean**] |  | defaults to true|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
+| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+| **externalId** | [**string**] | External ID value | (optional) defaults to undefined|
+| **name** | [**string**] | Case-insensitive substring match on project name (e.g. &#x60;Acme&#x60;). | (optional) defaults to undefined|
+
+
+### Return type
+
+**ClientsClientIdProjectsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsPost**
+> Project projectsPost(projectsPostRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ProjectsPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let projectsPostRequest: ProjectsPostRequest; //
+
+const { status, data } = await apiInstance.projectsPost(
+    acceptVersion,
+    projectsPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectsPostRequest** | **ProjectsPostRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Project**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdActualsGet**
+> ActualsGet200Response projectsProjectIdActualsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let personId: number; // (optional) (default to undefined)
+let roleId: number; // (optional) (default to undefined)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.projectsProjectIdActualsGet(
+    projectId,
+    acceptVersion,
+    cursor,
+    limit,
+    personId,
+    roleId,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **personId** | [**number**] |  | (optional) defaults to undefined|
+| **roleId** | [**number**] |  | (optional) defaults to undefined|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**ActualsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdAssignmentsGet**
+> AssignmentsGet200Response projectsProjectIdAssignmentsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let personId: number; // (optional) (default to undefined)
+let roleId: number; // (optional) (default to undefined)
+let startDate: string; //Include assignments that start or overlap with this date. Format: YYYY-MM-DD (optional) (default to undefined)
+let endDate: string; //Include assignments that end on or overlap with this date. Format: YYYY-MM-DD (optional) (default to undefined)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.projectsProjectIdAssignmentsGet(
+    projectId,
+    acceptVersion,
+    cursor,
+    limit,
+    personId,
+    roleId,
+    startDate,
+    endDate,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **personId** | [**number**] |  | (optional) defaults to undefined|
+| **roleId** | [**number**] |  | (optional) defaults to undefined|
+| **startDate** | [**string**] | Include assignments that start or overlap with this date. Format: YYYY-MM-DD | (optional) defaults to undefined|
+| **endDate** | [**string**] | Include assignments that end on or overlap with this date. Format: YYYY-MM-DD | (optional) defaults to undefined|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**AssignmentsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdBudgetRolesGet**
+> BudgetRolesGet200Response projectsProjectIdBudgetRolesGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+
+const { status, data } = await apiInstance.projectsProjectIdBudgetRolesGet(
+    projectId,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+
+
+### Return type
+
+**BudgetRolesGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdBudgetRolesPost**
+> projectsProjectIdBudgetRolesPost(projectsProjectIdBudgetRolesPostRequest)
+
+Create a project budget role for a project. You cannot create a              project budget role using estimated budget if a project rate does              not exist for the role because the project rate is used to set              the estimatedMinutes.
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ProjectsProjectIdBudgetRolesPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let projectsProjectIdBudgetRolesPostRequest: ProjectsProjectIdBudgetRolesPostRequest; //
+
+const { status, data } = await apiInstance.projectsProjectIdBudgetRolesPost(
+    projectId,
+    acceptVersion,
+    projectsProjectIdBudgetRolesPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectsProjectIdBudgetRolesPostRequest** | **ProjectsProjectIdBudgetRolesPostRequest**|  | |
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+|**409** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdBudgetRolesRoleIdDelete**
+> projectsProjectIdBudgetRolesRoleIdDelete()
+
+Delete a project budget role for a project. You cannot delete a              project budget role if it is implicitly created from a project membership.
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let roleId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.projectsProjectIdBudgetRolesRoleIdDelete(
+    projectId,
+    roleId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **roleId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+|**409** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdBudgetRolesRoleIdGet**
+> ProjectBudgetRole projectsProjectIdBudgetRolesRoleIdGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let roleId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.projectsProjectIdBudgetRolesRoleIdGet(
+    projectId,
+    roleId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **roleId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**ProjectBudgetRole**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Project budget role |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdBudgetRolesRoleIdPatch**
+> ProjectBudgetRole projectsProjectIdBudgetRolesRoleIdPatch(projectsProjectIdBudgetRolesRoleIdPatchRequest)
+
+Update a project budget role for a project. You cannot update a              project budget role using estimated budget if a project rate does              not exist for the role because the project rate is used to set              the estimatedMinutes.
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ProjectsProjectIdBudgetRolesRoleIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let roleId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let projectsProjectIdBudgetRolesRoleIdPatchRequest: ProjectsProjectIdBudgetRolesRoleIdPatchRequest; //
+
+const { status, data } = await apiInstance.projectsProjectIdBudgetRolesRoleIdPatch(
+    projectId,
+    roleId,
+    acceptVersion,
+    projectsProjectIdBudgetRolesRoleIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectsProjectIdBudgetRolesRoleIdPatchRequest** | **ProjectsProjectIdBudgetRolesRoleIdPatchRequest**|  | |
+| **projectId** | [**number**] |  | defaults to undefined|
+| **roleId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**ProjectBudgetRole**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Project budget role |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdCustomFieldsCheckboxPatch**
+> PeoplePersonIdCustomFieldsCheckboxPatchRequest projectsProjectIdCustomFieldsCheckboxPatch(peoplePersonIdCustomFieldsCheckboxPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    PeoplePersonIdCustomFieldsCheckboxPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let peoplePersonIdCustomFieldsCheckboxPatchRequest: PeoplePersonIdCustomFieldsCheckboxPatchRequest; //
+
+const { status, data } = await apiInstance.projectsProjectIdCustomFieldsCheckboxPatch(
+    projectId,
+    acceptVersion,
+    peoplePersonIdCustomFieldsCheckboxPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **peoplePersonIdCustomFieldsCheckboxPatchRequest** | **PeoplePersonIdCustomFieldsCheckboxPatchRequest**|  | |
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**PeoplePersonIdCustomFieldsCheckboxPatchRequest**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdCustomFieldsDatePatch**
+> PeoplePersonIdCustomFieldsDatePatchRequest projectsProjectIdCustomFieldsDatePatch(peoplePersonIdCustomFieldsDatePatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    PeoplePersonIdCustomFieldsDatePatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let peoplePersonIdCustomFieldsDatePatchRequest: PeoplePersonIdCustomFieldsDatePatchRequest; //
+
+const { status, data } = await apiInstance.projectsProjectIdCustomFieldsDatePatch(
+    projectId,
+    acceptVersion,
+    peoplePersonIdCustomFieldsDatePatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **peoplePersonIdCustomFieldsDatePatchRequest** | **PeoplePersonIdCustomFieldsDatePatchRequest**|  | |
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**PeoplePersonIdCustomFieldsDatePatchRequest**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdCustomFieldsSelectPatch**
+> PeoplePersonIdCustomFieldsSelectPatchRequest projectsProjectIdCustomFieldsSelectPatch(peoplePersonIdCustomFieldsSelectPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    PeoplePersonIdCustomFieldsSelectPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let peoplePersonIdCustomFieldsSelectPatchRequest: PeoplePersonIdCustomFieldsSelectPatchRequest; //
+
+const { status, data } = await apiInstance.projectsProjectIdCustomFieldsSelectPatch(
+    projectId,
+    acceptVersion,
+    peoplePersonIdCustomFieldsSelectPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **peoplePersonIdCustomFieldsSelectPatchRequest** | **PeoplePersonIdCustomFieldsSelectPatchRequest**|  | |
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**PeoplePersonIdCustomFieldsSelectPatchRequest**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdCustomFieldsTextPatch**
+> PeoplePersonIdCustomFieldsTextPatchRequest projectsProjectIdCustomFieldsTextPatch(peoplePersonIdCustomFieldsTextPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    PeoplePersonIdCustomFieldsTextPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let peoplePersonIdCustomFieldsTextPatchRequest: PeoplePersonIdCustomFieldsTextPatchRequest; //
+
+const { status, data } = await apiInstance.projectsProjectIdCustomFieldsTextPatch(
+    projectId,
+    acceptVersion,
+    peoplePersonIdCustomFieldsTextPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **peoplePersonIdCustomFieldsTextPatchRequest** | **PeoplePersonIdCustomFieldsTextPatchRequest**|  | |
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**PeoplePersonIdCustomFieldsTextPatchRequest**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdDelete**
+> projectsProjectIdDelete()
 
 Delete a project by id. You cannot delete a project that has any actuals or assignments.
 
@@ -3205,7 +7271,7 @@ const apiInstance = new DefaultApi(configuration);
 let projectId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
 
-const { status, data } = await apiInstance.deleteProject(
+const { status, data } = await apiInstance.projectsProjectIdDelete(
     projectId,
     acceptVersion
 );
@@ -3244,10 +7310,9 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deleteProjectBudgetRole**
-> deleteProjectBudgetRole()
+# **projectsProjectIdGet**
+> Project projectsProjectIdGet()
 
-Delete a project budget role for a project. You cannot delete a              project budget role if it is implicitly created from a project membership.
 
 ### Example
 
@@ -3261,12 +7326,10 @@ const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
 let projectId: number; // (default to undefined)
-let roleId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
 
-const { status, data } = await apiInstance.deleteProjectBudgetRole(
+const { status, data } = await apiInstance.projectsProjectIdGet(
     projectId,
-    roleId,
     acceptVersion
 );
 ```
@@ -3276,13 +7339,12 @@ const { status, data } = await apiInstance.deleteProjectBudgetRole(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **projectId** | [**number**] |  | defaults to undefined|
-| **roleId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 
 
 ### Return type
 
-void (empty response body)
+**Project**
 
 ### Authorization
 
@@ -3297,15 +7359,82 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | Default Response |  -  |
+|**200** | Default Response |  -  |
 |**401** | Default Response |  -  |
 |**404** | Default Response |  -  |
-|**409** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deleteProjectMilestone**
-> deleteProjectMilestone()
+# **projectsProjectIdMilestonesGet**
+> MilestonesGet200Response projectsProjectIdMilestonesGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let startDate: string; //Milestones on this date or newer. Defaults to Monday of the current week. Format: YYYY-MM-DD. (optional) (default to undefined)
+let endDate: string; //Milestones on this date or older. Format: YYYY-MM-DD. (optional) (default to undefined)
+
+const { status, data } = await apiInstance.projectsProjectIdMilestonesGet(
+    projectId,
+    acceptVersion,
+    cursor,
+    limit,
+    startDate,
+    endDate
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **startDate** | [**string**] | Milestones on this date or newer. Defaults to Monday of the current week. Format: YYYY-MM-DD. | (optional) defaults to undefined|
+| **endDate** | [**string**] | Milestones on this date or older. Format: YYYY-MM-DD. | (optional) defaults to undefined|
+
+
+### Return type
+
+**MilestonesGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdMilestonesMilestoneIdDelete**
+> projectsProjectIdMilestonesMilestoneIdDelete()
 
 
 ### Example
@@ -3323,7 +7452,7 @@ let projectId: number; // (default to undefined)
 let milestoneId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
 
-const { status, data } = await apiInstance.deleteProjectMilestone(
+const { status, data } = await apiInstance.projectsProjectIdMilestonesMilestoneIdDelete(
     projectId,
     milestoneId,
     acceptVersion
@@ -3362,1927 +7491,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deleteProjectPhase**
-> ProjectPhase deleteProjectPhase()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let phaseId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.deleteProjectPhase(
-    projectId,
-    phaseId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **phaseId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**ProjectPhase**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**204** | Project phases divide your project into smaller sections so you can group similar tasks and assignments together. |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteRateCard**
-> deleteRateCard()
-
-Rate cards that are internal, standard, or have projects cannot be deleted
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let rateCardId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.deleteRateCard(
-    rateCardId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **rateCardId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**204** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteRosteredTimeOff**
-> deleteRosteredTimeOff()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let timeOffId: number; //The unique identifier for the time-off. (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.deleteRosteredTimeOff(
-    timeOffId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **timeOffId** | [**number**] | The unique identifier for the time-off. | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**202** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteSelectCustomField**
-> deleteSelectCustomField()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let selectFieldId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.deleteSelectCustomField(
-    selectFieldId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **selectFieldId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**204** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteSelectCustomFieldOption**
-> deleteSelectCustomFieldOption()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let selectFieldId: number; // (default to undefined)
-let selectOptionId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.deleteSelectCustomFieldOption(
-    selectFieldId,
-    selectOptionId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **selectFieldId** | [**number**] |  | defaults to undefined|
-| **selectOptionId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**204** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteSkill**
-> deleteSkill()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let skillId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.deleteSkill(
-    skillId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **skillId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**204** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteTeam**
-> deleteTeam()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let teamId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.deleteTeam(
-    teamId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **teamId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**204** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteTextCustomField**
-> deleteTextCustomField()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let textFieldId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.deleteTextCustomField(
-    textFieldId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **textFieldId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**204** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteUser**
-> deleteUser()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let userId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.deleteUser(
-    userId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **userId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**204** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteWorkstream**
-> deleteWorkstream()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let workstreamId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.deleteWorkstream(
-    workstreamId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **workstreamId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**204** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getClient**
-> Client getClient()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let clientId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getClient(
-    clientId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **clientId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Client**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getCurrentUser**
-> GetCurrentUser200Response getCurrentUser()
-
-Get information about the currently authenticated user.
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getCurrentUser(
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**GetCurrentUser200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getHolidayGroup**
-> HolidayGroup getHolidayGroup()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let holidayGroupId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getHolidayGroup(
-    holidayGroupId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **holidayGroupId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**HolidayGroup**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getLeaveTimeOff**
-> TimeOff getLeaveTimeOff()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let timeOffId: number; //The unique identifier for the time-off. (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getLeaveTimeOff(
-    timeOffId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **timeOffId** | [**number**] | The unique identifier for the time-off. | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**TimeOff**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getPeopleTag**
-> ListPeopleTags200ResponseValuesInner getPeopleTag()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let peopleTagId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getPeopleTag(
-    peopleTagId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **peopleTagId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**ListPeopleTags200ResponseValuesInner**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getPerson**
-> Person getPerson()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getPerson(
-    personId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Person**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getPersonCurrentContract**
-> Contract getPersonCurrentContract()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getPersonCurrentContract(
-    personId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Contract**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getPersonCurrentTeam**
-> GetPersonCurrentTeam200Response getPersonCurrentTeam()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 20)
-
-const { status, data } = await apiInstance.getPersonCurrentTeam(
-    personId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 20|
-
-
-### Return type
-
-**GetPersonCurrentTeam200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getPersonHoursReport**
-> GetPersonHoursReport200Response getPersonHoursReport()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let startDate: string; //Only include entries that start on or after this date. Format: YYYY-MM-DD (optional) (default to undefined)
-let endDate: string; //Only include entries that end on or before this date. Format: YYYY-MM-DD (optional) (default to undefined)
-
-const { status, data } = await apiInstance.getPersonHoursReport(
-    personId,
-    acceptVersion,
-    cursor,
-    limit,
-    startDate,
-    endDate
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **startDate** | [**string**] | Only include entries that start on or after this date. Format: YYYY-MM-DD | (optional) defaults to undefined|
-| **endDate** | [**string**] | Only include entries that end on or before this date. Format: YYYY-MM-DD | (optional) defaults to undefined|
-
-
-### Return type
-
-**GetPersonHoursReport200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getProject**
-> Project getProject()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getProject(
-    projectId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Project**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getProjectBudgetRole**
-> ProjectBudgetRole getProjectBudgetRole()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let roleId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getProjectBudgetRole(
-    projectId,
-    roleId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **roleId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**ProjectBudgetRole**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Project budget role |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getProjectHoursReport**
-> GetProjectHoursReport200Response getProjectHoursReport()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let startDate: string; //Only include entries that start on or after this date. Format: YYYY-MM-DD (optional) (default to undefined)
-let endDate: string; //Only include entries that end on or before this date. Format: YYYY-MM-DD (optional) (default to undefined)
-
-const { status, data } = await apiInstance.getProjectHoursReport(
-    projectId,
-    acceptVersion,
-    cursor,
-    limit,
-    startDate,
-    endDate
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **startDate** | [**string**] | Only include entries that start on or after this date. Format: YYYY-MM-DD | (optional) defaults to undefined|
-| **endDate** | [**string**] | Only include entries that end on or before this date. Format: YYYY-MM-DD | (optional) defaults to undefined|
-
-
-### Return type
-
-**GetProjectHoursReport200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getProjectPersonRequest**
-> PersonRequest getProjectPersonRequest()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let personRequestId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getProjectPersonRequest(
-    projectId,
-    personRequestId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **personRequestId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**PersonRequest**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getProjectPhase**
-> ProjectPhase getProjectPhase()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let phaseId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getProjectPhase(
-    projectId,
-    phaseId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **phaseId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**ProjectPhase**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Project phases divide your project into smaller sections so you can group similar tasks and assignments together. |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getProjectTag**
-> ProjectTag getProjectTag()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectTagId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getProjectTag(
-    projectTagId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectTagId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**ProjectTag**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getProjectTimesheetLock**
-> GetProjectTimesheetLock200Response getProjectTimesheetLock()
-
-This feature currently in beta and only available to selected customers.
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getProjectTimesheetLock(
-    projectId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**GetProjectTimesheetLock200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getProjectTotalsReport**
-> ProjectAggregate getProjectTotalsReport()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; //The unique identifier for the project. (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getProjectTotalsReport(
-    projectId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] | The unique identifier for the project. | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**ProjectAggregate**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getProjectWorkstream**
-> ProjectWorkstream getProjectWorkstream()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let workstreamId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getProjectWorkstream(
-    projectId,
-    workstreamId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **workstreamId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**ProjectWorkstream**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getRateCard**
-> RateCard getRateCard()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let rateCardId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getRateCard(
-    rateCardId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **rateCardId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**RateCard**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getRole**
-> Role getRole()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let roleId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getRole(
-    roleId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **roleId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Role**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getSkill**
-> Skill getSkill()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let skillId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getSkill(
-    skillId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **skillId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Skill**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getTeam**
-> Team getTeam()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let teamId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getTeam(
-    teamId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **teamId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Team**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getUser**
-> User getUser()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let userId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getUser(
-    userId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **userId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**User**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getWorkstream**
-> Workstream getWorkstream()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let workstreamId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.getWorkstream(
-    workstreamId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **workstreamId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Workstream**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listActuals**
-> ListActuals200Response listActuals()
+# **projectsProjectIdMilestonesMilestoneIdPatch**
+> Milestone projectsProjectIdMilestonesMilestoneIdPatch(projectsProjectIdMilestonesMilestoneIdPatchRequest)
 
 
 ### Example
@@ -5291,5686 +7501,7 @@ const { status, data } = await apiInstance.getWorkstream(
 import {
     DefaultApi,
     Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 100)
-let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
-let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
-let minDate: string; //Start date to filter by. Format: YYYY-MM-DD (optional) (default to undefined)
-let maxDate: string; //End date (inclusive). Format: YYYY-MM-DD (optional) (default to undefined)
-let projectId: number; // (optional) (default to undefined)
-let roleId: number; // (optional) (default to undefined)
-let personId: number; // (optional) (default to undefined)
-let workstreamId: number; // (optional) (default to undefined)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listActuals(
-    acceptVersion,
-    cursor,
-    limit,
-    sortBy,
-    order,
-    minDate,
-    maxDate,
-    projectId,
-    roleId,
-    personId,
-    workstreamId,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
-| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
-| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
-| **minDate** | [**string**] | Start date to filter by. Format: YYYY-MM-DD | (optional) defaults to undefined|
-| **maxDate** | [**string**] | End date (inclusive). Format: YYYY-MM-DD | (optional) defaults to undefined|
-| **projectId** | [**number**] |  | (optional) defaults to undefined|
-| **roleId** | [**number**] |  | (optional) defaults to undefined|
-| **personId** | [**number**] |  | (optional) defaults to undefined|
-| **workstreamId** | [**number**] |  | (optional) defaults to undefined|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListActuals200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listAssignments**
-> ListAssignments200Response listAssignments()
-
-Get a list of assignments, paginated
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 100)
-let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
-let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
-let personId: number; // (optional) (default to undefined)
-let roleId: number; // (optional) (default to undefined)
-let projectId: number; // (optional) (default to undefined)
-let startDate: string; //Format: YYYY-MM-DD (optional) (default to undefined)
-let endDate: string; //Format: YYYY-MM-DD (optional) (default to undefined)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listAssignments(
-    acceptVersion,
-    cursor,
-    limit,
-    sortBy,
-    order,
-    personId,
-    roleId,
-    projectId,
-    startDate,
-    endDate,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
-| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
-| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
-| **personId** | [**number**] |  | (optional) defaults to undefined|
-| **roleId** | [**number**] |  | (optional) defaults to undefined|
-| **projectId** | [**number**] |  | (optional) defaults to undefined|
-| **startDate** | [**string**] | Format: YYYY-MM-DD | (optional) defaults to undefined|
-| **endDate** | [**string**] | Format: YYYY-MM-DD | (optional) defaults to undefined|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListAssignments200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listBudgetRoles**
-> ListBudgetRoles200Response listBudgetRoles()
-
-List all budget roles across all projects
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 100)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listBudgetRoles(
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListBudgetRoles200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listCheckboxCustomFields**
-> ListCheckboxCustomFields200Response listCheckboxCustomFields()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let model: 'PERSON' | 'PROJECT'; //The field type of the custom field (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listCheckboxCustomFields(
-    acceptVersion,
-    cursor,
-    limit,
-    model
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **model** | [**&#39;PERSON&#39; | &#39;PROJECT&#39;**]**Array<&#39;PERSON&#39; &#124; &#39;PROJECT&#39;>** | The field type of the custom field | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListCheckboxCustomFields200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listClientProjects**
-> ListClientProjects200Response listClientProjects()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let includeArchived: boolean; // (default to false)
-let clientId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listClientProjects(
-    includeArchived,
-    clientId,
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **includeArchived** | [**boolean**] |  | defaults to false|
-| **clientId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListClientProjects200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listClients**
-> ListClients200Response listClients()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let sortBy: 'id' | 'createdAt' | 'updatedAt'; // (default to 'id')
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let name: string; //If provided, will only return clients with a name that is a substring of this value (case-insensitive). (optional) (default to undefined)
-let order: SortOrder; // (optional) (default to undefined)
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listClients(
-    sortBy,
-    acceptVersion,
-    name,
-    order,
-    cursor,
-    limit,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **sortBy** | [**&#39;id&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39;**]**Array<&#39;id&#39; &#124; &#39;createdAt&#39; &#124; &#39;updatedAt&#39;>** |  | defaults to 'id'|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **name** | [**string**] | If provided, will only return clients with a name that is a substring of this value (case-insensitive). | (optional) defaults to undefined|
-| **order** | **SortOrder** |  | (optional) defaults to undefined|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListClients200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listContracts**
-> ListContracts200Response listContracts()
-
-See GET /people/{personId}/contracts to view all contracts for a specific person. See POST /people/{personId}/contracts to create a new contract for a person
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let sortBy: 'id' | 'createdAt' | 'updatedAt'; // (default to 'id')
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-let order: SortOrder; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listContracts(
-    sortBy,
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter,
-    order
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **sortBy** | [**&#39;id&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39;**]**Array<&#39;id&#39; &#124; &#39;createdAt&#39; &#124; &#39;updatedAt&#39;>** |  | defaults to 'id'|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-| **order** | **SortOrder** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListContracts200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listDateCustomFields**
-> ListDateCustomFields200Response listDateCustomFields()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let model: 'PERSON' | 'PROJECT'; //The field type of the custom field (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listDateCustomFields(
-    acceptVersion,
-    cursor,
-    limit,
-    model
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **model** | [**&#39;PERSON&#39; | &#39;PROJECT&#39;**]**Array<&#39;PERSON&#39; &#124; &#39;PROJECT&#39;>** | The field type of the custom field | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListDateCustomFields200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listEvents**
-> ListEvents200Response listEvents()
-
-Get a list of events that have occurred. Expand the RESPONSES (200) panel below to see supported events from live accounts. Test accounts are not supported. More events will be added in the future.
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let eventType: Array<'project_deleted' | 'person_deleted' | 'contract_deleted' | 'actual_deleted' | 'time_off_deleted' | 'assignment_deleted'>; //Filter by event type, e.g. project_deleted. If not provided, all event types are returned. (optional) (default to undefined)
-let occurredAfter: string; //Only return events that occurred after this time. ISO 8601 format. (optional) (default to undefined)
-let orderBy: 'asc' | 'desc'; //Order the events by when they occurred. (optional) (default to 'desc')
-
-const { status, data } = await apiInstance.listEvents(
-    acceptVersion,
-    cursor,
-    limit,
-    eventType,
-    occurredAfter,
-    orderBy
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **eventType** | **Array<&#39;project_deleted&#39; &#124; &#39;person_deleted&#39; &#124; &#39;contract_deleted&#39; &#124; &#39;actual_deleted&#39; &#124; &#39;time_off_deleted&#39; &#124; &#39;assignment_deleted&#39;>** | Filter by event type, e.g. project_deleted. If not provided, all event types are returned. | (optional) defaults to undefined|
-| **occurredAfter** | [**string**] | Only return events that occurred after this time. ISO 8601 format. | (optional) defaults to undefined|
-| **orderBy** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Order the events by when they occurred. | (optional) defaults to 'desc'|
-
-
-### Return type
-
-**ListEvents200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**422** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listHolidayGroupHolidays**
-> ListHolidayGroupHolidays200Response listHolidayGroupHolidays()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let holidayGroupId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-
-const { status, data } = await apiInstance.listHolidayGroupHolidays(
-    holidayGroupId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **holidayGroupId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-
-
-### Return type
-
-**ListHolidayGroupHolidays200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listHolidayGroups**
-> ListHolidayGroups200Response listHolidayGroups()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
-let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
-
-const { status, data } = await apiInstance.listHolidayGroups(
-    acceptVersion,
-    cursor,
-    limit,
-    sortBy,
-    order
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
-| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
-
-
-### Return type
-
-**ListHolidayGroups200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listHolidayTimeOffs**
-> ListPersonHolidays200Response listHolidayTimeOffs()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let sortBy: 'id' | 'createdAt' | 'updatedAt'; // (default to 'id')
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let order: SortOrder; // (optional) (default to undefined)
-let personId: number; // (optional) (default to undefined)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listHolidayTimeOffs(
-    sortBy,
-    acceptVersion,
-    cursor,
-    limit,
-    order,
-    personId,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **sortBy** | [**&#39;id&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39;**]**Array<&#39;id&#39; &#124; &#39;createdAt&#39; &#124; &#39;updatedAt&#39;>** |  | defaults to 'id'|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **order** | **SortOrder** |  | (optional) defaults to undefined|
-| **personId** | [**number**] |  | (optional) defaults to undefined|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListPersonHolidays200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listInvitations**
-> ListInvitations200Response listInvitations()
-
-Get a list of invitations. Does not contain the invitation token for security reasons
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let sortBy: 'createdAt' | 'sentAt' | 'id'; //Field to sort by: createdAt or sentAt or id (optional) (default to 'id')
-let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
-
-const { status, data } = await apiInstance.listInvitations(
-    acceptVersion,
-    cursor,
-    limit,
-    sortBy,
-    order
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **sortBy** | [**&#39;createdAt&#39; | &#39;sentAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;sentAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or sentAt or id | (optional) defaults to 'id'|
-| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
-
-
-### Return type
-
-**ListInvitations200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listLeaveTimeOffs**
-> ListPersonLeave200Response listLeaveTimeOffs()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let sortBy: 'id' | 'createdAt' | 'updatedAt'; // (default to 'id')
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let order: SortOrder; // (optional) (default to undefined)
-let personId: number; // (optional) (default to undefined)
-let startDate: string; //Format: YYYY-MM-DD (optional) (default to undefined)
-let endDate: string; //Format: YYYY-MM-DD (optional) (default to undefined)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listLeaveTimeOffs(
-    sortBy,
-    acceptVersion,
-    cursor,
-    limit,
-    order,
-    personId,
-    startDate,
-    endDate,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **sortBy** | [**&#39;id&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39;**]**Array<&#39;id&#39; &#124; &#39;createdAt&#39; &#124; &#39;updatedAt&#39;>** |  | defaults to 'id'|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **order** | **SortOrder** |  | (optional) defaults to undefined|
-| **personId** | [**number**] |  | (optional) defaults to undefined|
-| **startDate** | [**string**] | Format: YYYY-MM-DD | (optional) defaults to undefined|
-| **endDate** | [**string**] | Format: YYYY-MM-DD | (optional) defaults to undefined|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListPersonLeave200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listMilestones**
-> ListMilestones200Response listMilestones()
-
-List all milestones across all projects
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 100)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listMilestones(
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListMilestones200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listNotesForProject**
-> ListProjectNotes200Response listNotesForProject()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-
-const { status, data } = await apiInstance.listNotesForProject(
-    projectId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-
-
-### Return type
-
-**ListProjectNotes200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listOtherExpenses**
-> ListOtherExpenses200Response listOtherExpenses()
-
-List all other expenses across all projects
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 100)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listOtherExpenses(
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListOtherExpenses200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listPeople**
-> ListPeople200Response listPeople()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
-let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
-let includePlaceholders: boolean; // (optional) (default to false)
-let email: string; //If provided, will only return people with an email that are a substring of this value (case-insensitive). (optional) (default to undefined)
-let firstName: string; //If provided, will only return people with a first name that is a substring of this value (case-insensitive). (optional) (default to undefined)
-let lastName: string; //If provided, will only return people with a last name that is a substring of this value (case-insensitive). (optional) (default to undefined)
-let modifiedAfter: ModifiedAfter; //If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. Note: A person is considered \"modified\" if any of its core properties change. Actions that count as modifying a person include changing first name, last name, email, references, tags and archiving. A person is not considered modified just because another object it is associated with is changed (e.g. a contract, project or an assignment). (optional) (default to undefined)
-let externalId: string; //External ID value (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listPeople(
-    acceptVersion,
-    cursor,
-    limit,
-    sortBy,
-    order,
-    includePlaceholders,
-    email,
-    firstName,
-    lastName,
-    modifiedAfter,
-    externalId
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
-| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
-| **includePlaceholders** | [**boolean**] |  | (optional) defaults to false|
-| **email** | [**string**] | If provided, will only return people with an email that are a substring of this value (case-insensitive). | (optional) defaults to undefined|
-| **firstName** | [**string**] | If provided, will only return people with a first name that is a substring of this value (case-insensitive). | (optional) defaults to undefined|
-| **lastName** | [**string**] | If provided, will only return people with a last name that is a substring of this value (case-insensitive). | (optional) defaults to undefined|
-| **modifiedAfter** | **ModifiedAfter** | If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. Note: A person is considered \&quot;modified\&quot; if any of its core properties change. Actions that count as modifying a person include changing first name, last name, email, references, tags and archiving. A person is not considered modified just because another object it is associated with is changed (e.g. a contract, project or an assignment). | (optional) defaults to undefined|
-| **externalId** | [**string**] | External ID value | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListPeople200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listPeopleCurrentContracts**
-> ListContracts200Response listPeopleCurrentContracts()
-
-List current contracts across all people
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 100)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listPeopleCurrentContracts(
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListContracts200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listPeopleCustomFields**
-> ListPeopleCustomFields200Response listPeopleCustomFields()
-
-List all custom fields across all people
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 100)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listPeopleCustomFields(
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListPeopleCustomFields200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listPeopleNotes**
-> ListPeopleNotes200Response listPeopleNotes()
-
-List all person notes across all people
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 100)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listPeopleNotes(
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListPeopleNotes200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listPeopleSkills**
-> ListPeopleSkills200Response listPeopleSkills()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let includePlaceholders: boolean; // (optional) (default to false)
-let modifiedAfter: ModifiedAfter; //If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listPeopleSkills(
-    acceptVersion,
-    cursor,
-    limit,
-    includePlaceholders,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **includePlaceholders** | [**boolean**] |  | (optional) defaults to false|
-| **modifiedAfter** | **ModifiedAfter** | If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListPeopleSkills200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listPeopleTags**
-> ListPeopleTags200Response listPeopleTags()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
-let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listPeopleTags(
-    acceptVersion,
-    cursor,
-    limit,
-    sortBy,
-    order,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
-| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListPeopleTags200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listPersonActuals**
-> ListActuals200Response listPersonActuals()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let projectId: number; // (optional) (default to undefined)
-let roleId: number; // (optional) (default to undefined)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listPersonActuals(
-    personId,
-    acceptVersion,
-    cursor,
-    limit,
-    projectId,
-    roleId,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **projectId** | [**number**] |  | (optional) defaults to undefined|
-| **roleId** | [**number**] |  | (optional) defaults to undefined|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListActuals200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listPersonAssignments**
-> ListAssignments200Response listPersonAssignments()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let projectId: number; // (optional) (default to undefined)
-let roleId: number; // (optional) (default to undefined)
-let startDate: string; //Include assignments that start or overlap with this date. Format: YYYY-MM-DD (optional) (default to undefined)
-let endDate: string; //Include assignments that end on or overlap with this date. Format: YYYY-MM-DD (optional) (default to undefined)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listPersonAssignments(
-    personId,
-    acceptVersion,
-    cursor,
-    limit,
-    projectId,
-    roleId,
-    startDate,
-    endDate,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **projectId** | [**number**] |  | (optional) defaults to undefined|
-| **roleId** | [**number**] |  | (optional) defaults to undefined|
-| **startDate** | [**string**] | Include assignments that start or overlap with this date. Format: YYYY-MM-DD | (optional) defaults to undefined|
-| **endDate** | [**string**] | Include assignments that end on or overlap with this date. Format: YYYY-MM-DD | (optional) defaults to undefined|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListAssignments200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listPersonContracts**
-> ListContracts200Response listPersonContracts()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 20)
-
-const { status, data } = await apiInstance.listPersonContracts(
-    personId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 20|
-
-
-### Return type
-
-**ListContracts200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listPersonHolidays**
-> ListPersonHolidays200Response listPersonHolidays()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-
-const { status, data } = await apiInstance.listPersonHolidays(
-    personId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-
-
-### Return type
-
-**ListPersonHolidays200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listPersonLeave**
-> ListPersonLeave200Response listPersonLeave()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-
-const { status, data } = await apiInstance.listPersonLeave(
-    personId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-
-
-### Return type
-
-**ListPersonLeave200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listPersonProjects**
-> ListClientProjects200Response listPersonProjects()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-
-const { status, data } = await apiInstance.listPersonProjects(
-    personId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-
-
-### Return type
-
-**ListClientProjects200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listPersonRequests**
-> ListPersonRequests200Response listPersonRequests()
-
-List all person requests across all projects
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 100)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listPersonRequests(
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListPersonRequests200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listPersonRosteredTimeOffs**
-> ListPersonLeave200Response listPersonRosteredTimeOffs()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-
-const { status, data } = await apiInstance.listPersonRosteredTimeOffs(
-    personId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-
-
-### Return type
-
-**ListPersonLeave200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listPersonSkills**
-> ListPersonSkills200Response listPersonSkills()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listPersonSkills(
-    personId,
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListPersonSkills200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listPhases**
-> ListPhases200Response listPhases()
-
-List all phases across all projects
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 100)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listPhases(
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListPhases200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listPlaceholders**
-> ListPlaceholders200Response listPlaceholders()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
-let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listPlaceholders(
-    acceptVersion,
-    cursor,
-    limit,
-    sortBy,
-    order,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
-| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListPlaceholders200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProjectActuals**
-> ListActuals200Response listProjectActuals()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let personId: number; // (optional) (default to undefined)
-let roleId: number; // (optional) (default to undefined)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listProjectActuals(
-    projectId,
-    acceptVersion,
-    cursor,
-    limit,
-    personId,
-    roleId,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **personId** | [**number**] |  | (optional) defaults to undefined|
-| **roleId** | [**number**] |  | (optional) defaults to undefined|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListActuals200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProjectAssignments**
-> ListAssignments200Response listProjectAssignments()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let personId: number; // (optional) (default to undefined)
-let roleId: number; // (optional) (default to undefined)
-let startDate: string; //Include assignments that start or overlap with this date. Format: YYYY-MM-DD (optional) (default to undefined)
-let endDate: string; //Include assignments that end on or overlap with this date. Format: YYYY-MM-DD (optional) (default to undefined)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listProjectAssignments(
-    projectId,
-    acceptVersion,
-    cursor,
-    limit,
-    personId,
-    roleId,
-    startDate,
-    endDate,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **personId** | [**number**] |  | (optional) defaults to undefined|
-| **roleId** | [**number**] |  | (optional) defaults to undefined|
-| **startDate** | [**string**] | Include assignments that start or overlap with this date. Format: YYYY-MM-DD | (optional) defaults to undefined|
-| **endDate** | [**string**] | Include assignments that end on or overlap with this date. Format: YYYY-MM-DD | (optional) defaults to undefined|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListAssignments200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProjectBudgetRoles**
-> ListBudgetRoles200Response listProjectBudgetRoles()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-
-const { status, data } = await apiInstance.listProjectBudgetRoles(
-    projectId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-
-
-### Return type
-
-**ListBudgetRoles200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProjectCustomFields**
-> ListProjectCustomFields200Response listProjectCustomFields()
-
-List all custom fields across all projects
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 100)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listProjectCustomFields(
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListProjectCustomFields200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProjectMembers**
-> ListProjectMembers200Response listProjectMembers()
-
-This endpoint excludes changes for when people are removed from a project
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 100)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listProjectMembers(
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListProjectMembers200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProjectMilestones**
-> ListMilestones200Response listProjectMilestones()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let startDate: string; //Milestones on this date or newer. Defaults to Monday of the current week. Format: YYYY-MM-DD. (optional) (default to undefined)
-let endDate: string; //Milestones on this date or older. Format: YYYY-MM-DD. (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listProjectMilestones(
-    projectId,
-    acceptVersion,
-    cursor,
-    limit,
-    startDate,
-    endDate
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **startDate** | [**string**] | Milestones on this date or newer. Defaults to Monday of the current week. Format: YYYY-MM-DD. | (optional) defaults to undefined|
-| **endDate** | [**string**] | Milestones on this date or older. Format: YYYY-MM-DD. | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListMilestones200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProjectNotes**
-> ListProjectNotes200Response listProjectNotes()
-
-List all project notes across all projects
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 100)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listProjectNotes(
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListProjectNotes200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProjectOtherExpenses**
-> ListOtherExpenses200Response listProjectOtherExpenses()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; //Unique identifier for the project the expenses are for. (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 20)
-
-const { status, data } = await apiInstance.listProjectOtherExpenses(
-    projectId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] | Unique identifier for the project the expenses are for. | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 20|
-
-
-### Return type
-
-**ListOtherExpenses200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProjectPeople**
-> ListPeople200Response listProjectPeople()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let includeArchived: boolean; // (default to true)
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-
-const { status, data } = await apiInstance.listProjectPeople(
-    includeArchived,
-    projectId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **includeArchived** | [**boolean**] |  | defaults to true|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-
-
-### Return type
-
-**ListPeople200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProjectPersonRequests**
-> ListPersonRequests200Response listProjectPersonRequests()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-
-const { status, data } = await apiInstance.listProjectPersonRequests(
-    projectId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-
-
-### Return type
-
-**ListPersonRequests200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProjectPhases**
-> ListPhases200Response listProjectPhases()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 20)
-
-const { status, data } = await apiInstance.listProjectPhases(
-    projectId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 20|
-
-
-### Return type
-
-**ListPhases200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProjectRates**
-> ListProjectRates200Response listProjectRates()
-
-List all role rates across all projects
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 100)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listProjectRates(
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 100|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListProjectRates200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProjectRoleRates**
-> ListProjectRates200Response listProjectRoleRates()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-
-const { status, data } = await apiInstance.listProjectRoleRates(
-    projectId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-
-
-### Return type
-
-**ListProjectRates200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProjectTags**
-> ListProjectTags200Response listProjectTags()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
-let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
-let includeArchived: boolean; // (optional) (default to false)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listProjectTags(
-    acceptVersion,
-    cursor,
-    limit,
-    sortBy,
-    order,
-    includeArchived,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
-| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
-| **includeArchived** | [**boolean**] |  | (optional) defaults to false|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListProjectTags200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProjectTotalsReport**
-> ListProjectTotalsReport200Response listProjectTotalsReport()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let includeArchived: boolean; // (default to false)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 10)
-
-const { status, data } = await apiInstance.listProjectTotalsReport(
-    includeArchived,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **includeArchived** | [**boolean**] |  | defaults to false|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 10|
-
-
-### Return type
-
-**ListProjectTotalsReport200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProjectWorkstreams**
-> ListProjectWorkstreams200Response listProjectWorkstreams()
-
-List all project workstreams across all projects
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listProjectWorkstreams(
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListProjectWorkstreams200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProjectWorkstreamsForProject**
-> ListProjectWorkstreamsForProject200Response listProjectWorkstreamsForProject()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let includeArchived: boolean; // (default to true)
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-
-const { status, data } = await apiInstance.listProjectWorkstreamsForProject(
-    includeArchived,
-    projectId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **includeArchived** | [**boolean**] |  | defaults to true|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-
-
-### Return type
-
-**ListProjectWorkstreamsForProject200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listProjects**
-> ListClientProjects200Response listProjects()
-
-See `GET /people/{id}/projects` for all projects by person
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let includeArchived: boolean; // (default to true)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
-let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
-let modifiedAfter: ModifiedAfter; //If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. Note: A project is considered \"modified\" if any of its core properties change. Actions that count as modifying a project include changing the name, client, status, pricing model, rate type , team, budget, expenses budget, references, and archiving. A project is not considered modified just because another object it is associated with is changed (e.g. actuals, assignments, budget roles, custom fields, milestones, notes, other expenses, people, people requests, phases, rates, timesheet locks & workstreams). (optional) (default to undefined)
-let externalId: string; //External ID value (optional) (default to undefined)
-let name: string; //Case-insensitive substring match on project name (e.g. `Acme`). (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listProjects(
-    includeArchived,
-    acceptVersion,
-    cursor,
-    limit,
-    sortBy,
-    order,
-    modifiedAfter,
-    externalId,
-    name
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **includeArchived** | [**boolean**] |  | defaults to true|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
-| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
-| **modifiedAfter** | **ModifiedAfter** | If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. Note: A project is considered \&quot;modified\&quot; if any of its core properties change. Actions that count as modifying a project include changing the name, client, status, pricing model, rate type , team, budget, expenses budget, references, and archiving. A project is not considered modified just because another object it is associated with is changed (e.g. actuals, assignments, budget roles, custom fields, milestones, notes, other expenses, people, people requests, phases, rates, timesheet locks &amp; workstreams). | (optional) defaults to undefined|
-| **externalId** | [**string**] | External ID value | (optional) defaults to undefined|
-| **name** | [**string**] | Case-insensitive substring match on project name (e.g. &#x60;Acme&#x60;). | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListClientProjects200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listRateCards**
-> ListRateCards200Response listRateCards()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
-let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listRateCards(
-    acceptVersion,
-    cursor,
-    limit,
-    sortBy,
-    order,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
-| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListRateCards200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listRoles**
-> ListRoles200Response listRoles()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let name: string; //If provided, will only return roles with a name that is a substring of this value (case-insensitive). (optional) (default to undefined)
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
-let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listRoles(
-    acceptVersion,
-    name,
-    cursor,
-    limit,
-    sortBy,
-    order,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **name** | [**string**] | If provided, will only return roles with a name that is a substring of this value (case-insensitive). | (optional) defaults to undefined|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
-| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListRoles200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listRosteredTimeOffs**
-> ListPersonLeave200Response listRosteredTimeOffs()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let sortBy: 'id' | 'createdAt' | 'updatedAt'; // (default to 'id')
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let order: SortOrder; // (optional) (default to undefined)
-let personId: number; // (optional) (default to undefined)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listRosteredTimeOffs(
-    sortBy,
-    acceptVersion,
-    cursor,
-    limit,
-    order,
-    personId,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **sortBy** | [**&#39;id&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39;**]**Array<&#39;id&#39; &#124; &#39;createdAt&#39; &#124; &#39;updatedAt&#39;>** |  | defaults to 'id'|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **order** | **SortOrder** |  | (optional) defaults to undefined|
-| **personId** | [**number**] |  | (optional) defaults to undefined|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListPersonLeave200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listSelectCustomFields**
-> ListSelectCustomFields200Response listSelectCustomFields()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let model: 'PERSON' | 'PROJECT'; //The field type of the custom field (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listSelectCustomFields(
-    acceptVersion,
-    cursor,
-    limit,
-    model
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **model** | [**&#39;PERSON&#39; | &#39;PROJECT&#39;**]**Array<&#39;PERSON&#39; &#124; &#39;PROJECT&#39;>** | The field type of the custom field | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListSelectCustomFields200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listSkillPeople**
-> ListPeople200Response listSkillPeople()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let skillId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-
-const { status, data } = await apiInstance.listSkillPeople(
-    skillId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **skillId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-
-
-### Return type
-
-**ListPeople200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listSkills**
-> ListSkills200Response listSkills()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let sortBy: 'id' | 'createdAt' | 'updatedAt'; // (default to 'id')
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let order: SortOrder; // (optional) (default to undefined)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listSkills(
-    sortBy,
-    acceptVersion,
-    cursor,
-    limit,
-    order,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **sortBy** | [**&#39;id&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39;**]**Array<&#39;id&#39; &#124; &#39;createdAt&#39; &#124; &#39;updatedAt&#39;>** |  | defaults to 'id'|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **order** | **SortOrder** |  | (optional) defaults to undefined|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListSkills200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listTeamPeople**
-> ListPeople200Response listTeamPeople()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let teamId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-
-const { status, data } = await apiInstance.listTeamPeople(
-    teamId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **teamId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-
-
-### Return type
-
-**ListPeople200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listTeams**
-> ListTeams200Response listTeams()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
-let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
-
-const { status, data } = await apiInstance.listTeams(
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter,
-    sortBy,
-    order
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
-| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
-
-
-### Return type
-
-**ListTeams200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listTextCustomFields**
-> ListTextCustomFields200Response listTextCustomFields()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let model: 'PERSON' | 'PROJECT'; //The field type of the custom field (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listTextCustomFields(
-    acceptVersion,
-    cursor,
-    limit,
-    model
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **model** | [**&#39;PERSON&#39; | &#39;PROJECT&#39;**]**Array<&#39;PERSON&#39; &#124; &#39;PROJECT&#39;>** | The field type of the custom field | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListTextCustomFields200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listUserViews**
-> ListUserViews200Response listUserViews()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let userId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-
-const { status, data } = await apiInstance.listUserViews(
-    userId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **userId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-
-
-### Return type
-
-**ListUserViews200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listUsers**
-> ListUsers200Response listUsers()
-
-See `POST /invitations` for creating users
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listUsers(
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListUsers200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listViews**
-> ListUserViews200Response listViews()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listViews(
-    acceptVersion,
-    cursor,
-    limit,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListUserViews200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **listWorkstreams**
-> ListWorkstreams200Response listWorkstreams()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ModifiedAfter
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 50)
-let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
-let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
-let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.listWorkstreams(
-    acceptVersion,
-    cursor,
-    limit,
-    sortBy,
-    order,
-    modifiedAfter
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
-| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
-| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
-| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**ListWorkstreams200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **removePersonFromTeam**
-> removePersonFromTeam()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let teamId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
-let limit: number; //The number of results per page (optional) (default to 20)
-
-const { status, data } = await apiInstance.removePersonFromTeam(
-    personId,
-    teamId,
-    acceptVersion,
-    cursor,
-    limit
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **personId** | [**number**] |  | defaults to undefined|
-| **teamId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
-| **limit** | [**number**] | The number of results per page | (optional) defaults to 20|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**202** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **removePersonSkill**
-> removePersonSkill()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let skillId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.removePersonSkill(
-    personId,
-    skillId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **personId** | [**number**] |  | defaults to undefined|
-| **skillId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**204** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **removePlaceholderFromTeam**
-> removePlaceholderFromTeam()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let placeholderId: number; // (default to undefined)
-let teamId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.removePlaceholderFromTeam(
-    placeholderId,
-    teamId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **placeholderId** | [**number**] |  | defaults to undefined|
-| **teamId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**202** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **removePlaceholderSkill**
-> removePlaceholderSkill()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let placeholderId: number; // (default to undefined)
-let skillId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.removePlaceholderSkill(
-    placeholderId,
-    skillId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **placeholderId** | [**number**] |  | defaults to undefined|
-| **skillId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**204** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **removeProjectTagFromProject**
-> removeProjectTagFromProject()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectTagId: number; // (default to undefined)
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.removeProjectTagFromProject(
-    projectTagId,
-    projectId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectTagId** | [**number**] |  | defaults to undefined|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**204** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **removeViewFromUser**
-> removeViewFromUser()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let userId: number; // (default to undefined)
-let viewId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.removeViewFromUser(
-    userId,
-    viewId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **userId** | [**number**] |  | defaults to undefined|
-| **viewId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**204** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **removeWorkstreamFromProject**
-> ProjectWorkstream removeWorkstreamFromProject()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let workstreamId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-
-const { status, data } = await apiInstance.removeWorkstreamFromProject(
-    projectId,
-    workstreamId,
-    acceptVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **projectId** | [**number**] |  | defaults to undefined|
-| **workstreamId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**ProjectWorkstream**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateActualTimeEntry**
-> Actual updateActualTimeEntry()
-
-Returns Actual with updated minutes. Creates a new actual when there is none to update [Learn more](https://developer.runn.io/docs/actuals-notes).
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    ActualTimeEntry
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let actualTimeEntry: ActualTimeEntry; // (optional)
-
-const { status, data } = await apiInstance.updateActualTimeEntry(
-    acceptVersion,
-    actualTimeEntry
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **actualTimeEntry** | **ActualTimeEntry**|  | |
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Actual**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateCheckboxCustomField**
-> CustomFieldCheckbox updateCheckboxCustomField()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdateCheckboxCustomFieldRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let checkboxFieldId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateCheckboxCustomFieldRequest: UpdateCheckboxCustomFieldRequest; // (optional)
-
-const { status, data } = await apiInstance.updateCheckboxCustomField(
-    checkboxFieldId,
-    acceptVersion,
-    updateCheckboxCustomFieldRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updateCheckboxCustomFieldRequest** | **UpdateCheckboxCustomFieldRequest**|  | |
-| **checkboxFieldId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**CustomFieldCheckbox**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateClient**
-> Client updateClient()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdateClientRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let clientId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateClientRequest: UpdateClientRequest; // (optional)
-
-const { status, data } = await apiInstance.updateClient(
-    clientId,
-    acceptVersion,
-    updateClientRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updateClientRequest** | **UpdateClientRequest**|  | |
-| **clientId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Client**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateContract**
-> Contract updateContract()
-
-Update a contract
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdateContractRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let contractId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateContractRequest: UpdateContractRequest; // (optional)
-
-const { status, data } = await apiInstance.updateContract(
-    contractId,
-    acceptVersion,
-    updateContractRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updateContractRequest** | **UpdateContractRequest**|  | |
-| **contractId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Contract**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateDateCustomField**
-> CustomFieldDate updateDateCustomField()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdateDateCustomFieldRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let dateFieldId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateDateCustomFieldRequest: UpdateDateCustomFieldRequest; // (optional)
-
-const { status, data } = await apiInstance.updateDateCustomField(
-    dateFieldId,
-    acceptVersion,
-    updateDateCustomFieldRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updateDateCustomFieldRequest** | **UpdateDateCustomFieldRequest**|  | |
-| **dateFieldId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**CustomFieldDate**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updatePeopleTag**
-> ListPeopleTags200ResponseValuesInner updatePeopleTag(updatePeopleTagRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdatePeopleTagRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let peopleTagId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updatePeopleTagRequest: UpdatePeopleTagRequest; //
-
-const { status, data } = await apiInstance.updatePeopleTag(
-    peopleTagId,
-    acceptVersion,
-    updatePeopleTagRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updatePeopleTagRequest** | **UpdatePeopleTagRequest**|  | |
-| **peopleTagId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**ListPeopleTags200ResponseValuesInner**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updatePerson**
-> Person updatePerson()
-
-To add a new role or job title to a person, see POST /people/{personId}/contracts
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdatePersonRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updatePersonRequest: UpdatePersonRequest; // (optional)
-
-const { status, data } = await apiInstance.updatePerson(
-    personId,
-    acceptVersion,
-    updatePersonRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updatePersonRequest** | **UpdatePersonRequest**|  | |
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Person**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updatePersonCheckboxCustomField**
-> UpdatePersonCheckboxCustomFieldRequest updatePersonCheckboxCustomField(updatePersonCheckboxCustomFieldRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdatePersonCheckboxCustomFieldRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updatePersonCheckboxCustomFieldRequest: UpdatePersonCheckboxCustomFieldRequest; //
-
-const { status, data } = await apiInstance.updatePersonCheckboxCustomField(
-    personId,
-    acceptVersion,
-    updatePersonCheckboxCustomFieldRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updatePersonCheckboxCustomFieldRequest** | **UpdatePersonCheckboxCustomFieldRequest**|  | |
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**UpdatePersonCheckboxCustomFieldRequest**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updatePersonDateCustomField**
-> UpdatePersonDateCustomFieldRequest updatePersonDateCustomField(updatePersonDateCustomFieldRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdatePersonDateCustomFieldRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updatePersonDateCustomFieldRequest: UpdatePersonDateCustomFieldRequest; //
-
-const { status, data } = await apiInstance.updatePersonDateCustomField(
-    personId,
-    acceptVersion,
-    updatePersonDateCustomFieldRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updatePersonDateCustomFieldRequest** | **UpdatePersonDateCustomFieldRequest**|  | |
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**UpdatePersonDateCustomFieldRequest**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updatePersonSelectCustomField**
-> UpdatePersonSelectCustomFieldRequest updatePersonSelectCustomField(updatePersonSelectCustomFieldRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdatePersonSelectCustomFieldRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updatePersonSelectCustomFieldRequest: UpdatePersonSelectCustomFieldRequest; //
-
-const { status, data } = await apiInstance.updatePersonSelectCustomField(
-    personId,
-    acceptVersion,
-    updatePersonSelectCustomFieldRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updatePersonSelectCustomFieldRequest** | **UpdatePersonSelectCustomFieldRequest**|  | |
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**UpdatePersonSelectCustomFieldRequest**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updatePersonSkill**
-> Competency updatePersonSkill(updatePersonSkillRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdatePersonSkillRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let skillId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updatePersonSkillRequest: UpdatePersonSkillRequest; //
-
-const { status, data } = await apiInstance.updatePersonSkill(
-    personId,
-    skillId,
-    acceptVersion,
-    updatePersonSkillRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updatePersonSkillRequest** | **UpdatePersonSkillRequest**|  | |
-| **personId** | [**number**] |  | defaults to undefined|
-| **skillId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Competency**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updatePersonTextCustomField**
-> UpdatePersonTextCustomFieldRequest updatePersonTextCustomField(updatePersonTextCustomFieldRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdatePersonTextCustomFieldRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let personId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updatePersonTextCustomFieldRequest: UpdatePersonTextCustomFieldRequest; //
-
-const { status, data } = await apiInstance.updatePersonTextCustomField(
-    personId,
-    acceptVersion,
-    updatePersonTextCustomFieldRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updatePersonTextCustomFieldRequest** | **UpdatePersonTextCustomFieldRequest**|  | |
-| **personId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**UpdatePersonTextCustomFieldRequest**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateProject**
-> Project updateProject()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdateProjectRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateProjectRequest: UpdateProjectRequest; // (optional)
-
-const { status, data } = await apiInstance.updateProject(
-    projectId,
-    acceptVersion,
-    updateProjectRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updateProjectRequest** | **UpdateProjectRequest**|  | |
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**Project**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateProjectBudgetRole**
-> ProjectBudgetRole updateProjectBudgetRole()
-
-Update a project budget role for a project. You cannot update a              project budget role using estimated budget if a project rate does              not exist for the role because the project rate is used to set              the estimatedMinutes.
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdateProjectBudgetRoleRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let roleId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateProjectBudgetRoleRequest: UpdateProjectBudgetRoleRequest; // (optional)
-
-const { status, data } = await apiInstance.updateProjectBudgetRole(
-    projectId,
-    roleId,
-    acceptVersion,
-    updateProjectBudgetRoleRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updateProjectBudgetRoleRequest** | **UpdateProjectBudgetRoleRequest**|  | |
-| **projectId** | [**number**] |  | defaults to undefined|
-| **roleId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**ProjectBudgetRole**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Project budget role |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateProjectCheckboxCustomField**
-> UpdatePersonCheckboxCustomFieldRequest updateProjectCheckboxCustomField(updatePersonCheckboxCustomFieldRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdatePersonCheckboxCustomFieldRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updatePersonCheckboxCustomFieldRequest: UpdatePersonCheckboxCustomFieldRequest; //
-
-const { status, data } = await apiInstance.updateProjectCheckboxCustomField(
-    projectId,
-    acceptVersion,
-    updatePersonCheckboxCustomFieldRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updatePersonCheckboxCustomFieldRequest** | **UpdatePersonCheckboxCustomFieldRequest**|  | |
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**UpdatePersonCheckboxCustomFieldRequest**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateProjectDateCustomField**
-> UpdatePersonDateCustomFieldRequest updateProjectDateCustomField(updatePersonDateCustomFieldRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdatePersonDateCustomFieldRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updatePersonDateCustomFieldRequest: UpdatePersonDateCustomFieldRequest; //
-
-const { status, data } = await apiInstance.updateProjectDateCustomField(
-    projectId,
-    acceptVersion,
-    updatePersonDateCustomFieldRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updatePersonDateCustomFieldRequest** | **UpdatePersonDateCustomFieldRequest**|  | |
-| **projectId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**UpdatePersonDateCustomFieldRequest**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateProjectMilestone**
-> Milestone updateProjectMilestone()
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdateProjectMilestoneRequest
+    ProjectsProjectIdMilestonesMilestoneIdPatchRequest
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
@@ -10979,13 +7510,13 @@ const apiInstance = new DefaultApi(configuration);
 let projectId: number; // (default to undefined)
 let milestoneId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateProjectMilestoneRequest: UpdateProjectMilestoneRequest; // (optional)
+let projectsProjectIdMilestonesMilestoneIdPatchRequest: ProjectsProjectIdMilestonesMilestoneIdPatchRequest; //
 
-const { status, data } = await apiInstance.updateProjectMilestone(
+const { status, data } = await apiInstance.projectsProjectIdMilestonesMilestoneIdPatch(
     projectId,
     milestoneId,
     acceptVersion,
-    updateProjectMilestoneRequest
+    projectsProjectIdMilestonesMilestoneIdPatchRequest
 );
 ```
 
@@ -10993,7 +7524,7 @@ const { status, data } = await apiInstance.updateProjectMilestone(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **updateProjectMilestoneRequest** | **UpdateProjectMilestoneRequest**|  | |
+| **projectsProjectIdMilestonesMilestoneIdPatchRequest** | **ProjectsProjectIdMilestonesMilestoneIdPatchRequest**|  | |
 | **projectId** | [**number**] |  | defaults to undefined|
 | **milestoneId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
@@ -11023,8 +7554,253 @@ const { status, data } = await apiInstance.updateProjectMilestone(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateProjectOtherExpense**
-> ProjectOtherExpense updateProjectOtherExpense()
+# **projectsProjectIdMilestonesPost**
+> Milestone projectsProjectIdMilestonesPost(projectsProjectIdMilestonesPostRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ProjectsProjectIdMilestonesPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let projectsProjectIdMilestonesPostRequest: ProjectsProjectIdMilestonesPostRequest; //
+
+const { status, data } = await apiInstance.projectsProjectIdMilestonesPost(
+    projectId,
+    acceptVersion,
+    projectsProjectIdMilestonesPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectsProjectIdMilestonesPostRequest** | **ProjectsProjectIdMilestonesPostRequest**|  | |
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Milestone**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdNotesGet**
+> ProjectNotesGet200Response projectsProjectIdNotesGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+
+const { status, data } = await apiInstance.projectsProjectIdNotesGet(
+    projectId,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+
+
+### Return type
+
+**ProjectNotesGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdNotesPost**
+> ProjectNote projectsProjectIdNotesPost(projectsProjectIdNotesPostRequest)
+
+Defaults creator to \'API\' user
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ProjectsProjectIdNotesPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let projectsProjectIdNotesPostRequest: ProjectsProjectIdNotesPostRequest; //
+
+const { status, data } = await apiInstance.projectsProjectIdNotesPost(
+    projectId,
+    acceptVersion,
+    projectsProjectIdNotesPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectsProjectIdNotesPostRequest** | **ProjectsProjectIdNotesPostRequest**|  | |
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**ProjectNote**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdOtherExpensesGet**
+> OtherExpensesGet200Response projectsProjectIdOtherExpensesGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; //Unique identifier for the project the expenses are for. (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 20)
+
+const { status, data } = await apiInstance.projectsProjectIdOtherExpensesGet(
+    projectId,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] | Unique identifier for the project the expenses are for. | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 20|
+
+
+### Return type
+
+**OtherExpensesGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdOtherExpensesOtherExpenseIdPatch**
+> ProjectOtherExpense projectsProjectIdOtherExpensesOtherExpenseIdPatch(projectOtherExpense1)
 
 
 ### Example
@@ -11042,9 +7818,9 @@ const apiInstance = new DefaultApi(configuration);
 let projectId: number; //Unique identifier for the project the expense is for. (default to undefined)
 let otherExpenseId: number; //Unique identifier for the other expense to update. (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let projectOtherExpense1: ProjectOtherExpense1; //A non-labour expense for a project. (optional)
+let projectOtherExpense1: ProjectOtherExpense1; //A non-labour expense for a project.
 
-const { status, data } = await apiInstance.updateProjectOtherExpense(
+const { status, data } = await apiInstance.projectsProjectIdOtherExpensesOtherExpenseIdPatch(
     projectId,
     otherExpenseId,
     acceptVersion,
@@ -11086,8 +7862,311 @@ const { status, data } = await apiInstance.updateProjectOtherExpense(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateProjectPersonRequest**
-> UpdateProjectPersonRequest200Response updateProjectPersonRequest(updateProjectPersonRequestRequest)
+# **projectsProjectIdOtherExpensesPost**
+> ProjectOtherExpense projectsProjectIdOtherExpensesPost(projectOtherExpense)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ProjectOtherExpense
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; //Unique identifier for the project the expense is for. (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let projectOtherExpense: ProjectOtherExpense; //A non-labour expense for a project.
+
+const { status, data } = await apiInstance.projectsProjectIdOtherExpensesPost(
+    projectId,
+    acceptVersion,
+    projectOtherExpense
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectOtherExpense** | **ProjectOtherExpense**| A non-labour expense for a project. | |
+| **projectId** | [**number**] | Unique identifier for the project the expense is for. | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**ProjectOtherExpense**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | A non-labour expense for a project. |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdPatch**
+> Project projectsProjectIdPatch(projectsProjectIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ProjectsProjectIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let projectsProjectIdPatchRequest: ProjectsProjectIdPatchRequest; //
+
+const { status, data } = await apiInstance.projectsProjectIdPatch(
+    projectId,
+    acceptVersion,
+    projectsProjectIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectsProjectIdPatchRequest** | **ProjectsProjectIdPatchRequest**|  | |
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Project**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdPeopleGet**
+> PeopleGet200Response projectsProjectIdPeopleGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let includeArchived: boolean; // (default to true)
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+
+const { status, data } = await apiInstance.projectsProjectIdPeopleGet(
+    includeArchived,
+    projectId,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **includeArchived** | [**boolean**] |  | defaults to true|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+
+
+### Return type
+
+**PeopleGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdPersonRequestsGet**
+> PersonRequestsGet200Response projectsProjectIdPersonRequestsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+
+const { status, data } = await apiInstance.projectsProjectIdPersonRequestsGet(
+    projectId,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+
+
+### Return type
+
+**PersonRequestsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdPersonRequestsPersonRequestIdGet**
+> PersonRequest projectsProjectIdPersonRequestsPersonRequestIdGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let personRequestId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.projectsProjectIdPersonRequestsPersonRequestIdGet(
+    projectId,
+    personRequestId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **personRequestId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**PersonRequest**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdPersonRequestsPersonRequestIdPatch**
+> ProjectsProjectIdPersonRequestsPersonRequestIdPatch200Response projectsProjectIdPersonRequestsPersonRequestIdPatch(projectsProjectIdPersonRequestsPersonRequestIdPatchRequest)
 
 Person requests are used to request a placeholder role be filled with another person in the account or to request a new person be hired. This endpoint can be used to update the status of a request to \'REQUESTED\' or \'NEED_TO_HIRE\', respectively.
 
@@ -11097,7 +8176,7 @@ Person requests are used to request a placeholder role be filled with another pe
 import {
     DefaultApi,
     Configuration,
-    UpdateProjectPersonRequestRequest
+    ProjectsProjectIdPersonRequestsPersonRequestIdPatchRequest
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
@@ -11106,13 +8185,13 @@ const apiInstance = new DefaultApi(configuration);
 let projectId: number; // (default to undefined)
 let personRequestId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateProjectPersonRequestRequest: UpdateProjectPersonRequestRequest; //
+let projectsProjectIdPersonRequestsPersonRequestIdPatchRequest: ProjectsProjectIdPersonRequestsPersonRequestIdPatchRequest; //
 
-const { status, data } = await apiInstance.updateProjectPersonRequest(
+const { status, data } = await apiInstance.projectsProjectIdPersonRequestsPersonRequestIdPatch(
     projectId,
     personRequestId,
     acceptVersion,
-    updateProjectPersonRequestRequest
+    projectsProjectIdPersonRequestsPersonRequestIdPatchRequest
 );
 ```
 
@@ -11120,7 +8199,7 @@ const { status, data } = await apiInstance.updateProjectPersonRequest(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **updateProjectPersonRequestRequest** | **UpdateProjectPersonRequestRequest**|  | |
+| **projectsProjectIdPersonRequestsPersonRequestIdPatchRequest** | **ProjectsProjectIdPersonRequestsPersonRequestIdPatchRequest**|  | |
 | **projectId** | [**number**] |  | defaults to undefined|
 | **personRequestId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
@@ -11128,7 +8207,7 @@ const { status, data } = await apiInstance.updateProjectPersonRequest(
 
 ### Return type
 
-**UpdateProjectPersonRequest200Response**
+**ProjectsProjectIdPersonRequestsPersonRequestIdPatch200Response**
 
 ### Authorization
 
@@ -11149,9 +8228,10 @@ const { status, data } = await apiInstance.updateProjectPersonRequest(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateProjectPhase**
-> ProjectPhase updateProjectPhase()
+# **projectsProjectIdPersonRequestsPost**
+> PersonRequest projectsProjectIdPersonRequestsPost(projectsProjectIdPersonRequestsPostRequest)
 
+Person requests are used to request a placeholder role be filled with a person in the account or to request a new person be hired. This endpoint can be used to create a new person request.
 
 ### Example
 
@@ -11159,7 +8239,127 @@ const { status, data } = await apiInstance.updateProjectPersonRequest(
 import {
     DefaultApi,
     Configuration,
-    UpdateProjectPhaseRequest
+    ProjectsProjectIdPersonRequestsPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let projectsProjectIdPersonRequestsPostRequest: ProjectsProjectIdPersonRequestsPostRequest; //
+
+const { status, data } = await apiInstance.projectsProjectIdPersonRequestsPost(
+    projectId,
+    acceptVersion,
+    projectsProjectIdPersonRequestsPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectsProjectIdPersonRequestsPostRequest** | **ProjectsProjectIdPersonRequestsPostRequest**|  | |
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**PersonRequest**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdPhasesGet**
+> PhasesGet200Response projectsProjectIdPhasesGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 20)
+
+const { status, data } = await apiInstance.projectsProjectIdPhasesGet(
+    projectId,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 20|
+
+
+### Return type
+
+**PhasesGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdPhasesPhaseIdDelete**
+> ProjectPhase projectsProjectIdPhasesPhaseIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
@@ -11168,13 +8368,11 @@ const apiInstance = new DefaultApi(configuration);
 let projectId: number; // (default to undefined)
 let phaseId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateProjectPhaseRequest: UpdateProjectPhaseRequest; // (optional)
 
-const { status, data } = await apiInstance.updateProjectPhase(
+const { status, data } = await apiInstance.projectsProjectIdPhasesPhaseIdDelete(
     projectId,
     phaseId,
-    acceptVersion,
-    updateProjectPhaseRequest
+    acceptVersion
 );
 ```
 
@@ -11182,7 +8380,126 @@ const { status, data } = await apiInstance.updateProjectPhase(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **updateProjectPhaseRequest** | **UpdateProjectPhaseRequest**|  | |
+| **projectId** | [**number**] |  | defaults to undefined|
+| **phaseId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**ProjectPhase**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Project phases divide your project into smaller sections so you can group similar tasks and assignments together. |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdPhasesPhaseIdGet**
+> ProjectPhase projectsProjectIdPhasesPhaseIdGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let phaseId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.projectsProjectIdPhasesPhaseIdGet(
+    projectId,
+    phaseId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **phaseId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**ProjectPhase**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Project phases divide your project into smaller sections so you can group similar tasks and assignments together. |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdPhasesPhaseIdPatch**
+> ProjectPhase projectsProjectIdPhasesPhaseIdPatch(projectsProjectIdPhasesPhaseIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ProjectsProjectIdPhasesPhaseIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let phaseId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let projectsProjectIdPhasesPhaseIdPatchRequest: ProjectsProjectIdPhasesPhaseIdPatchRequest; //
+
+const { status, data } = await apiInstance.projectsProjectIdPhasesPhaseIdPatch(
+    projectId,
+    phaseId,
+    acceptVersion,
+    projectsProjectIdPhasesPhaseIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectsProjectIdPhasesPhaseIdPatchRequest** | **ProjectsProjectIdPhasesPhaseIdPatchRequest**|  | |
 | **projectId** | [**number**] |  | defaults to undefined|
 | **phaseId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
@@ -11212,8 +8529,8 @@ const { status, data } = await apiInstance.updateProjectPhase(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateProjectRoleRate**
-> ProjectRate updateProjectRoleRate(updateProjectRoleRateRequest)
+# **projectsProjectIdPhasesPost**
+> ProjectPhase projectsProjectIdPhasesPost(projectsProjectIdPhasesPostRequest)
 
 
 ### Example
@@ -11222,7 +8539,126 @@ const { status, data } = await apiInstance.updateProjectPhase(
 import {
     DefaultApi,
     Configuration,
-    UpdateProjectRoleRateRequest
+    ProjectsProjectIdPhasesPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let projectsProjectIdPhasesPostRequest: ProjectsProjectIdPhasesPostRequest; //
+
+const { status, data } = await apiInstance.projectsProjectIdPhasesPost(
+    projectId,
+    acceptVersion,
+    projectsProjectIdPhasesPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectsProjectIdPhasesPostRequest** | **ProjectsProjectIdPhasesPostRequest**|  | |
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**ProjectPhase**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Project phases divide your project into smaller sections so you can group similar tasks and assignments together. |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdProjectRatesGet**
+> ProjectRatesGet200Response projectsProjectIdProjectRatesGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+
+const { status, data } = await apiInstance.projectsProjectIdProjectRatesGet(
+    projectId,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+
+
+### Return type
+
+**ProjectRatesGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdProjectRatesProjectRateIdPatch**
+> ProjectRate projectsProjectIdProjectRatesProjectRateIdPatch(projectsProjectIdProjectRatesProjectRateIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ProjectsProjectIdProjectRatesProjectRateIdPatchRequest
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
@@ -11231,13 +8667,13 @@ const apiInstance = new DefaultApi(configuration);
 let projectId: number; // (default to undefined)
 let projectRateId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateProjectRoleRateRequest: UpdateProjectRoleRateRequest; //
+let projectsProjectIdProjectRatesProjectRateIdPatchRequest: ProjectsProjectIdProjectRatesProjectRateIdPatchRequest; //
 
-const { status, data } = await apiInstance.updateProjectRoleRate(
+const { status, data } = await apiInstance.projectsProjectIdProjectRatesProjectRateIdPatch(
     projectId,
     projectRateId,
     acceptVersion,
-    updateProjectRoleRateRequest
+    projectsProjectIdProjectRatesProjectRateIdPatchRequest
 );
 ```
 
@@ -11245,7 +8681,7 @@ const { status, data } = await apiInstance.updateProjectRoleRate(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **updateProjectRoleRateRequest** | **UpdateProjectRoleRateRequest**|  | |
+| **projectsProjectIdProjectRatesProjectRateIdPatchRequest** | **ProjectsProjectIdProjectRatesProjectRateIdPatchRequest**|  | |
 | **projectId** | [**number**] |  | defaults to undefined|
 | **projectRateId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
@@ -11274,8 +8710,8 @@ const { status, data } = await apiInstance.updateProjectRoleRate(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateProjectSelectCustomField**
-> UpdatePersonSelectCustomFieldRequest updateProjectSelectCustomField(updatePersonSelectCustomFieldRequest)
+# **projectsProjectIdProjectWorkstreamsGet**
+> ProjectsProjectIdProjectWorkstreamsGet200Response projectsProjectIdProjectWorkstreamsGet()
 
 
 ### Example
@@ -11283,21 +8719,24 @@ const { status, data } = await apiInstance.updateProjectRoleRate(
 ```typescript
 import {
     DefaultApi,
-    Configuration,
-    UpdatePersonSelectCustomFieldRequest
+    Configuration
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
+let includeArchived: boolean; // (default to true)
 let projectId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updatePersonSelectCustomFieldRequest: UpdatePersonSelectCustomFieldRequest; //
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
 
-const { status, data } = await apiInstance.updateProjectSelectCustomField(
+const { status, data } = await apiInstance.projectsProjectIdProjectWorkstreamsGet(
+    includeArchived,
     projectId,
     acceptVersion,
-    updatePersonSelectCustomFieldRequest
+    cursor,
+    limit
 );
 ```
 
@@ -11305,14 +8744,16 @@ const { status, data } = await apiInstance.updateProjectSelectCustomField(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **updatePersonSelectCustomFieldRequest** | **UpdatePersonSelectCustomFieldRequest**|  | |
+| **includeArchived** | [**boolean**] |  | defaults to true|
 | **projectId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
 
 
 ### Return type
 
-**UpdatePersonSelectCustomFieldRequest**
+**ProjectsProjectIdProjectWorkstreamsGet200Response**
 
 ### Authorization
 
@@ -11320,66 +8761,7 @@ const { status, data } = await apiInstance.updateProjectSelectCustomField(
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateProjectTag**
-> ProjectTag updateProjectTag(updatePeopleTagRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdatePeopleTagRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let projectTagId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updatePeopleTagRequest: UpdatePeopleTagRequest; //
-
-const { status, data } = await apiInstance.updateProjectTag(
-    projectTagId,
-    acceptVersion,
-    updatePeopleTagRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updatePeopleTagRequest** | **UpdatePeopleTagRequest**|  | |
-| **projectTagId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**ProjectTag**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
@@ -11392,8 +8774,8 @@ const { status, data } = await apiInstance.updateProjectTag(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateProjectTextCustomField**
-> UpdatePersonTextCustomFieldRequest updateProjectTextCustomField(updatePersonTextCustomFieldRequest)
+# **projectsProjectIdProjectWorkstreamsWorkstreamIdDelete**
+> ProjectWorkstream projectsProjectIdProjectWorkstreamsWorkstreamIdDelete()
 
 
 ### Example
@@ -11401,21 +8783,20 @@ const { status, data } = await apiInstance.updateProjectTag(
 ```typescript
 import {
     DefaultApi,
-    Configuration,
-    UpdatePersonTextCustomFieldRequest
+    Configuration
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
 let projectId: number; // (default to undefined)
+let workstreamId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updatePersonTextCustomFieldRequest: UpdatePersonTextCustomFieldRequest; //
 
-const { status, data } = await apiInstance.updateProjectTextCustomField(
+const { status, data } = await apiInstance.projectsProjectIdProjectWorkstreamsWorkstreamIdDelete(
     projectId,
-    acceptVersion,
-    updatePersonTextCustomFieldRequest
+    workstreamId,
+    acceptVersion
 );
 ```
 
@@ -11423,14 +8804,14 @@ const { status, data } = await apiInstance.updateProjectTextCustomField(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **updatePersonTextCustomFieldRequest** | **UpdatePersonTextCustomFieldRequest**|  | |
 | **projectId** | [**number**] |  | defaults to undefined|
+| **workstreamId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 
 
 ### Return type
 
-**UpdatePersonTextCustomFieldRequest**
+**ProjectWorkstream**
 
 ### Authorization
 
@@ -11438,7 +8819,179 @@ const { status, data } = await apiInstance.updateProjectTextCustomField(
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdProjectWorkstreamsWorkstreamIdGet**
+> ProjectWorkstream projectsProjectIdProjectWorkstreamsWorkstreamIdGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let workstreamId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.projectsProjectIdProjectWorkstreamsWorkstreamIdGet(
+    projectId,
+    workstreamId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **workstreamId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**ProjectWorkstream**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdProjectWorkstreamsWorkstreamIdPost**
+> ProjectWorkstream projectsProjectIdProjectWorkstreamsWorkstreamIdPost()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let workstreamId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.projectsProjectIdProjectWorkstreamsWorkstreamIdPost(
+    projectId,
+    workstreamId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **workstreamId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**ProjectWorkstream**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projectsProjectIdTimesheetLockGet**
+> ProjectsProjectIdTimesheetLockGet200Response projectsProjectIdTimesheetLockGet()
+
+This feature currently in beta and only available to selected customers.
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.projectsProjectIdTimesheetLockGet(
+    projectId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**ProjectsProjectIdTimesheetLockGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
@@ -11448,11 +9001,12 @@ const { status, data } = await apiInstance.updateProjectTextCustomField(
 |**200** | Default Response |  -  |
 |**400** | Default Response |  -  |
 |**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateProjectTimesheetLock**
-> GetProjectTimesheetLock200Response updateProjectTimesheetLock()
+# **projectsProjectIdTimesheetLockPatch**
+> ProjectsProjectIdTimesheetLockGet200Response projectsProjectIdTimesheetLockPatch(projectsProjectIdTimesheetLockPatchRequest)
 
 This feature currently in beta and only available to selected customers.This will return an error and message if all timesheets haven\'t been filled out to selected date.
 
@@ -11462,7 +9016,7 @@ This feature currently in beta and only available to selected customers.This wil
 import {
     DefaultApi,
     Configuration,
-    UpdateProjectTimesheetLockRequest
+    ProjectsProjectIdTimesheetLockPatchRequest
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
@@ -11470,12 +9024,12 @@ const apiInstance = new DefaultApi(configuration);
 
 let projectId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateProjectTimesheetLockRequest: UpdateProjectTimesheetLockRequest; // (optional)
+let projectsProjectIdTimesheetLockPatchRequest: ProjectsProjectIdTimesheetLockPatchRequest; //
 
-const { status, data } = await apiInstance.updateProjectTimesheetLock(
+const { status, data } = await apiInstance.projectsProjectIdTimesheetLockPatch(
     projectId,
     acceptVersion,
-    updateProjectTimesheetLockRequest
+    projectsProjectIdTimesheetLockPatchRequest
 );
 ```
 
@@ -11483,14 +9037,14 @@ const { status, data } = await apiInstance.updateProjectTimesheetLock(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **updateProjectTimesheetLockRequest** | **UpdateProjectTimesheetLockRequest**|  | |
+| **projectsProjectIdTimesheetLockPatchRequest** | **ProjectsProjectIdTimesheetLockPatchRequest**|  | |
 | **projectId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 
 
 ### Return type
 
-**GetProjectTimesheetLock200Response**
+**ProjectsProjectIdTimesheetLockGet200Response**
 
 ### Authorization
 
@@ -11511,8 +9065,8 @@ const { status, data } = await apiInstance.updateProjectTimesheetLock(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateRole**
-> Role updateRole()
+# **rateCardsGet**
+> RateCardsGet200Response rateCardsGet()
 
 
 ### Example
@@ -11521,20 +9075,26 @@ const { status, data } = await apiInstance.updateProjectTimesheetLock(
 import {
     DefaultApi,
     Configuration,
-    UpdateRoleRequest
+    ModifiedAfter
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
-let roleId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateRoleRequest: UpdateRoleRequest; // (optional)
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
+let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
 
-const { status, data } = await apiInstance.updateRole(
-    roleId,
+const { status, data } = await apiInstance.rateCardsGet(
     acceptVersion,
-    updateRoleRequest
+    cursor,
+    limit,
+    sortBy,
+    order,
+    modifiedAfter
 );
 ```
 
@@ -11542,7 +9102,852 @@ const { status, data } = await apiInstance.updateRole(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **updateRoleRequest** | **UpdateRoleRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
+| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**RateCardsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **rateCardsPost**
+> RateCard rateCardsPost(rateCardsPostRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    RateCardsPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let rateCardsPostRequest: RateCardsPostRequest; //
+
+const { status, data } = await apiInstance.rateCardsPost(
+    acceptVersion,
+    rateCardsPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **rateCardsPostRequest** | **RateCardsPostRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**RateCard**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **rateCardsRateCardIdDelete**
+> rateCardsRateCardIdDelete()
+
+Rate cards that are internal, standard, or have projects cannot be deleted
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let rateCardId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.rateCardsRateCardIdDelete(
+    rateCardId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **rateCardId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **rateCardsRateCardIdGet**
+> RateCard rateCardsRateCardIdGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let rateCardId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.rateCardsRateCardIdGet(
+    rateCardId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **rateCardId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**RateCard**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **rateCardsRateCardIdPatch**
+> RateCard rateCardsRateCardIdPatch(rateCardsRateCardIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    RateCardsRateCardIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let rateCardId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let rateCardsRateCardIdPatchRequest: RateCardsRateCardIdPatchRequest; //
+
+const { status, data } = await apiInstance.rateCardsRateCardIdPatch(
+    rateCardId,
+    acceptVersion,
+    rateCardsRateCardIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **rateCardsRateCardIdPatchRequest** | **RateCardsRateCardIdPatchRequest**|  | |
+| **rateCardId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**RateCard**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **reportsHoursPeoplePersonIdGet**
+> ReportsHoursPeoplePersonIdGet200Response reportsHoursPeoplePersonIdGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let startDate: string; //Only include entries that start on or after this date. Format: YYYY-MM-DD (optional) (default to undefined)
+let endDate: string; //Only include entries that end on or before this date. Format: YYYY-MM-DD (optional) (default to undefined)
+
+const { status, data } = await apiInstance.reportsHoursPeoplePersonIdGet(
+    personId,
+    acceptVersion,
+    cursor,
+    limit,
+    startDate,
+    endDate
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **personId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **startDate** | [**string**] | Only include entries that start on or after this date. Format: YYYY-MM-DD | (optional) defaults to undefined|
+| **endDate** | [**string**] | Only include entries that end on or before this date. Format: YYYY-MM-DD | (optional) defaults to undefined|
+
+
+### Return type
+
+**ReportsHoursPeoplePersonIdGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **reportsHoursProjectsProjectIdGet**
+> ReportsHoursProjectsProjectIdGet200Response reportsHoursProjectsProjectIdGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let startDate: string; //Only include entries that start on or after this date. Format: YYYY-MM-DD (optional) (default to undefined)
+let endDate: string; //Only include entries that end on or before this date. Format: YYYY-MM-DD (optional) (default to undefined)
+
+const { status, data } = await apiInstance.reportsHoursProjectsProjectIdGet(
+    projectId,
+    acceptVersion,
+    cursor,
+    limit,
+    startDate,
+    endDate
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **startDate** | [**string**] | Only include entries that start on or after this date. Format: YYYY-MM-DD | (optional) defaults to undefined|
+| **endDate** | [**string**] | Only include entries that end on or before this date. Format: YYYY-MM-DD | (optional) defaults to undefined|
+
+
+### Return type
+
+**ReportsHoursProjectsProjectIdGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **reportsPeoplePersonIdGet**
+> ReportsPeoplePersonIdGet200Response reportsPeoplePersonIdGet()
+
+Get a report for a person containing data from the People Overview Report. Available under the Advanced Plan only. Contact help@runn.io to request beta access.
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let startDate: string; //The start date for the report. For monthly reports, this must be the first day of the month. For weekly reports, this must be a Monday. For quarterly reports, this must be the first day of the quarter. Format: YYYY-MM-DD (optional) (default to undefined)
+let periodType: 'monthly' | 'weekly' | 'quarterly'; //The time interval at which to split the metrics on the report. A monthly report made in June, for instance, will show revenue for June, July, August, and September. (optional) (default to 'monthly')
+
+const { status, data } = await apiInstance.reportsPeoplePersonIdGet(
+    personId,
+    acceptVersion,
+    startDate,
+    periodType
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **personId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **startDate** | [**string**] | The start date for the report. For monthly reports, this must be the first day of the month. For weekly reports, this must be a Monday. For quarterly reports, this must be the first day of the quarter. Format: YYYY-MM-DD | (optional) defaults to undefined|
+| **periodType** | [**&#39;monthly&#39; | &#39;weekly&#39; | &#39;quarterly&#39;**]**Array<&#39;monthly&#39; &#124; &#39;weekly&#39; &#124; &#39;quarterly&#39;>** | The time interval at which to split the metrics on the report. A monthly report made in June, for instance, will show revenue for June, July, August, and September. | (optional) defaults to 'monthly'|
+
+
+### Return type
+
+**ReportsPeoplePersonIdGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **reportsProjectsProjectIdGet**
+> ReportsProjectsProjectIdGet200Response reportsProjectsProjectIdGet()
+
+Get a report for a project containing data from the Project Overview report. Available under the Advanced Plan only. Contact help@runn.io to request beta access.
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let startDate: string; //The start date for the report. For monthly reports, this must be the first day of the month. For weekly reports, this must be a Monday. For quarterly reports, this must be the first day of the quarter. Format: YYYY-MM-DD (optional) (default to undefined)
+let periodType: 'monthly' | 'weekly' | 'quarterly'; //The time interval at which to split the metrics on the report. A monthly report made in June, for instance, will show revenue for June, July, August, and September. If not provided, the report will be for the Overview report (all inclusive). (optional) (default to undefined)
+
+const { status, data } = await apiInstance.reportsProjectsProjectIdGet(
+    projectId,
+    acceptVersion,
+    startDate,
+    periodType
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **startDate** | [**string**] | The start date for the report. For monthly reports, this must be the first day of the month. For weekly reports, this must be a Monday. For quarterly reports, this must be the first day of the quarter. Format: YYYY-MM-DD | (optional) defaults to undefined|
+| **periodType** | [**&#39;monthly&#39; | &#39;weekly&#39; | &#39;quarterly&#39;**]**Array<&#39;monthly&#39; &#124; &#39;weekly&#39; &#124; &#39;quarterly&#39;>** | The time interval at which to split the metrics on the report. A monthly report made in June, for instance, will show revenue for June, July, August, and September. If not provided, the report will be for the Overview report (all inclusive). | (optional) defaults to undefined|
+
+
+### Return type
+
+**ReportsProjectsProjectIdGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **reportsTotalsProjectsGet**
+> ReportsTotalsProjectsGet200Response reportsTotalsProjectsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let includeArchived: boolean; // (default to false)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 10)
+
+const { status, data } = await apiInstance.reportsTotalsProjectsGet(
+    includeArchived,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **includeArchived** | [**boolean**] |  | defaults to false|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 10|
+
+
+### Return type
+
+**ReportsTotalsProjectsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **reportsTotalsProjectsProjectIdGet**
+> ProjectAggregate reportsTotalsProjectsProjectIdGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; //The unique identifier for the project. (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.reportsTotalsProjectsProjectIdGet(
+    projectId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] | The unique identifier for the project. | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**ProjectAggregate**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **rolesGet**
+> RolesGet200Response rolesGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let name: string; //If provided, will only return roles with a name that is a substring of this value (case-insensitive). (optional) (default to undefined)
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
+let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.rolesGet(
+    acceptVersion,
+    name,
+    cursor,
+    limit,
+    sortBy,
+    order,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **name** | [**string**] | If provided, will only return roles with a name that is a substring of this value (case-insensitive). | (optional) defaults to undefined|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
+| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**RolesGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **rolesPost**
+> Role rolesPost(rolesPostRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    RolesPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let rolesPostRequest: RolesPostRequest; //
+
+const { status, data } = await apiInstance.rolesPost(
+    acceptVersion,
+    rolesPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **rolesPostRequest** | **RolesPostRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Role**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **rolesRoleIdGet**
+> Role rolesRoleIdGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let roleId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.rolesRoleIdGet(
+    roleId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **roleId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Role**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **rolesRoleIdPatch**
+> Role rolesRoleIdPatch(rolesRoleIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    RolesRoleIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let roleId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let rolesRoleIdPatchRequest: RolesRoleIdPatchRequest; //
+
+const { status, data } = await apiInstance.rolesRoleIdPatch(
+    roleId,
+    acceptVersion,
+    rolesRoleIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **rolesRoleIdPatchRequest** | **RolesRoleIdPatchRequest**|  | |
 | **roleId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 
@@ -11570,8 +9975,8 @@ const { status, data } = await apiInstance.updateRole(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateSelectCustomField**
-> CustomFieldSelect updateSelectCustomField()
+# **skillsGet**
+> SkillsGet200Response skillsGet()
 
 
 ### Example
@@ -11580,20 +9985,26 @@ const { status, data } = await apiInstance.updateRole(
 import {
     DefaultApi,
     Configuration,
-    UpdateCheckboxCustomFieldRequest
+    ModifiedAfter
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
-let selectFieldId: number; // (default to undefined)
+let sortBy: 'id' | 'createdAt' | 'updatedAt'; // (default to 'id')
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateCheckboxCustomFieldRequest: UpdateCheckboxCustomFieldRequest; // (optional)
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let order: SortOrder; // (optional) (default to undefined)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
 
-const { status, data } = await apiInstance.updateSelectCustomField(
-    selectFieldId,
+const { status, data } = await apiInstance.skillsGet(
+    sortBy,
     acceptVersion,
-    updateCheckboxCustomFieldRequest
+    cursor,
+    limit,
+    order,
+    modifiedAfter
 );
 ```
 
@@ -11601,14 +10012,73 @@ const { status, data } = await apiInstance.updateSelectCustomField(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **updateCheckboxCustomFieldRequest** | **UpdateCheckboxCustomFieldRequest**|  | |
-| **selectFieldId** | [**number**] |  | defaults to undefined|
+| **sortBy** | [**&#39;id&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39;**]**Array<&#39;id&#39; &#124; &#39;createdAt&#39; &#124; &#39;updatedAt&#39;>** |  | defaults to 'id'|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **order** | **SortOrder** |  | (optional) defaults to undefined|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**SkillsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **skillsPost**
+> Skill skillsPost(customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest: CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest; //
+
+const { status, data } = await apiInstance.skillsPost(
+    acceptVersion,
+    customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest** | **CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest**|  | |
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 
 
 ### Return type
 
-**CustomFieldSelect**
+**Skill**
 
 ### Authorization
 
@@ -11623,15 +10093,14 @@ const { status, data } = await apiInstance.updateSelectCustomField(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Default Response |  -  |
+|**201** | Default Response |  -  |
 |**400** | Default Response |  -  |
 |**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateSelectCustomFieldOption**
-> UpdateSelectCustomFieldOption200Response updateSelectCustomFieldOption(updateSelectCustomFieldOptionRequest)
+# **skillsSkillIdDelete**
+> skillsSkillIdDelete()
 
 
 ### Example
@@ -11639,71 +10108,7 @@ const { status, data } = await apiInstance.updateSelectCustomField(
 ```typescript
 import {
     DefaultApi,
-    Configuration,
-    UpdateSelectCustomFieldOptionRequest
-} from 'runn-typescript-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let selectFieldId: number; // (default to undefined)
-let selectOptionId: number; // (default to undefined)
-let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateSelectCustomFieldOptionRequest: UpdateSelectCustomFieldOptionRequest; //
-
-const { status, data } = await apiInstance.updateSelectCustomFieldOption(
-    selectFieldId,
-    selectOptionId,
-    acceptVersion,
-    updateSelectCustomFieldOptionRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updateSelectCustomFieldOptionRequest** | **UpdateSelectCustomFieldOptionRequest**|  | |
-| **selectFieldId** | [**number**] |  | defaults to undefined|
-| **selectOptionId** | [**number**] |  | defaults to undefined|
-| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
-
-
-### Return type
-
-**UpdateSelectCustomFieldOption200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Default Response |  -  |
-|**400** | Default Response |  -  |
-|**401** | Default Response |  -  |
-|**404** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateSkill**
-> Skill updateSkill(updateSelectCustomFieldOptionRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    UpdateSelectCustomFieldOptionRequest
+    Configuration
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
@@ -11711,12 +10116,10 @@ const apiInstance = new DefaultApi(configuration);
 
 let skillId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateSelectCustomFieldOptionRequest: UpdateSelectCustomFieldOptionRequest; //
 
-const { status, data } = await apiInstance.updateSkill(
+const { status, data } = await apiInstance.skillsSkillIdDelete(
     skillId,
-    acceptVersion,
-    updateSelectCustomFieldOptionRequest
+    acceptVersion
 );
 ```
 
@@ -11724,7 +10127,120 @@ const { status, data } = await apiInstance.updateSkill(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **updateSelectCustomFieldOptionRequest** | **UpdateSelectCustomFieldOptionRequest**|  | |
+| **skillId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **skillsSkillIdGet**
+> Skill skillsSkillIdGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let skillId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.skillsSkillIdGet(
+    skillId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **skillId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Skill**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **skillsSkillIdPatch**
+> Skill skillsSkillIdPatch(customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let skillId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest: CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest; //
+
+const { status, data } = await apiInstance.skillsSkillIdPatch(
+    skillId,
+    acceptVersion,
+    customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest** | **CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest**|  | |
 | **skillId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 
@@ -11753,8 +10269,70 @@ const { status, data } = await apiInstance.updateSkill(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateTeam**
-> Team updateTeam(updateSelectCustomFieldOptionRequest)
+# **skillsSkillIdPeopleGet**
+> PeopleGet200Response skillsSkillIdPeopleGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let skillId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+
+const { status, data } = await apiInstance.skillsSkillIdPeopleGet(
+    skillId,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **skillId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+
+
+### Return type
+
+**PeopleGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **skillsSkillIdPeoplePost**
+> SkillsSkillIdPeoplePost201Response skillsSkillIdPeoplePost(skillsSkillIdPeoplePostRequest)
 
 
 ### Example
@@ -11763,20 +10341,20 @@ const { status, data } = await apiInstance.updateSkill(
 import {
     DefaultApi,
     Configuration,
-    UpdateSelectCustomFieldOptionRequest
+    SkillsSkillIdPeoplePostRequest
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
-let teamId: number; // (default to undefined)
+let skillId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateSelectCustomFieldOptionRequest: UpdateSelectCustomFieldOptionRequest; //
+let skillsSkillIdPeoplePostRequest: SkillsSkillIdPeoplePostRequest; //
 
-const { status, data } = await apiInstance.updateTeam(
-    teamId,
+const { status, data } = await apiInstance.skillsSkillIdPeoplePost(
+    skillId,
     acceptVersion,
-    updateSelectCustomFieldOptionRequest
+    skillsSkillIdPeoplePostRequest
 );
 ```
 
@@ -11784,7 +10362,301 @@ const { status, data } = await apiInstance.updateTeam(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **updateSelectCustomFieldOptionRequest** | **UpdateSelectCustomFieldOptionRequest**|  | |
+| **skillsSkillIdPeoplePostRequest** | **SkillsSkillIdPeoplePostRequest**|  | |
+| **skillId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**SkillsSkillIdPeoplePost201Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **teamsGet**
+> TeamsGet200Response teamsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
+let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
+
+const { status, data } = await apiInstance.teamsGet(
+    acceptVersion,
+    cursor,
+    limit,
+    modifiedAfter,
+    sortBy,
+    order
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
+| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
+
+
+### Return type
+
+**TeamsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **teamsPost**
+> Team teamsPost(customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest: CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest; //
+
+const { status, data } = await apiInstance.teamsPost(
+    acceptVersion,
+    customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest** | **CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Team**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **teamsTeamIdDelete**
+> teamsTeamIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let teamId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.teamsTeamIdDelete(
+    teamId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **teamId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **teamsTeamIdGet**
+> Team teamsTeamIdGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let teamId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.teamsTeamIdGet(
+    teamId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **teamId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Team**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **teamsTeamIdPatch**
+> Team teamsTeamIdPatch(customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let teamId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest: CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest; //
+
+const { status, data } = await apiInstance.teamsTeamIdPatch(
+    teamId,
+    acceptVersion,
+    customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest** | **CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest**|  | |
 | **teamId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 
@@ -11813,8 +10685,69 @@ const { status, data } = await apiInstance.updateTeam(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateTextCustomField**
-> CustomFieldText updateTextCustomField()
+# **teamsTeamIdPeopleGet**
+> PeopleGet200Response teamsTeamIdPeopleGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let teamId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+
+const { status, data } = await apiInstance.teamsTeamIdPeopleGet(
+    teamId,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **teamId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+
+
+### Return type
+
+**PeopleGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **timeOffsHolidaysGet**
+> PeoplePersonIdTimeOffsHolidaysGet200Response timeOffsHolidaysGet()
 
 
 ### Example
@@ -11823,20 +10756,28 @@ const { status, data } = await apiInstance.updateTeam(
 import {
     DefaultApi,
     Configuration,
-    UpdateCheckboxCustomFieldRequest
+    ModifiedAfter
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
-let textFieldId: number; // (default to undefined)
+let sortBy: 'id' | 'createdAt' | 'updatedAt'; // (default to 'id')
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateCheckboxCustomFieldRequest: UpdateCheckboxCustomFieldRequest; // (optional)
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let order: SortOrder; // (optional) (default to undefined)
+let personId: number; // (optional) (default to undefined)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
 
-const { status, data } = await apiInstance.updateTextCustomField(
-    textFieldId,
+const { status, data } = await apiInstance.timeOffsHolidaysGet(
+    sortBy,
     acceptVersion,
-    updateCheckboxCustomFieldRequest
+    cursor,
+    limit,
+    order,
+    personId,
+    modifiedAfter
 );
 ```
 
@@ -11844,14 +10785,244 @@ const { status, data } = await apiInstance.updateTextCustomField(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **updateCheckboxCustomFieldRequest** | **UpdateCheckboxCustomFieldRequest**|  | |
-| **textFieldId** | [**number**] |  | defaults to undefined|
+| **sortBy** | [**&#39;id&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39;**]**Array<&#39;id&#39; &#124; &#39;createdAt&#39; &#124; &#39;updatedAt&#39;>** |  | defaults to 'id'|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **order** | **SortOrder** |  | (optional) defaults to undefined|
+| **personId** | [**number**] |  | (optional) defaults to undefined|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**PeoplePersonIdTimeOffsHolidaysGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **timeOffsHolidaysPost**
+> TimeOff timeOffsHolidaysPost(timeOffHolidayInput)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    TimeOffHolidayInput
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let timeOffHolidayInput: TimeOffHolidayInput; //
+
+const { status, data } = await apiInstance.timeOffsHolidaysPost(
+    acceptVersion,
+    timeOffHolidayInput
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **timeOffHolidayInput** | **TimeOffHolidayInput**|  | |
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 
 
 ### Return type
 
-**CustomFieldText**
+**TimeOff**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **timeOffsHolidaysTimeOffIdDelete**
+> timeOffsHolidaysTimeOffIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let timeOffId: number; //The unique identifier for the time-off. (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.timeOffsHolidaysTimeOffIdDelete(
+    timeOffId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **timeOffId** | [**number**] | The unique identifier for the time-off. | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**202** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **timeOffsLeaveBulkDelete**
+> timeOffsLeaveBulkDelete(timeOffsLeaveBulkDeleteRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    TimeOffsLeaveBulkDeleteRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let timeOffsLeaveBulkDeleteRequest: TimeOffsLeaveBulkDeleteRequest; //
+
+const { status, data } = await apiInstance.timeOffsLeaveBulkDelete(
+    acceptVersion,
+    timeOffsLeaveBulkDeleteRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **timeOffsLeaveBulkDeleteRequest** | **TimeOffsLeaveBulkDeleteRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**202** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **timeOffsLeaveBulkPost**
+> Array<TimeOff> timeOffsLeaveBulkPost(timeOffsLeaveBulkPostRequest)
+
+ #### Create or Update  This endpoint may return existing time offs if the new time off is a subset of an existing one.  #### Automatic Merging  If one or more existing time offs overlap with the specified start/end date, they will be automatically merged.  #### Partial Time Offs  If the `minutesPerDay` field is provided, automatic merging will only occur if any overlapping time off has the same `minutesPerDay` value. If the `minutesPerDay` value differs, the request will fail.
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    TimeOffsLeaveBulkPostRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let timeOffsLeaveBulkPostRequest: TimeOffsLeaveBulkPostRequest; //
+
+const { status, data } = await apiInstance.timeOffsLeaveBulkPost(
+    acceptVersion,
+    timeOffsLeaveBulkPostRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **timeOffsLeaveBulkPostRequest** | **TimeOffsLeaveBulkPostRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Array<TimeOff>**
 
 ### Authorization
 
@@ -11873,8 +11044,8 @@ const { status, data } = await apiInstance.updateTextCustomField(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateWorkstream**
-> Workstream updateWorkstream()
+# **timeOffsLeaveGet**
+> PeoplePersonIdTimeOffsLeaveGet200Response timeOffsLeaveGet()
 
 
 ### Example
@@ -11883,20 +11054,32 @@ const { status, data } = await apiInstance.updateTextCustomField(
 import {
     DefaultApi,
     Configuration,
-    UpdateWorkstreamRequest
+    ModifiedAfter
 } from 'runn-typescript-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
-let workstreamId: number; // (default to undefined)
+let sortBy: 'id' | 'createdAt' | 'updatedAt'; // (default to 'id')
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateWorkstreamRequest: UpdateWorkstreamRequest; // (optional)
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let order: SortOrder; // (optional) (default to undefined)
+let personId: number; // (optional) (default to undefined)
+let startDate: string; //Format: YYYY-MM-DD (optional) (default to undefined)
+let endDate: string; //Format: YYYY-MM-DD (optional) (default to undefined)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
 
-const { status, data } = await apiInstance.updateWorkstream(
-    workstreamId,
+const { status, data } = await apiInstance.timeOffsLeaveGet(
+    sortBy,
     acceptVersion,
-    updateWorkstreamRequest
+    cursor,
+    limit,
+    order,
+    personId,
+    startDate,
+    endDate,
+    modifiedAfter
 );
 ```
 
@@ -11904,7 +11087,1014 @@ const { status, data } = await apiInstance.updateWorkstream(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **updateWorkstreamRequest** | **UpdateWorkstreamRequest**|  | |
+| **sortBy** | [**&#39;id&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39;**]**Array<&#39;id&#39; &#124; &#39;createdAt&#39; &#124; &#39;updatedAt&#39;>** |  | defaults to 'id'|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **order** | **SortOrder** |  | (optional) defaults to undefined|
+| **personId** | [**number**] |  | (optional) defaults to undefined|
+| **startDate** | [**string**] | Format: YYYY-MM-DD | (optional) defaults to undefined|
+| **endDate** | [**string**] | Format: YYYY-MM-DD | (optional) defaults to undefined|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**PeoplePersonIdTimeOffsLeaveGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **timeOffsLeavePost**
+> TimeOff timeOffsLeavePost(timeOffLeaveInput)
+
+ #### Create or Update  This endpoint may return an existing time off if the new time off is a subset of an existing one.  #### Automatic Merging  If one or more existing time offs overlap with the specified start/end date, they will be automatically merged.  #### Partial Time Offs  If the `minutesPerDay` field is provided, automatic merging will only occur if any overlapping time off has the same `minutesPerDay` value. If the `minutesPerDay` value differs, the request will fail.
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    TimeOffLeaveInput
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let timeOffLeaveInput: TimeOffLeaveInput; //
+
+const { status, data } = await apiInstance.timeOffsLeavePost(
+    acceptVersion,
+    timeOffLeaveInput
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **timeOffLeaveInput** | **TimeOffLeaveInput**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**TimeOff**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **timeOffsLeaveTimeOffIdDelete**
+> timeOffsLeaveTimeOffIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let timeOffId: number; //The unique identifier for the time-off. (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.timeOffsLeaveTimeOffIdDelete(
+    timeOffId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **timeOffId** | [**number**] | The unique identifier for the time-off. | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**202** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **timeOffsLeaveTimeOffIdGet**
+> TimeOff timeOffsLeaveTimeOffIdGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let timeOffId: number; //The unique identifier for the time-off. (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.timeOffsLeaveTimeOffIdGet(
+    timeOffId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **timeOffId** | [**number**] | The unique identifier for the time-off. | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**TimeOff**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **timeOffsRosteredOffGet**
+> PeoplePersonIdTimeOffsLeaveGet200Response timeOffsRosteredOffGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let sortBy: 'id' | 'createdAt' | 'updatedAt'; // (default to 'id')
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let order: SortOrder; // (optional) (default to undefined)
+let personId: number; // (optional) (default to undefined)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.timeOffsRosteredOffGet(
+    sortBy,
+    acceptVersion,
+    cursor,
+    limit,
+    order,
+    personId,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **sortBy** | [**&#39;id&#39; | &#39;createdAt&#39; | &#39;updatedAt&#39;**]**Array<&#39;id&#39; &#124; &#39;createdAt&#39; &#124; &#39;updatedAt&#39;>** |  | defaults to 'id'|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **order** | **SortOrder** |  | (optional) defaults to undefined|
+| **personId** | [**number**] |  | (optional) defaults to undefined|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**PeoplePersonIdTimeOffsLeaveGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **timeOffsRosteredOffTimeOffIdDelete**
+> timeOffsRosteredOffTimeOffIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let timeOffId: number; //The unique identifier for the time-off. (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.timeOffsRosteredOffTimeOffIdDelete(
+    timeOffId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **timeOffId** | [**number**] | The unique identifier for the time-off. | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**202** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **usersGet**
+> UsersGet200Response usersGet()
+
+See `POST /invitations` for creating users
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.usersGet(
+    acceptVersion,
+    cursor,
+    limit,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**UsersGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **usersUserIdDelete**
+> usersUserIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let userId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.usersUserIdDelete(
+    userId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **userId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **usersUserIdGet**
+> User usersUserIdGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let userId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.usersUserIdGet(
+    userId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **userId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**User**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **usersUserIdViewsGet**
+> UsersUserIdViewsGet200Response usersUserIdViewsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let userId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+
+const { status, data } = await apiInstance.usersUserIdViewsGet(
+    userId,
+    acceptVersion,
+    cursor,
+    limit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **userId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+
+
+### Return type
+
+**UsersUserIdViewsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **usersUserIdViewsViewIdDelete**
+> usersUserIdViewsViewIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let userId: number; // (default to undefined)
+let viewId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.usersUserIdViewsViewIdDelete(
+    userId,
+    viewId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **userId** | [**number**] |  | defaults to undefined|
+| **viewId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **usersUserIdViewsViewIdPost**
+> usersUserIdViewsViewIdPost()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let userId: number; //The Id of the user to allocate the view to. (default to undefined)
+let viewId: number; //The Id of the view to allocate to the user. (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.usersUserIdViewsViewIdPost(
+    userId,
+    viewId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **userId** | [**number**] | The Id of the user to allocate the view to. | defaults to undefined|
+| **viewId** | [**number**] | The Id of the view to allocate to the user. | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+|**409** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **viewsGet**
+> UsersUserIdViewsGet200Response viewsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.viewsGet(
+    acceptVersion,
+    cursor,
+    limit,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**UsersUserIdViewsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **workstreamsGet**
+> WorkstreamsGet200Response workstreamsGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    ModifiedAfter
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
+let limit: number; //The number of results per page (optional) (default to 50)
+let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
+let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.workstreamsGet(
+    acceptVersion,
+    cursor,
+    limit,
+    sortBy,
+    order,
+    modifiedAfter
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
+| **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
+| **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
+| **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**WorkstreamsGet200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **workstreamsPost**
+> Workstream workstreamsPost(customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest: CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest; //
+
+const { status, data } = await apiInstance.workstreamsPost(
+    acceptVersion,
+    customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **customFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest** | **CustomFieldsSelectSelectFieldIdOptionsSelectOptionIdPatchRequest**|  | |
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Workstream**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **workstreamsWorkstreamIdDelete**
+> workstreamsWorkstreamIdDelete()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let workstreamId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.workstreamsWorkstreamIdDelete(
+    workstreamId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **workstreamId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **workstreamsWorkstreamIdGet**
+> Workstream workstreamsWorkstreamIdGet()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let workstreamId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+
+const { status, data } = await apiInstance.workstreamsWorkstreamIdGet(
+    workstreamId,
+    acceptVersion
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **workstreamId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**Workstream**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **workstreamsWorkstreamIdPatch**
+> Workstream workstreamsWorkstreamIdPatch(workstreamsWorkstreamIdPatchRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    WorkstreamsWorkstreamIdPatchRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let workstreamId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let workstreamsWorkstreamIdPatchRequest: WorkstreamsWorkstreamIdPatchRequest; //
+
+const { status, data } = await apiInstance.workstreamsWorkstreamIdPatch(
+    workstreamId,
+    acceptVersion,
+    workstreamsWorkstreamIdPatchRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **workstreamsWorkstreamIdPatchRequest** | **WorkstreamsWorkstreamIdPatchRequest**|  | |
 | **workstreamId** | [**number**] |  | defaults to undefined|
 | **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
 
