@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **manageProjectsPermission** | **string** | Permissions for managing projects. | [default to undefined]
-**manageOthersPermission** | **string** | Permissions for managing other parts of the account (people, clients, teams etc.) | [default to undefined]
+**manageOthersPermission** | **string** | Permissions for managing other parts of the account (people, clients, teams etc.). (deprecated: use managePeoplePermission) | [default to undefined]
 
 ## Example
 

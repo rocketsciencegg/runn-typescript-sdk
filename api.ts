@@ -59,8 +59,8 @@ export interface Actor {
 }
 
 export const ActorTypeEnum = {
-    User: 'user',
     RunnSupport: 'runn_support',
+    User: 'user',
     Api: 'api',
     Csv: 'csv',
     Integration: 'integration',
@@ -599,6 +599,23 @@ export const ContractInputEmploymentTypeEnum = {
 
 export type ContractInputEmploymentTypeEnum = typeof ContractInputEmploymentTypeEnum[keyof typeof ContractInputEmploymentTypeEnum];
 
+export interface CreateActualsBulk400Response {
+    'error': CreateActualsBulk400ResponseErrorEnum;
+    'message': string;
+    'statusCode': CreateActualsBulk400ResponseStatusCodeEnum;
+}
+
+export const CreateActualsBulk400ResponseErrorEnum = {
+    BadRequest: 'Bad Request'
+} as const;
+
+export type CreateActualsBulk400ResponseErrorEnum = typeof CreateActualsBulk400ResponseErrorEnum[keyof typeof CreateActualsBulk400ResponseErrorEnum];
+export const CreateActualsBulk400ResponseStatusCodeEnum = {
+    NUMBER_400: 400
+} as const;
+
+export type CreateActualsBulk400ResponseStatusCodeEnum = typeof CreateActualsBulk400ResponseStatusCodeEnum[keyof typeof CreateActualsBulk400ResponseStatusCodeEnum];
+
 export interface CreateActualsBulkRequest {
     'actuals': Array<ActualInput>;
 }
@@ -708,10 +725,12 @@ export interface CreateInvitationRequest {
     'fromUser': string;
     /**
      * Permissions for editing projects. (deprecated: use manageProjectsPermission)
+     * @deprecated
      */
     'editProjectsPermission': CreateInvitationRequestEditProjectsPermissionEnum;
     /**
-     * Permissions for editing other parts of the account (people, clients, teams etc.)
+     * Permissions for editing other parts of the account (people, clients, teams etc.). (deprecated: use managePeoplePermission)
+     * @deprecated
      */
     'editOthersPermission': CreateInvitationRequestEditOthersPermissionEnum;
     /**
@@ -719,7 +738,8 @@ export interface CreateInvitationRequest {
      */
     'manageProjectsPermission': CreateInvitationRequestManageProjectsPermissionEnum;
     /**
-     * Permissions for managing other parts of the account (people, clients, teams etc.)
+     * Permissions for managing other parts of the account (people, clients, teams etc.). (deprecated: use managePeoplePermission)
+     * @deprecated
      */
     'manageOthersPermission': CreateInvitationRequestManageOthersPermissionEnum;
 }
@@ -775,10 +795,12 @@ export type CreateInvitationRequestManageOthersPermissionEnum = typeof CreateInv
 export interface CreateInvitationRequestAllOfAnyOf {
     /**
      * Permissions for editing projects. (deprecated: use manageProjectsPermission)
+     * @deprecated
      */
     'editProjectsPermission': CreateInvitationRequestAllOfAnyOfEditProjectsPermissionEnum;
     /**
-     * Permissions for editing other parts of the account (people, clients, teams etc.)
+     * Permissions for editing other parts of the account (people, clients, teams etc.). (deprecated: use managePeoplePermission)
+     * @deprecated
      */
     'editOthersPermission': CreateInvitationRequestAllOfAnyOfEditOthersPermissionEnum;
 }
@@ -804,7 +826,8 @@ export interface CreateInvitationRequestAllOfAnyOf1 {
      */
     'manageProjectsPermission': CreateInvitationRequestAllOfAnyOf1ManageProjectsPermissionEnum;
     /**
-     * Permissions for managing other parts of the account (people, clients, teams etc.)
+     * Permissions for managing other parts of the account (people, clients, teams etc.). (deprecated: use managePeoplePermission)
+     * @deprecated
      */
     'manageOthersPermission': CreateInvitationRequestAllOfAnyOf1ManageOthersPermissionEnum;
 }
@@ -834,9 +857,11 @@ export interface CreatePersonRequest {
     'firstName': string;
     'lastName': string;
     'email'?: string;
+    'teamId'?: number;
     'holidaysGroupId'?: number;
     'tags'?: Array<UpdatePersonRequestTagsInner>;
     'references'?: Array<Reference>;
+    'managers'?: Array<UpdatePersonRequestManagersInner>;
     'roleId': number;
     /**
      * Defaults to today. Format: YYYY-MM-DD
@@ -888,6 +913,7 @@ export interface CreatePlaceholderRequest {
      * Defaults to the role\'s cost per hour
      */
     'costPerHour'?: number;
+    'teamId'?: number;
     'tags'?: Array<UpdatePersonRequestTagsInner>;
 }
 export interface CreateProjectBudgetRoleRequest {
@@ -1826,9 +1852,74 @@ export interface GetPersonHoursReport200Response {
     'values': Array<ReportsHoursPeople>;
     'nextCursor': string;
 }
+export interface GetPersonReport200Response {
+    'id': number;
+    'firstName': string;
+    'lastName': string;
+    'email': string;
+    'jobTitle': string;
+    'team': string;
+    'employmentType': string;
+    'metrics': Array<GetPersonReport200ResponseMetricsInner>;
+}
+export interface GetPersonReport200ResponseMetricsInner {
+    'startDate': string;
+    'endDate': string;
+    'revenue': number;
+    'projectCosts': number;
+    'businessCosts': number;
+    'totalEffortHours': number;
+    'billableEffortHours': number;
+    'nonBillableEffortHours': number;
+    'totalUtilization': number;
+    'billableUtilization': number;
+    'contractCapacity': number;
+    'effectiveCapacity': number;
+    'overtime': number;
+    'remainingAvailability': number;
+    'timeOffHours': number;
+    'completedTimesheet': boolean;
+}
 export interface GetProjectHoursReport200Response {
     'values': Array<ReportsHoursProjects>;
     'nextCursor': string;
+}
+export interface GetProjectReport200Response {
+    'id': number;
+    'name': string;
+    'period'?: string;
+    'pricingModel': GetProjectReport200ResponsePricingModelEnum;
+    'budget': number;
+    'budgetRemaining': number;
+    'timeBudgetRemaining': number;
+    'metrics': Array<GetProjectReport200ResponseMetricsInner>;
+}
+
+export const GetProjectReport200ResponsePricingModelEnum = {
+    Tm: 'tm',
+    Fp: 'fp',
+    Nb: 'nb'
+} as const;
+
+export type GetProjectReport200ResponsePricingModelEnum = typeof GetProjectReport200ResponsePricingModelEnum[keyof typeof GetProjectReport200ResponsePricingModelEnum];
+
+export interface GetProjectReport200ResponseMetricsInner {
+    'startDate': string;
+    'endDate': string;
+    'timeMaterialsBenchmark': number;
+    'revenue': number;
+    'profit': number;
+    'costs': number;
+    /**
+     * Percentage value of the profit margin
+     */
+    'margin': number;
+    'totalEffortHours': number;
+    'billableEffortHours': number;
+    'nonBillableEffortHours': number;
+}
+export interface GetProjectReport404Response {
+    'message': string;
 }
 export interface GetProjectTimesheetLock200Response {
     'status': GetProjectTimesheetLock200ResponseStatusEnum;
@@ -1890,10 +1981,12 @@ export interface Invitation {
     'financialPermission': InvitationFinancialPermissionEnum;
     /**
      * Edit projects permission level (deprecated: use manageProjectsPermission)
+     * @deprecated
      */
     'editProjectsPermission': InvitationEditProjectsPermissionEnum;
     /**
-     * Edit others permission level
+     * Edit others permission level (deprecated: use managePeoplePermission)
+     * @deprecated
      */
     'editOthersPermission': InvitationEditOthersPermissionEnum;
     /**
@@ -3097,8 +3190,13 @@ export interface UpdatePersonRequest {
     'lastName'?: string;
     'email'?: string;
     'tags'?: Array<UpdatePersonRequestTagsInner>;
+    'teamId'?: number;
     'references'?: Array<Reference>;
     'isArchived'?: boolean;
+    'managers'?: Array<UpdatePersonRequestManagersInner>;
+}
+export interface UpdatePersonRequestManagersInner {
+    'userId': number;
 }
 export interface UpdatePersonRequestTagsInner {
     'id': number;
@@ -3281,6 +3379,22 @@ export const UpdateProjectTimesheetLockRequestAnyOf1StatusEnum = {
 
 export type UpdateProjectTimesheetLockRequestAnyOf1StatusEnum = typeof UpdateProjectTimesheetLockRequestAnyOf1StatusEnum[keyof typeof UpdateProjectTimesheetLockRequestAnyOf1StatusEnum];
 
+export interface UpdateRateCardRequest {
+    'name'?: string;
+    'description'?: string;
+    'references'?: Array<CreateRateCardRequestReferencesInner>;
+    'isBlendedRateCard'?: boolean;
+    'blendedRate'?: number;
+    'rateType'?: UpdateRateCardRequestRateTypeEnum;
+}
+
+export const UpdateRateCardRequestRateTypeEnum = {
+    Hours: 'hours',
+    Days: 'days'
+} as const;
+
+export type UpdateRateCardRequestRateTypeEnum = typeof UpdateRateCardRequestRateTypeEnum[keyof typeof UpdateRateCardRequestRateTypeEnum];
+
 export interface UpdateRoleRequest {
     'name'?: string;
     'isArchived'?: boolean;
@@ -3327,8 +3441,16 @@ export interface User {
 export interface UserPermissions {
     'type': UserPermissionsTypeEnum;
     'financial': UserPermissionsFinancialEnum;
+    /**
+     * Edit projects permission (deprecated: use manageProjects)
+     * @deprecated
+     */
     'editProjects': UserPermissionsEditProjectsEnum;
     'manageProjects': UserPermissionsManageProjectsEnum;
+    /**
+     * Edit others permission (deprecated: use managePeople)
+     * @deprecated
+     */
     'editOthers': UserPermissionsEditOthersEnum;
     'managePeople': UserPermissionsManagePeopleEnum;
     'manageAccount': boolean;
@@ -3467,7 +3589,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary Add a skill to a person
+         * @summary Add a skill to a person or placeholder
          * @param {number} personId 
          * @param {AddPersonSkillAcceptVersionEnum} acceptVersion 
          * @param {AddPersonSkillRequest} addPersonSkillRequest 
@@ -3516,7 +3638,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary Add project to a person
+         * @summary Add project to a person or placeholder
          * @param {number} personId 
          * @param {AddPersonToProjectAcceptVersionEnum} acceptVersion 
          * @param {AddPersonToProjectRequest} addPersonToProjectRequest 
@@ -3564,12 +3686,13 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
-         * @summary Add a person to a team
+         * This endpoint is deprecated. You may assign the person to a team using the `PATCH /people/:personId/` endpoint.
+         * @summary Add a person or placeholder to a team
          * @param {number} personId 
          * @param {AddPersonToTeamAcceptVersionEnum} acceptVersion 
          * @param {AddPersonToTeamRequest} addPersonToTeamRequest 
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         addPersonToTeam: async (personId: number, acceptVersion: AddPersonToTeamAcceptVersionEnum, addPersonToTeamRequest: AddPersonToTeamRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
@@ -3906,13 +4029,15 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * Minutes values represent the total time for a day and overwrite any previous actual on the same day (for the same project/person/role/workstream). [Learn more](https://developer.runn.io/docs/actuals-notes).
          * @summary Create or update an actual
          * @param {CreateActualAcceptVersionEnum} acceptVersion 
-         * @param {ActualInput} [actualInput] 
+         * @param {ActualInput} actualInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createActual: async (acceptVersion: CreateActualAcceptVersionEnum, actualInput?: ActualInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createActual: async (acceptVersion: CreateActualAcceptVersionEnum, actualInput: ActualInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('createActual', 'acceptVersion', acceptVersion)
+            // verify required parameter 'actualInput' is not null or undefined
+            assertParamExists('createActual', 'actualInput', actualInput)
             const localVarPath = `/actuals/`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -4084,13 +4209,15 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Create a client
          * @param {CreateClientAcceptVersionEnum} acceptVersion 
-         * @param {ClientInput} [clientInput] 
+         * @param {ClientInput} clientInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createClient: async (acceptVersion: CreateClientAcceptVersionEnum, clientInput?: ClientInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createClient: async (acceptVersion: CreateClientAcceptVersionEnum, clientInput: ClientInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('createClient', 'acceptVersion', acceptVersion)
+            // verify required parameter 'clientInput' is not null or undefined
+            assertParamExists('createClient', 'clientInput', clientInput)
             const localVarPath = `/clients/`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -4217,13 +4344,15 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Create a holiday time off
          * @param {CreateHolidayTimeOffAcceptVersionEnum} acceptVersion 
-         * @param {TimeOffHolidayInput} [timeOffHolidayInput] 
+         * @param {TimeOffHolidayInput} timeOffHolidayInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createHolidayTimeOff: async (acceptVersion: CreateHolidayTimeOffAcceptVersionEnum, timeOffHolidayInput?: TimeOffHolidayInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createHolidayTimeOff: async (acceptVersion: CreateHolidayTimeOffAcceptVersionEnum, timeOffHolidayInput: TimeOffHolidayInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('createHolidayTimeOff', 'acceptVersion', acceptVersion)
+            // verify required parameter 'timeOffHolidayInput' is not null or undefined
+            assertParamExists('createHolidayTimeOff', 'timeOffHolidayInput', timeOffHolidayInput)
             const localVarPath = `/time-offs/holidays/`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -4260,13 +4389,15 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Create an invitation for a user
          * @param {CreateInvitationAcceptVersionEnum} acceptVersion 
-         * @param {CreateInvitationRequest} [createInvitationRequest] 
+         * @param {CreateInvitationRequest} createInvitationRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInvitation: async (acceptVersion: CreateInvitationAcceptVersionEnum, createInvitationRequest?: CreateInvitationRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createInvitation: async (acceptVersion: CreateInvitationAcceptVersionEnum, createInvitationRequest: CreateInvitationRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('createInvitation', 'acceptVersion', acceptVersion)
+            // verify required parameter 'createInvitationRequest' is not null or undefined
+            assertParamExists('createInvitation', 'createInvitationRequest', createInvitationRequest)
             const localVarPath = `/invitations/`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -4303,13 +4434,15 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          *  #### Create or Update  This endpoint may return an existing time off if the new time off is a subset of an existing one.  #### Automatic Merging  If one or more existing time offs overlap with the specified start/end date, they will be automatically merged.  #### Partial Time Offs  If the `minutesPerDay` field is provided, automatic merging will only occur if any overlapping time off has the same `minutesPerDay` value. If the `minutesPerDay` value differs, the request will fail.
          * @summary Create a leave time off
          * @param {CreateLeaveTimeOffAcceptVersionEnum} acceptVersion 
-         * @param {TimeOffLeaveInput} [timeOffLeaveInput] 
+         * @param {TimeOffLeaveInput} timeOffLeaveInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createLeaveTimeOff: async (acceptVersion: CreateLeaveTimeOffAcceptVersionEnum, timeOffLeaveInput?: TimeOffLeaveInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createLeaveTimeOff: async (acceptVersion: CreateLeaveTimeOffAcceptVersionEnum, timeOffLeaveInput: TimeOffLeaveInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('createLeaveTimeOff', 'acceptVersion', acceptVersion)
+            // verify required parameter 'timeOffLeaveInput' is not null or undefined
+            assertParamExists('createLeaveTimeOff', 'timeOffLeaveInput', timeOffLeaveInput)
             const localVarPath = `/time-offs/leave/`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -4531,15 +4664,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Add a new contract to a person
          * @param {number} personId 
          * @param {CreatePersonContractAcceptVersionEnum} acceptVersion 
-         * @param {ContractInput} [contractInput] 
+         * @param {ContractInput} contractInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPersonContract: async (personId: number, acceptVersion: CreatePersonContractAcceptVersionEnum, contractInput?: ContractInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createPersonContract: async (personId: number, acceptVersion: CreatePersonContractAcceptVersionEnum, contractInput: ContractInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'personId' is not null or undefined
             assertParamExists('createPersonContract', 'personId', personId)
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('createPersonContract', 'acceptVersion', acceptVersion)
+            // verify required parameter 'contractInput' is not null or undefined
+            assertParamExists('createPersonContract', 'contractInput', contractInput)
             const localVarPath = `/people/{personId}/contracts/`
                 .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4622,13 +4757,15 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Create a project
          * @param {CreateProjectAcceptVersionEnum} acceptVersion 
-         * @param {CreateProjectRequest} [createProjectRequest] 
+         * @param {CreateProjectRequest} createProjectRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createProject: async (acceptVersion: CreateProjectAcceptVersionEnum, createProjectRequest?: CreateProjectRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createProject: async (acceptVersion: CreateProjectAcceptVersionEnum, createProjectRequest: CreateProjectRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('createProject', 'acceptVersion', acceptVersion)
+            // verify required parameter 'createProjectRequest' is not null or undefined
+            assertParamExists('createProject', 'createProjectRequest', createProjectRequest)
             const localVarPath = `/projects/`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -4666,15 +4803,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Create a project budget role
          * @param {number} projectId 
          * @param {CreateProjectBudgetRoleAcceptVersionEnum} acceptVersion 
-         * @param {CreateProjectBudgetRoleRequest} [createProjectBudgetRoleRequest] 
+         * @param {CreateProjectBudgetRoleRequest} createProjectBudgetRoleRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createProjectBudgetRole: async (projectId: number, acceptVersion: CreateProjectBudgetRoleAcceptVersionEnum, createProjectBudgetRoleRequest?: CreateProjectBudgetRoleRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createProjectBudgetRole: async (projectId: number, acceptVersion: CreateProjectBudgetRoleAcceptVersionEnum, createProjectBudgetRoleRequest: CreateProjectBudgetRoleRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'projectId' is not null or undefined
             assertParamExists('createProjectBudgetRole', 'projectId', projectId)
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('createProjectBudgetRole', 'acceptVersion', acceptVersion)
+            // verify required parameter 'createProjectBudgetRoleRequest' is not null or undefined
+            assertParamExists('createProjectBudgetRole', 'createProjectBudgetRoleRequest', createProjectBudgetRoleRequest)
             const localVarPath = `/projects/{projectId}/budget-roles/`
                 .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -5711,8 +5850,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * Delete a person by their ID; fails when person has existing assignments or actuals to preserve           historical reports. Override this behaviour by using the force query flag.
-         * @summary Delete a person
+         * Delete a person or placeholder by their ID; fails when person has existing assignments or actuals to preserve           historical reports. Override this behaviour by using the force query flag.
+         * @summary Delete a person or placeholder
          * @param {boolean} force 
          * @param {number} personId 
          * @param {DeletePersonAcceptVersionEnum} acceptVersion 
@@ -6615,7 +6754,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary Show a person
+         * @summary Show a person or placeholder
          * @param {number} personId 
          * @param {GetPersonAcceptVersionEnum} acceptVersion 
          * @param {*} [options] Override http request option.
@@ -6702,13 +6841,14 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
-         * @summary Show current team
+         * This endpoint is deprecated. You may view the current team for a person using the `GET /people/:personId/` endpoint.
+         * @summary Show current team for a person or placeholder
          * @param {number} personId 
          * @param {GetPersonCurrentTeamAcceptVersionEnum} acceptVersion 
          * @param {string} [cursor] Cursor for paginated requests
          * @param {number} [limit] The number of results per page
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getPersonCurrentTeam: async (personId: number, acceptVersion: GetPersonCurrentTeamAcceptVersionEnum, cursor?: string, limit?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
@@ -6807,6 +6947,62 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['endDate'] = (endDate as any instanceof Date) ?
                     (endDate as any).toISOString().substring(0,10) :
                     endDate;
+            }
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            if (acceptVersion != null) {
+                localVarHeaderParameter['accept-version'] = String(acceptVersion);
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get a report for a person containing data from the People Overview Report. Available under the Advanced Plan only. Contact help@runn.io to request beta access.
+         * @summary Show metrics (beta)
+         * @param {number} personId 
+         * @param {GetPersonReportAcceptVersionEnum} acceptVersion 
+         * @param {string} [startDate] The start date for the report. For monthly reports, this must be the first day of the month. For weekly reports, this must be a Monday. For quarterly reports, this must be the first day of the quarter. Format: YYYY-MM-DD
+         * @param {GetPersonReportPeriodTypeEnum} [periodType] The time interval at which to split the metrics on the report. A monthly report made in June, for instance, will show revenue for June, July, August, and September.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPersonReport: async (personId: number, acceptVersion: GetPersonReportAcceptVersionEnum, startDate?: string, periodType?: GetPersonReportPeriodTypeEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'personId' is not null or undefined
+            assertParamExists('getPersonReport', 'personId', personId)
+            // verify required parameter 'acceptVersion' is not null or undefined
+            assertParamExists('getPersonReport', 'acceptVersion', acceptVersion)
+            const localVarPath = `/reports/people/{personId}/`
+                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['startDate'] = (startDate as any instanceof Date) ?
+                    (startDate as any).toISOString().substring(0,10) :
+                    startDate;
+            }
+
+            if (periodType !== undefined) {
+                localVarQueryParameter['periodType'] = periodType;
             }
 
             localVarHeaderParameter['Accept'] = 'application/json';
@@ -7064,6 +7260,62 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // authentication bearerAuth required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            if (acceptVersion != null) {
+                localVarHeaderParameter['accept-version'] = String(acceptVersion);
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get a report for a project containing data from the Project Overview report. Available under the Advanced Plan only. Contact help@runn.io to request beta access.
+         * @summary Show metrics (beta)
+         * @param {number} projectId 
+         * @param {GetProjectReportAcceptVersionEnum} acceptVersion 
+         * @param {string} [startDate] The start date for the report. For monthly reports, this must be the first day of the month. For weekly reports, this must be a Monday. For quarterly reports, this must be the first day of the quarter. Format: YYYY-MM-DD
+         * @param {GetProjectReportPeriodTypeEnum} [periodType] The time interval at which to split the metrics on the report. A monthly report made in June, for instance, will show revenue for June, July, August, and September. If not provided, the report will be for the Overview report (all inclusive).
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getProjectReport: async (projectId: number, acceptVersion: GetProjectReportAcceptVersionEnum, startDate?: string, periodType?: GetProjectReportPeriodTypeEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'projectId' is not null or undefined
+            assertParamExists('getProjectReport', 'projectId', projectId)
+            // verify required parameter 'acceptVersion' is not null or undefined
+            assertParamExists('getProjectReport', 'acceptVersion', acceptVersion)
+            const localVarPath = `/reports/projects/{projectId}/`
+                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['startDate'] = (startDate as any instanceof Date) ?
+                    (startDate as any).toISOString().substring(0,10) :
+                    startDate;
+            }
+
+            if (periodType !== undefined) {
+                localVarQueryParameter['periodType'] = periodType;
+            }
 
             localVarHeaderParameter['Accept'] = 'application/json';
 
@@ -8681,7 +8933,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [email] If provided, will only return people with an email that are a substring of this value (case-insensitive).
          * @param {string} [firstName] If provided, will only return people with a first name that is a substring of this value (case-insensitive).
          * @param {string} [lastName] If provided, will only return people with a last name that is a substring of this value (case-insensitive).
-         * @param {ModifiedAfter} [modifiedAfter] If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. Note: A person is considered \&quot;modified\&quot; if any of its core properties change. Actions that count as modifying a person include changing first name, last name, email, references, tags and archiving. A person is not considered modified just because another object it is associated with is changed (e.g. a contract, project or an assignment).
+         * @param {ModifiedAfter} [modifiedAfter] 
          * @param {string} [externalId] External ID value
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -8939,7 +9191,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [cursor] Cursor for paginated requests
          * @param {number} [limit] The number of results per page
          * @param {boolean} [includePlaceholders] 
-         * @param {ModifiedAfter} [modifiedAfter] If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ.
+         * @param {ModifiedAfter} [modifiedAfter] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -9134,7 +9386,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary List assignments for a person
+         * @summary List assignments for a person or placeholder
          * @param {number} personId 
          * @param {ListPersonAssignmentsAcceptVersionEnum} acceptVersion 
          * @param {string} [cursor] Cursor for paginated requests
@@ -9381,7 +9633,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary List projects for a person
+         * @summary List projects for a person or placeholder
          * @param {number} personId 
          * @param {ListPersonProjectsAcceptVersionEnum} acceptVersion 
          * @param {string} [cursor] Cursor for paginated requests
@@ -9546,7 +9798,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary List skills for a person
+         * @summary List skills for a person or placeholder
          * @param {number} personId 
          * @param {ListPersonSkillsAcceptVersionEnum} acceptVersion 
          * @param {string} [cursor] Cursor for paginated requests
@@ -9663,7 +9915,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
+         * Note: The /people/_* endpoints also allows getting information on placeholders when using the `includePlaceholders` query parameter.
          * @summary List placeholders
          * @param {ListPlaceholdersAcceptVersionEnum} acceptVersion 
          * @param {string} [cursor] Cursor for paginated requests
@@ -10768,7 +11020,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {number} [limit] The number of results per page
          * @param {ListProjectsSortByEnum} [sortBy] Field to sort by: createdAt or updatedAt or id
          * @param {ListProjectsOrderEnum} [order] Sort order: asc or desc
-         * @param {ModifiedAfter} [modifiedAfter] If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. Note: A project is considered \&quot;modified\&quot; if any of its core properties change. Actions that count as modifying a project include changing the name, client, status, pricing model, rate type , team, budget, expenses budget, references, and archiving. A project is not considered modified just because another object it is associated with is changed (e.g. actuals, assignments, budget roles, custom fields, milestones, notes, other expenses, people, people requests, phases, rates, timesheet locks &amp; workstreams).
+         * @param {ModifiedAfter} [modifiedAfter] 
          * @param {string} [externalId] External ID value
          * @param {string} [name] Case-insensitive substring match on project name (e.g. &#x60;Acme&#x60;).
          * @param {*} [options] Override http request option.
@@ -11646,14 +11898,15 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
-         * @summary Remove a person from a team
+         * This endpoint is deprecated. You may remove the person from a team using the `PATCH /people/:personId/` endpoint.
+         * @summary Remove a person or placeholder from a team
          * @param {number} personId 
          * @param {number} teamId 
          * @param {RemovePersonFromTeamAcceptVersionEnum} acceptVersion 
          * @param {string} [cursor] Cursor for paginated requests
          * @param {number} [limit] The number of results per page
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         removePersonFromTeam: async (personId: number, teamId: number, acceptVersion: RemovePersonFromTeamAcceptVersionEnum, cursor?: string, limit?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
@@ -11705,7 +11958,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary Remove a skill from a person
+         * @summary Remove a skill from a person or placeholder
          * @param {number} personId 
          * @param {number} skillId 
          * @param {RemovePersonSkillAcceptVersionEnum} acceptVersion 
@@ -11995,13 +12248,15 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * Returns Actual with updated minutes. Creates a new actual when there is none to update [Learn more](https://developer.runn.io/docs/actuals-notes).
          * @summary Update an actual
          * @param {UpdateActualTimeEntryAcceptVersionEnum} acceptVersion 
-         * @param {ActualTimeEntry} [actualTimeEntry] 
+         * @param {ActualTimeEntry} actualTimeEntry 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateActualTimeEntry: async (acceptVersion: UpdateActualTimeEntryAcceptVersionEnum, actualTimeEntry?: ActualTimeEntry, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateActualTimeEntry: async (acceptVersion: UpdateActualTimeEntryAcceptVersionEnum, actualTimeEntry: ActualTimeEntry, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('updateActualTimeEntry', 'acceptVersion', acceptVersion)
+            // verify required parameter 'actualTimeEntry' is not null or undefined
+            assertParamExists('updateActualTimeEntry', 'actualTimeEntry', actualTimeEntry)
             const localVarPath = `/actuals/time-entry`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -12039,15 +12294,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Update a checkbox custom field
          * @param {number} checkboxFieldId 
          * @param {UpdateCheckboxCustomFieldAcceptVersionEnum} acceptVersion 
-         * @param {UpdateCheckboxCustomFieldRequest} [updateCheckboxCustomFieldRequest] 
+         * @param {UpdateCheckboxCustomFieldRequest} updateCheckboxCustomFieldRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateCheckboxCustomField: async (checkboxFieldId: number, acceptVersion: UpdateCheckboxCustomFieldAcceptVersionEnum, updateCheckboxCustomFieldRequest?: UpdateCheckboxCustomFieldRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateCheckboxCustomField: async (checkboxFieldId: number, acceptVersion: UpdateCheckboxCustomFieldAcceptVersionEnum, updateCheckboxCustomFieldRequest: UpdateCheckboxCustomFieldRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'checkboxFieldId' is not null or undefined
             assertParamExists('updateCheckboxCustomField', 'checkboxFieldId', checkboxFieldId)
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('updateCheckboxCustomField', 'acceptVersion', acceptVersion)
+            // verify required parameter 'updateCheckboxCustomFieldRequest' is not null or undefined
+            assertParamExists('updateCheckboxCustomField', 'updateCheckboxCustomFieldRequest', updateCheckboxCustomFieldRequest)
             const localVarPath = `/custom-fields/checkbox/{checkboxFieldId}`
                 .replace(`{${"checkboxFieldId"}}`, encodeURIComponent(String(checkboxFieldId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -12086,15 +12343,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Update a client
          * @param {number} clientId 
          * @param {UpdateClientAcceptVersionEnum} acceptVersion 
-         * @param {UpdateClientRequest} [updateClientRequest] 
+         * @param {UpdateClientRequest} updateClientRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateClient: async (clientId: number, acceptVersion: UpdateClientAcceptVersionEnum, updateClientRequest?: UpdateClientRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateClient: async (clientId: number, acceptVersion: UpdateClientAcceptVersionEnum, updateClientRequest: UpdateClientRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'clientId' is not null or undefined
             assertParamExists('updateClient', 'clientId', clientId)
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('updateClient', 'acceptVersion', acceptVersion)
+            // verify required parameter 'updateClientRequest' is not null or undefined
+            assertParamExists('updateClient', 'updateClientRequest', updateClientRequest)
             const localVarPath = `/clients/{clientId}`
                 .replace(`{${"clientId"}}`, encodeURIComponent(String(clientId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -12133,15 +12392,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Update a contract
          * @param {number} contractId 
          * @param {UpdateContractAcceptVersionEnum} acceptVersion 
-         * @param {UpdateContractRequest} [updateContractRequest] 
+         * @param {UpdateContractRequest} updateContractRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateContract: async (contractId: number, acceptVersion: UpdateContractAcceptVersionEnum, updateContractRequest?: UpdateContractRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateContract: async (contractId: number, acceptVersion: UpdateContractAcceptVersionEnum, updateContractRequest: UpdateContractRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'contractId' is not null or undefined
             assertParamExists('updateContract', 'contractId', contractId)
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('updateContract', 'acceptVersion', acceptVersion)
+            // verify required parameter 'updateContractRequest' is not null or undefined
+            assertParamExists('updateContract', 'updateContractRequest', updateContractRequest)
             const localVarPath = `/contracts/{contractId}`
                 .replace(`{${"contractId"}}`, encodeURIComponent(String(contractId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -12180,15 +12441,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Update a date custom field
          * @param {number} dateFieldId 
          * @param {UpdateDateCustomFieldAcceptVersionEnum} acceptVersion 
-         * @param {UpdateDateCustomFieldRequest} [updateDateCustomFieldRequest] 
+         * @param {UpdateDateCustomFieldRequest} updateDateCustomFieldRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateDateCustomField: async (dateFieldId: number, acceptVersion: UpdateDateCustomFieldAcceptVersionEnum, updateDateCustomFieldRequest?: UpdateDateCustomFieldRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateDateCustomField: async (dateFieldId: number, acceptVersion: UpdateDateCustomFieldAcceptVersionEnum, updateDateCustomFieldRequest: UpdateDateCustomFieldRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'dateFieldId' is not null or undefined
             assertParamExists('updateDateCustomField', 'dateFieldId', dateFieldId)
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('updateDateCustomField', 'acceptVersion', acceptVersion)
+            // verify required parameter 'updateDateCustomFieldRequest' is not null or undefined
+            assertParamExists('updateDateCustomField', 'updateDateCustomFieldRequest', updateDateCustomFieldRequest)
             const localVarPath = `/custom-fields/date/{dateFieldId}`
                 .replace(`{${"dateFieldId"}}`, encodeURIComponent(String(dateFieldId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -12273,18 +12536,20 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * To add a new role or job title to a person, see POST /people/{personId}/contracts
-         * @summary Update a person
+         * @summary Update a person or placeholder
          * @param {number} personId 
          * @param {UpdatePersonAcceptVersionEnum} acceptVersion 
-         * @param {UpdatePersonRequest} [updatePersonRequest] 
+         * @param {UpdatePersonRequest} updatePersonRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updatePerson: async (personId: number, acceptVersion: UpdatePersonAcceptVersionEnum, updatePersonRequest?: UpdatePersonRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updatePerson: async (personId: number, acceptVersion: UpdatePersonAcceptVersionEnum, updatePersonRequest: UpdatePersonRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'personId' is not null or undefined
             assertParamExists('updatePerson', 'personId', personId)
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('updatePerson', 'acceptVersion', acceptVersion)
+            // verify required parameter 'updatePersonRequest' is not null or undefined
+            assertParamExists('updatePerson', 'updatePersonRequest', updatePersonRequest)
             const localVarPath = `/people/{personId}`
                 .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -12320,7 +12585,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary Add a checkbox custom value to a person
+         * @summary Add a checkbox custom value to a person or placeholder
          * @param {number} personId 
          * @param {UpdatePersonCheckboxCustomFieldAcceptVersionEnum} acceptVersion 
          * @param {UpdatePersonCheckboxCustomFieldRequest} updatePersonCheckboxCustomFieldRequest 
@@ -12369,7 +12634,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary Add a date custom value to a person
+         * @summary Add a date custom value to a person or placeholder
          * @param {number} personId 
          * @param {UpdatePersonDateCustomFieldAcceptVersionEnum} acceptVersion 
          * @param {UpdatePersonDateCustomFieldRequest} updatePersonDateCustomFieldRequest 
@@ -12418,7 +12683,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary Add custom select options to a person
+         * @summary Add custom select options to a person or placeholder
          * @param {number} personId 
          * @param {UpdatePersonSelectCustomFieldAcceptVersionEnum} acceptVersion 
          * @param {UpdatePersonSelectCustomFieldRequest} updatePersonSelectCustomFieldRequest 
@@ -12467,7 +12732,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary Update a skill for a person
+         * @summary Update a skill for a person or placeholder
          * @param {number} personId 
          * @param {number} skillId 
          * @param {UpdatePersonSkillAcceptVersionEnum} acceptVersion 
@@ -12520,7 +12785,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary Add a text custom value to a person
+         * @summary Add a text custom value to a person or placeholder
          * @param {number} personId 
          * @param {UpdatePersonTextCustomFieldAcceptVersionEnum} acceptVersion 
          * @param {UpdatePersonTextCustomFieldRequest} updatePersonTextCustomFieldRequest 
@@ -12572,15 +12837,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Update a project
          * @param {number} projectId 
          * @param {UpdateProjectAcceptVersionEnum} acceptVersion 
-         * @param {UpdateProjectRequest} [updateProjectRequest] 
+         * @param {UpdateProjectRequest} updateProjectRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProject: async (projectId: number, acceptVersion: UpdateProjectAcceptVersionEnum, updateProjectRequest?: UpdateProjectRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateProject: async (projectId: number, acceptVersion: UpdateProjectAcceptVersionEnum, updateProjectRequest: UpdateProjectRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'projectId' is not null or undefined
             assertParamExists('updateProject', 'projectId', projectId)
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('updateProject', 'acceptVersion', acceptVersion)
+            // verify required parameter 'updateProjectRequest' is not null or undefined
+            assertParamExists('updateProject', 'updateProjectRequest', updateProjectRequest)
             const localVarPath = `/projects/{projectId}`
                 .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -12620,17 +12887,19 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {number} projectId 
          * @param {number} roleId 
          * @param {UpdateProjectBudgetRoleAcceptVersionEnum} acceptVersion 
-         * @param {UpdateProjectBudgetRoleRequest} [updateProjectBudgetRoleRequest] 
+         * @param {UpdateProjectBudgetRoleRequest} updateProjectBudgetRoleRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProjectBudgetRole: async (projectId: number, roleId: number, acceptVersion: UpdateProjectBudgetRoleAcceptVersionEnum, updateProjectBudgetRoleRequest?: UpdateProjectBudgetRoleRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateProjectBudgetRole: async (projectId: number, roleId: number, acceptVersion: UpdateProjectBudgetRoleAcceptVersionEnum, updateProjectBudgetRoleRequest: UpdateProjectBudgetRoleRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'projectId' is not null or undefined
             assertParamExists('updateProjectBudgetRole', 'projectId', projectId)
             // verify required parameter 'roleId' is not null or undefined
             assertParamExists('updateProjectBudgetRole', 'roleId', roleId)
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('updateProjectBudgetRole', 'acceptVersion', acceptVersion)
+            // verify required parameter 'updateProjectBudgetRoleRequest' is not null or undefined
+            assertParamExists('updateProjectBudgetRole', 'updateProjectBudgetRoleRequest', updateProjectBudgetRoleRequest)
             const localVarPath = `/projects/{projectId}/budget-roles/{roleId}`
                 .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
                 .replace(`{${"roleId"}}`, encodeURIComponent(String(roleId)));
@@ -12769,17 +13038,19 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {number} projectId 
          * @param {number} milestoneId 
          * @param {UpdateProjectMilestoneAcceptVersionEnum} acceptVersion 
-         * @param {UpdateProjectMilestoneRequest} [updateProjectMilestoneRequest] 
+         * @param {UpdateProjectMilestoneRequest} updateProjectMilestoneRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProjectMilestone: async (projectId: number, milestoneId: number, acceptVersion: UpdateProjectMilestoneAcceptVersionEnum, updateProjectMilestoneRequest?: UpdateProjectMilestoneRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateProjectMilestone: async (projectId: number, milestoneId: number, acceptVersion: UpdateProjectMilestoneAcceptVersionEnum, updateProjectMilestoneRequest: UpdateProjectMilestoneRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'projectId' is not null or undefined
             assertParamExists('updateProjectMilestone', 'projectId', projectId)
             // verify required parameter 'milestoneId' is not null or undefined
             assertParamExists('updateProjectMilestone', 'milestoneId', milestoneId)
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('updateProjectMilestone', 'acceptVersion', acceptVersion)
+            // verify required parameter 'updateProjectMilestoneRequest' is not null or undefined
+            assertParamExists('updateProjectMilestone', 'updateProjectMilestoneRequest', updateProjectMilestoneRequest)
             const localVarPath = `/projects/{projectId}/milestones/{milestoneId}`
                 .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
                 .replace(`{${"milestoneId"}}`, encodeURIComponent(String(milestoneId)));
@@ -12820,17 +13091,19 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {number} projectId Unique identifier for the project the expense is for.
          * @param {number} otherExpenseId Unique identifier for the other expense to update.
          * @param {UpdateProjectOtherExpenseAcceptVersionEnum} acceptVersion 
-         * @param {ProjectOtherExpense1} [projectOtherExpense1] A non-labour expense for a project.
+         * @param {ProjectOtherExpense1} projectOtherExpense1 A non-labour expense for a project.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProjectOtherExpense: async (projectId: number, otherExpenseId: number, acceptVersion: UpdateProjectOtherExpenseAcceptVersionEnum, projectOtherExpense1?: ProjectOtherExpense1, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateProjectOtherExpense: async (projectId: number, otherExpenseId: number, acceptVersion: UpdateProjectOtherExpenseAcceptVersionEnum, projectOtherExpense1: ProjectOtherExpense1, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'projectId' is not null or undefined
             assertParamExists('updateProjectOtherExpense', 'projectId', projectId)
             // verify required parameter 'otherExpenseId' is not null or undefined
             assertParamExists('updateProjectOtherExpense', 'otherExpenseId', otherExpenseId)
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('updateProjectOtherExpense', 'acceptVersion', acceptVersion)
+            // verify required parameter 'projectOtherExpense1' is not null or undefined
+            assertParamExists('updateProjectOtherExpense', 'projectOtherExpense1', projectOtherExpense1)
             const localVarPath = `/projects/{projectId}/other-expenses/{otherExpenseId}/`
                 .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
                 .replace(`{${"otherExpenseId"}}`, encodeURIComponent(String(otherExpenseId)));
@@ -12924,17 +13197,19 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {number} projectId 
          * @param {number} phaseId 
          * @param {UpdateProjectPhaseAcceptVersionEnum} acceptVersion 
-         * @param {UpdateProjectPhaseRequest} [updateProjectPhaseRequest] 
+         * @param {UpdateProjectPhaseRequest} updateProjectPhaseRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProjectPhase: async (projectId: number, phaseId: number, acceptVersion: UpdateProjectPhaseAcceptVersionEnum, updateProjectPhaseRequest?: UpdateProjectPhaseRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateProjectPhase: async (projectId: number, phaseId: number, acceptVersion: UpdateProjectPhaseAcceptVersionEnum, updateProjectPhaseRequest: UpdateProjectPhaseRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'projectId' is not null or undefined
             assertParamExists('updateProjectPhase', 'projectId', projectId)
             // verify required parameter 'phaseId' is not null or undefined
             assertParamExists('updateProjectPhase', 'phaseId', phaseId)
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('updateProjectPhase', 'acceptVersion', acceptVersion)
+            // verify required parameter 'updateProjectPhaseRequest' is not null or undefined
+            assertParamExists('updateProjectPhase', 'updateProjectPhaseRequest', updateProjectPhaseRequest)
             const localVarPath = `/projects/{projectId}/phases/{phaseId}`
                 .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
                 .replace(`{${"phaseId"}}`, encodeURIComponent(String(phaseId)));
@@ -13174,15 +13449,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Update a timesheet lock for a project
          * @param {number} projectId 
          * @param {UpdateProjectTimesheetLockAcceptVersionEnum} acceptVersion 
-         * @param {UpdateProjectTimesheetLockRequest} [updateProjectTimesheetLockRequest] 
+         * @param {UpdateProjectTimesheetLockRequest} updateProjectTimesheetLockRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProjectTimesheetLock: async (projectId: number, acceptVersion: UpdateProjectTimesheetLockAcceptVersionEnum, updateProjectTimesheetLockRequest?: UpdateProjectTimesheetLockRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateProjectTimesheetLock: async (projectId: number, acceptVersion: UpdateProjectTimesheetLockAcceptVersionEnum, updateProjectTimesheetLockRequest: UpdateProjectTimesheetLockRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'projectId' is not null or undefined
             assertParamExists('updateProjectTimesheetLock', 'projectId', projectId)
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('updateProjectTimesheetLock', 'acceptVersion', acceptVersion)
+            // verify required parameter 'updateProjectTimesheetLockRequest' is not null or undefined
+            assertParamExists('updateProjectTimesheetLock', 'updateProjectTimesheetLockRequest', updateProjectTimesheetLockRequest)
             const localVarPath = `/projects/{projectId}/timesheet-lock/`
                 .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -13218,18 +13495,69 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary Update a role
-         * @param {number} roleId 
-         * @param {UpdateRoleAcceptVersionEnum} acceptVersion 
-         * @param {UpdateRoleRequest} [updateRoleRequest] 
+         * @summary Update a rate card
+         * @param {number} rateCardId 
+         * @param {UpdateRateCardAcceptVersionEnum} acceptVersion 
+         * @param {UpdateRateCardRequest} updateRateCardRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateRole: async (roleId: number, acceptVersion: UpdateRoleAcceptVersionEnum, updateRoleRequest?: UpdateRoleRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateRateCard: async (rateCardId: number, acceptVersion: UpdateRateCardAcceptVersionEnum, updateRateCardRequest: UpdateRateCardRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'rateCardId' is not null or undefined
+            assertParamExists('updateRateCard', 'rateCardId', rateCardId)
+            // verify required parameter 'acceptVersion' is not null or undefined
+            assertParamExists('updateRateCard', 'acceptVersion', acceptVersion)
+            // verify required parameter 'updateRateCardRequest' is not null or undefined
+            assertParamExists('updateRateCard', 'updateRateCardRequest', updateRateCardRequest)
+            const localVarPath = `/rate-cards/{rateCardId}`
+                .replace(`{${"rateCardId"}}`, encodeURIComponent(String(rateCardId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            if (acceptVersion != null) {
+                localVarHeaderParameter['accept-version'] = String(acceptVersion);
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateRateCardRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update a role
+         * @param {number} roleId 
+         * @param {UpdateRoleAcceptVersionEnum} acceptVersion 
+         * @param {UpdateRoleRequest} updateRoleRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateRole: async (roleId: number, acceptVersion: UpdateRoleAcceptVersionEnum, updateRoleRequest: UpdateRoleRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'roleId' is not null or undefined
             assertParamExists('updateRole', 'roleId', roleId)
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('updateRole', 'acceptVersion', acceptVersion)
+            // verify required parameter 'updateRoleRequest' is not null or undefined
+            assertParamExists('updateRole', 'updateRoleRequest', updateRoleRequest)
             const localVarPath = `/roles/{roleId}`
                 .replace(`{${"roleId"}}`, encodeURIComponent(String(roleId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -13268,15 +13596,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Update a select custom field
          * @param {number} selectFieldId 
          * @param {UpdateSelectCustomFieldAcceptVersionEnum} acceptVersion 
-         * @param {UpdateCheckboxCustomFieldRequest} [updateCheckboxCustomFieldRequest] 
+         * @param {UpdateCheckboxCustomFieldRequest} updateCheckboxCustomFieldRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateSelectCustomField: async (selectFieldId: number, acceptVersion: UpdateSelectCustomFieldAcceptVersionEnum, updateCheckboxCustomFieldRequest?: UpdateCheckboxCustomFieldRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateSelectCustomField: async (selectFieldId: number, acceptVersion: UpdateSelectCustomFieldAcceptVersionEnum, updateCheckboxCustomFieldRequest: UpdateCheckboxCustomFieldRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'selectFieldId' is not null or undefined
             assertParamExists('updateSelectCustomField', 'selectFieldId', selectFieldId)
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('updateSelectCustomField', 'acceptVersion', acceptVersion)
+            // verify required parameter 'updateCheckboxCustomFieldRequest' is not null or undefined
+            assertParamExists('updateSelectCustomField', 'updateCheckboxCustomFieldRequest', updateCheckboxCustomFieldRequest)
             const localVarPath = `/custom-fields/select/{selectFieldId}`
                 .replace(`{${"selectFieldId"}}`, encodeURIComponent(String(selectFieldId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -13466,15 +13796,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Update a text custom field
          * @param {number} textFieldId 
          * @param {UpdateTextCustomFieldAcceptVersionEnum} acceptVersion 
-         * @param {UpdateCheckboxCustomFieldRequest} [updateCheckboxCustomFieldRequest] 
+         * @param {UpdateCheckboxCustomFieldRequest} updateCheckboxCustomFieldRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateTextCustomField: async (textFieldId: number, acceptVersion: UpdateTextCustomFieldAcceptVersionEnum, updateCheckboxCustomFieldRequest?: UpdateCheckboxCustomFieldRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateTextCustomField: async (textFieldId: number, acceptVersion: UpdateTextCustomFieldAcceptVersionEnum, updateCheckboxCustomFieldRequest: UpdateCheckboxCustomFieldRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'textFieldId' is not null or undefined
             assertParamExists('updateTextCustomField', 'textFieldId', textFieldId)
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('updateTextCustomField', 'acceptVersion', acceptVersion)
+            // verify required parameter 'updateCheckboxCustomFieldRequest' is not null or undefined
+            assertParamExists('updateTextCustomField', 'updateCheckboxCustomFieldRequest', updateCheckboxCustomFieldRequest)
             const localVarPath = `/custom-fields/text/{textFieldId}`
                 .replace(`{${"textFieldId"}}`, encodeURIComponent(String(textFieldId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -13513,15 +13845,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Update a workstream
          * @param {number} workstreamId 
          * @param {UpdateWorkstreamAcceptVersionEnum} acceptVersion 
-         * @param {UpdateWorkstreamRequest} [updateWorkstreamRequest] 
+         * @param {UpdateWorkstreamRequest} updateWorkstreamRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateWorkstream: async (workstreamId: number, acceptVersion: UpdateWorkstreamAcceptVersionEnum, updateWorkstreamRequest?: UpdateWorkstreamRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateWorkstream: async (workstreamId: number, acceptVersion: UpdateWorkstreamAcceptVersionEnum, updateWorkstreamRequest: UpdateWorkstreamRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'workstreamId' is not null or undefined
             assertParamExists('updateWorkstream', 'workstreamId', workstreamId)
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('updateWorkstream', 'acceptVersion', acceptVersion)
+            // verify required parameter 'updateWorkstreamRequest' is not null or undefined
+            assertParamExists('updateWorkstream', 'updateWorkstreamRequest', updateWorkstreamRequest)
             const localVarPath = `/workstreams/{workstreamId}/`
                 .replace(`{${"workstreamId"}}`, encodeURIComponent(String(workstreamId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -13581,7 +13915,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Add a skill to a person
+         * @summary Add a skill to a person or placeholder
          * @param {number} personId 
          * @param {AddPersonSkillAcceptVersionEnum} acceptVersion 
          * @param {AddPersonSkillRequest} addPersonSkillRequest 
@@ -13596,7 +13930,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Add project to a person
+         * @summary Add project to a person or placeholder
          * @param {number} personId 
          * @param {AddPersonToProjectAcceptVersionEnum} acceptVersion 
          * @param {AddPersonToProjectRequest} addPersonToProjectRequest 
@@ -13610,12 +13944,13 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
-         * @summary Add a person to a team
+         * This endpoint is deprecated. You may assign the person to a team using the `PATCH /people/:personId/` endpoint.
+         * @summary Add a person or placeholder to a team
          * @param {number} personId 
          * @param {AddPersonToTeamAcceptVersionEnum} acceptVersion 
          * @param {AddPersonToTeamRequest} addPersonToTeamRequest 
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async addPersonToTeam(personId: number, acceptVersion: AddPersonToTeamAcceptVersionEnum, addPersonToTeamRequest: AddPersonToTeamRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
@@ -13718,11 +14053,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * Minutes values represent the total time for a day and overwrite any previous actual on the same day (for the same project/person/role/workstream). [Learn more](https://developer.runn.io/docs/actuals-notes).
          * @summary Create or update an actual
          * @param {CreateActualAcceptVersionEnum} acceptVersion 
-         * @param {ActualInput} [actualInput] 
+         * @param {ActualInput} actualInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createActual(acceptVersion: CreateActualAcceptVersionEnum, actualInput?: ActualInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Actual>> {
+        async createActual(acceptVersion: CreateActualAcceptVersionEnum, actualInput: ActualInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Actual>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createActual(acceptVersion, actualInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.createActual']?.[localVarOperationServerIndex]?.url;
@@ -13774,11 +14109,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * 
          * @summary Create a client
          * @param {CreateClientAcceptVersionEnum} acceptVersion 
-         * @param {ClientInput} [clientInput] 
+         * @param {ClientInput} clientInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createClient(acceptVersion: CreateClientAcceptVersionEnum, clientInput?: ClientInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Client>> {
+        async createClient(acceptVersion: CreateClientAcceptVersionEnum, clientInput: ClientInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Client>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createClient(acceptVersion, clientInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.createClient']?.[localVarOperationServerIndex]?.url;
@@ -13816,11 +14151,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * 
          * @summary Create a holiday time off
          * @param {CreateHolidayTimeOffAcceptVersionEnum} acceptVersion 
-         * @param {TimeOffHolidayInput} [timeOffHolidayInput] 
+         * @param {TimeOffHolidayInput} timeOffHolidayInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createHolidayTimeOff(acceptVersion: CreateHolidayTimeOffAcceptVersionEnum, timeOffHolidayInput?: TimeOffHolidayInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TimeOff>> {
+        async createHolidayTimeOff(acceptVersion: CreateHolidayTimeOffAcceptVersionEnum, timeOffHolidayInput: TimeOffHolidayInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TimeOff>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createHolidayTimeOff(acceptVersion, timeOffHolidayInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.createHolidayTimeOff']?.[localVarOperationServerIndex]?.url;
@@ -13830,11 +14165,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * 
          * @summary Create an invitation for a user
          * @param {CreateInvitationAcceptVersionEnum} acceptVersion 
-         * @param {CreateInvitationRequest} [createInvitationRequest] 
+         * @param {CreateInvitationRequest} createInvitationRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createInvitation(acceptVersion: CreateInvitationAcceptVersionEnum, createInvitationRequest?: CreateInvitationRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Invitation>> {
+        async createInvitation(acceptVersion: CreateInvitationAcceptVersionEnum, createInvitationRequest: CreateInvitationRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Invitation>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createInvitation(acceptVersion, createInvitationRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.createInvitation']?.[localVarOperationServerIndex]?.url;
@@ -13844,11 +14179,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          *  #### Create or Update  This endpoint may return an existing time off if the new time off is a subset of an existing one.  #### Automatic Merging  If one or more existing time offs overlap with the specified start/end date, they will be automatically merged.  #### Partial Time Offs  If the `minutesPerDay` field is provided, automatic merging will only occur if any overlapping time off has the same `minutesPerDay` value. If the `minutesPerDay` value differs, the request will fail.
          * @summary Create a leave time off
          * @param {CreateLeaveTimeOffAcceptVersionEnum} acceptVersion 
-         * @param {TimeOffLeaveInput} [timeOffLeaveInput] 
+         * @param {TimeOffLeaveInput} timeOffLeaveInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createLeaveTimeOff(acceptVersion: CreateLeaveTimeOffAcceptVersionEnum, timeOffLeaveInput?: TimeOffLeaveInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TimeOff>> {
+        async createLeaveTimeOff(acceptVersion: CreateLeaveTimeOffAcceptVersionEnum, timeOffLeaveInput: TimeOffLeaveInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TimeOff>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createLeaveTimeOff(acceptVersion, timeOffLeaveInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.createLeaveTimeOff']?.[localVarOperationServerIndex]?.url;
@@ -13916,11 +14251,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @summary Add a new contract to a person
          * @param {number} personId 
          * @param {CreatePersonContractAcceptVersionEnum} acceptVersion 
-         * @param {ContractInput} [contractInput] 
+         * @param {ContractInput} contractInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createPersonContract(personId: number, acceptVersion: CreatePersonContractAcceptVersionEnum, contractInput?: ContractInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Contract>> {
+        async createPersonContract(personId: number, acceptVersion: CreatePersonContractAcceptVersionEnum, contractInput: ContractInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Contract>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createPersonContract(personId, acceptVersion, contractInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.createPersonContract']?.[localVarOperationServerIndex]?.url;
@@ -13944,11 +14279,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * 
          * @summary Create a project
          * @param {CreateProjectAcceptVersionEnum} acceptVersion 
-         * @param {CreateProjectRequest} [createProjectRequest] 
+         * @param {CreateProjectRequest} createProjectRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createProject(acceptVersion: CreateProjectAcceptVersionEnum, createProjectRequest?: CreateProjectRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Project>> {
+        async createProject(acceptVersion: CreateProjectAcceptVersionEnum, createProjectRequest: CreateProjectRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Project>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createProject(acceptVersion, createProjectRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.createProject']?.[localVarOperationServerIndex]?.url;
@@ -13959,11 +14294,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @summary Create a project budget role
          * @param {number} projectId 
          * @param {CreateProjectBudgetRoleAcceptVersionEnum} acceptVersion 
-         * @param {CreateProjectBudgetRoleRequest} [createProjectBudgetRoleRequest] 
+         * @param {CreateProjectBudgetRoleRequest} createProjectBudgetRoleRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createProjectBudgetRole(projectId: number, acceptVersion: CreateProjectBudgetRoleAcceptVersionEnum, createProjectBudgetRoleRequest?: CreateProjectBudgetRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async createProjectBudgetRole(projectId: number, acceptVersion: CreateProjectBudgetRoleAcceptVersionEnum, createProjectBudgetRoleRequest: CreateProjectBudgetRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createProjectBudgetRole(projectId, acceptVersion, createProjectBudgetRoleRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.createProjectBudgetRole']?.[localVarOperationServerIndex]?.url;
@@ -14283,8 +14618,8 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Delete a person by their ID; fails when person has existing assignments or actuals to preserve           historical reports. Override this behaviour by using the force query flag.
-         * @summary Delete a person
+         * Delete a person or placeholder by their ID; fails when person has existing assignments or actuals to preserve           historical reports. Override this behaviour by using the force query flag.
+         * @summary Delete a person or placeholder
          * @param {boolean} force 
          * @param {number} personId 
          * @param {DeletePersonAcceptVersionEnum} acceptVersion 
@@ -14569,7 +14904,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Show a person
+         * @summary Show a person or placeholder
          * @param {number} personId 
          * @param {GetPersonAcceptVersionEnum} acceptVersion 
          * @param {*} [options] Override http request option.
@@ -14596,13 +14931,14 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
-         * @summary Show current team
+         * This endpoint is deprecated. You may view the current team for a person using the `GET /people/:personId/` endpoint.
+         * @summary Show current team for a person or placeholder
          * @param {number} personId 
          * @param {GetPersonCurrentTeamAcceptVersionEnum} acceptVersion 
          * @param {string} [cursor] Cursor for paginated requests
          * @param {number} [limit] The number of results per page
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async getPersonCurrentTeam(personId: number, acceptVersion: GetPersonCurrentTeamAcceptVersionEnum, cursor?: string, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetPersonCurrentTeam200Response>> {
@@ -14627,6 +14963,22 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPersonHoursReport(personId, acceptVersion, cursor, limit, startDate, endDate, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getPersonHoursReport']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Get a report for a person containing data from the People Overview Report. Available under the Advanced Plan only. Contact help@runn.io to request beta access.
+         * @summary Show metrics (beta)
+         * @param {number} personId 
+         * @param {GetPersonReportAcceptVersionEnum} acceptVersion 
+         * @param {string} [startDate] The start date for the report. For monthly reports, this must be the first day of the month. For weekly reports, this must be a Monday. For quarterly reports, this must be the first day of the quarter. Format: YYYY-MM-DD
+         * @param {GetPersonReportPeriodTypeEnum} [periodType] The time interval at which to split the metrics on the report. A monthly report made in June, for instance, will show revenue for June, July, August, and September.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPersonReport(personId: number, acceptVersion: GetPersonReportAcceptVersionEnum, startDate?: string, periodType?: GetPersonReportPeriodTypeEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetPersonReport200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPersonReport(personId, acceptVersion, startDate, periodType, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getPersonReport']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -14704,6 +15056,22 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getProjectPhase(projectId, phaseId, acceptVersion, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getProjectPhase']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Get a report for a project containing data from the Project Overview report. Available under the Advanced Plan only. Contact help@runn.io to request beta access.
+         * @summary Show metrics (beta)
+         * @param {number} projectId 
+         * @param {GetProjectReportAcceptVersionEnum} acceptVersion 
+         * @param {string} [startDate] The start date for the report. For monthly reports, this must be the first day of the month. For weekly reports, this must be a Monday. For quarterly reports, this must be the first day of the quarter. Format: YYYY-MM-DD
+         * @param {GetProjectReportPeriodTypeEnum} [periodType] The time interval at which to split the metrics on the report. A monthly report made in June, for instance, will show revenue for June, July, August, and September. If not provided, the report will be for the Overview report (all inclusive).
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getProjectReport(projectId: number, acceptVersion: GetProjectReportAcceptVersionEnum, startDate?: string, periodType?: GetProjectReportPeriodTypeEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetProjectReport200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getProjectReport(projectId, acceptVersion, startDate, periodType, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getProjectReport']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -15165,7 +15533,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [email] If provided, will only return people with an email that are a substring of this value (case-insensitive).
          * @param {string} [firstName] If provided, will only return people with a first name that is a substring of this value (case-insensitive).
          * @param {string} [lastName] If provided, will only return people with a last name that is a substring of this value (case-insensitive).
-         * @param {ModifiedAfter} [modifiedAfter] If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. Note: A person is considered \&quot;modified\&quot; if any of its core properties change. Actions that count as modifying a person include changing first name, last name, email, references, tags and archiving. A person is not considered modified just because another object it is associated with is changed (e.g. a contract, project or an assignment).
+         * @param {ModifiedAfter} [modifiedAfter] 
          * @param {string} [externalId] External ID value
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -15231,7 +15599,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [cursor] Cursor for paginated requests
          * @param {number} [limit] The number of results per page
          * @param {boolean} [includePlaceholders] 
-         * @param {ModifiedAfter} [modifiedAfter] If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ.
+         * @param {ModifiedAfter} [modifiedAfter] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -15280,7 +15648,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary List assignments for a person
+         * @summary List assignments for a person or placeholder
          * @param {number} personId 
          * @param {ListPersonAssignmentsAcceptVersionEnum} acceptVersion 
          * @param {string} [cursor] Cursor for paginated requests
@@ -15349,7 +15717,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary List projects for a person
+         * @summary List projects for a person or placeholder
          * @param {number} personId 
          * @param {ListPersonProjectsAcceptVersionEnum} acceptVersion 
          * @param {string} [cursor] Cursor for paginated requests
@@ -15397,7 +15765,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary List skills for a person
+         * @summary List skills for a person or placeholder
          * @param {number} personId 
          * @param {ListPersonSkillsAcceptVersionEnum} acceptVersion 
          * @param {string} [cursor] Cursor for paginated requests
@@ -15429,7 +15797,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Note: The /people/_* endpoints also allows getting information on placeholders when using the `includePlaceholders` query parameter.
          * @summary List placeholders
          * @param {ListPlaceholdersAcceptVersionEnum} acceptVersion 
          * @param {string} [cursor] Cursor for paginated requests
@@ -15742,7 +16110,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {number} [limit] The number of results per page
          * @param {ListProjectsSortByEnum} [sortBy] Field to sort by: createdAt or updatedAt or id
          * @param {ListProjectsOrderEnum} [order] Sort order: asc or desc
-         * @param {ModifiedAfter} [modifiedAfter] If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. Note: A project is considered \&quot;modified\&quot; if any of its core properties change. Actions that count as modifying a project include changing the name, client, status, pricing model, rate type , team, budget, expenses budget, references, and archiving. A project is not considered modified just because another object it is associated with is changed (e.g. actuals, assignments, budget roles, custom fields, milestones, notes, other expenses, people, people requests, phases, rates, timesheet locks &amp; workstreams).
+         * @param {ModifiedAfter} [modifiedAfter] 
          * @param {string} [externalId] External ID value
          * @param {string} [name] Case-insensitive substring match on project name (e.g. &#x60;Acme&#x60;).
          * @param {*} [options] Override http request option.
@@ -15977,14 +16345,15 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
-         * @summary Remove a person from a team
+         * This endpoint is deprecated. You may remove the person from a team using the `PATCH /people/:personId/` endpoint.
+         * @summary Remove a person or placeholder from a team
          * @param {number} personId 
          * @param {number} teamId 
          * @param {RemovePersonFromTeamAcceptVersionEnum} acceptVersion 
          * @param {string} [cursor] Cursor for paginated requests
          * @param {number} [limit] The number of results per page
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async removePersonFromTeam(personId: number, teamId: number, acceptVersion: RemovePersonFromTeamAcceptVersionEnum, cursor?: string, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
@@ -15995,7 +16364,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Remove a skill from a person
+         * @summary Remove a skill from a person or placeholder
          * @param {number} personId 
          * @param {number} skillId 
          * @param {RemovePersonSkillAcceptVersionEnum} acceptVersion 
@@ -16087,11 +16456,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * Returns Actual with updated minutes. Creates a new actual when there is none to update [Learn more](https://developer.runn.io/docs/actuals-notes).
          * @summary Update an actual
          * @param {UpdateActualTimeEntryAcceptVersionEnum} acceptVersion 
-         * @param {ActualTimeEntry} [actualTimeEntry] 
+         * @param {ActualTimeEntry} actualTimeEntry 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateActualTimeEntry(acceptVersion: UpdateActualTimeEntryAcceptVersionEnum, actualTimeEntry?: ActualTimeEntry, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Actual>> {
+        async updateActualTimeEntry(acceptVersion: UpdateActualTimeEntryAcceptVersionEnum, actualTimeEntry: ActualTimeEntry, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Actual>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateActualTimeEntry(acceptVersion, actualTimeEntry, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateActualTimeEntry']?.[localVarOperationServerIndex]?.url;
@@ -16102,11 +16471,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @summary Update a checkbox custom field
          * @param {number} checkboxFieldId 
          * @param {UpdateCheckboxCustomFieldAcceptVersionEnum} acceptVersion 
-         * @param {UpdateCheckboxCustomFieldRequest} [updateCheckboxCustomFieldRequest] 
+         * @param {UpdateCheckboxCustomFieldRequest} updateCheckboxCustomFieldRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateCheckboxCustomField(checkboxFieldId: number, acceptVersion: UpdateCheckboxCustomFieldAcceptVersionEnum, updateCheckboxCustomFieldRequest?: UpdateCheckboxCustomFieldRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomFieldCheckbox>> {
+        async updateCheckboxCustomField(checkboxFieldId: number, acceptVersion: UpdateCheckboxCustomFieldAcceptVersionEnum, updateCheckboxCustomFieldRequest: UpdateCheckboxCustomFieldRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomFieldCheckbox>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateCheckboxCustomField(checkboxFieldId, acceptVersion, updateCheckboxCustomFieldRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateCheckboxCustomField']?.[localVarOperationServerIndex]?.url;
@@ -16117,11 +16486,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @summary Update a client
          * @param {number} clientId 
          * @param {UpdateClientAcceptVersionEnum} acceptVersion 
-         * @param {UpdateClientRequest} [updateClientRequest] 
+         * @param {UpdateClientRequest} updateClientRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateClient(clientId: number, acceptVersion: UpdateClientAcceptVersionEnum, updateClientRequest?: UpdateClientRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Client>> {
+        async updateClient(clientId: number, acceptVersion: UpdateClientAcceptVersionEnum, updateClientRequest: UpdateClientRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Client>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateClient(clientId, acceptVersion, updateClientRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateClient']?.[localVarOperationServerIndex]?.url;
@@ -16132,11 +16501,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @summary Update a contract
          * @param {number} contractId 
          * @param {UpdateContractAcceptVersionEnum} acceptVersion 
-         * @param {UpdateContractRequest} [updateContractRequest] 
+         * @param {UpdateContractRequest} updateContractRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateContract(contractId: number, acceptVersion: UpdateContractAcceptVersionEnum, updateContractRequest?: UpdateContractRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Contract>> {
+        async updateContract(contractId: number, acceptVersion: UpdateContractAcceptVersionEnum, updateContractRequest: UpdateContractRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Contract>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateContract(contractId, acceptVersion, updateContractRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateContract']?.[localVarOperationServerIndex]?.url;
@@ -16147,11 +16516,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @summary Update a date custom field
          * @param {number} dateFieldId 
          * @param {UpdateDateCustomFieldAcceptVersionEnum} acceptVersion 
-         * @param {UpdateDateCustomFieldRequest} [updateDateCustomFieldRequest] 
+         * @param {UpdateDateCustomFieldRequest} updateDateCustomFieldRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateDateCustomField(dateFieldId: number, acceptVersion: UpdateDateCustomFieldAcceptVersionEnum, updateDateCustomFieldRequest?: UpdateDateCustomFieldRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomFieldDate>> {
+        async updateDateCustomField(dateFieldId: number, acceptVersion: UpdateDateCustomFieldAcceptVersionEnum, updateDateCustomFieldRequest: UpdateDateCustomFieldRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomFieldDate>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateDateCustomField(dateFieldId, acceptVersion, updateDateCustomFieldRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateDateCustomField']?.[localVarOperationServerIndex]?.url;
@@ -16174,14 +16543,14 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * To add a new role or job title to a person, see POST /people/{personId}/contracts
-         * @summary Update a person
+         * @summary Update a person or placeholder
          * @param {number} personId 
          * @param {UpdatePersonAcceptVersionEnum} acceptVersion 
-         * @param {UpdatePersonRequest} [updatePersonRequest] 
+         * @param {UpdatePersonRequest} updatePersonRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updatePerson(personId: number, acceptVersion: UpdatePersonAcceptVersionEnum, updatePersonRequest?: UpdatePersonRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Person>> {
+        async updatePerson(personId: number, acceptVersion: UpdatePersonAcceptVersionEnum, updatePersonRequest: UpdatePersonRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Person>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updatePerson(personId, acceptVersion, updatePersonRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updatePerson']?.[localVarOperationServerIndex]?.url;
@@ -16189,7 +16558,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Add a checkbox custom value to a person
+         * @summary Add a checkbox custom value to a person or placeholder
          * @param {number} personId 
          * @param {UpdatePersonCheckboxCustomFieldAcceptVersionEnum} acceptVersion 
          * @param {UpdatePersonCheckboxCustomFieldRequest} updatePersonCheckboxCustomFieldRequest 
@@ -16204,7 +16573,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Add a date custom value to a person
+         * @summary Add a date custom value to a person or placeholder
          * @param {number} personId 
          * @param {UpdatePersonDateCustomFieldAcceptVersionEnum} acceptVersion 
          * @param {UpdatePersonDateCustomFieldRequest} updatePersonDateCustomFieldRequest 
@@ -16219,7 +16588,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Add custom select options to a person
+         * @summary Add custom select options to a person or placeholder
          * @param {number} personId 
          * @param {UpdatePersonSelectCustomFieldAcceptVersionEnum} acceptVersion 
          * @param {UpdatePersonSelectCustomFieldRequest} updatePersonSelectCustomFieldRequest 
@@ -16234,7 +16603,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Update a skill for a person
+         * @summary Update a skill for a person or placeholder
          * @param {number} personId 
          * @param {number} skillId 
          * @param {UpdatePersonSkillAcceptVersionEnum} acceptVersion 
@@ -16250,7 +16619,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Add a text custom value to a person
+         * @summary Add a text custom value to a person or placeholder
          * @param {number} personId 
          * @param {UpdatePersonTextCustomFieldAcceptVersionEnum} acceptVersion 
          * @param {UpdatePersonTextCustomFieldRequest} updatePersonTextCustomFieldRequest 
@@ -16268,11 +16637,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @summary Update a project
          * @param {number} projectId 
          * @param {UpdateProjectAcceptVersionEnum} acceptVersion 
-         * @param {UpdateProjectRequest} [updateProjectRequest] 
+         * @param {UpdateProjectRequest} updateProjectRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateProject(projectId: number, acceptVersion: UpdateProjectAcceptVersionEnum, updateProjectRequest?: UpdateProjectRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Project>> {
+        async updateProject(projectId: number, acceptVersion: UpdateProjectAcceptVersionEnum, updateProjectRequest: UpdateProjectRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Project>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateProject(projectId, acceptVersion, updateProjectRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateProject']?.[localVarOperationServerIndex]?.url;
@@ -16284,11 +16653,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {number} projectId 
          * @param {number} roleId 
          * @param {UpdateProjectBudgetRoleAcceptVersionEnum} acceptVersion 
-         * @param {UpdateProjectBudgetRoleRequest} [updateProjectBudgetRoleRequest] 
+         * @param {UpdateProjectBudgetRoleRequest} updateProjectBudgetRoleRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateProjectBudgetRole(projectId: number, roleId: number, acceptVersion: UpdateProjectBudgetRoleAcceptVersionEnum, updateProjectBudgetRoleRequest?: UpdateProjectBudgetRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectBudgetRole>> {
+        async updateProjectBudgetRole(projectId: number, roleId: number, acceptVersion: UpdateProjectBudgetRoleAcceptVersionEnum, updateProjectBudgetRoleRequest: UpdateProjectBudgetRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectBudgetRole>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateProjectBudgetRole(projectId, roleId, acceptVersion, updateProjectBudgetRoleRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateProjectBudgetRole']?.[localVarOperationServerIndex]?.url;
@@ -16330,11 +16699,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {number} projectId 
          * @param {number} milestoneId 
          * @param {UpdateProjectMilestoneAcceptVersionEnum} acceptVersion 
-         * @param {UpdateProjectMilestoneRequest} [updateProjectMilestoneRequest] 
+         * @param {UpdateProjectMilestoneRequest} updateProjectMilestoneRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateProjectMilestone(projectId: number, milestoneId: number, acceptVersion: UpdateProjectMilestoneAcceptVersionEnum, updateProjectMilestoneRequest?: UpdateProjectMilestoneRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Milestone>> {
+        async updateProjectMilestone(projectId: number, milestoneId: number, acceptVersion: UpdateProjectMilestoneAcceptVersionEnum, updateProjectMilestoneRequest: UpdateProjectMilestoneRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Milestone>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateProjectMilestone(projectId, milestoneId, acceptVersion, updateProjectMilestoneRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateProjectMilestone']?.[localVarOperationServerIndex]?.url;
@@ -16346,11 +16715,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {number} projectId Unique identifier for the project the expense is for.
          * @param {number} otherExpenseId Unique identifier for the other expense to update.
          * @param {UpdateProjectOtherExpenseAcceptVersionEnum} acceptVersion 
-         * @param {ProjectOtherExpense1} [projectOtherExpense1] A non-labour expense for a project.
+         * @param {ProjectOtherExpense1} projectOtherExpense1 A non-labour expense for a project.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateProjectOtherExpense(projectId: number, otherExpenseId: number, acceptVersion: UpdateProjectOtherExpenseAcceptVersionEnum, projectOtherExpense1?: ProjectOtherExpense1, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectOtherExpense>> {
+        async updateProjectOtherExpense(projectId: number, otherExpenseId: number, acceptVersion: UpdateProjectOtherExpenseAcceptVersionEnum, projectOtherExpense1: ProjectOtherExpense1, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectOtherExpense>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateProjectOtherExpense(projectId, otherExpenseId, acceptVersion, projectOtherExpense1, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateProjectOtherExpense']?.[localVarOperationServerIndex]?.url;
@@ -16378,11 +16747,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {number} projectId 
          * @param {number} phaseId 
          * @param {UpdateProjectPhaseAcceptVersionEnum} acceptVersion 
-         * @param {UpdateProjectPhaseRequest} [updateProjectPhaseRequest] 
+         * @param {UpdateProjectPhaseRequest} updateProjectPhaseRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateProjectPhase(projectId: number, phaseId: number, acceptVersion: UpdateProjectPhaseAcceptVersionEnum, updateProjectPhaseRequest?: UpdateProjectPhaseRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectPhase>> {
+        async updateProjectPhase(projectId: number, phaseId: number, acceptVersion: UpdateProjectPhaseAcceptVersionEnum, updateProjectPhaseRequest: UpdateProjectPhaseRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectPhase>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateProjectPhase(projectId, phaseId, acceptVersion, updateProjectPhaseRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateProjectPhase']?.[localVarOperationServerIndex]?.url;
@@ -16454,11 +16823,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @summary Update a timesheet lock for a project
          * @param {number} projectId 
          * @param {UpdateProjectTimesheetLockAcceptVersionEnum} acceptVersion 
-         * @param {UpdateProjectTimesheetLockRequest} [updateProjectTimesheetLockRequest] 
+         * @param {UpdateProjectTimesheetLockRequest} updateProjectTimesheetLockRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateProjectTimesheetLock(projectId: number, acceptVersion: UpdateProjectTimesheetLockAcceptVersionEnum, updateProjectTimesheetLockRequest?: UpdateProjectTimesheetLockRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetProjectTimesheetLock200Response>> {
+        async updateProjectTimesheetLock(projectId: number, acceptVersion: UpdateProjectTimesheetLockAcceptVersionEnum, updateProjectTimesheetLockRequest: UpdateProjectTimesheetLockRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetProjectTimesheetLock200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateProjectTimesheetLock(projectId, acceptVersion, updateProjectTimesheetLockRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateProjectTimesheetLock']?.[localVarOperationServerIndex]?.url;
@@ -16466,14 +16835,29 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Update a role
-         * @param {number} roleId 
-         * @param {UpdateRoleAcceptVersionEnum} acceptVersion 
-         * @param {UpdateRoleRequest} [updateRoleRequest] 
+         * @summary Update a rate card
+         * @param {number} rateCardId 
+         * @param {UpdateRateCardAcceptVersionEnum} acceptVersion 
+         * @param {UpdateRateCardRequest} updateRateCardRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateRole(roleId: number, acceptVersion: UpdateRoleAcceptVersionEnum, updateRoleRequest?: UpdateRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Role>> {
+        async updateRateCard(rateCardId: number, acceptVersion: UpdateRateCardAcceptVersionEnum, updateRateCardRequest: UpdateRateCardRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RateCard>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateRateCard(rateCardId, acceptVersion, updateRateCardRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateRateCard']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Update a role
+         * @param {number} roleId 
+         * @param {UpdateRoleAcceptVersionEnum} acceptVersion 
+         * @param {UpdateRoleRequest} updateRoleRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateRole(roleId: number, acceptVersion: UpdateRoleAcceptVersionEnum, updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Role>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateRole(roleId, acceptVersion, updateRoleRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateRole']?.[localVarOperationServerIndex]?.url;
@@ -16484,11 +16868,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @summary Update a select custom field
          * @param {number} selectFieldId 
          * @param {UpdateSelectCustomFieldAcceptVersionEnum} acceptVersion 
-         * @param {UpdateCheckboxCustomFieldRequest} [updateCheckboxCustomFieldRequest] 
+         * @param {UpdateCheckboxCustomFieldRequest} updateCheckboxCustomFieldRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateSelectCustomField(selectFieldId: number, acceptVersion: UpdateSelectCustomFieldAcceptVersionEnum, updateCheckboxCustomFieldRequest?: UpdateCheckboxCustomFieldRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomFieldSelect>> {
+        async updateSelectCustomField(selectFieldId: number, acceptVersion: UpdateSelectCustomFieldAcceptVersionEnum, updateCheckboxCustomFieldRequest: UpdateCheckboxCustomFieldRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomFieldSelect>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateSelectCustomField(selectFieldId, acceptVersion, updateCheckboxCustomFieldRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateSelectCustomField']?.[localVarOperationServerIndex]?.url;
@@ -16545,11 +16929,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @summary Update a text custom field
          * @param {number} textFieldId 
          * @param {UpdateTextCustomFieldAcceptVersionEnum} acceptVersion 
-         * @param {UpdateCheckboxCustomFieldRequest} [updateCheckboxCustomFieldRequest] 
+         * @param {UpdateCheckboxCustomFieldRequest} updateCheckboxCustomFieldRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateTextCustomField(textFieldId: number, acceptVersion: UpdateTextCustomFieldAcceptVersionEnum, updateCheckboxCustomFieldRequest?: UpdateCheckboxCustomFieldRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomFieldText>> {
+        async updateTextCustomField(textFieldId: number, acceptVersion: UpdateTextCustomFieldAcceptVersionEnum, updateCheckboxCustomFieldRequest: UpdateCheckboxCustomFieldRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomFieldText>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateTextCustomField(textFieldId, acceptVersion, updateCheckboxCustomFieldRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateTextCustomField']?.[localVarOperationServerIndex]?.url;
@@ -16560,11 +16944,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @summary Update a workstream
          * @param {number} workstreamId 
          * @param {UpdateWorkstreamAcceptVersionEnum} acceptVersion 
-         * @param {UpdateWorkstreamRequest} [updateWorkstreamRequest] 
+         * @param {UpdateWorkstreamRequest} updateWorkstreamRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateWorkstream(workstreamId: number, acceptVersion: UpdateWorkstreamAcceptVersionEnum, updateWorkstreamRequest?: UpdateWorkstreamRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Workstream>> {
+        async updateWorkstream(workstreamId: number, acceptVersion: UpdateWorkstreamAcceptVersionEnum, updateWorkstreamRequest: UpdateWorkstreamRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Workstream>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateWorkstream(workstreamId, acceptVersion, updateWorkstreamRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateWorkstream']?.[localVarOperationServerIndex]?.url;
@@ -16591,7 +16975,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary Add a skill to a person
+         * @summary Add a skill to a person or placeholder
          * @param {DefaultApiAddPersonSkillRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16601,7 +16985,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary Add project to a person
+         * @summary Add project to a person or placeholder
          * @param {DefaultApiAddPersonToProjectRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16610,10 +16994,11 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.addPersonToProject(requestParameters.personId, requestParameters.acceptVersion, requestParameters.addPersonToProjectRequest, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * @summary Add a person to a team
+         * This endpoint is deprecated. You may assign the person to a team using the `PATCH /people/:personId/` endpoint.
+         * @summary Add a person or placeholder to a team
          * @param {DefaultApiAddPersonToTeamRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         addPersonToTeam(requestParameters: DefaultApiAddPersonToTeamRequest, options?: RawAxiosRequestConfig): AxiosPromise<void> {
@@ -17080,8 +17465,8 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.deletePeopleTag(requestParameters.peopleTagId, requestParameters.acceptVersion, options).then((request) => request(axios, basePath));
         },
         /**
-         * Delete a person by their ID; fails when person has existing assignments or actuals to preserve           historical reports. Override this behaviour by using the force query flag.
-         * @summary Delete a person
+         * Delete a person or placeholder by their ID; fails when person has existing assignments or actuals to preserve           historical reports. Override this behaviour by using the force query flag.
+         * @summary Delete a person or placeholder
          * @param {DefaultApiDeletePersonRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17281,7 +17666,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary Show a person
+         * @summary Show a person or placeholder
          * @param {DefaultApiGetPersonRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17300,10 +17685,11 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.getPersonCurrentContract(requestParameters.personId, requestParameters.acceptVersion, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * @summary Show current team
+         * This endpoint is deprecated. You may view the current team for a person using the `GET /people/:personId/` endpoint.
+         * @summary Show current team for a person or placeholder
          * @param {DefaultApiGetPersonCurrentTeamRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getPersonCurrentTeam(requestParameters: DefaultApiGetPersonCurrentTeamRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetPersonCurrentTeam200Response> {
@@ -17318,6 +17704,16 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         getPersonHoursReport(requestParameters: DefaultApiGetPersonHoursReportRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetPersonHoursReport200Response> {
             return localVarFp.getPersonHoursReport(requestParameters.personId, requestParameters.acceptVersion, requestParameters.cursor, requestParameters.limit, requestParameters.startDate, requestParameters.endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Get a report for a person containing data from the People Overview Report. Available under the Advanced Plan only. Contact help@runn.io to request beta access.
+         * @summary Show metrics (beta)
+         * @param {DefaultApiGetPersonReportRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPersonReport(requestParameters: DefaultApiGetPersonReportRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetPersonReport200Response> {
+            return localVarFp.getPersonReport(requestParameters.personId, requestParameters.acceptVersion, requestParameters.startDate, requestParameters.periodType, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -17368,6 +17764,16 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         getProjectPhase(requestParameters: DefaultApiGetProjectPhaseRequest, options?: RawAxiosRequestConfig): AxiosPromise<ProjectPhase> {
             return localVarFp.getProjectPhase(requestParameters.projectId, requestParameters.phaseId, requestParameters.acceptVersion, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Get a report for a project containing data from the Project Overview report. Available under the Advanced Plan only. Contact help@runn.io to request beta access.
+         * @summary Show metrics (beta)
+         * @param {DefaultApiGetProjectReportRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getProjectReport(requestParameters: DefaultApiGetProjectReportRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetProjectReport200Response> {
+            return localVarFp.getProjectReport(requestParameters.projectId, requestParameters.acceptVersion, requestParameters.startDate, requestParameters.periodType, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -17711,7 +18117,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary List assignments for a person
+         * @summary List assignments for a person or placeholder
          * @param {DefaultApiListPersonAssignmentsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17751,7 +18157,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary List projects for a person
+         * @summary List projects for a person or placeholder
          * @param {DefaultApiListPersonProjectsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17781,7 +18187,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary List skills for a person
+         * @summary List skills for a person or placeholder
          * @param {DefaultApiListPersonSkillsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17800,7 +18206,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.listPhases(requestParameters.acceptVersion, requestParameters.cursor, requestParameters.limit, requestParameters.modifiedAfter, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Note: The /people/_* endpoints also allows getting information on placeholders when using the `includePlaceholders` query parameter.
          * @summary List placeholders
          * @param {DefaultApiListPlaceholdersRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -18120,10 +18526,11 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.listWorkstreams(requestParameters.acceptVersion, requestParameters.cursor, requestParameters.limit, requestParameters.sortBy, requestParameters.order, requestParameters.modifiedAfter, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * @summary Remove a person from a team
+         * This endpoint is deprecated. You may remove the person from a team using the `PATCH /people/:personId/` endpoint.
+         * @summary Remove a person or placeholder from a team
          * @param {DefaultApiRemovePersonFromTeamRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         removePersonFromTeam(requestParameters: DefaultApiRemovePersonFromTeamRequest, options?: RawAxiosRequestConfig): AxiosPromise<void> {
@@ -18131,7 +18538,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary Remove a skill from a person
+         * @summary Remove a skill from a person or placeholder
          * @param {DefaultApiRemovePersonSkillRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18251,7 +18658,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * To add a new role or job title to a person, see POST /people/{personId}/contracts
-         * @summary Update a person
+         * @summary Update a person or placeholder
          * @param {DefaultApiUpdatePersonRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18261,7 +18668,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary Add a checkbox custom value to a person
+         * @summary Add a checkbox custom value to a person or placeholder
          * @param {DefaultApiUpdatePersonCheckboxCustomFieldRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18271,7 +18678,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary Add a date custom value to a person
+         * @summary Add a date custom value to a person or placeholder
          * @param {DefaultApiUpdatePersonDateCustomFieldRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18281,7 +18688,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary Add custom select options to a person
+         * @summary Add custom select options to a person or placeholder
          * @param {DefaultApiUpdatePersonSelectCustomFieldRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18291,7 +18698,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary Update a skill for a person
+         * @summary Update a skill for a person or placeholder
          * @param {DefaultApiUpdatePersonSkillRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18301,7 +18708,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary Add a text custom value to a person
+         * @summary Add a text custom value to a person or placeholder
          * @param {DefaultApiUpdatePersonTextCustomFieldRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18438,6 +18845,16 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         updateProjectTimesheetLock(requestParameters: DefaultApiUpdateProjectTimesheetLockRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetProjectTimesheetLock200Response> {
             return localVarFp.updateProjectTimesheetLock(requestParameters.projectId, requestParameters.acceptVersion, requestParameters.updateProjectTimesheetLockRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update a rate card
+         * @param {DefaultApiUpdateRateCardRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateRateCard(requestParameters: DefaultApiUpdateRateCardRequest, options?: RawAxiosRequestConfig): AxiosPromise<RateCard> {
+            return localVarFp.updateRateCard(requestParameters.rateCardId, requestParameters.acceptVersion, requestParameters.updateRateCardRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -18634,7 +19051,7 @@ export interface DefaultApiConvertLegacyIdRequest {
 export interface DefaultApiCreateActualRequest {
     readonly acceptVersion: CreateActualAcceptVersionEnum
 
-    readonly actualInput?: ActualInput
+    readonly actualInput: ActualInput
 }
 
 /**
@@ -18670,7 +19087,7 @@ export interface DefaultApiCreateCheckboxCustomFieldRequest {
 export interface DefaultApiCreateClientRequest {
     readonly acceptVersion: CreateClientAcceptVersionEnum
 
-    readonly clientInput?: ClientInput
+    readonly clientInput: ClientInput
 }
 
 /**
@@ -18697,7 +19114,7 @@ export interface DefaultApiCreateDateCustomFieldRequest {
 export interface DefaultApiCreateHolidayTimeOffRequest {
     readonly acceptVersion: CreateHolidayTimeOffAcceptVersionEnum
 
-    readonly timeOffHolidayInput?: TimeOffHolidayInput
+    readonly timeOffHolidayInput: TimeOffHolidayInput
 }
 
 /**
@@ -18706,7 +19123,7 @@ export interface DefaultApiCreateHolidayTimeOffRequest {
 export interface DefaultApiCreateInvitationRequest {
     readonly acceptVersion: CreateInvitationAcceptVersionEnum
 
-    readonly createInvitationRequest?: CreateInvitationRequest
+    readonly createInvitationRequest: CreateInvitationRequest
 }
 
 /**
@@ -18715,7 +19132,7 @@ export interface DefaultApiCreateInvitationRequest {
 export interface DefaultApiCreateLeaveTimeOffRequest {
     readonly acceptVersion: CreateLeaveTimeOffAcceptVersionEnum
 
-    readonly timeOffLeaveInput?: TimeOffLeaveInput
+    readonly timeOffLeaveInput: TimeOffLeaveInput
 }
 
 /**
@@ -18764,7 +19181,7 @@ export interface DefaultApiCreatePersonContractRequest {
 
     readonly acceptVersion: CreatePersonContractAcceptVersionEnum
 
-    readonly contractInput?: ContractInput
+    readonly contractInput: ContractInput
 }
 
 /**
@@ -18782,7 +19199,7 @@ export interface DefaultApiCreatePlaceholderRequest {
 export interface DefaultApiCreateProjectRequest {
     readonly acceptVersion: CreateProjectAcceptVersionEnum
 
-    readonly createProjectRequest?: CreateProjectRequest
+    readonly createProjectRequest: CreateProjectRequest
 }
 
 /**
@@ -18793,7 +19210,7 @@ export interface DefaultApiCreateProjectBudgetRoleRequest {
 
     readonly acceptVersion: CreateProjectBudgetRoleAcceptVersionEnum
 
-    readonly createProjectBudgetRoleRequest?: CreateProjectBudgetRoleRequest
+    readonly createProjectBudgetRoleRequest: CreateProjectBudgetRoleRequest
 }
 
 /**
@@ -19282,6 +19699,25 @@ export interface DefaultApiGetPersonHoursReportRequest {
 }
 
 /**
+ * Request parameters for getPersonReport operation in DefaultApi.
+ */
+export interface DefaultApiGetPersonReportRequest {
+    readonly personId: number
+
+    readonly acceptVersion: GetPersonReportAcceptVersionEnum
+
+    /**
+     * The start date for the report. For monthly reports, this must be the first day of the month. For weekly reports, this must be a Monday. For quarterly reports, this must be the first day of the quarter. Format: YYYY-MM-DD
+     */
+    readonly startDate?: string
+
+    /**
+     * The time interval at which to split the metrics on the report. A monthly report made in June, for instance, will show revenue for June, July, August, and September.
+     */
+    readonly periodType?: GetPersonReportPeriodTypeEnum
+}
+
+/**
  * Request parameters for getProject operation in DefaultApi.
  */
 export interface DefaultApiGetProjectRequest {
@@ -19350,6 +19786,25 @@ export interface DefaultApiGetProjectPhaseRequest {
     readonly phaseId: number
 
     readonly acceptVersion: GetProjectPhaseAcceptVersionEnum
+}
+
+/**
+ * Request parameters for getProjectReport operation in DefaultApi.
+ */
+export interface DefaultApiGetProjectReportRequest {
+    readonly projectId: number
+
+    readonly acceptVersion: GetProjectReportAcceptVersionEnum
+
+    /**
+     * The start date for the report. For monthly reports, this must be the first day of the month. For weekly reports, this must be a Monday. For quarterly reports, this must be the first day of the quarter. Format: YYYY-MM-DD
+     */
+    readonly startDate?: string
+
+    /**
+     * The time interval at which to split the metrics on the report. A monthly report made in June, for instance, will show revenue for June, July, August, and September. If not provided, the report will be for the Overview report (all inclusive).
+     */
+    readonly periodType?: GetProjectReportPeriodTypeEnum
 }
 
 /**
@@ -19941,9 +20396,6 @@ export interface DefaultApiListPeopleRequest {
      */
     readonly lastName?: string
 
-    /**
-     * If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. Note: A person is considered \&quot;modified\&quot; if any of its core properties change. Actions that count as modifying a person include changing first name, last name, email, references, tags and archiving. A person is not considered modified just because another object it is associated with is changed (e.g. a contract, project or an assignment).
-     */
     readonly modifiedAfter?: ModifiedAfter
 
     /**
@@ -20027,9 +20479,6 @@ export interface DefaultApiListPeopleSkillsRequest {
 
     readonly includePlaceholders?: boolean
 
-    /**
-     * If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ.
-     */
     readonly modifiedAfter?: ModifiedAfter
 }
 
@@ -20707,9 +21156,6 @@ export interface DefaultApiListProjectsRequest {
      */
     readonly order?: ListProjectsOrderEnum
 
-    /**
-     * If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. Note: A project is considered \&quot;modified\&quot; if any of its core properties change. Actions that count as modifying a project include changing the name, client, status, pricing model, rate type , team, budget, expenses budget, references, and archiving. A project is not considered modified just because another object it is associated with is changed (e.g. actuals, assignments, budget roles, custom fields, milestones, notes, other expenses, people, people requests, phases, rates, timesheet locks &amp; workstreams).
-     */
     readonly modifiedAfter?: ModifiedAfter
 
     /**
@@ -21124,7 +21570,7 @@ export interface DefaultApiRemoveWorkstreamFromProjectRequest {
 export interface DefaultApiUpdateActualTimeEntryRequest {
     readonly acceptVersion: UpdateActualTimeEntryAcceptVersionEnum
 
-    readonly actualTimeEntry?: ActualTimeEntry
+    readonly actualTimeEntry: ActualTimeEntry
 }
 
 /**
@@ -21135,7 +21581,7 @@ export interface DefaultApiUpdateCheckboxCustomFieldRequest {
 
     readonly acceptVersion: UpdateCheckboxCustomFieldAcceptVersionEnum
 
-    readonly updateCheckboxCustomFieldRequest?: UpdateCheckboxCustomFieldRequest
+    readonly updateCheckboxCustomFieldRequest: UpdateCheckboxCustomFieldRequest
 }
 
 /**
@@ -21146,7 +21592,7 @@ export interface DefaultApiUpdateClientRequest {
 
     readonly acceptVersion: UpdateClientAcceptVersionEnum
 
-    readonly updateClientRequest?: UpdateClientRequest
+    readonly updateClientRequest: UpdateClientRequest
 }
 
 /**
@@ -21157,7 +21603,7 @@ export interface DefaultApiUpdateContractRequest {
 
     readonly acceptVersion: UpdateContractAcceptVersionEnum
 
-    readonly updateContractRequest?: UpdateContractRequest
+    readonly updateContractRequest: UpdateContractRequest
 }
 
 /**
@@ -21168,7 +21614,7 @@ export interface DefaultApiUpdateDateCustomFieldRequest {
 
     readonly acceptVersion: UpdateDateCustomFieldAcceptVersionEnum
 
-    readonly updateDateCustomFieldRequest?: UpdateDateCustomFieldRequest
+    readonly updateDateCustomFieldRequest: UpdateDateCustomFieldRequest
 }
 
 /**
@@ -21190,7 +21636,7 @@ export interface DefaultApiUpdatePersonRequest {
 
     readonly acceptVersion: UpdatePersonAcceptVersionEnum
 
-    readonly updatePersonRequest?: UpdatePersonRequest
+    readonly updatePersonRequest: UpdatePersonRequest
 }
 
 /**
@@ -21258,7 +21704,7 @@ export interface DefaultApiUpdateProjectRequest {
 
     readonly acceptVersion: UpdateProjectAcceptVersionEnum
 
-    readonly updateProjectRequest?: UpdateProjectRequest
+    readonly updateProjectRequest: UpdateProjectRequest
 }
 
 /**
@@ -21271,7 +21717,7 @@ export interface DefaultApiUpdateProjectBudgetRoleRequest {
 
     readonly acceptVersion: UpdateProjectBudgetRoleAcceptVersionEnum
 
-    readonly updateProjectBudgetRoleRequest?: UpdateProjectBudgetRoleRequest
+    readonly updateProjectBudgetRoleRequest: UpdateProjectBudgetRoleRequest
 }
 
 /**
@@ -21306,7 +21752,7 @@ export interface DefaultApiUpdateProjectMilestoneRequest {
 
     readonly acceptVersion: UpdateProjectMilestoneAcceptVersionEnum
 
-    readonly updateProjectMilestoneRequest?: UpdateProjectMilestoneRequest
+    readonly updateProjectMilestoneRequest: UpdateProjectMilestoneRequest
 }
 
 /**
@@ -21328,7 +21774,7 @@ export interface DefaultApiUpdateProjectOtherExpenseRequest {
     /**
      * A non-labour expense for a project.
      */
-    readonly projectOtherExpense1?: ProjectOtherExpense1
+    readonly projectOtherExpense1: ProjectOtherExpense1
 }
 
 /**
@@ -21354,7 +21800,7 @@ export interface DefaultApiUpdateProjectPhaseRequest {
 
     readonly acceptVersion: UpdateProjectPhaseAcceptVersionEnum
 
-    readonly updateProjectPhaseRequest?: UpdateProjectPhaseRequest
+    readonly updateProjectPhaseRequest: UpdateProjectPhaseRequest
 }
 
 /**
@@ -21411,7 +21857,18 @@ export interface DefaultApiUpdateProjectTimesheetLockRequest {
 
     readonly acceptVersion: UpdateProjectTimesheetLockAcceptVersionEnum
 
-    readonly updateProjectTimesheetLockRequest?: UpdateProjectTimesheetLockRequest
+    readonly updateProjectTimesheetLockRequest: UpdateProjectTimesheetLockRequest
+}
+
+/**
+ * Request parameters for updateRateCard operation in DefaultApi.
+ */
+export interface DefaultApiUpdateRateCardRequest {
+    readonly rateCardId: number
+
+    readonly acceptVersion: UpdateRateCardAcceptVersionEnum
+
+    readonly updateRateCardRequest: UpdateRateCardRequest
 }
 
 /**
@@ -21422,7 +21879,7 @@ export interface DefaultApiUpdateRoleRequest {
 
     readonly acceptVersion: UpdateRoleAcceptVersionEnum
 
-    readonly updateRoleRequest?: UpdateRoleRequest
+    readonly updateRoleRequest: UpdateRoleRequest
 }
 
 /**
@@ -21433,7 +21890,7 @@ export interface DefaultApiUpdateSelectCustomFieldRequest {
 
     readonly acceptVersion: UpdateSelectCustomFieldAcceptVersionEnum
 
-    readonly updateCheckboxCustomFieldRequest?: UpdateCheckboxCustomFieldRequest
+    readonly updateCheckboxCustomFieldRequest: UpdateCheckboxCustomFieldRequest
 }
 
 /**
@@ -21479,7 +21936,7 @@ export interface DefaultApiUpdateTextCustomFieldRequest {
 
     readonly acceptVersion: UpdateTextCustomFieldAcceptVersionEnum
 
-    readonly updateCheckboxCustomFieldRequest?: UpdateCheckboxCustomFieldRequest
+    readonly updateCheckboxCustomFieldRequest: UpdateCheckboxCustomFieldRequest
 }
 
 /**
@@ -21490,7 +21947,7 @@ export interface DefaultApiUpdateWorkstreamRequest {
 
     readonly acceptVersion: UpdateWorkstreamAcceptVersionEnum
 
-    readonly updateWorkstreamRequest?: UpdateWorkstreamRequest
+    readonly updateWorkstreamRequest: UpdateWorkstreamRequest
 }
 
 /**
@@ -21510,7 +21967,7 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @summary Add a skill to a person
+     * @summary Add a skill to a person or placeholder
      * @param {DefaultApiAddPersonSkillRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -21521,7 +21978,7 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @summary Add project to a person
+     * @summary Add project to a person or placeholder
      * @param {DefaultApiAddPersonToProjectRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -21531,10 +21988,11 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
-     * 
-     * @summary Add a person to a team
+     * This endpoint is deprecated. You may assign the person to a team using the `PATCH /people/:personId/` endpoint.
+     * @summary Add a person or placeholder to a team
      * @param {DefaultApiAddPersonToTeamRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     public addPersonToTeam(requestParameters: DefaultApiAddPersonToTeamRequest, options?: RawAxiosRequestConfig) {
@@ -22048,8 +22506,8 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
-     * Delete a person by their ID; fails when person has existing assignments or actuals to preserve           historical reports. Override this behaviour by using the force query flag.
-     * @summary Delete a person
+     * Delete a person or placeholder by their ID; fails when person has existing assignments or actuals to preserve           historical reports. Override this behaviour by using the force query flag.
+     * @summary Delete a person or placeholder
      * @param {DefaultApiDeletePersonRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -22269,7 +22727,7 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @summary Show a person
+     * @summary Show a person or placeholder
      * @param {DefaultApiGetPersonRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -22290,10 +22748,11 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
-     * 
-     * @summary Show current team
+     * This endpoint is deprecated. You may view the current team for a person using the `GET /people/:personId/` endpoint.
+     * @summary Show current team for a person or placeholder
      * @param {DefaultApiGetPersonCurrentTeamRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     public getPersonCurrentTeam(requestParameters: DefaultApiGetPersonCurrentTeamRequest, options?: RawAxiosRequestConfig) {
@@ -22309,6 +22768,17 @@ export class DefaultApi extends BaseAPI {
      */
     public getPersonHoursReport(requestParameters: DefaultApiGetPersonHoursReportRequest, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getPersonHoursReport(requestParameters.personId, requestParameters.acceptVersion, requestParameters.cursor, requestParameters.limit, requestParameters.startDate, requestParameters.endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Get a report for a person containing data from the People Overview Report. Available under the Advanced Plan only. Contact help@runn.io to request beta access.
+     * @summary Show metrics (beta)
+     * @param {DefaultApiGetPersonReportRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public getPersonReport(requestParameters: DefaultApiGetPersonReportRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getPersonReport(requestParameters.personId, requestParameters.acceptVersion, requestParameters.startDate, requestParameters.periodType, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -22364,6 +22834,17 @@ export class DefaultApi extends BaseAPI {
      */
     public getProjectPhase(requestParameters: DefaultApiGetProjectPhaseRequest, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getProjectPhase(requestParameters.projectId, requestParameters.phaseId, requestParameters.acceptVersion, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Get a report for a project containing data from the Project Overview report. Available under the Advanced Plan only. Contact help@runn.io to request beta access.
+     * @summary Show metrics (beta)
+     * @param {DefaultApiGetProjectReportRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public getProjectReport(requestParameters: DefaultApiGetProjectReportRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getProjectReport(requestParameters.projectId, requestParameters.acceptVersion, requestParameters.startDate, requestParameters.periodType, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -22742,7 +23223,7 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @summary List assignments for a person
+     * @summary List assignments for a person or placeholder
      * @param {DefaultApiListPersonAssignmentsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -22786,7 +23267,7 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @summary List projects for a person
+     * @summary List projects for a person or placeholder
      * @param {DefaultApiListPersonProjectsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -22819,7 +23300,7 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @summary List skills for a person
+     * @summary List skills for a person or placeholder
      * @param {DefaultApiListPersonSkillsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -22840,7 +23321,7 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
-     * 
+     * Note: The /people/_* endpoints also allows getting information on placeholders when using the `includePlaceholders` query parameter.
      * @summary List placeholders
      * @param {DefaultApiListPlaceholdersRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -23192,10 +23673,11 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
-     * 
-     * @summary Remove a person from a team
+     * This endpoint is deprecated. You may remove the person from a team using the `PATCH /people/:personId/` endpoint.
+     * @summary Remove a person or placeholder from a team
      * @param {DefaultApiRemovePersonFromTeamRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     public removePersonFromTeam(requestParameters: DefaultApiRemovePersonFromTeamRequest, options?: RawAxiosRequestConfig) {
@@ -23204,7 +23686,7 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @summary Remove a skill from a person
+     * @summary Remove a skill from a person or placeholder
      * @param {DefaultApiRemovePersonSkillRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23336,7 +23818,7 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * To add a new role or job title to a person, see POST /people/{personId}/contracts
-     * @summary Update a person
+     * @summary Update a person or placeholder
      * @param {DefaultApiUpdatePersonRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23347,7 +23829,7 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @summary Add a checkbox custom value to a person
+     * @summary Add a checkbox custom value to a person or placeholder
      * @param {DefaultApiUpdatePersonCheckboxCustomFieldRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23358,7 +23840,7 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @summary Add a date custom value to a person
+     * @summary Add a date custom value to a person or placeholder
      * @param {DefaultApiUpdatePersonDateCustomFieldRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23369,7 +23851,7 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @summary Add custom select options to a person
+     * @summary Add custom select options to a person or placeholder
      * @param {DefaultApiUpdatePersonSelectCustomFieldRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23380,7 +23862,7 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @summary Update a skill for a person
+     * @summary Update a skill for a person or placeholder
      * @param {DefaultApiUpdatePersonSkillRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23391,7 +23873,7 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @summary Add a text custom value to a person
+     * @summary Add a text custom value to a person or placeholder
      * @param {DefaultApiUpdatePersonTextCustomFieldRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23541,6 +24023,17 @@ export class DefaultApi extends BaseAPI {
      */
     public updateProjectTimesheetLock(requestParameters: DefaultApiUpdateProjectTimesheetLockRequest, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).updateProjectTimesheetLock(requestParameters.projectId, requestParameters.acceptVersion, requestParameters.updateProjectTimesheetLockRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update a rate card
+     * @param {DefaultApiUpdateRateCardRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public updateRateCard(requestParameters: DefaultApiUpdateRateCardRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).updateRateCard(requestParameters.rateCardId, requestParameters.acceptVersion, requestParameters.updateRateCardRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -23946,6 +24439,16 @@ export const GetPersonHoursReportAcceptVersionEnum = {
     _100: '1.0.0'
 } as const;
 export type GetPersonHoursReportAcceptVersionEnum = typeof GetPersonHoursReportAcceptVersionEnum[keyof typeof GetPersonHoursReportAcceptVersionEnum];
+export const GetPersonReportAcceptVersionEnum = {
+    _100: '1.0.0'
+} as const;
+export type GetPersonReportAcceptVersionEnum = typeof GetPersonReportAcceptVersionEnum[keyof typeof GetPersonReportAcceptVersionEnum];
+export const GetPersonReportPeriodTypeEnum = {
+    Monthly: 'monthly',
+    Weekly: 'weekly',
+    Quarterly: 'quarterly'
+} as const;
+export type GetPersonReportPeriodTypeEnum = typeof GetPersonReportPeriodTypeEnum[keyof typeof GetPersonReportPeriodTypeEnum];
 export const GetProjectAcceptVersionEnum = {
     _100: '1.0.0'
 } as const;
@@ -23966,6 +24469,16 @@ export const GetProjectPhaseAcceptVersionEnum = {
     _100: '1.0.0'
 } as const;
 export type GetProjectPhaseAcceptVersionEnum = typeof GetProjectPhaseAcceptVersionEnum[keyof typeof GetProjectPhaseAcceptVersionEnum];
+export const GetProjectReportAcceptVersionEnum = {
+    _100: '1.0.0'
+} as const;
+export type GetProjectReportAcceptVersionEnum = typeof GetProjectReportAcceptVersionEnum[keyof typeof GetProjectReportAcceptVersionEnum];
+export const GetProjectReportPeriodTypeEnum = {
+    Monthly: 'monthly',
+    Weekly: 'weekly',
+    Quarterly: 'quarterly'
+} as const;
+export type GetProjectReportPeriodTypeEnum = typeof GetProjectReportPeriodTypeEnum[keyof typeof GetProjectReportPeriodTypeEnum];
 export const GetProjectTagAcceptVersionEnum = {
     _100: '1.0.0'
 } as const;
@@ -24607,6 +25120,10 @@ export const UpdateProjectTimesheetLockAcceptVersionEnum = {
     _100: '1.0.0'
 } as const;
 export type UpdateProjectTimesheetLockAcceptVersionEnum = typeof UpdateProjectTimesheetLockAcceptVersionEnum[keyof typeof UpdateProjectTimesheetLockAcceptVersionEnum];
+export const UpdateRateCardAcceptVersionEnum = {
+    _100: '1.0.0'
+} as const;
+export type UpdateRateCardAcceptVersionEnum = typeof UpdateRateCardAcceptVersionEnum[keyof typeof UpdateRateCardAcceptVersionEnum];
 export const UpdateRoleAcceptVersionEnum = {
     _100: '1.0.0'
 } as const;

@@ -2658,8 +2658,8 @@
                 "discriminator": {
                     "propertyName": "type",
                     "mapping": {
-                        "user": "#/components/schemas/ActorUser",
                         "runn_support": "#/components/schemas/ActorRunnSupport",
+                        "user": "#/components/schemas/ActorUser",
                         "api": "#/components/schemas/ActorApi",
                         "csv": "#/components/schemas/ActorCsv",
                         "integration": "#/components/schemas/ActorIntegration",
@@ -2670,10 +2670,10 @@
                 "description": "An actor represents an entity that can perform actions such as a user, api key, or system process. Each actor type has a unique set of properties. The `type` property is used to determine the actor type.",
                 "anyOf": [
                     {
-                        "$ref": "#/components/schemas/ActorUser"
+                        "$ref": "#/components/schemas/ActorRunnSupport"
                     },
                     {
-                        "$ref": "#/components/schemas/ActorRunnSupport"
+                        "$ref": "#/components/schemas/ActorUser"
                     },
                     {
                         "$ref": "#/components/schemas/ActorApi"
@@ -3471,6 +3471,7 @@
                             "restricted",
                             "none"
                         ],
+                        "deprecated": true,
                         "description": "Edit projects permission level (deprecated: use manageProjectsPermission)"
                     },
                     "editOthersPermission": {
@@ -3479,7 +3480,8 @@
                             "all",
                             "none"
                         ],
-                        "description": "Edit others permission level"
+                        "deprecated": true,
+                        "description": "Edit others permission level (deprecated: use managePeoplePermission)"
                     },
                     "manageProjectsPermission": {
                         "type": "string",
@@ -4102,7 +4104,9 @@
                                     "specific",
                                     "restricted",
                                     "none"
-                                ]
+                                ],
+                                "deprecated": true,
+                                "description": "Edit projects permission (deprecated: use manageProjects)"
                             },
                             "manageProjects": {
                                 "type": "string",
@@ -4118,7 +4122,9 @@
                                 "enum": [
                                     "all",
                                     "none"
-                                ]
+                                ],
+                                "deprecated": true,
+                                "description": "Edit others permission (deprecated: use managePeople)"
                             },
                             "managePeople": {
                                 "type": "string",
@@ -4531,6 +4537,7 @@
                 "summary": "Create or update an actual",
                 "description": "Minutes values represent the total time for a day and overwrite any previous actual on the same day (for the same project/person/role/workstream). [Learn more](https://developer.runn.io/docs/actuals-notes).",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -4592,6 +4599,7 @@
                 "summary": "Update an actual",
                 "description": "Returns Actual with updated minutes. Creates a new actual when there is none to update [Learn more](https://developer.runn.io/docs/actuals-notes).",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -4683,8 +4691,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/BadRequest",
-                                    "description": "Invalid actualId format."
+                                    "$ref": "#/components/schemas/BadRequest"
                                 }
                             }
                         }
@@ -4704,8 +4711,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/NotFound",
-                                    "description": "The actual record with the specified ID was not found."
+                                    "$ref": "#/components/schemas/NotFound"
                                 }
                             }
                         }
@@ -4719,6 +4725,7 @@
                 "summary": "Create or update actuals in bulk",
                 "description": "Create or update up to 100 'actuals' in a single API call. [Learn more](https://developer.runn.io/docs/actuals-notes).",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -4738,8 +4745,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -4769,12 +4775,21 @@
                         }
                     },
                     "400": {
-                        "description": "Invalid actualId format.",
+                        "description": "Default Response",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/BadRequest",
-                                    "description": "Invalid actualId format."
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/components/schemas/BadRequest"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Actual"
+                                            }
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -4798,6 +4813,7 @@
                 "summary": "Create an assignment",
                 "description": "Creates a new assignment and returns a list of assignments. If the specified time period of the assignment overlaps with scheduled leave, the assignment is split into multiple segments. Each segment is returned as a separate assignment in the response.",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -4865,8 +4881,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -4936,7 +4951,7 @@
                         "schema": {
                             "default": 100,
                             "minimum": 1,
-                            "maximum": 500,
+                            "maximum": 200,
                             "type": "integer"
                         },
                         "in": "query",
@@ -5363,6 +5378,7 @@
             "post": {
                 "summary": "Create a client",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -5470,6 +5486,7 @@
             "patch": {
                 "summary": "Update a client",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -5671,6 +5688,7 @@
                 "summary": "Create clients in bulk",
                 "description": "Create up to 100 'clients' in a single API call. [Learn more](https://developer.runn.io/docs/clients-notes).",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -5690,8 +5708,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -5868,6 +5885,7 @@
                 "summary": "Update a contract",
                 "description": "Update a contract",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -6103,6 +6121,7 @@
             "post": {
                 "summary": "Create a checkbox custom field",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -6145,8 +6164,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -6200,6 +6218,7 @@
             "patch": {
                 "summary": "Update a checkbox custom field",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -6346,6 +6365,7 @@
             "post": {
                 "summary": "Create a date custom field",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -6387,8 +6407,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -6538,59 +6557,10 @@
             }
         },
         "/custom-fields/date/{dateFieldId}": {
-            "delete": {
-                "summary": "Delete a date custom field",
-                "parameters": [
-                    {
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "in": "path",
-                        "name": "dateFieldId",
-                        "required": true
-                    },
-                    {
-                        "schema": {
-                            "default": "1.0.0",
-                            "enum": [
-                                "1.0.0"
-                            ]
-                        },
-                        "in": "header",
-                        "name": "accept-version",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "Default Response"
-                    },
-                    "401": {
-                        "description": "Default Response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Unauthorized"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Default Response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/NotFound"
-                                }
-                            }
-                        }
-                    }
-                },
-                "operationId": "deleteDateCustomField"
-            },
             "patch": {
                 "summary": "Update a date custom field",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -6680,12 +6650,63 @@
                     }
                 },
                 "operationId": "updateDateCustomField"
+            },
+            "delete": {
+                "summary": "Delete a date custom field",
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "in": "path",
+                        "name": "dateFieldId",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "default": "1.0.0",
+                            "enum": [
+                                "1.0.0"
+                            ]
+                        },
+                        "in": "header",
+                        "name": "accept-version",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Default Response"
+                    },
+                    "401": {
+                        "description": "Default Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Default Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    }
+                },
+                "operationId": "deleteDateCustomField"
             }
         },
         "/custom-fields/select/": {
             "post": {
                 "summary": "Create a select custom field",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -6749,8 +6770,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -6903,6 +6923,7 @@
             "patch": {
                 "summary": "Update a select custom field",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -7107,6 +7128,7 @@
             "patch": {
                 "summary": "Update a select custom field option",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -7122,8 +7144,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -7225,6 +7246,7 @@
             "post": {
                 "summary": "Create a select custom field option",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -7240,8 +7262,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -7335,6 +7356,7 @@
             "post": {
                 "summary": "Create a text custom field",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -7377,8 +7399,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -7581,6 +7602,7 @@
             "patch": {
                 "summary": "Update a text custom field",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -8075,6 +8097,7 @@
             "post": {
                 "summary": "Create an invitation for a user",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -8134,6 +8157,7 @@
                                                             "restricted",
                                                             "none"
                                                         ],
+                                                        "deprecated": true,
                                                         "description": "Permissions for editing projects. (deprecated: use manageProjectsPermission)"
                                                     },
                                                     "editOthersPermission": {
@@ -8142,7 +8166,8 @@
                                                             "all",
                                                             "none"
                                                         ],
-                                                        "description": "Permissions for editing other parts of the account (people, clients, teams etc.)"
+                                                        "deprecated": true,
+                                                        "description": "Permissions for editing other parts of the account (people, clients, teams etc.). (deprecated: use managePeoplePermission)"
                                                     }
                                                 },
                                                 "required": [
@@ -8169,7 +8194,8 @@
                                                             "all",
                                                             "none"
                                                         ],
-                                                        "description": "Permissions for managing other parts of the account (people, clients, teams etc.)"
+                                                        "deprecated": true,
+                                                        "description": "Permissions for managing other parts of the account (people, clients, teams etc.). (deprecated: use managePeoplePermission)"
                                                     }
                                                 },
                                                 "required": [
@@ -8645,7 +8671,7 @@
         },
         "/people/{personId}": {
             "get": {
-                "summary": "Show a person",
+                "summary": "Show a person or placeholder",
                 "parameters": [
                     {
                         "schema": {
@@ -8702,9 +8728,10 @@
                 "operationId": "getPerson"
             },
             "patch": {
-                "summary": "Update a person",
+                "summary": "Update a person or placeholder",
                 "description": "To add a new role or job title to a person, see POST /people/{personId}/contracts",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -8735,6 +8762,10 @@
                                             ]
                                         }
                                     },
+                                    "teamId": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
                                     "references": {
                                         "type": "array",
                                         "items": {
@@ -8743,6 +8774,20 @@
                                     },
                                     "isArchived": {
                                         "type": "boolean"
+                                    },
+                                    "managers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "userId": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "required": [
+                                                "userId"
+                                            ]
+                                        }
                                     }
                                 }
                             }
@@ -8815,8 +8860,8 @@
                 "operationId": "updatePerson"
             },
             "delete": {
-                "summary": "Delete a person",
-                "description": "Delete a person by their ID; fails when person has existing assignments or actuals to preserve\n          historical reports. Override this behaviour by using the force query flag.",
+                "summary": "Delete a person or placeholder",
+                "description": "Delete a person or placeholder by their ID; fails when person has existing assignments or actuals to preserve\n          historical reports. Override this behaviour by using the force query flag.",
                 "parameters": [
                     {
                         "schema": {
@@ -8981,8 +9026,7 @@
                         },
                         "in": "query",
                         "name": "modifiedAfter",
-                        "required": false,
-                        "description": "If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. Note: A person is considered \"modified\" if any of its core properties change. Actions that count as modifying a person include changing first name, last name, email, references, tags and archiving. A person is not considered modified just because another object it is associated with is changed (e.g. a contract, project or an assignment)."
+                        "required": false
                     },
                     {
                         "schema": {
@@ -9069,6 +9113,7 @@
                 "summary": "Create a person",
                 "description": "Also creates a new contract for the person",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -9084,6 +9129,10 @@
                                     },
                                     "email": {
                                         "type": "string"
+                                    },
+                                    "teamId": {
+                                        "type": "integer",
+                                        "nullable": true
                                     },
                                     "holidaysGroupId": {
                                         "type": "integer"
@@ -9106,6 +9155,20 @@
                                         "type": "array",
                                         "items": {
                                             "$ref": "#/components/schemas/Reference"
+                                        }
+                                    },
+                                    "managers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "userId": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "required": [
+                                                "userId"
+                                            ]
                                         }
                                     },
                                     "roleId": {
@@ -9179,8 +9242,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -9270,8 +9332,7 @@
                         },
                         "in": "query",
                         "name": "modifiedAfter",
-                        "required": false,
-                        "description": "If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ."
+                        "required": false
                     },
                     {
                         "schema": {
@@ -9759,7 +9820,7 @@
         },
         "/people/{personId}/assignments/": {
             "get": {
-                "summary": "List assignments for a person",
+                "summary": "List assignments for a person or placeholder",
                 "parameters": [
                     {
                         "schema": {
@@ -9995,6 +10056,7 @@
             "post": {
                 "summary": "Add a new contract to a person",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -10212,8 +10274,9 @@
         },
         "/people/{personId}/custom-fields/checkbox/": {
             "patch": {
-                "summary": "Add a checkbox custom value to a person",
+                "summary": "Add a checkbox custom value to a person or placeholder",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -10232,8 +10295,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -10315,8 +10377,9 @@
         },
         "/people/{personId}/custom-fields/date/": {
             "patch": {
-                "summary": "Add a date custom value to a person",
+                "summary": "Add a date custom value to a person or placeholder",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -10338,8 +10401,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -10424,8 +10486,9 @@
         },
         "/people/{personId}/custom-fields/select/": {
             "patch": {
-                "summary": "Add custom select options to a person",
+                "summary": "Add custom select options to a person or placeholder",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -10455,8 +10518,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -10549,8 +10611,9 @@
         },
         "/people/{personId}/custom-fields/text/": {
             "patch": {
-                "summary": "Add a text custom value to a person",
+                "summary": "Add a text custom value to a person or placeholder",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -10569,8 +10632,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -10652,7 +10714,7 @@
         },
         "/people/{personId}/projects/": {
             "get": {
-                "summary": "List projects for a person",
+                "summary": "List projects for a person or placeholder",
                 "parameters": [
                     {
                         "schema": {
@@ -10746,8 +10808,9 @@
                 "operationId": "listPersonProjects"
             },
             "post": {
-                "summary": "Add project to a person",
+                "summary": "Add project to a person or placeholder",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -10769,8 +10832,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -10833,7 +10895,7 @@
         },
         "/people/{personId}/skills/": {
             "get": {
-                "summary": "List skills for a person",
+                "summary": "List skills for a person or placeholder",
                 "parameters": [
                     {
                         "schema": {
@@ -10935,8 +10997,9 @@
                 "operationId": "listPersonSkills"
             },
             "post": {
-                "summary": "Add a skill to a person",
+                "summary": "Add a skill to a person or placeholder",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -10983,8 +11046,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -11044,8 +11106,9 @@
         },
         "/people/{personId}/skills/{skillId}": {
             "patch": {
-                "summary": "Update a skill for a person",
+                "summary": "Update a skill for a person or placeholder",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -11089,8 +11152,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -11156,7 +11218,7 @@
                 "operationId": "updatePersonSkill"
             },
             "delete": {
-                "summary": "Remove a skill from a person",
+                "summary": "Remove a skill from a person or placeholder",
                 "parameters": [
                     {
                         "schema": {
@@ -11216,7 +11278,8 @@
         },
         "/people/{personId}/teams/current": {
             "get": {
-                "summary": "Show current team",
+                "summary": "Show current team for a person or placeholder",
+                "description": "This endpoint is deprecated. You may view the current team for a person using the `GET /people/:personId/` endpoint.",
                 "parameters": [
                     {
                         "schema": {
@@ -11259,6 +11322,7 @@
                         "required": true
                     }
                 ],
+                "deprecated": true,
                 "responses": {
                     "200": {
                         "description": "Default Response",
@@ -11327,8 +11391,10 @@
         },
         "/people/{personId}/teams/": {
             "post": {
-                "summary": "Add a person to a team",
+                "summary": "Add a person or placeholder to a team",
+                "description": "This endpoint is deprecated. You may assign the person to a team using the `PATCH /people/:personId/` endpoint.",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -11343,8 +11409,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -11367,6 +11432,7 @@
                         "required": true
                     }
                 ],
+                "deprecated": true,
                 "responses": {
                     "201": {
                         "description": "Default Response"
@@ -11387,7 +11453,8 @@
         },
         "/people/{personId}/teams/{teamId}": {
             "delete": {
-                "summary": "Remove a person from a team",
+                "summary": "Remove a person or placeholder from a team",
+                "description": "This endpoint is deprecated. You may remove the person from a team using the `PATCH /people/:personId/` endpoint.",
                 "parameters": [
                     {
                         "schema": {
@@ -11438,6 +11505,7 @@
                         "required": true
                     }
                 ],
+                "deprecated": true,
                 "responses": {
                     "202": {
                         "description": "Default Response"
@@ -11948,6 +12016,7 @@
             "post": {
                 "summary": "Create a people tag",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -11963,8 +12032,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -12131,6 +12199,7 @@
             "patch": {
                 "summary": "Update a people tag",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -12145,8 +12214,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -12472,6 +12540,7 @@
         "/placeholders/": {
             "get": {
                 "summary": "List placeholders",
+                "description": "Note: The /people/* endpoints also allows getting information on placeholders when using the `includePlaceholders` query parameter.",
                 "parameters": [
                     {
                         "schema": {
@@ -12607,6 +12676,7 @@
                 "summary": "Create a placeholder",
                 "description": "Also creates a contract that defaults to the role cost.\nPlease note that placeholders with no project or assignments will be deleted within 24 hours.",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -12618,6 +12688,10 @@
                                     "costPerHour": {
                                         "description": "Defaults to the role's cost per hour",
                                         "type": "number"
+                                    },
+                                    "teamId": {
+                                        "type": "integer",
+                                        "nullable": true
                                     },
                                     "tags": {
                                         "type": "array",
@@ -12639,8 +12713,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -12704,6 +12777,7 @@
             "post": {
                 "summary": "Add a skill to a placeholder",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -12750,8 +12824,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -12883,6 +12956,7 @@
             "post": {
                 "summary": "Add a placeholder to a team",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -12897,8 +12971,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -13392,6 +13465,7 @@
             "patch": {
                 "summary": "Update a project tag",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -13406,8 +13480,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -13601,6 +13674,7 @@
             "post": {
                 "summary": "Create a project tag",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -13616,8 +13690,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -13984,6 +14057,7 @@
             "patch": {
                 "summary": "Update a project",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -14016,7 +14090,8 @@
                                         "type": "number"
                                     },
                                     "teamId": {
-                                        "type": "number"
+                                        "type": "number",
+                                        "nullable": true
                                     },
                                     "pricingModel": {
                                         "type": "string",
@@ -14202,8 +14277,7 @@
                         },
                         "in": "query",
                         "name": "modifiedAfter",
-                        "required": false,
-                        "description": "If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. Note: A project is considered \"modified\" if any of its core properties change. Actions that count as modifying a project include changing the name, client, status, pricing model, rate type , team, budget, expenses budget, references, and archiving. A project is not considered modified just because another object it is associated with is changed (e.g. actuals, assignments, budget roles, custom fields, milestones, notes, other expenses, people, people requests, phases, rates, timesheet locks & workstreams)."
+                        "required": false
                     },
                     {
                         "schema": {
@@ -14288,6 +14362,7 @@
             "post": {
                 "summary": "Create a project",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -14322,7 +14397,8 @@
                                                 "type": "number"
                                             },
                                             "teamId": {
-                                                "type": "number"
+                                                "type": "number",
+                                                "nullable": true
                                             },
                                             "pricingModel": {
                                                 "type": "string",
@@ -14971,6 +15047,7 @@
                 "summary": "Update a project budget role",
                 "description": "Update a project budget role for a project. You cannot update a              project budget role using estimated budget if a project rate does              not exist for the role because the project rate is used to set              the estimatedMinutes.",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -15256,6 +15333,7 @@
                 "summary": "Create a project budget role",
                 "description": "Create a project budget role for a project. You cannot create a              project budget role using estimated budget if a project rate does              not exist for the role because the project rate is used to set              the estimatedMinutes.",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -15377,6 +15455,7 @@
             "patch": {
                 "summary": "Add a checkbox custom value to a project",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -15395,8 +15474,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -15480,6 +15558,7 @@
             "patch": {
                 "summary": "Add a date custom field value to a project",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -15501,8 +15580,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -15579,6 +15657,7 @@
             "patch": {
                 "summary": "Add a select custom field to a project",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -15608,8 +15687,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -15694,6 +15772,7 @@
             "patch": {
                 "summary": "Add a text custom field value to a project",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -15712,8 +15791,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -15787,6 +15865,7 @@
             "post": {
                 "summary": "Create a milestone for a project",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -15829,8 +15908,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -16084,6 +16162,7 @@
             "patch": {
                 "summary": "Update a milestone for a project",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -16202,6 +16281,7 @@
                 "summary": "Create a project note",
                 "description": "Defaults creator to 'API' user",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -16216,8 +16296,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -16498,6 +16577,7 @@
             "post": {
                 "summary": "Create an other expense for a project",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -16535,7 +16615,6 @@
                             }
                         }
                     },
-                    "required": true,
                     "description": "A non-labour expense for a project."
                 },
                 "parameters": [
@@ -16609,6 +16688,7 @@
             "patch": {
                 "summary": "Update an other expense on a project",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -16922,6 +17002,7 @@
                 "summary": "Create a person request on a project",
                 "description": "Person requests are used to request a placeholder role be filled with a person in the account or to request a new person be hired. This endpoint can be used to create a new person request.",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -16945,8 +17026,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -17084,6 +17164,7 @@
                 "summary": "Update the status of a person request on a project",
                 "description": "Person requests are used to request a placeholder role be filled with another person in the account or to request a new person be hired. This endpoint can be used to update the status of a request to 'REQUESTED' or 'NEED_TO_HIRE', respectively.",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -17103,8 +17184,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -17278,6 +17358,7 @@
             "post": {
                 "summary": "Create a phase for a project",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -17331,8 +17412,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -17442,6 +17522,7 @@
             "patch": {
                 "summary": "Update a phase for a project",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -17723,6 +17804,7 @@
             "patch": {
                 "summary": "Update a rate for a role on a project",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -17738,8 +17820,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -18212,6 +18293,7 @@
                 "summary": "Update a timesheet lock for a project",
                 "description": "This feature currently in beta and only available to selected customers.This will return an error and message if all timesheets haven't been filled out to selected date.",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -18491,6 +18573,7 @@
             "post": {
                 "summary": "Create a rate card",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -18548,8 +18631,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -18717,6 +18799,125 @@
                     }
                 },
                 "operationId": "deleteRateCard"
+            },
+            "patch": {
+                "summary": "Update a rate card",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "references": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "referenceName": {
+                                                    "type": "string"
+                                                },
+                                                "externalId": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "referenceName",
+                                                "externalId"
+                                            ]
+                                        }
+                                    },
+                                    "isBlendedRateCard": {
+                                        "type": "boolean"
+                                    },
+                                    "blendedRate": {
+                                        "minimum": 0,
+                                        "type": "number",
+                                        "nullable": true
+                                    },
+                                    "rateType": {
+                                        "type": "string",
+                                        "enum": [
+                                            "hours",
+                                            "days"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "in": "path",
+                        "name": "rateCardId",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "default": "1.0.0",
+                            "enum": [
+                                "1.0.0"
+                            ]
+                        },
+                        "in": "header",
+                        "name": "accept-version",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RateCard"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Default Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequest"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Default Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Default Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    }
+                },
+                "operationId": "updateRateCard"
             }
         },
         "/reports/hours/people/{personId}": {
@@ -18949,6 +19150,372 @@
                     }
                 },
                 "operationId": "getProjectHoursReport"
+            }
+        },
+        "/reports/people/{personId}/": {
+            "get": {
+                "summary": "Show metrics (beta)",
+                "description": "Get a report for a person containing data from the People Overview Report. Available under the Advanced Plan only. Contact help@runn.io to request beta access.",
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        "in": "query",
+                        "name": "startDate",
+                        "required": false,
+                        "description": "The start date for the report. For monthly reports, this must be the first day of the month. For weekly reports, this must be a Monday. For quarterly reports, this must be the first day of the quarter. Format: YYYY-MM-DD"
+                    },
+                    {
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "monthly",
+                                "weekly",
+                                "quarterly"
+                            ],
+                            "default": "monthly"
+                        },
+                        "in": "query",
+                        "name": "periodType",
+                        "required": false,
+                        "description": "The time interval at which to split the metrics on the report. A monthly report made in June, for instance, will show revenue for June, July, August, and September."
+                    },
+                    {
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "in": "path",
+                        "name": "personId",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "default": "1.0.0",
+                            "enum": [
+                                "1.0.0"
+                            ]
+                        },
+                        "in": "header",
+                        "name": "accept-version",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "firstName": {
+                                            "type": "string"
+                                        },
+                                        "lastName": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "jobTitle": {
+                                            "type": "string"
+                                        },
+                                        "team": {
+                                            "type": "string"
+                                        },
+                                        "employmentType": {
+                                            "type": "string"
+                                        },
+                                        "metrics": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "startDate": {
+                                                        "type": "string"
+                                                    },
+                                                    "endDate": {
+                                                        "type": "string"
+                                                    },
+                                                    "revenue": {
+                                                        "type": "number"
+                                                    },
+                                                    "projectCosts": {
+                                                        "type": "number"
+                                                    },
+                                                    "businessCosts": {
+                                                        "type": "number"
+                                                    },
+                                                    "totalEffortHours": {
+                                                        "type": "number"
+                                                    },
+                                                    "billableEffortHours": {
+                                                        "type": "number"
+                                                    },
+                                                    "nonBillableEffortHours": {
+                                                        "type": "number"
+                                                    },
+                                                    "totalUtilization": {
+                                                        "type": "number"
+                                                    },
+                                                    "billableUtilization": {
+                                                        "type": "number"
+                                                    },
+                                                    "contractCapacity": {
+                                                        "type": "number"
+                                                    },
+                                                    "effectiveCapacity": {
+                                                        "type": "number"
+                                                    },
+                                                    "overtime": {
+                                                        "type": "number"
+                                                    },
+                                                    "remainingAvailability": {
+                                                        "type": "number"
+                                                    },
+                                                    "timeOffHours": {
+                                                        "type": "number"
+                                                    },
+                                                    "completedTimesheet": {
+                                                        "type": "boolean"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "startDate",
+                                                    "endDate",
+                                                    "revenue",
+                                                    "projectCosts",
+                                                    "businessCosts",
+                                                    "totalEffortHours",
+                                                    "billableEffortHours",
+                                                    "nonBillableEffortHours",
+                                                    "totalUtilization",
+                                                    "billableUtilization",
+                                                    "contractCapacity",
+                                                    "effectiveCapacity",
+                                                    "overtime",
+                                                    "remainingAvailability",
+                                                    "timeOffHours",
+                                                    "completedTimesheet"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "firstName",
+                                        "lastName",
+                                        "email",
+                                        "jobTitle",
+                                        "team",
+                                        "employmentType",
+                                        "metrics"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Default Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthorized"
+                                }
+                            }
+                        }
+                    }
+                },
+                "operationId": "getPersonReport"
+            }
+        },
+        "/reports/projects/{projectId}/": {
+            "get": {
+                "summary": "Show metrics (beta)",
+                "description": "Get a report for a project containing data from the Project Overview report. Available under the Advanced Plan only. Contact help@runn.io to request beta access.",
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        "in": "query",
+                        "name": "startDate",
+                        "required": false,
+                        "description": "The start date for the report. For monthly reports, this must be the first day of the month. For weekly reports, this must be a Monday. For quarterly reports, this must be the first day of the quarter. Format: YYYY-MM-DD"
+                    },
+                    {
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "monthly",
+                                "weekly",
+                                "quarterly"
+                            ]
+                        },
+                        "in": "query",
+                        "name": "periodType",
+                        "required": false,
+                        "description": "The time interval at which to split the metrics on the report. A monthly report made in June, for instance, will show revenue for June, July, August, and September. If not provided, the report will be for the Overview report (all inclusive)."
+                    },
+                    {
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "in": "path",
+                        "name": "projectId",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "default": "1.0.0",
+                            "enum": [
+                                "1.0.0"
+                            ]
+                        },
+                        "in": "header",
+                        "name": "accept-version",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "period": {
+                                            "type": "string"
+                                        },
+                                        "pricingModel": {
+                                            "type": "string",
+                                            "enum": [
+                                                "tm",
+                                                "fp",
+                                                "nb"
+                                            ]
+                                        },
+                                        "budget": {
+                                            "type": "number",
+                                            "nullable": true
+                                        },
+                                        "budgetRemaining": {
+                                            "type": "number"
+                                        },
+                                        "timeBudgetRemaining": {
+                                            "type": "number",
+                                            "nullable": true
+                                        },
+                                        "metrics": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "startDate": {
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    },
+                                                    "endDate": {
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    },
+                                                    "timeMaterialsBenchmark": {
+                                                        "type": "number"
+                                                    },
+                                                    "revenue": {
+                                                        "type": "number"
+                                                    },
+                                                    "profit": {
+                                                        "type": "number"
+                                                    },
+                                                    "costs": {
+                                                        "type": "number"
+                                                    },
+                                                    "margin": {
+                                                        "description": "Percentage value of the profit margin",
+                                                        "type": "number"
+                                                    },
+                                                    "totalEffortHours": {
+                                                        "type": "number"
+                                                    },
+                                                    "billableEffortHours": {
+                                                        "type": "number"
+                                                    },
+                                                    "nonBillableEffortHours": {
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "startDate",
+                                                    "endDate",
+                                                    "timeMaterialsBenchmark",
+                                                    "revenue",
+                                                    "profit",
+                                                    "costs",
+                                                    "margin",
+                                                    "totalEffortHours",
+                                                    "billableEffortHours",
+                                                    "nonBillableEffortHours"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "name",
+                                        "pricingModel",
+                                        "budget",
+                                        "budgetRemaining",
+                                        "timeBudgetRemaining",
+                                        "metrics"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Default Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Default Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "operationId": "getProjectReport"
             }
         },
         "/reports/totals/projects/": {
@@ -19244,6 +19811,7 @@
             "post": {
                 "summary": "Create a role",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -19275,8 +19843,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -19387,6 +19954,7 @@
             "patch": {
                 "summary": "Update a role",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -19594,6 +20162,7 @@
             "post": {
                 "summary": "Create a skill",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -19609,8 +20178,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -19721,6 +20289,7 @@
             "patch": {
                 "summary": "Update a skill",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -19736,8 +20305,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -19985,6 +20553,7 @@
             "post": {
                 "summary": "Add people to a skill",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -20042,8 +20611,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -20249,6 +20817,7 @@
             "post": {
                 "summary": "Create a team",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -20264,8 +20833,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -20376,6 +20944,7 @@
             "patch": {
                 "summary": "Update a team",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -20391,8 +20960,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -20750,6 +21318,7 @@
             "post": {
                 "summary": "Create a holiday time off",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -21018,6 +21587,7 @@
                 "summary": "Create a leave time off",
                 "description": "\n#### Create or Update\n\nThis endpoint may return an existing time off if the new time off is a subset of an existing one.\n\n#### Automatic Merging\n\nIf one or more existing time offs overlap with the specified start/end date, they will be automatically merged.\n\n#### Partial Time Offs\n\nIf the `minutesPerDay` field is provided, automatic merging will only occur if any overlapping time off has the same `minutesPerDay` value. If the `minutesPerDay` value differs, the request will fail.",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -21200,6 +21770,7 @@
                 "summary": "Create leave time offs in bulk",
                 "description": "\n#### Create or Update\n\nThis endpoint may return existing time offs if the new time off is a subset of an existing one.\n\n#### Automatic Merging\n\nIf one or more existing time offs overlap with the specified start/end date, they will be automatically merged.\n\n#### Partial Time Offs\n\nIf the `minutesPerDay` field is provided, automatic merging will only occur if any overlapping time off has the same `minutesPerDay` value. If the `minutesPerDay` value differs, the request will fail.",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -21219,8 +21790,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -21285,6 +21855,7 @@
             "delete": {
                 "summary": "Delete leave time offs in bulk",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -21304,8 +21875,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -22204,6 +22774,7 @@
             "post": {
                 "summary": "Create a workstream",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -22219,8 +22790,7 @@
                                 ]
                             }
                         }
-                    },
-                    "required": true
+                    }
                 },
                 "parameters": [
                     {
@@ -22331,6 +22901,7 @@
             "patch": {
                 "summary": "Update a workstream",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {

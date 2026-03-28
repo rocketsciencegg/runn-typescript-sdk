@@ -29,6 +29,7 @@ docs/Competency.md
 docs/Conflict.md
 docs/Contract.md
 docs/ContractInput.md
+docs/CreateActualsBulk400Response.md
 docs/CreateActualsBulkRequest.md
 docs/CreateAssignmentRequest.md
 docs/CreateCheckboxCustomFieldRequest.md
@@ -89,7 +90,12 @@ docs/GetPersonCurrentContract404Response.md
 docs/GetPersonCurrentTeam200Response.md
 docs/GetPersonCurrentTeam200ResponseValuesInner.md
 docs/GetPersonHoursReport200Response.md
+docs/GetPersonReport200Response.md
+docs/GetPersonReport200ResponseMetricsInner.md
 docs/GetProjectHoursReport200Response.md
+docs/GetProjectReport200Response.md
+docs/GetProjectReport200ResponseMetricsInner.md
+docs/GetProjectReport404Response.md
 docs/GetProjectTimesheetLock200Response.md
 docs/Holiday.md
 docs/HolidayGroup.md
@@ -200,6 +206,7 @@ docs/UpdatePeopleTagRequest.md
 docs/UpdatePersonCheckboxCustomFieldRequest.md
 docs/UpdatePersonDateCustomFieldRequest.md
 docs/UpdatePersonRequest.md
+docs/UpdatePersonRequestManagersInner.md
 docs/UpdatePersonRequestTagsInner.md
 docs/UpdatePersonSelectCustomFieldRequest.md
 docs/UpdatePersonSelectCustomFieldRequestValuesInner.md
@@ -217,6 +224,7 @@ docs/UpdateProjectRoleRateRequest.md
 docs/UpdateProjectTimesheetLockRequest.md
 docs/UpdateProjectTimesheetLockRequestAnyOf.md
 docs/UpdateProjectTimesheetLockRequestAnyOf1.md
+docs/UpdateRateCardRequest.md
 docs/UpdateRoleRequest.md
 docs/UpdateSelectCustomFieldOption200Response.md
 docs/UpdateSelectCustomFieldOption200ResponseOption.md

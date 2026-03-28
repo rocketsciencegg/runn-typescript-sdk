@@ -5,9 +5,9 @@ All URIs are relative to *https://api.runn.io*
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
 |[**addPeopleToSkill**](#addpeopletoskill) | **POST** /skills/{skillId}/people/ | Add people to a skill|
-|[**addPersonSkill**](#addpersonskill) | **POST** /people/{personId}/skills/ | Add a skill to a person|
-|[**addPersonToProject**](#addpersontoproject) | **POST** /people/{personId}/projects/ | Add project to a person|
-|[**addPersonToTeam**](#addpersontoteam) | **POST** /people/{personId}/teams/ | Add a person to a team|
+|[**addPersonSkill**](#addpersonskill) | **POST** /people/{personId}/skills/ | Add a skill to a person or placeholder|
+|[**addPersonToProject**](#addpersontoproject) | **POST** /people/{personId}/projects/ | Add project to a person or placeholder|
+|[**addPersonToTeam**](#addpersontoteam) | **POST** /people/{personId}/teams/ | Add a person or placeholder to a team|
 |[**addPlaceholderSkill**](#addplaceholderskill) | **POST** /placeholders/{placeholderId}/skills/ | Add a skill to a placeholder|
 |[**addPlaceholderToTeam**](#addplaceholdertoteam) | **POST** /placeholders/{placeholderId}/teams/ | Add a placeholder to a team|
 |[**addProjectTagToProject**](#addprojecttagtoproject) | **POST** /project-tags/{projectTagId}/project/{projectId} | Add a project tag to a project|
@@ -54,7 +54,7 @@ All URIs are relative to *https://api.runn.io*
 |[**deleteLeaveTimeOff**](#deleteleavetimeoff) | **DELETE** /time-offs/leave/{timeOffId}/ | Delete a leave time off|
 |[**deleteLeaveTimeOffsBulk**](#deleteleavetimeoffsbulk) | **DELETE** /time-offs/leave/bulk/ | Delete leave time offs in bulk|
 |[**deletePeopleTag**](#deletepeopletag) | **DELETE** /people-tags/{peopleTagId} | Delete a people tag|
-|[**deletePerson**](#deleteperson) | **DELETE** /people/{personId} | Delete a person|
+|[**deletePerson**](#deleteperson) | **DELETE** /people/{personId} | Delete a person or placeholder|
 |[**deletePersonContract**](#deletepersoncontract) | **DELETE** /people/{personId}/contracts/{contractId} | Delete a contract for a person|
 |[**deleteProject**](#deleteproject) | **DELETE** /projects/{projectId}/ | Delete a project|
 |[**deleteProjectBudgetRole**](#deleteprojectbudgetrole) | **DELETE** /projects/{projectId}/budget-roles/{roleId} | Delete a project budget role|
@@ -74,15 +74,17 @@ All URIs are relative to *https://api.runn.io*
 |[**getHolidayGroup**](#getholidaygroup) | **GET** /holiday-groups/{holidayGroupId} | Show a holiday group|
 |[**getLeaveTimeOff**](#getleavetimeoff) | **GET** /time-offs/leave/{timeOffId}/ | Show a leave time off|
 |[**getPeopleTag**](#getpeopletag) | **GET** /people-tags/{peopleTagId} | Show a people tag|
-|[**getPerson**](#getperson) | **GET** /people/{personId} | Show a person|
+|[**getPerson**](#getperson) | **GET** /people/{personId} | Show a person or placeholder|
 |[**getPersonCurrentContract**](#getpersoncurrentcontract) | **GET** /people/{personId}/contracts/current | Show current contract for a person|
-|[**getPersonCurrentTeam**](#getpersoncurrentteam) | **GET** /people/{personId}/teams/current | Show current team|
+|[**getPersonCurrentTeam**](#getpersoncurrentteam) | **GET** /people/{personId}/teams/current | Show current team for a person or placeholder|
 |[**getPersonHoursReport**](#getpersonhoursreport) | **GET** /reports/hours/people/{personId} | Get by-day entries for a person with assignments and actuals|
+|[**getPersonReport**](#getpersonreport) | **GET** /reports/people/{personId}/ | Show metrics (beta)|
 |[**getProject**](#getproject) | **GET** /projects/{projectId} | Show a project|
 |[**getProjectBudgetRole**](#getprojectbudgetrole) | **GET** /projects/{projectId}/budget-roles/{roleId} | Get a project budget role|
 |[**getProjectHoursReport**](#getprojecthoursreport) | **GET** /reports/hours/projects/{projectId} | Get by-day entries for a project with assignments and actuals|
 |[**getProjectPersonRequest**](#getprojectpersonrequest) | **GET** /projects/{projectId}/person-requests/{personRequestId} | Show a single person request for a project|
 |[**getProjectPhase**](#getprojectphase) | **GET** /projects/{projectId}/phases/{phaseId} | Show a phase for a project|
+|[**getProjectReport**](#getprojectreport) | **GET** /reports/projects/{projectId}/ | Show metrics (beta)|
 |[**getProjectTag**](#getprojecttag) | **GET** /project-tags/{projectTagId} | Show a project tag|
 |[**getProjectTimesheetLock**](#getprojecttimesheetlock) | **GET** /projects/{projectId}/timesheet-lock/ | Show a timesheet lock for a project|
 |[**getProjectTotalsReport**](#getprojecttotalsreport) | **GET** /reports/totals/projects/{projectId} | Show totals for a project with assignments and actuals|
@@ -117,14 +119,14 @@ All URIs are relative to *https://api.runn.io*
 |[**listPeopleSkills**](#listpeopleskills) | **GET** /people/skills | List people skills|
 |[**listPeopleTags**](#listpeopletags) | **GET** /people-tags/ | List people tags|
 |[**listPersonActuals**](#listpersonactuals) | **GET** /people/{personId}/actuals/ | List actuals for a person|
-|[**listPersonAssignments**](#listpersonassignments) | **GET** /people/{personId}/assignments/ | List assignments for a person|
+|[**listPersonAssignments**](#listpersonassignments) | **GET** /people/{personId}/assignments/ | List assignments for a person or placeholder|
 |[**listPersonContracts**](#listpersoncontracts) | **GET** /people/{personId}/contracts/ | List contracts for a person|
 |[**listPersonHolidays**](#listpersonholidays) | **GET** /people/{personId}/time-offs/holidays | List holidays for a person|
 |[**listPersonLeave**](#listpersonleave) | **GET** /people/{personId}/time-offs/leave | List leave for a person|
-|[**listPersonProjects**](#listpersonprojects) | **GET** /people/{personId}/projects/ | List projects for a person|
+|[**listPersonProjects**](#listpersonprojects) | **GET** /people/{personId}/projects/ | List projects for a person or placeholder|
 |[**listPersonRequests**](#listpersonrequests) | **GET** /person-requests/ | List person requests|
 |[**listPersonRosteredTimeOffs**](#listpersonrosteredtimeoffs) | **GET** /people/{personId}/time-offs/rostered-off | List rostered time offs for a person|
-|[**listPersonSkills**](#listpersonskills) | **GET** /people/{personId}/skills/ | List skills for a person|
+|[**listPersonSkills**](#listpersonskills) | **GET** /people/{personId}/skills/ | List skills for a person or placeholder|
 |[**listPhases**](#listphases) | **GET** /phases/ | List phases|
 |[**listPlaceholders**](#listplaceholders) | **GET** /placeholders/ | List placeholders|
 |[**listProjectActuals**](#listprojectactuals) | **GET** /projects/{projectId}/actuals/ | List actuals for a project|
@@ -158,8 +160,8 @@ All URIs are relative to *https://api.runn.io*
 |[**listUsers**](#listusers) | **GET** /users/ | List users|
 |[**listViews**](#listviews) | **GET** /views/ | List views|
 |[**listWorkstreams**](#listworkstreams) | **GET** /workstreams/ | List workstreams|
-|[**removePersonFromTeam**](#removepersonfromteam) | **DELETE** /people/{personId}/teams/{teamId} | Remove a person from a team|
-|[**removePersonSkill**](#removepersonskill) | **DELETE** /people/{personId}/skills/{skillId} | Remove a skill from a person|
+|[**removePersonFromTeam**](#removepersonfromteam) | **DELETE** /people/{personId}/teams/{teamId} | Remove a person or placeholder from a team|
+|[**removePersonSkill**](#removepersonskill) | **DELETE** /people/{personId}/skills/{skillId} | Remove a skill from a person or placeholder|
 |[**removePlaceholderFromTeam**](#removeplaceholderfromteam) | **DELETE** /placeholders/{placeholderId}/teams/{teamId} | Remove a placeholder from a team|
 |[**removePlaceholderSkill**](#removeplaceholderskill) | **DELETE** /placeholders/{placeholderId}/skills/{skillId} | Remove a skill from a placeholder|
 |[**removeProjectTagFromProject**](#removeprojecttagfromproject) | **DELETE** /project-tags/{projectTagId}/project/{projectId} | Remove a project tag from a project|
@@ -171,12 +173,12 @@ All URIs are relative to *https://api.runn.io*
 |[**updateContract**](#updatecontract) | **PATCH** /contracts/{contractId} | Update a contract|
 |[**updateDateCustomField**](#updatedatecustomfield) | **PATCH** /custom-fields/date/{dateFieldId} | Update a date custom field|
 |[**updatePeopleTag**](#updatepeopletag) | **PATCH** /people-tags/{peopleTagId} | Update a people tag|
-|[**updatePerson**](#updateperson) | **PATCH** /people/{personId} | Update a person|
-|[**updatePersonCheckboxCustomField**](#updatepersoncheckboxcustomfield) | **PATCH** /people/{personId}/custom-fields/checkbox/ | Add a checkbox custom value to a person|
-|[**updatePersonDateCustomField**](#updatepersondatecustomfield) | **PATCH** /people/{personId}/custom-fields/date/ | Add a date custom value to a person|
-|[**updatePersonSelectCustomField**](#updatepersonselectcustomfield) | **PATCH** /people/{personId}/custom-fields/select/ | Add custom select options to a person|
-|[**updatePersonSkill**](#updatepersonskill) | **PATCH** /people/{personId}/skills/{skillId} | Update a skill for a person|
-|[**updatePersonTextCustomField**](#updatepersontextcustomfield) | **PATCH** /people/{personId}/custom-fields/text/ | Add a text custom value to a person|
+|[**updatePerson**](#updateperson) | **PATCH** /people/{personId} | Update a person or placeholder|
+|[**updatePersonCheckboxCustomField**](#updatepersoncheckboxcustomfield) | **PATCH** /people/{personId}/custom-fields/checkbox/ | Add a checkbox custom value to a person or placeholder|
+|[**updatePersonDateCustomField**](#updatepersondatecustomfield) | **PATCH** /people/{personId}/custom-fields/date/ | Add a date custom value to a person or placeholder|
+|[**updatePersonSelectCustomField**](#updatepersonselectcustomfield) | **PATCH** /people/{personId}/custom-fields/select/ | Add custom select options to a person or placeholder|
+|[**updatePersonSkill**](#updatepersonskill) | **PATCH** /people/{personId}/skills/{skillId} | Update a skill for a person or placeholder|
+|[**updatePersonTextCustomField**](#updatepersontextcustomfield) | **PATCH** /people/{personId}/custom-fields/text/ | Add a text custom value to a person or placeholder|
 |[**updateProject**](#updateproject) | **PATCH** /projects/{projectId} | Update a project|
 |[**updateProjectBudgetRole**](#updateprojectbudgetrole) | **PATCH** /projects/{projectId}/budget-roles/{roleId} | Update a project budget role|
 |[**updateProjectCheckboxCustomField**](#updateprojectcheckboxcustomfield) | **PATCH** /projects/{projectId}/custom-fields/checkbox/ | Add a checkbox custom value to a project|
@@ -190,6 +192,7 @@ All URIs are relative to *https://api.runn.io*
 |[**updateProjectTag**](#updateprojecttag) | **PATCH** /project-tags/{projectTagId} | Update a project tag|
 |[**updateProjectTextCustomField**](#updateprojecttextcustomfield) | **PATCH** /projects/{projectId}/custom-fields/text/ | Add a text custom field value to a project|
 |[**updateProjectTimesheetLock**](#updateprojecttimesheetlock) | **PATCH** /projects/{projectId}/timesheet-lock/ | Update a timesheet lock for a project|
+|[**updateRateCard**](#updateratecard) | **PATCH** /rate-cards/{rateCardId} | Update a rate card|
 |[**updateRole**](#updaterole) | **PATCH** /roles/{roleId} | Update a role|
 |[**updateSelectCustomField**](#updateselectcustomfield) | **PATCH** /custom-fields/select/{selectFieldId} | Update a select custom field|
 |[**updateSelectCustomFieldOption**](#updateselectcustomfieldoption) | **PATCH** /custom-fields/select/{selectFieldId}/options/{selectOptionId} | Update a select custom field option|
@@ -380,6 +383,7 @@ void (empty response body)
 # **addPersonToTeam**
 > addPersonToTeam(addPersonToTeamRequest)
 
+This endpoint is deprecated. You may assign the person to a team using the `PATCH /people/:personId/` endpoint.
 
 ### Example
 
@@ -788,7 +792,7 @@ const { status, data } = await apiInstance.convertLegacyId(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createActual**
-> Actual createActual()
+> Actual createActual(actualInput)
 
 Minutes values represent the total time for a day and overwrite any previous actual on the same day (for the same project/person/role/workstream). [Learn more](https://developer.runn.io/docs/actuals-notes).
 
@@ -805,7 +809,7 @@ const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let actualInput: ActualInput; // (optional)
+let actualInput: ActualInput; //
 
 const { status, data } = await apiInstance.createActual(
     acceptVersion,
@@ -896,7 +900,7 @@ const { status, data } = await apiInstance.createActualsBulk(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | Default Response |  -  |
-|**400** | Invalid actualId format. |  -  |
+|**400** | Default Response |  -  |
 |**401** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1015,7 +1019,7 @@ const { status, data } = await apiInstance.createCheckboxCustomField(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createClient**
-> Client createClient()
+> Client createClient(clientInput)
 
 
 ### Example
@@ -1031,7 +1035,7 @@ const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let clientInput: ClientInput; // (optional)
+let clientInput: ClientInput; //
 
 const { status, data } = await apiInstance.createClient(
     acceptVersion,
@@ -1183,7 +1187,7 @@ const { status, data } = await apiInstance.createDateCustomField(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createHolidayTimeOff**
-> TimeOff createHolidayTimeOff()
+> TimeOff createHolidayTimeOff(timeOffHolidayInput)
 
 
 ### Example
@@ -1199,7 +1203,7 @@ const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let timeOffHolidayInput: TimeOffHolidayInput; // (optional)
+let timeOffHolidayInput: TimeOffHolidayInput; //
 
 const { status, data } = await apiInstance.createHolidayTimeOff(
     acceptVersion,
@@ -1240,7 +1244,7 @@ const { status, data } = await apiInstance.createHolidayTimeOff(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createInvitation**
-> Invitation createInvitation()
+> Invitation createInvitation(createInvitationRequest)
 
 
 ### Example
@@ -1256,7 +1260,7 @@ const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createInvitationRequest: CreateInvitationRequest; // (optional)
+let createInvitationRequest: CreateInvitationRequest; //
 
 const { status, data } = await apiInstance.createInvitation(
     acceptVersion,
@@ -1297,7 +1301,7 @@ const { status, data } = await apiInstance.createInvitation(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createLeaveTimeOff**
-> TimeOff createLeaveTimeOff()
+> TimeOff createLeaveTimeOff(timeOffLeaveInput)
 
  #### Create or Update  This endpoint may return an existing time off if the new time off is a subset of an existing one.  #### Automatic Merging  If one or more existing time offs overlap with the specified start/end date, they will be automatically merged.  #### Partial Time Offs  If the `minutesPerDay` field is provided, automatic merging will only occur if any overlapping time off has the same `minutesPerDay` value. If the `minutesPerDay` value differs, the request will fail.
 
@@ -1314,7 +1318,7 @@ const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let timeOffLeaveInput: TimeOffLeaveInput; // (optional)
+let timeOffLeaveInput: TimeOffLeaveInput; //
 
 const { status, data } = await apiInstance.createLeaveTimeOff(
     acceptVersion,
@@ -1587,7 +1591,7 @@ const { status, data } = await apiInstance.createPerson(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createPersonContract**
-> Contract createPersonContract()
+> Contract createPersonContract(contractInput)
 
 
 ### Example
@@ -1604,7 +1608,7 @@ const apiInstance = new DefaultApi(configuration);
 
 let personId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let contractInput: ContractInput; // (optional)
+let contractInput: ContractInput; //
 
 const { status, data } = await apiInstance.createPersonContract(
     personId,
@@ -1705,7 +1709,7 @@ const { status, data } = await apiInstance.createPlaceholder(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createProject**
-> Project createProject()
+> Project createProject(createProjectRequest)
 
 
 ### Example
@@ -1721,7 +1725,7 @@ const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createProjectRequest: CreateProjectRequest; // (optional)
+let createProjectRequest: CreateProjectRequest; //
 
 const { status, data } = await apiInstance.createProject(
     acceptVersion,
@@ -1761,7 +1765,7 @@ const { status, data } = await apiInstance.createProject(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createProjectBudgetRole**
-> createProjectBudgetRole()
+> createProjectBudgetRole(createProjectBudgetRoleRequest)
 
 Create a project budget role for a project. You cannot create a              project budget role using estimated budget if a project rate does              not exist for the role because the project rate is used to set              the estimatedMinutes.
 
@@ -1779,7 +1783,7 @@ const apiInstance = new DefaultApi(configuration);
 
 let projectId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let createProjectBudgetRoleRequest: CreateProjectBudgetRoleRequest; // (optional)
+let createProjectBudgetRoleRequest: CreateProjectBudgetRoleRequest; //
 
 const { status, data } = await apiInstance.createProjectBudgetRole(
     projectId,
@@ -3071,7 +3075,7 @@ void (empty response body)
 # **deletePerson**
 > deletePerson()
 
-Delete a person by their ID; fails when person has existing assignments or actuals to preserve           historical reports. Override this behaviour by using the force query flag.
+Delete a person or placeholder by their ID; fails when person has existing assignments or actuals to preserve           historical reports. Override this behaviour by using the force query flag.
 
 ### Example
 
@@ -4306,6 +4310,7 @@ const { status, data } = await apiInstance.getPersonCurrentContract(
 # **getPersonCurrentTeam**
 > GetPersonCurrentTeam200Response getPersonCurrentTeam()
 
+This endpoint is deprecated. You may view the current team for a person using the `GET /people/:personId/` endpoint.
 
 ### Example
 
@@ -4427,6 +4432,67 @@ const { status, data } = await apiInstance.getPersonHoursReport(
 |**200** | Default Response |  -  |
 |**401** | Default Response |  -  |
 |**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getPersonReport**
+> GetPersonReport200Response getPersonReport()
+
+Get a report for a person containing data from the People Overview Report. Available under the Advanced Plan only. Contact help@runn.io to request beta access.
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let personId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let startDate: string; //The start date for the report. For monthly reports, this must be the first day of the month. For weekly reports, this must be a Monday. For quarterly reports, this must be the first day of the quarter. Format: YYYY-MM-DD (optional) (default to undefined)
+let periodType: 'monthly' | 'weekly' | 'quarterly'; //The time interval at which to split the metrics on the report. A monthly report made in June, for instance, will show revenue for June, July, August, and September. (optional) (default to 'monthly')
+
+const { status, data } = await apiInstance.getPersonReport(
+    personId,
+    acceptVersion,
+    startDate,
+    periodType
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **personId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **startDate** | [**string**] | The start date for the report. For monthly reports, this must be the first day of the month. For weekly reports, this must be a Monday. For quarterly reports, this must be the first day of the quarter. Format: YYYY-MM-DD | (optional) defaults to undefined|
+| **periodType** | [**&#39;monthly&#39; | &#39;weekly&#39; | &#39;quarterly&#39;**]**Array<&#39;monthly&#39; &#124; &#39;weekly&#39; &#124; &#39;quarterly&#39;>** | The time interval at which to split the metrics on the report. A monthly report made in June, for instance, will show revenue for June, July, August, and September. | (optional) defaults to 'monthly'|
+
+
+### Return type
+
+**GetPersonReport200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**401** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4721,6 +4787,68 @@ const { status, data } = await apiInstance.getProjectPhase(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | Project phases divide your project into smaller sections so you can group similar tasks and assignments together. |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getProjectReport**
+> GetProjectReport200Response getProjectReport()
+
+Get a report for a project containing data from the Project Overview report. Available under the Advanced Plan only. Contact help@runn.io to request beta access.
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let projectId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let startDate: string; //The start date for the report. For monthly reports, this must be the first day of the month. For weekly reports, this must be a Monday. For quarterly reports, this must be the first day of the quarter. Format: YYYY-MM-DD (optional) (default to undefined)
+let periodType: 'monthly' | 'weekly' | 'quarterly'; //The time interval at which to split the metrics on the report. A monthly report made in June, for instance, will show revenue for June, July, August, and September. If not provided, the report will be for the Overview report (all inclusive). (optional) (default to undefined)
+
+const { status, data } = await apiInstance.getProjectReport(
+    projectId,
+    acceptVersion,
+    startDate,
+    periodType
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **projectId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+| **startDate** | [**string**] | The start date for the report. For monthly reports, this must be the first day of the month. For weekly reports, this must be a Monday. For quarterly reports, this must be the first day of the quarter. Format: YYYY-MM-DD | (optional) defaults to undefined|
+| **periodType** | [**&#39;monthly&#39; | &#39;weekly&#39; | &#39;quarterly&#39;**]**Array<&#39;monthly&#39; &#124; &#39;weekly&#39; &#124; &#39;quarterly&#39;>** | The time interval at which to split the metrics on the report. A monthly report made in June, for instance, will show revenue for June, July, August, and September. If not provided, the report will be for the Overview report (all inclusive). | (optional) defaults to undefined|
+
+
+### Return type
+
+**GetProjectReport200Response**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
 |**401** | Default Response |  -  |
 |**404** | Default Response |  -  |
 
@@ -6465,7 +6593,7 @@ let includePlaceholders: boolean; // (optional) (default to false)
 let email: string; //If provided, will only return people with an email that are a substring of this value (case-insensitive). (optional) (default to undefined)
 let firstName: string; //If provided, will only return people with a first name that is a substring of this value (case-insensitive). (optional) (default to undefined)
 let lastName: string; //If provided, will only return people with a last name that is a substring of this value (case-insensitive). (optional) (default to undefined)
-let modifiedAfter: ModifiedAfter; //If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. Note: A person is considered \"modified\" if any of its core properties change. Actions that count as modifying a person include changing first name, last name, email, references, tags and archiving. A person is not considered modified just because another object it is associated with is changed (e.g. a contract, project or an assignment). (optional) (default to undefined)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
 let externalId: string; //External ID value (optional) (default to undefined)
 
 const { status, data } = await apiInstance.listPeople(
@@ -6496,7 +6624,7 @@ const { status, data } = await apiInstance.listPeople(
 | **email** | [**string**] | If provided, will only return people with an email that are a substring of this value (case-insensitive). | (optional) defaults to undefined|
 | **firstName** | [**string**] | If provided, will only return people with a first name that is a substring of this value (case-insensitive). | (optional) defaults to undefined|
 | **lastName** | [**string**] | If provided, will only return people with a last name that is a substring of this value (case-insensitive). | (optional) defaults to undefined|
-| **modifiedAfter** | **ModifiedAfter** | If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. Note: A person is considered \&quot;modified\&quot; if any of its core properties change. Actions that count as modifying a person include changing first name, last name, email, references, tags and archiving. A person is not considered modified just because another object it is associated with is changed (e.g. a contract, project or an assignment). | (optional) defaults to undefined|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
 | **externalId** | [**string**] | External ID value | (optional) defaults to undefined|
 
 
@@ -6733,7 +6861,7 @@ let acceptVersion: '1.0.0'; // (default to '1.0.0')
 let cursor: string; //Cursor for paginated requests (optional) (default to undefined)
 let limit: number; //The number of results per page (optional) (default to 50)
 let includePlaceholders: boolean; // (optional) (default to false)
-let modifiedAfter: ModifiedAfter; //If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. (optional) (default to undefined)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
 
 const { status, data } = await apiInstance.listPeopleSkills(
     acceptVersion,
@@ -6752,7 +6880,7 @@ const { status, data } = await apiInstance.listPeopleSkills(
 | **cursor** | [**string**] | Cursor for paginated requests | (optional) defaults to undefined|
 | **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
 | **includePlaceholders** | [**boolean**] |  | (optional) defaults to false|
-| **modifiedAfter** | **ModifiedAfter** | If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. | (optional) defaults to undefined|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
 
 
 ### Return type
@@ -7497,6 +7625,7 @@ const { status, data } = await apiInstance.listPhases(
 # **listPlaceholders**
 > ListPlaceholders200Response listPlaceholders()
 
+Note: The /people/_* endpoints also allows getting information on placeholders when using the `includePlaceholders` query parameter.
 
 ### Example
 
@@ -8685,7 +8814,7 @@ let cursor: string; //Cursor for paginated requests (optional) (default to undef
 let limit: number; //The number of results per page (optional) (default to 50)
 let sortBy: 'createdAt' | 'updatedAt' | 'id'; //Field to sort by: createdAt or updatedAt or id (optional) (default to 'id')
 let order: 'asc' | 'desc'; //Sort order: asc or desc (optional) (default to 'asc')
-let modifiedAfter: ModifiedAfter; //If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. Note: A project is considered \"modified\" if any of its core properties change. Actions that count as modifying a project include changing the name, client, status, pricing model, rate type , team, budget, expenses budget, references, and archiving. A project is not considered modified just because another object it is associated with is changed (e.g. actuals, assignments, budget roles, custom fields, milestones, notes, other expenses, people, people requests, phases, rates, timesheet locks & workstreams). (optional) (default to undefined)
+let modifiedAfter: ModifiedAfter; // (optional) (default to undefined)
 let externalId: string; //External ID value (optional) (default to undefined)
 let name: string; //Case-insensitive substring match on project name (e.g. `Acme`). (optional) (default to undefined)
 
@@ -8712,7 +8841,7 @@ const { status, data } = await apiInstance.listProjects(
 | **limit** | [**number**] | The number of results per page | (optional) defaults to 50|
 | **sortBy** | [**&#39;createdAt&#39; | &#39;updatedAt&#39; | &#39;id&#39;**]**Array<&#39;createdAt&#39; &#124; &#39;updatedAt&#39; &#124; &#39;id&#39;>** | Field to sort by: createdAt or updatedAt or id | (optional) defaults to 'id'|
 | **order** | [**&#39;asc&#39; | &#39;desc&#39;**]**Array<&#39;asc&#39; &#124; &#39;desc&#39;>** | Sort order: asc or desc | (optional) defaults to 'asc'|
-| **modifiedAfter** | **ModifiedAfter** | If provided, will only return objects modified after this timestamp. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ. Note: A project is considered \&quot;modified\&quot; if any of its core properties change. Actions that count as modifying a project include changing the name, client, status, pricing model, rate type , team, budget, expenses budget, references, and archiving. A project is not considered modified just because another object it is associated with is changed (e.g. actuals, assignments, budget roles, custom fields, milestones, notes, other expenses, people, people requests, phases, rates, timesheet locks &amp; workstreams). | (optional) defaults to undefined|
+| **modifiedAfter** | **ModifiedAfter** |  | (optional) defaults to undefined|
 | **externalId** | [**string**] | External ID value | (optional) defaults to undefined|
 | **name** | [**string**] | Case-insensitive substring match on project name (e.g. &#x60;Acme&#x60;). | (optional) defaults to undefined|
 
@@ -9588,6 +9717,7 @@ const { status, data } = await apiInstance.listWorkstreams(
 # **removePersonFromTeam**
 > removePersonFromTeam()
 
+This endpoint is deprecated. You may remove the person from a team using the `PATCH /people/:personId/` endpoint.
 
 ### Example
 
@@ -9999,7 +10129,7 @@ const { status, data } = await apiInstance.removeWorkstreamFromProject(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateActualTimeEntry**
-> Actual updateActualTimeEntry()
+> Actual updateActualTimeEntry(actualTimeEntry)
 
 Returns Actual with updated minutes. Creates a new actual when there is none to update [Learn more](https://developer.runn.io/docs/actuals-notes).
 
@@ -10016,7 +10146,7 @@ const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let actualTimeEntry: ActualTimeEntry; // (optional)
+let actualTimeEntry: ActualTimeEntry; //
 
 const { status, data } = await apiInstance.updateActualTimeEntry(
     acceptVersion,
@@ -10056,7 +10186,7 @@ const { status, data } = await apiInstance.updateActualTimeEntry(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateCheckboxCustomField**
-> CustomFieldCheckbox updateCheckboxCustomField()
+> CustomFieldCheckbox updateCheckboxCustomField(updateCheckboxCustomFieldRequest)
 
 
 ### Example
@@ -10073,7 +10203,7 @@ const apiInstance = new DefaultApi(configuration);
 
 let checkboxFieldId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateCheckboxCustomFieldRequest: UpdateCheckboxCustomFieldRequest; // (optional)
+let updateCheckboxCustomFieldRequest: UpdateCheckboxCustomFieldRequest; //
 
 const { status, data } = await apiInstance.updateCheckboxCustomField(
     checkboxFieldId,
@@ -10116,7 +10246,7 @@ const { status, data } = await apiInstance.updateCheckboxCustomField(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateClient**
-> Client updateClient()
+> Client updateClient(updateClientRequest)
 
 
 ### Example
@@ -10133,7 +10263,7 @@ const apiInstance = new DefaultApi(configuration);
 
 let clientId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateClientRequest: UpdateClientRequest; // (optional)
+let updateClientRequest: UpdateClientRequest; //
 
 const { status, data } = await apiInstance.updateClient(
     clientId,
@@ -10175,7 +10305,7 @@ const { status, data } = await apiInstance.updateClient(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateContract**
-> Contract updateContract()
+> Contract updateContract(updateContractRequest)
 
 Update a contract
 
@@ -10193,7 +10323,7 @@ const apiInstance = new DefaultApi(configuration);
 
 let contractId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateContractRequest: UpdateContractRequest; // (optional)
+let updateContractRequest: UpdateContractRequest; //
 
 const { status, data } = await apiInstance.updateContract(
     contractId,
@@ -10236,7 +10366,7 @@ const { status, data } = await apiInstance.updateContract(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateDateCustomField**
-> CustomFieldDate updateDateCustomField()
+> CustomFieldDate updateDateCustomField(updateDateCustomFieldRequest)
 
 
 ### Example
@@ -10253,7 +10383,7 @@ const apiInstance = new DefaultApi(configuration);
 
 let dateFieldId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateDateCustomFieldRequest: UpdateDateCustomFieldRequest; // (optional)
+let updateDateCustomFieldRequest: UpdateDateCustomFieldRequest; //
 
 const { status, data } = await apiInstance.updateDateCustomField(
     dateFieldId,
@@ -10355,7 +10485,7 @@ const { status, data } = await apiInstance.updatePeopleTag(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updatePerson**
-> Person updatePerson()
+> Person updatePerson(updatePersonRequest)
 
 To add a new role or job title to a person, see POST /people/{personId}/contracts
 
@@ -10373,7 +10503,7 @@ const apiInstance = new DefaultApi(configuration);
 
 let personId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updatePersonRequest: UpdatePersonRequest; // (optional)
+let updatePersonRequest: UpdatePersonRequest; //
 
 const { status, data } = await apiInstance.updatePerson(
     personId,
@@ -10718,7 +10848,7 @@ const { status, data } = await apiInstance.updatePersonTextCustomField(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateProject**
-> Project updateProject()
+> Project updateProject(updateProjectRequest)
 
 
 ### Example
@@ -10735,7 +10865,7 @@ const apiInstance = new DefaultApi(configuration);
 
 let projectId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateProjectRequest: UpdateProjectRequest; // (optional)
+let updateProjectRequest: UpdateProjectRequest; //
 
 const { status, data } = await apiInstance.updateProject(
     projectId,
@@ -10778,7 +10908,7 @@ const { status, data } = await apiInstance.updateProject(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateProjectBudgetRole**
-> ProjectBudgetRole updateProjectBudgetRole()
+> ProjectBudgetRole updateProjectBudgetRole(updateProjectBudgetRoleRequest)
 
 Update a project budget role for a project. You cannot update a              project budget role using estimated budget if a project rate does              not exist for the role because the project rate is used to set              the estimatedMinutes.
 
@@ -10797,7 +10927,7 @@ const apiInstance = new DefaultApi(configuration);
 let projectId: number; // (default to undefined)
 let roleId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateProjectBudgetRoleRequest: UpdateProjectBudgetRoleRequest; // (optional)
+let updateProjectBudgetRoleRequest: UpdateProjectBudgetRoleRequest; //
 
 const { status, data } = await apiInstance.updateProjectBudgetRole(
     projectId,
@@ -10961,7 +11091,7 @@ const { status, data } = await apiInstance.updateProjectDateCustomField(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateProjectMilestone**
-> Milestone updateProjectMilestone()
+> Milestone updateProjectMilestone(updateProjectMilestoneRequest)
 
 
 ### Example
@@ -10979,7 +11109,7 @@ const apiInstance = new DefaultApi(configuration);
 let projectId: number; // (default to undefined)
 let milestoneId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateProjectMilestoneRequest: UpdateProjectMilestoneRequest; // (optional)
+let updateProjectMilestoneRequest: UpdateProjectMilestoneRequest; //
 
 const { status, data } = await apiInstance.updateProjectMilestone(
     projectId,
@@ -11024,7 +11154,7 @@ const { status, data } = await apiInstance.updateProjectMilestone(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateProjectOtherExpense**
-> ProjectOtherExpense updateProjectOtherExpense()
+> ProjectOtherExpense updateProjectOtherExpense(projectOtherExpense1)
 
 
 ### Example
@@ -11042,7 +11172,7 @@ const apiInstance = new DefaultApi(configuration);
 let projectId: number; //Unique identifier for the project the expense is for. (default to undefined)
 let otherExpenseId: number; //Unique identifier for the other expense to update. (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let projectOtherExpense1: ProjectOtherExpense1; //A non-labour expense for a project. (optional)
+let projectOtherExpense1: ProjectOtherExpense1; //A non-labour expense for a project.
 
 const { status, data } = await apiInstance.updateProjectOtherExpense(
     projectId,
@@ -11150,7 +11280,7 @@ const { status, data } = await apiInstance.updateProjectPersonRequest(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateProjectPhase**
-> ProjectPhase updateProjectPhase()
+> ProjectPhase updateProjectPhase(updateProjectPhaseRequest)
 
 
 ### Example
@@ -11168,7 +11298,7 @@ const apiInstance = new DefaultApi(configuration);
 let projectId: number; // (default to undefined)
 let phaseId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateProjectPhaseRequest: UpdateProjectPhaseRequest; // (optional)
+let updateProjectPhaseRequest: UpdateProjectPhaseRequest; //
 
 const { status, data } = await apiInstance.updateProjectPhase(
     projectId,
@@ -11452,7 +11582,7 @@ const { status, data } = await apiInstance.updateProjectTextCustomField(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateProjectTimesheetLock**
-> GetProjectTimesheetLock200Response updateProjectTimesheetLock()
+> GetProjectTimesheetLock200Response updateProjectTimesheetLock(updateProjectTimesheetLockRequest)
 
 This feature currently in beta and only available to selected customers.This will return an error and message if all timesheets haven\'t been filled out to selected date.
 
@@ -11470,7 +11600,7 @@ const apiInstance = new DefaultApi(configuration);
 
 let projectId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateProjectTimesheetLockRequest: UpdateProjectTimesheetLockRequest; // (optional)
+let updateProjectTimesheetLockRequest: UpdateProjectTimesheetLockRequest; //
 
 const { status, data } = await apiInstance.updateProjectTimesheetLock(
     projectId,
@@ -11511,8 +11641,68 @@ const { status, data } = await apiInstance.updateProjectTimesheetLock(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **updateRateCard**
+> RateCard updateRateCard(updateRateCardRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    UpdateRateCardRequest
+} from 'runn-typescript-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let rateCardId: number; // (default to undefined)
+let acceptVersion: '1.0.0'; // (default to '1.0.0')
+let updateRateCardRequest: UpdateRateCardRequest; //
+
+const { status, data } = await apiInstance.updateRateCard(
+    rateCardId,
+    acceptVersion,
+    updateRateCardRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **updateRateCardRequest** | **UpdateRateCardRequest**|  | |
+| **rateCardId** | [**number**] |  | defaults to undefined|
+| **acceptVersion** | [**&#39;1.0.0&#39;**]**Array<&#39;1.0.0&#39;>** |  | defaults to '1.0.0'|
+
+
+### Return type
+
+**RateCard**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Default Response |  -  |
+|**400** | Default Response |  -  |
+|**401** | Default Response |  -  |
+|**404** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateRole**
-> Role updateRole()
+> Role updateRole(updateRoleRequest)
 
 
 ### Example
@@ -11529,7 +11719,7 @@ const apiInstance = new DefaultApi(configuration);
 
 let roleId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateRoleRequest: UpdateRoleRequest; // (optional)
+let updateRoleRequest: UpdateRoleRequest; //
 
 const { status, data } = await apiInstance.updateRole(
     roleId,
@@ -11571,7 +11761,7 @@ const { status, data } = await apiInstance.updateRole(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateSelectCustomField**
-> CustomFieldSelect updateSelectCustomField()
+> CustomFieldSelect updateSelectCustomField(updateCheckboxCustomFieldRequest)
 
 
 ### Example
@@ -11588,7 +11778,7 @@ const apiInstance = new DefaultApi(configuration);
 
 let selectFieldId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateCheckboxCustomFieldRequest: UpdateCheckboxCustomFieldRequest; // (optional)
+let updateCheckboxCustomFieldRequest: UpdateCheckboxCustomFieldRequest; //
 
 const { status, data } = await apiInstance.updateSelectCustomField(
     selectFieldId,
@@ -11814,7 +12004,7 @@ const { status, data } = await apiInstance.updateTeam(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateTextCustomField**
-> CustomFieldText updateTextCustomField()
+> CustomFieldText updateTextCustomField(updateCheckboxCustomFieldRequest)
 
 
 ### Example
@@ -11831,7 +12021,7 @@ const apiInstance = new DefaultApi(configuration);
 
 let textFieldId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateCheckboxCustomFieldRequest: UpdateCheckboxCustomFieldRequest; // (optional)
+let updateCheckboxCustomFieldRequest: UpdateCheckboxCustomFieldRequest; //
 
 const { status, data } = await apiInstance.updateTextCustomField(
     textFieldId,
@@ -11874,7 +12064,7 @@ const { status, data } = await apiInstance.updateTextCustomField(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateWorkstream**
-> Workstream updateWorkstream()
+> Workstream updateWorkstream(updateWorkstreamRequest)
 
 
 ### Example
@@ -11891,7 +12081,7 @@ const apiInstance = new DefaultApi(configuration);
 
 let workstreamId: number; // (default to undefined)
 let acceptVersion: '1.0.0'; // (default to '1.0.0')
-let updateWorkstreamRequest: UpdateWorkstreamRequest; // (optional)
+let updateWorkstreamRequest: UpdateWorkstreamRequest; //
 
 const { status, data } = await apiInstance.updateWorkstream(
     workstreamId,
