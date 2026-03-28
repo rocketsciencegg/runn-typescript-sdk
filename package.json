@@ -1,6 +1,6 @@
 {
   "name": "runn-typescript-sdk",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "TypeScript SDK for the Runn API, auto-generated from OpenAPI spec",
   "author": "Rocket Science",
   "repository": {

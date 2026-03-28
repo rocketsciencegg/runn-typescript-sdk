@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **roleId** | **number** |  | [default to undefined]
 **costPerHour** | **number** | Defaults to the role\&#39;s cost per hour | [optional] [default to undefined]
+**teamId** | **number** |  | [optional] [default to undefined]
 **tags** | [**Array&lt;UpdatePersonRequestTagsInner&gt;**](UpdatePersonRequestTagsInner.md) |  | [optional] [default to undefined]
 
 ## Example
@@ -17,6 +18,7 @@ import { CreatePlaceholderRequest } from 'runn-typescript-sdk';
 const instance: CreatePlaceholderRequest = {
     roleId,
     costPerHour,
+    teamId,
     tags,
 };
 ```

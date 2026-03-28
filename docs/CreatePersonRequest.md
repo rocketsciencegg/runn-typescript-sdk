@@ -8,9 +8,11 @@ Name | Type | Description | Notes
 **firstName** | **string** |  | [default to undefined]
 **lastName** | **string** |  | [default to undefined]
 **email** | **string** |  | [optional] [default to undefined]
+**teamId** | **number** |  | [optional] [default to undefined]
 **holidaysGroupId** | **number** |  | [optional] [default to undefined]
 **tags** | [**Array&lt;UpdatePersonRequestTagsInner&gt;**](UpdatePersonRequestTagsInner.md) |  | [optional] [default to undefined]
 **references** | [**Array&lt;Reference&gt;**](Reference.md) |  | [optional] [default to undefined]
+**managers** | [**Array&lt;UpdatePersonRequestManagersInner&gt;**](UpdatePersonRequestManagersInner.md) |  | [optional] [default to undefined]
 **roleId** | **number** |  | [default to undefined]
 **startDate** | **string** | Defaults to today. Format: YYYY-MM-DD | [optional] [default to undefined]
 **endDate** | **string** | Format: YYYY-MM-DD | [optional] [default to undefined]
@@ -29,9 +31,11 @@ const instance: CreatePersonRequest = {
     firstName,
     lastName,
     email,
+    teamId,
     holidaysGroupId,
     tags,
     references,
+    managers,
     roleId,
     startDate,
     endDate,

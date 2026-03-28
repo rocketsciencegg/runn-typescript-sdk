@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **editProjectsPermission** | **string** | Permissions for editing projects. (deprecated: use manageProjectsPermission) | [default to undefined]
-**editOthersPermission** | **string** | Permissions for editing other parts of the account (people, clients, teams etc.) | [default to undefined]
+**editOthersPermission** | **string** | Permissions for editing other parts of the account (people, clients, teams etc.). (deprecated: use managePeoplePermission) | [default to undefined]
 
 ## Example
 

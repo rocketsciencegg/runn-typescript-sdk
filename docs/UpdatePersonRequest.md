@@ -9,8 +9,10 @@ Name | Type | Description | Notes
 **lastName** | **string** |  | [optional] [default to undefined]
 **email** | **string** |  | [optional] [default to undefined]
 **tags** | [**Array&lt;UpdatePersonRequestTagsInner&gt;**](UpdatePersonRequestTagsInner.md) |  | [optional] [default to undefined]
+**teamId** | **number** |  | [optional] [default to undefined]
 **references** | [**Array&lt;Reference&gt;**](Reference.md) |  | [optional] [default to undefined]
 **isArchived** | **boolean** |  | [optional] [default to undefined]
+**managers** | [**Array&lt;UpdatePersonRequestManagersInner&gt;**](UpdatePersonRequestManagersInner.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -22,8 +24,10 @@ const instance: UpdatePersonRequest = {
     lastName,
     email,
     tags,
+    teamId,
     references,
     isArchived,
+    managers,
 };
 ```
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **userType** | **string** | Permission level | [default to undefined]
 **financialPermission** | **string** | Financial permission level | [default to undefined]
 **editProjectsPermission** | **string** | Edit projects permission level (deprecated: use manageProjectsPermission) | [default to undefined]
-**editOthersPermission** | **string** | Edit others permission level | [default to undefined]
+**editOthersPermission** | **string** | Edit others permission level (deprecated: use managePeoplePermission) | [default to undefined]
 **manageProjectsPermission** | **string** | Manage projects permission level | [default to undefined]
 **managePeoplePermission** | **string** | Manage people permission level | [default to undefined]
 **manageAccountPermission** | **boolean** | Manage account permission level | [default to undefined]
