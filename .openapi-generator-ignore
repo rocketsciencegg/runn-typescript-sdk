@@ -6,6 +6,7 @@ justfile
 .github/**
 package.json
 tsconfig.json
+.node-version
 .gitignore
 .npmignore
 
