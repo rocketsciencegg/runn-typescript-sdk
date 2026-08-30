@@ -64,7 +64,7 @@ export const ActorTypeEnum = {
     Api: 'api',
     Csv: 'csv',
     Integration: 'integration',
-    System: 'system'
+    System: 'system',
 } as const;
 
 export type ActorTypeEnum = typeof ActorTypeEnum[keyof typeof ActorTypeEnum];
@@ -89,7 +89,7 @@ export interface ActorApi {
 }
 
 export const ActorApiTypeEnum = {
-    Api: 'api'
+    Api: 'api',
 } as const;
 
 export type ActorApiTypeEnum = typeof ActorApiTypeEnum[keyof typeof ActorApiTypeEnum];
@@ -110,7 +110,7 @@ export interface ActorCsv {
 }
 
 export const ActorCsvTypeEnum = {
-    Csv: 'csv'
+    Csv: 'csv',
 } as const;
 
 export type ActorCsvTypeEnum = typeof ActorCsvTypeEnum[keyof typeof ActorCsvTypeEnum];
@@ -131,7 +131,7 @@ export interface ActorIntegration {
 }
 
 export const ActorIntegrationTypeEnum = {
-    Integration: 'integration'
+    Integration: 'integration',
 } as const;
 
 export type ActorIntegrationTypeEnum = typeof ActorIntegrationTypeEnum[keyof typeof ActorIntegrationTypeEnum];
@@ -144,7 +144,7 @@ export interface ActorRunnSupport {
 }
 
 export const ActorRunnSupportTypeEnum = {
-    RunnSupport: 'runn_support'
+    RunnSupport: 'runn_support',
 } as const;
 
 export type ActorRunnSupportTypeEnum = typeof ActorRunnSupportTypeEnum[keyof typeof ActorRunnSupportTypeEnum];
@@ -157,7 +157,7 @@ export interface ActorSystem {
 }
 
 export const ActorSystemTypeEnum = {
-    System: 'system'
+    System: 'system',
 } as const;
 
 export type ActorSystemTypeEnum = typeof ActorSystemTypeEnum[keyof typeof ActorSystemTypeEnum];
@@ -172,7 +172,7 @@ export interface ActorUser {
 }
 
 export const ActorUserTypeEnum = {
-    User: 'user'
+    User: 'user',
 } as const;
 
 export type ActorUserTypeEnum = typeof ActorUserTypeEnum[keyof typeof ActorUserTypeEnum];
@@ -330,7 +330,7 @@ export const AddPeopleToSkillRequestPeopleInnerLevelEnum = {
     NUMBER_1: 1,
     NUMBER_2: 2,
     NUMBER_3: 3,
-    NUMBER_4: 4
+    NUMBER_4: 4,
 } as const;
 
 export type AddPeopleToSkillRequestPeopleInnerLevelEnum = typeof AddPeopleToSkillRequestPeopleInnerLevelEnum[keyof typeof AddPeopleToSkillRequestPeopleInnerLevelEnum];
@@ -344,7 +344,7 @@ export const AddPersonSkillRequestLevelEnum = {
     NUMBER_1: 1,
     NUMBER_2: 2,
     NUMBER_3: 3,
-    NUMBER_4: 4
+    NUMBER_4: 4,
 } as const;
 
 export type AddPersonSkillRequestLevelEnum = typeof AddPersonSkillRequestLevelEnum[keyof typeof AddPersonSkillRequestLevelEnum];
@@ -366,7 +366,7 @@ export const AddPlaceholderSkillRequestLevelEnum = {
     NUMBER_1: 1,
     NUMBER_2: 2,
     NUMBER_3: 3,
-    NUMBER_4: 4
+    NUMBER_4: 4,
 } as const;
 
 export type AddPlaceholderSkillRequestLevelEnum = typeof AddPlaceholderSkillRequestLevelEnum[keyof typeof AddPlaceholderSkillRequestLevelEnum];
@@ -439,12 +439,12 @@ export interface BadRequest {
 }
 
 export const BadRequestErrorEnum = {
-    BadRequest: 'Bad Request'
+    BadRequest: 'Bad Request',
 } as const;
 
 export type BadRequestErrorEnum = typeof BadRequestErrorEnum[keyof typeof BadRequestErrorEnum];
 export const BadRequestStatusCodeEnum = {
-    NUMBER_400: 400
+    NUMBER_400: 400,
 } as const;
 
 export type BadRequestStatusCodeEnum = typeof BadRequestStatusCodeEnum[keyof typeof BadRequestStatusCodeEnum];
@@ -512,7 +512,7 @@ export const CompetencyLevelEnum = {
     NUMBER_1: 1,
     NUMBER_2: 2,
     NUMBER_3: 3,
-    NUMBER_4: 4
+    NUMBER_4: 4,
 } as const;
 
 export type CompetencyLevelEnum = typeof CompetencyLevelEnum[keyof typeof CompetencyLevelEnum];
@@ -524,12 +524,12 @@ export interface Conflict {
 }
 
 export const ConflictErrorEnum = {
-    Conflict: 'Conflict'
+    Conflict: 'Conflict',
 } as const;
 
 export type ConflictErrorEnum = typeof ConflictErrorEnum[keyof typeof ConflictErrorEnum];
 export const ConflictStatusCodeEnum = {
-    NUMBER_409: 409
+    NUMBER_409: 409,
 } as const;
 
 export type ConflictStatusCodeEnum = typeof ConflictStatusCodeEnum[keyof typeof ConflictStatusCodeEnum];
@@ -594,7 +594,7 @@ export interface ContractInput {
 
 export const ContractInputEmploymentTypeEnum = {
     Employee: 'employee',
-    Contractor: 'contractor'
+    Contractor: 'contractor',
 } as const;
 
 export type ContractInputEmploymentTypeEnum = typeof ContractInputEmploymentTypeEnum[keyof typeof ContractInputEmploymentTypeEnum];
@@ -606,12 +606,12 @@ export interface CreateActualsBulk400Response {
 }
 
 export const CreateActualsBulk400ResponseErrorEnum = {
-    BadRequest: 'Bad Request'
+    BadRequest: 'Bad Request',
 } as const;
 
 export type CreateActualsBulk400ResponseErrorEnum = typeof CreateActualsBulk400ResponseErrorEnum[keyof typeof CreateActualsBulk400ResponseErrorEnum];
 export const CreateActualsBulk400ResponseStatusCodeEnum = {
-    NUMBER_400: 400
+    NUMBER_400: 400,
 } as const;
 
 export type CreateActualsBulk400ResponseStatusCodeEnum = typeof CreateActualsBulk400ResponseStatusCodeEnum[keyof typeof CreateActualsBulk400ResponseStatusCodeEnum];
@@ -679,7 +679,7 @@ export interface CreateCheckboxCustomFieldRequest {
 
 export const CreateCheckboxCustomFieldRequestModelEnum = {
     Person: 'PERSON',
-    Project: 'PROJECT'
+    Project: 'PROJECT',
 } as const;
 
 export type CreateCheckboxCustomFieldRequestModelEnum = typeof CreateCheckboxCustomFieldRequestModelEnum[keyof typeof CreateCheckboxCustomFieldRequestModelEnum];
@@ -701,7 +701,7 @@ export interface CreateDateCustomFieldRequest {
 
 export const CreateDateCustomFieldRequestModelEnum = {
     Person: 'PERSON',
-    Project: 'PROJECT'
+    Project: 'PROJECT',
 } as const;
 
 export type CreateDateCustomFieldRequestModelEnum = typeof CreateDateCustomFieldRequestModelEnum[keyof typeof CreateDateCustomFieldRequestModelEnum];
@@ -751,7 +751,7 @@ export const CreateInvitationRequestUserTypeEnum = {
     ViewerBasic: 'viewer_basic',
     TimesheetOnly: 'timesheet_only',
     Manager: 'manager',
-    Contributor: 'contributor'
+    Contributor: 'contributor',
 } as const;
 
 export type CreateInvitationRequestUserTypeEnum = typeof CreateInvitationRequestUserTypeEnum[keyof typeof CreateInvitationRequestUserTypeEnum];
@@ -759,7 +759,7 @@ export const CreateInvitationRequestFinancialPermissionEnum = {
     All: 'all',
     NoSalaries: 'no_salaries',
     Restricted: 'restricted',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type CreateInvitationRequestFinancialPermissionEnum = typeof CreateInvitationRequestFinancialPermissionEnum[keyof typeof CreateInvitationRequestFinancialPermissionEnum];
@@ -767,13 +767,13 @@ export const CreateInvitationRequestEditProjectsPermissionEnum = {
     All: 'all',
     Specific: 'specific',
     Restricted: 'restricted',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type CreateInvitationRequestEditProjectsPermissionEnum = typeof CreateInvitationRequestEditProjectsPermissionEnum[keyof typeof CreateInvitationRequestEditProjectsPermissionEnum];
 export const CreateInvitationRequestEditOthersPermissionEnum = {
     All: 'all',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type CreateInvitationRequestEditOthersPermissionEnum = typeof CreateInvitationRequestEditOthersPermissionEnum[keyof typeof CreateInvitationRequestEditOthersPermissionEnum];
@@ -781,13 +781,13 @@ export const CreateInvitationRequestManageProjectsPermissionEnum = {
     All: 'all',
     Specific: 'specific',
     Restricted: 'restricted',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type CreateInvitationRequestManageProjectsPermissionEnum = typeof CreateInvitationRequestManageProjectsPermissionEnum[keyof typeof CreateInvitationRequestManageProjectsPermissionEnum];
 export const CreateInvitationRequestManageOthersPermissionEnum = {
     All: 'all',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type CreateInvitationRequestManageOthersPermissionEnum = typeof CreateInvitationRequestManageOthersPermissionEnum[keyof typeof CreateInvitationRequestManageOthersPermissionEnum];
@@ -809,13 +809,13 @@ export const CreateInvitationRequestAllOfAnyOfEditProjectsPermissionEnum = {
     All: 'all',
     Specific: 'specific',
     Restricted: 'restricted',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type CreateInvitationRequestAllOfAnyOfEditProjectsPermissionEnum = typeof CreateInvitationRequestAllOfAnyOfEditProjectsPermissionEnum[keyof typeof CreateInvitationRequestAllOfAnyOfEditProjectsPermissionEnum];
 export const CreateInvitationRequestAllOfAnyOfEditOthersPermissionEnum = {
     All: 'all',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type CreateInvitationRequestAllOfAnyOfEditOthersPermissionEnum = typeof CreateInvitationRequestAllOfAnyOfEditOthersPermissionEnum[keyof typeof CreateInvitationRequestAllOfAnyOfEditOthersPermissionEnum];
@@ -836,13 +836,13 @@ export const CreateInvitationRequestAllOfAnyOf1ManageProjectsPermissionEnum = {
     All: 'all',
     Specific: 'specific',
     Restricted: 'restricted',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type CreateInvitationRequestAllOfAnyOf1ManageProjectsPermissionEnum = typeof CreateInvitationRequestAllOfAnyOf1ManageProjectsPermissionEnum[keyof typeof CreateInvitationRequestAllOfAnyOf1ManageProjectsPermissionEnum];
 export const CreateInvitationRequestAllOfAnyOf1ManageOthersPermissionEnum = {
     All: 'all',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type CreateInvitationRequestAllOfAnyOf1ManageOthersPermissionEnum = typeof CreateInvitationRequestAllOfAnyOf1ManageOthersPermissionEnum[keyof typeof CreateInvitationRequestAllOfAnyOf1ManageOthersPermissionEnum];
@@ -892,7 +892,7 @@ export interface CreatePersonRequest {
 
 export const CreatePersonRequestEmploymentTypeEnum = {
     Employee: 'employee',
-    Contractor: 'contractor'
+    Contractor: 'contractor',
 } as const;
 
 export type CreatePersonRequestEmploymentTypeEnum = typeof CreatePersonRequestEmploymentTypeEnum[keyof typeof CreatePersonRequestEmploymentTypeEnum];
@@ -940,7 +940,7 @@ export interface CreateProjectPersonRequestRequest {
 export const CreateProjectPersonRequestRequestStatusEnum = {
     NeedToHire: 'NEED_TO_HIRE',
     Requested: 'REQUESTED',
-    Pending: 'PENDING'
+    Pending: 'PENDING',
 } as const;
 
 export type CreateProjectPersonRequestRequestStatusEnum = typeof CreateProjectPersonRequestRequestStatusEnum[keyof typeof CreateProjectPersonRequestRequestStatusEnum];
@@ -976,7 +976,7 @@ export const CreateProjectPhaseRequestColorEnum = {
     _9Cc5Bf: '#9CC5BF',
     E8C681: '#E8C681',
     _6899F1: '#6899F1',
-    Ddae9F: '#DDAE9F'
+    Ddae9F: '#DDAE9F',
 } as const;
 
 export type CreateProjectPhaseRequestColorEnum = typeof CreateProjectPhaseRequestColorEnum[keyof typeof CreateProjectPhaseRequestColorEnum];
@@ -1019,13 +1019,13 @@ export interface CreateProjectRequest {
 export const CreateProjectRequestPricingModelEnum = {
     Fp: 'fp',
     Tm: 'tm',
-    Nb: 'nb'
+    Nb: 'nb',
 } as const;
 
 export type CreateProjectRequestPricingModelEnum = typeof CreateProjectRequestPricingModelEnum[keyof typeof CreateProjectRequestPricingModelEnum];
 export const CreateProjectRequestRateTypeEnum = {
     Hours: 'hours',
-    Days: 'days'
+    Days: 'days',
 } as const;
 
 export type CreateProjectRequestRateTypeEnum = typeof CreateProjectRequestRateTypeEnum[keyof typeof CreateProjectRequestRateTypeEnum];
@@ -1067,13 +1067,13 @@ export interface CreateProjectRequestAnyOf {
 export const CreateProjectRequestAnyOfPricingModelEnum = {
     Fp: 'fp',
     Tm: 'tm',
-    Nb: 'nb'
+    Nb: 'nb',
 } as const;
 
 export type CreateProjectRequestAnyOfPricingModelEnum = typeof CreateProjectRequestAnyOfPricingModelEnum[keyof typeof CreateProjectRequestAnyOfPricingModelEnum];
 export const CreateProjectRequestAnyOfRateTypeEnum = {
     Hours: 'hours',
-    Days: 'days'
+    Days: 'days',
 } as const;
 
 export type CreateProjectRequestAnyOfRateTypeEnum = typeof CreateProjectRequestAnyOfRateTypeEnum[keyof typeof CreateProjectRequestAnyOfRateTypeEnum];
@@ -1104,7 +1104,7 @@ export interface CreateRateCardRequest {
 
 export const CreateRateCardRequestRateTypeEnum = {
     Hours: 'hours',
-    Days: 'days'
+    Days: 'days',
 } as const;
 
 export type CreateRateCardRequestRateTypeEnum = typeof CreateRateCardRequestRateTypeEnum[keyof typeof CreateRateCardRequestRateTypeEnum];
@@ -1135,7 +1135,7 @@ export interface CreateSelectCustomFieldRequest {
 
 export const CreateSelectCustomFieldRequestModelEnum = {
     Person: 'PERSON',
-    Project: 'PROJECT'
+    Project: 'PROJECT',
 } as const;
 
 export type CreateSelectCustomFieldRequestModelEnum = typeof CreateSelectCustomFieldRequestModelEnum[keyof typeof CreateSelectCustomFieldRequestModelEnum];
@@ -1154,7 +1154,7 @@ export interface CustomCheckboxFieldCollection {
 }
 
 export const CustomCheckboxFieldCollectionTypeEnum = {
-    Checkbox: 'checkbox'
+    Checkbox: 'checkbox',
 } as const;
 
 export type CustomCheckboxFieldCollectionTypeEnum = typeof CustomCheckboxFieldCollectionTypeEnum[keyof typeof CustomCheckboxFieldCollectionTypeEnum];
@@ -1170,7 +1170,7 @@ export interface CustomDateFieldCollection {
 }
 
 export const CustomDateFieldCollectionTypeEnum = {
-    Date: 'date'
+    Date: 'date',
 } as const;
 
 export type CustomDateFieldCollectionTypeEnum = typeof CustomDateFieldCollectionTypeEnum[keyof typeof CustomDateFieldCollectionTypeEnum];
@@ -1209,7 +1209,7 @@ export interface CustomFieldCheckbox {
 
 export const CustomFieldCheckboxModelEnum = {
     Person: 'PERSON',
-    Project: 'PROJECT'
+    Project: 'PROJECT',
 } as const;
 
 export type CustomFieldCheckboxModelEnum = typeof CustomFieldCheckboxModelEnum[keyof typeof CustomFieldCheckboxModelEnum];
@@ -1251,7 +1251,7 @@ export interface CustomFieldDate {
 
 export const CustomFieldDateModelEnum = {
     Person: 'PERSON',
-    Project: 'PROJECT'
+    Project: 'PROJECT',
 } as const;
 
 export type CustomFieldDateModelEnum = typeof CustomFieldDateModelEnum[keyof typeof CustomFieldDateModelEnum];
@@ -1298,7 +1298,7 @@ export interface CustomFieldSelect {
 
 export const CustomFieldSelectModelEnum = {
     Person: 'PERSON',
-    Project: 'PROJECT'
+    Project: 'PROJECT',
 } as const;
 
 export type CustomFieldSelectModelEnum = typeof CustomFieldSelectModelEnum[keyof typeof CustomFieldSelectModelEnum];
@@ -1337,7 +1337,7 @@ export interface CustomFieldText {
 
 export const CustomFieldTextModelEnum = {
     Person: 'PERSON',
-    Project: 'PROJECT'
+    Project: 'PROJECT',
 } as const;
 
 export type CustomFieldTextModelEnum = typeof CustomFieldTextModelEnum[keyof typeof CustomFieldTextModelEnum];
@@ -1350,7 +1350,7 @@ export interface CustomSelectFieldCollection {
 }
 
 export const CustomSelectFieldCollectionTypeEnum = {
-    Select: 'select'
+    Select: 'select',
 } as const;
 
 export type CustomSelectFieldCollectionTypeEnum = typeof CustomSelectFieldCollectionTypeEnum[keyof typeof CustomSelectFieldCollectionTypeEnum];
@@ -1363,7 +1363,7 @@ export interface CustomTextFieldCollection {
 }
 
 export const CustomTextFieldCollectionTypeEnum = {
-    Text: 'text'
+    Text: 'text',
 } as const;
 
 export type CustomTextFieldCollectionTypeEnum = typeof CustomTextFieldCollectionTypeEnum[keyof typeof CustomTextFieldCollectionTypeEnum];
@@ -1399,7 +1399,7 @@ export const EventTypeEnum = {
     ContractDeleted: 'contract_deleted',
     ActualDeleted: 'actual_deleted',
     TimeOffDeleted: 'time_off_deleted',
-    AssignmentDeleted: 'assignment_deleted'
+    AssignmentDeleted: 'assignment_deleted',
 } as const;
 
 export type EventTypeEnum = typeof EventTypeEnum[keyof typeof EventTypeEnum];
@@ -1422,7 +1422,7 @@ export interface EventActualDeleted {
 }
 
 export const EventActualDeletedTypeEnum = {
-    ActualDeleted: 'actual_deleted'
+    ActualDeleted: 'actual_deleted',
 } as const;
 
 export type EventActualDeletedTypeEnum = typeof EventActualDeletedTypeEnum[keyof typeof EventActualDeletedTypeEnum];
@@ -1498,7 +1498,7 @@ export interface EventAssignmentDeleted {
 }
 
 export const EventAssignmentDeletedTypeEnum = {
-    AssignmentDeleted: 'assignment_deleted'
+    AssignmentDeleted: 'assignment_deleted',
 } as const;
 
 export type EventAssignmentDeletedTypeEnum = typeof EventAssignmentDeletedTypeEnum[keyof typeof EventAssignmentDeletedTypeEnum];
@@ -1578,7 +1578,7 @@ export interface EventContractDeleted {
 }
 
 export const EventContractDeletedTypeEnum = {
-    ContractDeleted: 'contract_deleted'
+    ContractDeleted: 'contract_deleted',
 } as const;
 
 export type EventContractDeletedTypeEnum = typeof EventContractDeletedTypeEnum[keyof typeof EventContractDeletedTypeEnum];
@@ -1625,7 +1625,7 @@ export interface EventPersonDeleted {
 }
 
 export const EventPersonDeletedTypeEnum = {
-    PersonDeleted: 'person_deleted'
+    PersonDeleted: 'person_deleted',
 } as const;
 
 export type EventPersonDeletedTypeEnum = typeof EventPersonDeletedTypeEnum[keyof typeof EventPersonDeletedTypeEnum];
@@ -1669,7 +1669,7 @@ export interface EventProjectDeleted {
 }
 
 export const EventProjectDeletedTypeEnum = {
-    ProjectDeleted: 'project_deleted'
+    ProjectDeleted: 'project_deleted',
 } as const;
 
 export type EventProjectDeletedTypeEnum = typeof EventProjectDeletedTypeEnum[keyof typeof EventProjectDeletedTypeEnum];
@@ -1786,7 +1786,7 @@ export interface EventTimeOffDeleted {
 }
 
 export const EventTimeOffDeletedTypeEnum = {
-    TimeOffDeleted: 'time_off_deleted'
+    TimeOffDeleted: 'time_off_deleted',
 } as const;
 
 export type EventTimeOffDeletedTypeEnum = typeof EventTimeOffDeletedTypeEnum[keyof typeof EventTimeOffDeletedTypeEnum];
@@ -1822,12 +1822,12 @@ export interface GetPersonCurrentContract404Response {
 }
 
 export const GetPersonCurrentContract404ResponseErrorEnum = {
-    NotFound: 'Not Found'
+    NotFound: 'Not Found',
 } as const;
 
 export type GetPersonCurrentContract404ResponseErrorEnum = typeof GetPersonCurrentContract404ResponseErrorEnum[keyof typeof GetPersonCurrentContract404ResponseErrorEnum];
 export const GetPersonCurrentContract404ResponseStatusCodeEnum = {
-    NUMBER_404: 404
+    NUMBER_404: 404,
 } as const;
 
 export type GetPersonCurrentContract404ResponseStatusCodeEnum = typeof GetPersonCurrentContract404ResponseStatusCodeEnum[keyof typeof GetPersonCurrentContract404ResponseStatusCodeEnum];
@@ -1898,7 +1898,7 @@ export interface GetProjectReport200Response {
 export const GetProjectReport200ResponsePricingModelEnum = {
     Tm: 'tm',
     Fp: 'fp',
-    Nb: 'nb'
+    Nb: 'nb',
 } as const;
 
 export type GetProjectReport200ResponsePricingModelEnum = typeof GetProjectReport200ResponsePricingModelEnum[keyof typeof GetProjectReport200ResponsePricingModelEnum];
@@ -1936,7 +1936,7 @@ export interface GetProjectTimesheetLock200Response {
 
 export const GetProjectTimesheetLock200ResponseStatusEnum = {
     Locked: 'LOCKED',
-    Unlocked: 'UNLOCKED'
+    Unlocked: 'UNLOCKED',
 } as const;
 
 export type GetProjectTimesheetLock200ResponseStatusEnum = typeof GetProjectTimesheetLock200ResponseStatusEnum[keyof typeof GetProjectTimesheetLock200ResponseStatusEnum];
@@ -2030,7 +2030,7 @@ export const InvitationUserTypeEnum = {
     ViewerBasic: 'viewer_basic',
     TimesheetOnly: 'timesheet_only',
     Manager: 'manager',
-    Contributor: 'contributor'
+    Contributor: 'contributor',
 } as const;
 
 export type InvitationUserTypeEnum = typeof InvitationUserTypeEnum[keyof typeof InvitationUserTypeEnum];
@@ -2038,7 +2038,7 @@ export const InvitationFinancialPermissionEnum = {
     All: 'all',
     NoSalaries: 'no_salaries',
     Restricted: 'restricted',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type InvitationFinancialPermissionEnum = typeof InvitationFinancialPermissionEnum[keyof typeof InvitationFinancialPermissionEnum];
@@ -2046,13 +2046,13 @@ export const InvitationEditProjectsPermissionEnum = {
     All: 'all',
     Specific: 'specific',
     Restricted: 'restricted',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type InvitationEditProjectsPermissionEnum = typeof InvitationEditProjectsPermissionEnum[keyof typeof InvitationEditProjectsPermissionEnum];
 export const InvitationEditOthersPermissionEnum = {
     All: 'all',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type InvitationEditOthersPermissionEnum = typeof InvitationEditOthersPermissionEnum[keyof typeof InvitationEditOthersPermissionEnum];
@@ -2060,14 +2060,14 @@ export const InvitationManageProjectsPermissionEnum = {
     All: 'all',
     Specific: 'specific',
     Restricted: 'restricted',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type InvitationManageProjectsPermissionEnum = typeof InvitationManageProjectsPermissionEnum[keyof typeof InvitationManageProjectsPermissionEnum];
 export const InvitationManagePeoplePermissionEnum = {
     All: 'all',
     Restricted: 'restricted',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type InvitationManagePeoplePermissionEnum = typeof InvitationManagePeoplePermissionEnum[keyof typeof InvitationManagePeoplePermissionEnum];
@@ -2344,12 +2344,12 @@ export interface NotFound {
 }
 
 export const NotFoundErrorEnum = {
-    NotFound: 'Not Found'
+    NotFound: 'Not Found',
 } as const;
 
 export type NotFoundErrorEnum = typeof NotFoundErrorEnum[keyof typeof NotFoundErrorEnum];
 export const NotFoundStatusCodeEnum = {
-    NUMBER_404: 404
+    NUMBER_404: 404,
 } as const;
 
 export type NotFoundStatusCodeEnum = typeof NotFoundStatusCodeEnum[keyof typeof NotFoundStatusCodeEnum];
@@ -2395,7 +2395,7 @@ export const PersonCompetencyLevelEnum = {
     NUMBER_1: 1,
     NUMBER_2: 2,
     NUMBER_3: 3,
-    NUMBER_4: 4
+    NUMBER_4: 4,
 } as const;
 
 export type PersonCompetencyLevelEnum = typeof PersonCompetencyLevelEnum[keyof typeof PersonCompetencyLevelEnum];
@@ -2426,7 +2426,7 @@ export const PersonCustomFieldCustomFieldsInnerTypeEnum = {
     Text: 'text',
     Date: 'date',
     Checkbox: 'checkbox',
-    Select: 'select'
+    Select: 'select',
 } as const;
 
 export type PersonCustomFieldCustomFieldsInnerTypeEnum = typeof PersonCustomFieldCustomFieldsInnerTypeEnum[keyof typeof PersonCustomFieldCustomFieldsInnerTypeEnum];
@@ -2513,7 +2513,7 @@ export interface PersonRequest {
 export const PersonRequestStatusEnum = {
     NeedToHire: 'NEED_TO_HIRE',
     Requested: 'REQUESTED',
-    Pending: 'PENDING'
+    Pending: 'PENDING',
 } as const;
 
 export type PersonRequestStatusEnum = typeof PersonRequestStatusEnum[keyof typeof PersonRequestStatusEnum];
@@ -2577,13 +2577,13 @@ export interface Project {
 export const ProjectPricingModelEnum = {
     Fp: 'fp',
     Tm: 'tm',
-    Nb: 'nb'
+    Nb: 'nb',
 } as const;
 
 export type ProjectPricingModelEnum = typeof ProjectPricingModelEnum[keyof typeof ProjectPricingModelEnum];
 export const ProjectRateTypeEnum = {
     Hours: 'hours',
-    Days: 'days'
+    Days: 'days',
 } as const;
 
 export type ProjectRateTypeEnum = typeof ProjectRateTypeEnum[keyof typeof ProjectRateTypeEnum];
@@ -2822,7 +2822,7 @@ export interface RateCard {
 
 export const RateCardRateTypeEnum = {
     Hours: 'hours',
-    Days: 'days'
+    Days: 'days',
 } as const;
 
 export type RateCardRateTypeEnum = typeof RateCardRateTypeEnum[keyof typeof RateCardRateTypeEnum];
@@ -3001,7 +3001,7 @@ export interface Skill {
 
 export const SortOrder = {
     Asc: 'asc',
-    Desc: 'desc'
+    Desc: 'desc',
 } as const;
 
 export type SortOrder = typeof SortOrder[keyof typeof SortOrder];
@@ -3094,17 +3094,17 @@ export interface Unauthorized {
 }
 
 export const UnauthorizedErrorEnum = {
-    Unauthorized: 'Unauthorized'
+    Unauthorized: 'Unauthorized',
 } as const;
 
 export type UnauthorizedErrorEnum = typeof UnauthorizedErrorEnum[keyof typeof UnauthorizedErrorEnum];
 export const UnauthorizedMessageEnum = {
-    Unauthorized: 'Unauthorized'
+    Unauthorized: 'Unauthorized',
 } as const;
 
 export type UnauthorizedMessageEnum = typeof UnauthorizedMessageEnum[keyof typeof UnauthorizedMessageEnum];
 export const UnauthorizedStatusCodeEnum = {
-    NUMBER_401: 401
+    NUMBER_401: 401,
 } as const;
 
 export type UnauthorizedStatusCodeEnum = typeof UnauthorizedStatusCodeEnum[keyof typeof UnauthorizedStatusCodeEnum];
@@ -3116,12 +3116,12 @@ export interface UnprocessableEntity {
 }
 
 export const UnprocessableEntityErrorEnum = {
-    UnprocessableEntity: 'Unprocessable Entity'
+    UnprocessableEntity: 'Unprocessable Entity',
 } as const;
 
 export type UnprocessableEntityErrorEnum = typeof UnprocessableEntityErrorEnum[keyof typeof UnprocessableEntityErrorEnum];
 export const UnprocessableEntityStatusCodeEnum = {
-    NUMBER_422: 422
+    NUMBER_422: 422,
 } as const;
 
 export type UnprocessableEntityStatusCodeEnum = typeof UnprocessableEntityStatusCodeEnum[keyof typeof UnprocessableEntityStatusCodeEnum];
@@ -3152,7 +3152,7 @@ export interface UpdateContractRequest {
 
 export const UpdateContractRequestEmploymentTypeEnum = {
     Employee: 'employee',
-    Contractor: 'contractor'
+    Contractor: 'contractor',
 } as const;
 
 export type UpdateContractRequestEmploymentTypeEnum = typeof UpdateContractRequestEmploymentTypeEnum[keyof typeof UpdateContractRequestEmploymentTypeEnum];
@@ -3216,7 +3216,7 @@ export const UpdatePersonSkillRequestLevelEnum = {
     NUMBER_1: 1,
     NUMBER_2: 2,
     NUMBER_3: 3,
-    NUMBER_4: 4
+    NUMBER_4: 4,
 } as const;
 
 export type UpdatePersonSkillRequestLevelEnum = typeof UpdatePersonSkillRequestLevelEnum[keyof typeof UpdatePersonSkillRequestLevelEnum];
@@ -3252,7 +3252,7 @@ export interface UpdateProjectPersonRequest200Response {
 export const UpdateProjectPersonRequest200ResponseStatusEnum = {
     NeedToHire: 'NEED_TO_HIRE',
     Requested: 'REQUESTED',
-    Pending: 'PENDING'
+    Pending: 'PENDING',
 } as const;
 
 export type UpdateProjectPersonRequest200ResponseStatusEnum = typeof UpdateProjectPersonRequest200ResponseStatusEnum[keyof typeof UpdateProjectPersonRequest200ResponseStatusEnum];
@@ -3264,7 +3264,7 @@ export interface UpdateProjectPersonRequestRequest {
 export const UpdateProjectPersonRequestRequestStatusEnum = {
     NeedToHire: 'NEED_TO_HIRE',
     Requested: 'REQUESTED',
-    Pending: 'PENDING'
+    Pending: 'PENDING',
 } as const;
 
 export type UpdateProjectPersonRequestRequestStatusEnum = typeof UpdateProjectPersonRequestRequestStatusEnum[keyof typeof UpdateProjectPersonRequestRequestStatusEnum];
@@ -3300,7 +3300,7 @@ export const UpdateProjectPhaseRequestColorEnum = {
     _9Cc5Bf: '#9CC5BF',
     E8C681: '#E8C681',
     _6899F1: '#6899F1',
-    Ddae9F: '#DDAE9F'
+    Ddae9F: '#DDAE9F',
 } as const;
 
 export type UpdateProjectPhaseRequestColorEnum = typeof UpdateProjectPhaseRequestColorEnum[keyof typeof UpdateProjectPhaseRequestColorEnum];
@@ -3333,13 +3333,13 @@ export interface UpdateProjectRequest {
 export const UpdateProjectRequestPricingModelEnum = {
     Fp: 'fp',
     Tm: 'tm',
-    Nb: 'nb'
+    Nb: 'nb',
 } as const;
 
 export type UpdateProjectRequestPricingModelEnum = typeof UpdateProjectRequestPricingModelEnum[keyof typeof UpdateProjectRequestPricingModelEnum];
 export const UpdateProjectRequestRateTypeEnum = {
     Hours: 'hours',
-    Days: 'days'
+    Days: 'days',
 } as const;
 
 export type UpdateProjectRequestRateTypeEnum = typeof UpdateProjectRequestRateTypeEnum[keyof typeof UpdateProjectRequestRateTypeEnum];
@@ -3353,7 +3353,7 @@ export interface UpdateProjectTimesheetLockRequest {
 }
 
 export const UpdateProjectTimesheetLockRequestStatusEnum = {
-    Unlocked: 'UNLOCKED'
+    Unlocked: 'UNLOCKED',
 } as const;
 
 export type UpdateProjectTimesheetLockRequestStatusEnum = typeof UpdateProjectTimesheetLockRequestStatusEnum[keyof typeof UpdateProjectTimesheetLockRequestStatusEnum];
@@ -3364,7 +3364,7 @@ export interface UpdateProjectTimesheetLockRequestAnyOf {
 }
 
 export const UpdateProjectTimesheetLockRequestAnyOfStatusEnum = {
-    Locked: 'LOCKED'
+    Locked: 'LOCKED',
 } as const;
 
 export type UpdateProjectTimesheetLockRequestAnyOfStatusEnum = typeof UpdateProjectTimesheetLockRequestAnyOfStatusEnum[keyof typeof UpdateProjectTimesheetLockRequestAnyOfStatusEnum];
@@ -3374,7 +3374,7 @@ export interface UpdateProjectTimesheetLockRequestAnyOf1 {
 }
 
 export const UpdateProjectTimesheetLockRequestAnyOf1StatusEnum = {
-    Unlocked: 'UNLOCKED'
+    Unlocked: 'UNLOCKED',
 } as const;
 
 export type UpdateProjectTimesheetLockRequestAnyOf1StatusEnum = typeof UpdateProjectTimesheetLockRequestAnyOf1StatusEnum[keyof typeof UpdateProjectTimesheetLockRequestAnyOf1StatusEnum];
@@ -3390,7 +3390,7 @@ export interface UpdateRateCardRequest {
 
 export const UpdateRateCardRequestRateTypeEnum = {
     Hours: 'hours',
-    Days: 'days'
+    Days: 'days',
 } as const;
 
 export type UpdateRateCardRequestRateTypeEnum = typeof UpdateRateCardRequestRateTypeEnum[keyof typeof UpdateRateCardRequestRateTypeEnum];
@@ -3464,7 +3464,7 @@ export const UserPermissionsTypeEnum = {
     Editor: 'editor',
     ViewerAll: 'viewer_all',
     ViewerBasic: 'viewer_basic',
-    TimesheetOnly: 'timesheet_only'
+    TimesheetOnly: 'timesheet_only',
 } as const;
 
 export type UserPermissionsTypeEnum = typeof UserPermissionsTypeEnum[keyof typeof UserPermissionsTypeEnum];
@@ -3472,7 +3472,7 @@ export const UserPermissionsFinancialEnum = {
     All: 'all',
     NoSalaries: 'no_salaries',
     Restricted: 'restricted',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type UserPermissionsFinancialEnum = typeof UserPermissionsFinancialEnum[keyof typeof UserPermissionsFinancialEnum];
@@ -3480,7 +3480,7 @@ export const UserPermissionsEditProjectsEnum = {
     All: 'all',
     Specific: 'specific',
     Restricted: 'restricted',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type UserPermissionsEditProjectsEnum = typeof UserPermissionsEditProjectsEnum[keyof typeof UserPermissionsEditProjectsEnum];
@@ -3488,20 +3488,20 @@ export const UserPermissionsManageProjectsEnum = {
     All: 'all',
     Specific: 'specific',
     Restricted: 'restricted',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type UserPermissionsManageProjectsEnum = typeof UserPermissionsManageProjectsEnum[keyof typeof UserPermissionsManageProjectsEnum];
 export const UserPermissionsEditOthersEnum = {
     All: 'all',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type UserPermissionsEditOthersEnum = typeof UserPermissionsEditOthersEnum[keyof typeof UserPermissionsEditOthersEnum];
 export const UserPermissionsManagePeopleEnum = {
     All: 'all',
     Restricted: 'restricted',
-    None: 'none'
+    None: 'none',
 } as const;
 
 export type UserPermissionsManagePeopleEnum = typeof UserPermissionsManagePeopleEnum[keyof typeof UserPermissionsManagePeopleEnum];
@@ -3555,7 +3555,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'addPeopleToSkillRequest' is not null or undefined
             assertParamExists('addPeopleToSkill', 'addPeopleToSkillRequest', addPeopleToSkillRequest)
             const localVarPath = `/skills/{skillId}/people/`
-                .replace(`{${"skillId"}}`, encodeURIComponent(String(skillId)));
+                .replace('{skillId}', encodeURIComponent(String(skillId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -3604,7 +3604,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'addPersonSkillRequest' is not null or undefined
             assertParamExists('addPersonSkill', 'addPersonSkillRequest', addPersonSkillRequest)
             const localVarPath = `/people/{personId}/skills/`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -3653,7 +3653,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'addPersonToProjectRequest' is not null or undefined
             assertParamExists('addPersonToProject', 'addPersonToProjectRequest', addPersonToProjectRequest)
             const localVarPath = `/people/{personId}/projects/`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -3703,7 +3703,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'addPersonToTeamRequest' is not null or undefined
             assertParamExists('addPersonToTeam', 'addPersonToTeamRequest', addPersonToTeamRequest)
             const localVarPath = `/people/{personId}/teams/`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -3752,7 +3752,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'addPlaceholderSkillRequest' is not null or undefined
             assertParamExists('addPlaceholderSkill', 'addPlaceholderSkillRequest', addPlaceholderSkillRequest)
             const localVarPath = `/placeholders/{placeholderId}/skills/`
-                .replace(`{${"placeholderId"}}`, encodeURIComponent(String(placeholderId)));
+                .replace('{placeholderId}', encodeURIComponent(String(placeholderId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -3801,7 +3801,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'addPersonToTeamRequest' is not null or undefined
             assertParamExists('addPlaceholderToTeam', 'addPersonToTeamRequest', addPersonToTeamRequest)
             const localVarPath = `/placeholders/{placeholderId}/teams/`
-                .replace(`{${"placeholderId"}}`, encodeURIComponent(String(placeholderId)));
+                .replace('{placeholderId}', encodeURIComponent(String(placeholderId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -3850,8 +3850,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('addProjectTagToProject', 'acceptVersion', acceptVersion)
             const localVarPath = `/project-tags/{projectTagId}/project/{projectId}`
-                .replace(`{${"projectTagId"}}`, encodeURIComponent(String(projectTagId)))
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectTagId}', encodeURIComponent(String(projectTagId)))
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -3898,8 +3898,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('addWorkstreamToProject', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/project-workstreams/{workstreamId}/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${"workstreamId"}}`, encodeURIComponent(String(workstreamId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)))
+                .replace('{workstreamId}', encodeURIComponent(String(workstreamId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -3946,8 +3946,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('allocateViewToUser', 'acceptVersion', acceptVersion)
             const localVarPath = `/users/{userId}/views/{viewId}`
-                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)))
-                .replace(`{${"viewId"}}`, encodeURIComponent(String(viewId)));
+                .replace('{userId}', encodeURIComponent(String(userId)))
+                .replace('{viewId}', encodeURIComponent(String(viewId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -3994,8 +3994,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('convertLegacyId', 'acceptVersion', acceptVersion)
             const localVarPath = `/legacy-id/{model}/{legacyId}`
-                .replace(`{${"model"}}`, encodeURIComponent(String(model)))
-                .replace(`{${"legacyId"}}`, encodeURIComponent(String(legacyId)));
+                .replace('{model}', encodeURIComponent(String(model)))
+                .replace('{legacyId}', encodeURIComponent(String(legacyId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -4537,7 +4537,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'createNoteForProjectRequest' is not null or undefined
             assertParamExists('createNoteForProject', 'createNoteForProjectRequest', createNoteForProjectRequest)
             const localVarPath = `/projects/{projectId}/notes/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -4676,7 +4676,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'contractInput' is not null or undefined
             assertParamExists('createPersonContract', 'contractInput', contractInput)
             const localVarPath = `/people/{personId}/contracts/`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -4815,7 +4815,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'createProjectBudgetRoleRequest' is not null or undefined
             assertParamExists('createProjectBudgetRole', 'createProjectBudgetRoleRequest', createProjectBudgetRoleRequest)
             const localVarPath = `/projects/{projectId}/budget-roles/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -4864,7 +4864,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'createProjectMilestoneRequest' is not null or undefined
             assertParamExists('createProjectMilestone', 'createProjectMilestoneRequest', createProjectMilestoneRequest)
             const localVarPath = `/projects/{projectId}/milestones/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -4913,7 +4913,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'projectOtherExpense' is not null or undefined
             assertParamExists('createProjectOtherExpense', 'projectOtherExpense', projectOtherExpense)
             const localVarPath = `/projects/{projectId}/other-expenses/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -4962,7 +4962,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'createProjectPersonRequestRequest' is not null or undefined
             assertParamExists('createProjectPersonRequest', 'createProjectPersonRequestRequest', createProjectPersonRequestRequest)
             const localVarPath = `/projects/{projectId}/person-requests/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -5011,7 +5011,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'createProjectPhaseRequest' is not null or undefined
             assertParamExists('createProjectPhase', 'createProjectPhaseRequest', createProjectPhaseRequest)
             const localVarPath = `/projects/{projectId}/phases/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -5240,7 +5240,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateSelectCustomFieldOptionRequest' is not null or undefined
             assertParamExists('createSelectCustomFieldOption', 'updateSelectCustomFieldOptionRequest', updateSelectCustomFieldOptionRequest)
             const localVarPath = `/custom-fields/select/{selectFieldId}/options`
-                .replace(`{${"selectFieldId"}}`, encodeURIComponent(String(selectFieldId)));
+                .replace('{selectFieldId}', encodeURIComponent(String(selectFieldId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -5466,7 +5466,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteActual', 'acceptVersion', acceptVersion)
             const localVarPath = `/actuals/{actualId}/`
-                .replace(`{${"actualId"}}`, encodeURIComponent(String(actualId)));
+                .replace('{actualId}', encodeURIComponent(String(actualId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -5510,7 +5510,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteAssignment', 'acceptVersion', acceptVersion)
             const localVarPath = `/assignments/{assignmentId}/`
-                .replace(`{${"assignmentId"}}`, encodeURIComponent(String(assignmentId)));
+                .replace('{assignmentId}', encodeURIComponent(String(assignmentId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -5554,7 +5554,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteCheckboxCustomField', 'acceptVersion', acceptVersion)
             const localVarPath = `/custom-fields/checkbox/{checkboxFieldId}`
-                .replace(`{${"checkboxFieldId"}}`, encodeURIComponent(String(checkboxFieldId)));
+                .replace('{checkboxFieldId}', encodeURIComponent(String(checkboxFieldId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -5598,7 +5598,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteDateCustomField', 'acceptVersion', acceptVersion)
             const localVarPath = `/custom-fields/date/{dateFieldId}`
-                .replace(`{${"dateFieldId"}}`, encodeURIComponent(String(dateFieldId)));
+                .replace('{dateFieldId}', encodeURIComponent(String(dateFieldId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -5642,7 +5642,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteHolidayTimeOff', 'acceptVersion', acceptVersion)
             const localVarPath = `/time-offs/holidays/{timeOffId}`
-                .replace(`{${"timeOffId"}}`, encodeURIComponent(String(timeOffId)));
+                .replace('{timeOffId}', encodeURIComponent(String(timeOffId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -5686,7 +5686,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteInvitation', 'acceptVersion', acceptVersion)
             const localVarPath = `/invitations/{invitationId}`
-                .replace(`{${"invitationId"}}`, encodeURIComponent(String(invitationId)));
+                .replace('{invitationId}', encodeURIComponent(String(invitationId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -5730,7 +5730,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteLeaveTimeOff', 'acceptVersion', acceptVersion)
             const localVarPath = `/time-offs/leave/{timeOffId}/`
-                .replace(`{${"timeOffId"}}`, encodeURIComponent(String(timeOffId)));
+                .replace('{timeOffId}', encodeURIComponent(String(timeOffId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -5819,7 +5819,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deletePeopleTag', 'acceptVersion', acceptVersion)
             const localVarPath = `/people-tags/{peopleTagId}`
-                .replace(`{${"peopleTagId"}}`, encodeURIComponent(String(peopleTagId)));
+                .replace('{peopleTagId}', encodeURIComponent(String(peopleTagId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -5866,7 +5866,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deletePerson', 'acceptVersion', acceptVersion)
             const localVarPath = `/people/{personId}`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -5917,8 +5917,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deletePersonContract', 'acceptVersion', acceptVersion)
             const localVarPath = `/people/{personId}/contracts/{contractId}`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)))
-                .replace(`{${"contractId"}}`, encodeURIComponent(String(contractId)));
+                .replace('{personId}', encodeURIComponent(String(personId)))
+                .replace('{contractId}', encodeURIComponent(String(contractId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -5962,7 +5962,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteProject', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6009,8 +6009,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteProjectBudgetRole', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/budget-roles/{roleId}`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${"roleId"}}`, encodeURIComponent(String(roleId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)))
+                .replace('{roleId}', encodeURIComponent(String(roleId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6057,8 +6057,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteProjectMilestone', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/milestones/{milestoneId}`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${"milestoneId"}}`, encodeURIComponent(String(milestoneId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)))
+                .replace('{milestoneId}', encodeURIComponent(String(milestoneId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6105,8 +6105,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteProjectPhase', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/phases/{phaseId}`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${"phaseId"}}`, encodeURIComponent(String(phaseId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)))
+                .replace('{phaseId}', encodeURIComponent(String(phaseId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6150,7 +6150,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteRateCard', 'acceptVersion', acceptVersion)
             const localVarPath = `/rate-cards/{rateCardId}`
-                .replace(`{${"rateCardId"}}`, encodeURIComponent(String(rateCardId)));
+                .replace('{rateCardId}', encodeURIComponent(String(rateCardId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6194,7 +6194,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteRosteredTimeOff', 'acceptVersion', acceptVersion)
             const localVarPath = `/time-offs/rostered-off/{timeOffId}`
-                .replace(`{${"timeOffId"}}`, encodeURIComponent(String(timeOffId)));
+                .replace('{timeOffId}', encodeURIComponent(String(timeOffId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6238,7 +6238,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteSelectCustomField', 'acceptVersion', acceptVersion)
             const localVarPath = `/custom-fields/select/{selectFieldId}`
-                .replace(`{${"selectFieldId"}}`, encodeURIComponent(String(selectFieldId)));
+                .replace('{selectFieldId}', encodeURIComponent(String(selectFieldId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6285,8 +6285,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteSelectCustomFieldOption', 'acceptVersion', acceptVersion)
             const localVarPath = `/custom-fields/select/{selectFieldId}/options/{selectOptionId}`
-                .replace(`{${"selectFieldId"}}`, encodeURIComponent(String(selectFieldId)))
-                .replace(`{${"selectOptionId"}}`, encodeURIComponent(String(selectOptionId)));
+                .replace('{selectFieldId}', encodeURIComponent(String(selectFieldId)))
+                .replace('{selectOptionId}', encodeURIComponent(String(selectOptionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6330,7 +6330,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteSkill', 'acceptVersion', acceptVersion)
             const localVarPath = `/skills/{skillId}`
-                .replace(`{${"skillId"}}`, encodeURIComponent(String(skillId)));
+                .replace('{skillId}', encodeURIComponent(String(skillId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6374,7 +6374,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteTeam', 'acceptVersion', acceptVersion)
             const localVarPath = `/teams/{teamId}/`
-                .replace(`{${"teamId"}}`, encodeURIComponent(String(teamId)));
+                .replace('{teamId}', encodeURIComponent(String(teamId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6418,7 +6418,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteTextCustomField', 'acceptVersion', acceptVersion)
             const localVarPath = `/custom-fields/text/{textFieldId}`
-                .replace(`{${"textFieldId"}}`, encodeURIComponent(String(textFieldId)));
+                .replace('{textFieldId}', encodeURIComponent(String(textFieldId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6462,7 +6462,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteUser', 'acceptVersion', acceptVersion)
             const localVarPath = `/users/{userId}`
-                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
+                .replace('{userId}', encodeURIComponent(String(userId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6506,7 +6506,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('deleteWorkstream', 'acceptVersion', acceptVersion)
             const localVarPath = `/workstreams/{workstreamId}/`
-                .replace(`{${"workstreamId"}}`, encodeURIComponent(String(workstreamId)));
+                .replace('{workstreamId}', encodeURIComponent(String(workstreamId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6550,7 +6550,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getClient', 'acceptVersion', acceptVersion)
             const localVarPath = `/clients/{clientId}`
-                .replace(`{${"clientId"}}`, encodeURIComponent(String(clientId)));
+                .replace('{clientId}', encodeURIComponent(String(clientId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6634,7 +6634,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getHolidayGroup', 'acceptVersion', acceptVersion)
             const localVarPath = `/holiday-groups/{holidayGroupId}`
-                .replace(`{${"holidayGroupId"}}`, encodeURIComponent(String(holidayGroupId)));
+                .replace('{holidayGroupId}', encodeURIComponent(String(holidayGroupId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6678,7 +6678,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getLeaveTimeOff', 'acceptVersion', acceptVersion)
             const localVarPath = `/time-offs/leave/{timeOffId}/`
-                .replace(`{${"timeOffId"}}`, encodeURIComponent(String(timeOffId)));
+                .replace('{timeOffId}', encodeURIComponent(String(timeOffId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6722,7 +6722,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getPeopleTag', 'acceptVersion', acceptVersion)
             const localVarPath = `/people-tags/{peopleTagId}`
-                .replace(`{${"peopleTagId"}}`, encodeURIComponent(String(peopleTagId)));
+                .replace('{peopleTagId}', encodeURIComponent(String(peopleTagId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6766,7 +6766,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getPerson', 'acceptVersion', acceptVersion)
             const localVarPath = `/people/{personId}`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6810,7 +6810,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getPersonCurrentContract', 'acceptVersion', acceptVersion)
             const localVarPath = `/people/{personId}/contracts/current`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6857,7 +6857,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getPersonCurrentTeam', 'acceptVersion', acceptVersion)
             const localVarPath = `/people/{personId}/teams/current`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6913,7 +6913,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getPersonHoursReport', 'acceptVersion', acceptVersion)
             const localVarPath = `/reports/hours/people/{personId}`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6979,7 +6979,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getPersonReport', 'acceptVersion', acceptVersion)
             const localVarPath = `/reports/people/{personId}/`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -7033,7 +7033,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getProject', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -7080,8 +7080,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getProjectBudgetRole', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/budget-roles/{roleId}`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${"roleId"}}`, encodeURIComponent(String(roleId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)))
+                .replace('{roleId}', encodeURIComponent(String(roleId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -7129,7 +7129,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getProjectHoursReport', 'acceptVersion', acceptVersion)
             const localVarPath = `/reports/hours/projects/{projectId}`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -7196,8 +7196,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getProjectPersonRequest', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/person-requests/{personRequestId}`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${"personRequestId"}}`, encodeURIComponent(String(personRequestId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)))
+                .replace('{personRequestId}', encodeURIComponent(String(personRequestId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -7244,8 +7244,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getProjectPhase', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/phases/{phaseId}`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${"phaseId"}}`, encodeURIComponent(String(phaseId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)))
+                .replace('{phaseId}', encodeURIComponent(String(phaseId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -7291,7 +7291,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getProjectReport', 'acceptVersion', acceptVersion)
             const localVarPath = `/reports/projects/{projectId}/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -7345,7 +7345,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getProjectTag', 'acceptVersion', acceptVersion)
             const localVarPath = `/project-tags/{projectTagId}`
-                .replace(`{${"projectTagId"}}`, encodeURIComponent(String(projectTagId)));
+                .replace('{projectTagId}', encodeURIComponent(String(projectTagId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -7389,7 +7389,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getProjectTimesheetLock', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/timesheet-lock/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -7433,7 +7433,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getProjectTotalsReport', 'acceptVersion', acceptVersion)
             const localVarPath = `/reports/totals/projects/{projectId}`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -7480,8 +7480,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getProjectWorkstream', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/project-workstreams/{workstreamId}/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${"workstreamId"}}`, encodeURIComponent(String(workstreamId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)))
+                .replace('{workstreamId}', encodeURIComponent(String(workstreamId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -7525,7 +7525,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getRateCard', 'acceptVersion', acceptVersion)
             const localVarPath = `/rate-cards/{rateCardId}`
-                .replace(`{${"rateCardId"}}`, encodeURIComponent(String(rateCardId)));
+                .replace('{rateCardId}', encodeURIComponent(String(rateCardId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -7569,7 +7569,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getRole', 'acceptVersion', acceptVersion)
             const localVarPath = `/roles/{roleId}`
-                .replace(`{${"roleId"}}`, encodeURIComponent(String(roleId)));
+                .replace('{roleId}', encodeURIComponent(String(roleId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -7613,7 +7613,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getSkill', 'acceptVersion', acceptVersion)
             const localVarPath = `/skills/{skillId}`
-                .replace(`{${"skillId"}}`, encodeURIComponent(String(skillId)));
+                .replace('{skillId}', encodeURIComponent(String(skillId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -7657,7 +7657,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getTeam', 'acceptVersion', acceptVersion)
             const localVarPath = `/teams/{teamId}/`
-                .replace(`{${"teamId"}}`, encodeURIComponent(String(teamId)));
+                .replace('{teamId}', encodeURIComponent(String(teamId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -7701,7 +7701,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getUser', 'acceptVersion', acceptVersion)
             const localVarPath = `/users/{userId}`
-                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
+                .replace('{userId}', encodeURIComponent(String(userId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -7745,7 +7745,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('getWorkstream', 'acceptVersion', acceptVersion)
             const localVarPath = `/workstreams/{workstreamId}/`
-                .replace(`{${"workstreamId"}}`, encodeURIComponent(String(workstreamId)));
+                .replace('{workstreamId}', encodeURIComponent(String(workstreamId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -8104,7 +8104,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listClientProjects', 'acceptVersion', acceptVersion)
             const localVarPath = `/clients/{clientId}/projects/`
-                .replace(`{${"clientId"}}`, encodeURIComponent(String(clientId)));
+                .replace('{clientId}', encodeURIComponent(String(clientId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -8433,7 +8433,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listHolidayGroupHolidays', 'acceptVersion', acceptVersion)
             const localVarPath = `/holiday-groups/{holidayGroupId}/holidays`
-                .replace(`{${"holidayGroupId"}}`, encodeURIComponent(String(holidayGroupId)));
+                .replace('{holidayGroupId}', encodeURIComponent(String(holidayGroupId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -8826,7 +8826,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listNotesForProject', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/notes/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -9332,7 +9332,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listPersonActuals', 'acceptVersion', acceptVersion)
             const localVarPath = `/people/{personId}/actuals/`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -9405,7 +9405,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listPersonAssignments', 'acceptVersion', acceptVersion)
             const localVarPath = `/people/{personId}/assignments/`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -9485,7 +9485,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listPersonContracts', 'acceptVersion', acceptVersion)
             const localVarPath = `/people/{personId}/contracts/`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -9539,7 +9539,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listPersonHolidays', 'acceptVersion', acceptVersion)
             const localVarPath = `/people/{personId}/time-offs/holidays`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -9593,7 +9593,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listPersonLeave', 'acceptVersion', acceptVersion)
             const localVarPath = `/people/{personId}/time-offs/leave`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -9647,7 +9647,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listPersonProjects', 'acceptVersion', acceptVersion)
             const localVarPath = `/people/{personId}/projects/`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -9758,7 +9758,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listPersonRosteredTimeOffs', 'acceptVersion', acceptVersion)
             const localVarPath = `/people/{personId}/time-offs/rostered-off`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -9813,7 +9813,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listPersonSkills', 'acceptVersion', acceptVersion)
             const localVarPath = `/people/{personId}/skills/`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -10000,7 +10000,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listProjectActuals', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/actuals/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -10073,7 +10073,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listProjectAssignments', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/assignments/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -10153,7 +10153,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listProjectBudgetRoles', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/budget-roles/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -10323,7 +10323,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listProjectMilestones', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/milestones/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -10446,7 +10446,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listProjectOtherExpenses', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/other-expenses/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -10503,7 +10503,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listProjectPeople', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/people/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -10561,7 +10561,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listProjectPersonRequests', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/person-requests/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -10615,7 +10615,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listProjectPhases', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/phases/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -10726,7 +10726,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listProjectRoleRates', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/project-rates/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -10969,7 +10969,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listProjectWorkstreamsForProject', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/project-workstreams/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -11379,7 +11379,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listSkillPeople', 'acceptVersion', acceptVersion)
             const localVarPath = `/skills/{skillId}/people/`
-                .replace(`{${"skillId"}}`, encodeURIComponent(String(skillId)));
+                .replace('{skillId}', encodeURIComponent(String(skillId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -11502,7 +11502,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listTeamPeople', 'acceptVersion', acceptVersion)
             const localVarPath = `/teams/{teamId}/people/`
-                .replace(`{${"teamId"}}`, encodeURIComponent(String(teamId)));
+                .replace('{teamId}', encodeURIComponent(String(teamId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -11678,7 +11678,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('listUserViews', 'acceptVersion', acceptVersion)
             const localVarPath = `/users/{userId}/views/`
-                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
+                .replace('{userId}', encodeURIComponent(String(userId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -11917,8 +11917,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('removePersonFromTeam', 'acceptVersion', acceptVersion)
             const localVarPath = `/people/{personId}/teams/{teamId}`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)))
-                .replace(`{${"teamId"}}`, encodeURIComponent(String(teamId)));
+                .replace('{personId}', encodeURIComponent(String(personId)))
+                .replace('{teamId}', encodeURIComponent(String(teamId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -11973,8 +11973,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('removePersonSkill', 'acceptVersion', acceptVersion)
             const localVarPath = `/people/{personId}/skills/{skillId}`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)))
-                .replace(`{${"skillId"}}`, encodeURIComponent(String(skillId)));
+                .replace('{personId}', encodeURIComponent(String(personId)))
+                .replace('{skillId}', encodeURIComponent(String(skillId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12021,8 +12021,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('removePlaceholderFromTeam', 'acceptVersion', acceptVersion)
             const localVarPath = `/placeholders/{placeholderId}/teams/{teamId}`
-                .replace(`{${"placeholderId"}}`, encodeURIComponent(String(placeholderId)))
-                .replace(`{${"teamId"}}`, encodeURIComponent(String(teamId)));
+                .replace('{placeholderId}', encodeURIComponent(String(placeholderId)))
+                .replace('{teamId}', encodeURIComponent(String(teamId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12069,8 +12069,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('removePlaceholderSkill', 'acceptVersion', acceptVersion)
             const localVarPath = `/placeholders/{placeholderId}/skills/{skillId}`
-                .replace(`{${"placeholderId"}}`, encodeURIComponent(String(placeholderId)))
-                .replace(`{${"skillId"}}`, encodeURIComponent(String(skillId)));
+                .replace('{placeholderId}', encodeURIComponent(String(placeholderId)))
+                .replace('{skillId}', encodeURIComponent(String(skillId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12117,8 +12117,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('removeProjectTagFromProject', 'acceptVersion', acceptVersion)
             const localVarPath = `/project-tags/{projectTagId}/project/{projectId}`
-                .replace(`{${"projectTagId"}}`, encodeURIComponent(String(projectTagId)))
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectTagId}', encodeURIComponent(String(projectTagId)))
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12165,8 +12165,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('removeViewFromUser', 'acceptVersion', acceptVersion)
             const localVarPath = `/users/{userId}/views/{viewId}/`
-                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)))
-                .replace(`{${"viewId"}}`, encodeURIComponent(String(viewId)));
+                .replace('{userId}', encodeURIComponent(String(userId)))
+                .replace('{viewId}', encodeURIComponent(String(viewId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12213,8 +12213,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'acceptVersion' is not null or undefined
             assertParamExists('removeWorkstreamFromProject', 'acceptVersion', acceptVersion)
             const localVarPath = `/projects/{projectId}/project-workstreams/{workstreamId}/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${"workstreamId"}}`, encodeURIComponent(String(workstreamId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)))
+                .replace('{workstreamId}', encodeURIComponent(String(workstreamId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12306,7 +12306,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateCheckboxCustomFieldRequest' is not null or undefined
             assertParamExists('updateCheckboxCustomField', 'updateCheckboxCustomFieldRequest', updateCheckboxCustomFieldRequest)
             const localVarPath = `/custom-fields/checkbox/{checkboxFieldId}`
-                .replace(`{${"checkboxFieldId"}}`, encodeURIComponent(String(checkboxFieldId)));
+                .replace('{checkboxFieldId}', encodeURIComponent(String(checkboxFieldId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12355,7 +12355,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateClientRequest' is not null or undefined
             assertParamExists('updateClient', 'updateClientRequest', updateClientRequest)
             const localVarPath = `/clients/{clientId}`
-                .replace(`{${"clientId"}}`, encodeURIComponent(String(clientId)));
+                .replace('{clientId}', encodeURIComponent(String(clientId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12404,7 +12404,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateContractRequest' is not null or undefined
             assertParamExists('updateContract', 'updateContractRequest', updateContractRequest)
             const localVarPath = `/contracts/{contractId}`
-                .replace(`{${"contractId"}}`, encodeURIComponent(String(contractId)));
+                .replace('{contractId}', encodeURIComponent(String(contractId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12453,7 +12453,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateDateCustomFieldRequest' is not null or undefined
             assertParamExists('updateDateCustomField', 'updateDateCustomFieldRequest', updateDateCustomFieldRequest)
             const localVarPath = `/custom-fields/date/{dateFieldId}`
-                .replace(`{${"dateFieldId"}}`, encodeURIComponent(String(dateFieldId)));
+                .replace('{dateFieldId}', encodeURIComponent(String(dateFieldId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12502,7 +12502,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updatePeopleTagRequest' is not null or undefined
             assertParamExists('updatePeopleTag', 'updatePeopleTagRequest', updatePeopleTagRequest)
             const localVarPath = `/people-tags/{peopleTagId}`
-                .replace(`{${"peopleTagId"}}`, encodeURIComponent(String(peopleTagId)));
+                .replace('{peopleTagId}', encodeURIComponent(String(peopleTagId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12551,7 +12551,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updatePersonRequest' is not null or undefined
             assertParamExists('updatePerson', 'updatePersonRequest', updatePersonRequest)
             const localVarPath = `/people/{personId}`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12600,7 +12600,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updatePersonCheckboxCustomFieldRequest' is not null or undefined
             assertParamExists('updatePersonCheckboxCustomField', 'updatePersonCheckboxCustomFieldRequest', updatePersonCheckboxCustomFieldRequest)
             const localVarPath = `/people/{personId}/custom-fields/checkbox/`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12649,7 +12649,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updatePersonDateCustomFieldRequest' is not null or undefined
             assertParamExists('updatePersonDateCustomField', 'updatePersonDateCustomFieldRequest', updatePersonDateCustomFieldRequest)
             const localVarPath = `/people/{personId}/custom-fields/date/`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12698,7 +12698,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updatePersonSelectCustomFieldRequest' is not null or undefined
             assertParamExists('updatePersonSelectCustomField', 'updatePersonSelectCustomFieldRequest', updatePersonSelectCustomFieldRequest)
             const localVarPath = `/people/{personId}/custom-fields/select/`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12750,8 +12750,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updatePersonSkillRequest' is not null or undefined
             assertParamExists('updatePersonSkill', 'updatePersonSkillRequest', updatePersonSkillRequest)
             const localVarPath = `/people/{personId}/skills/{skillId}`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)))
-                .replace(`{${"skillId"}}`, encodeURIComponent(String(skillId)));
+                .replace('{personId}', encodeURIComponent(String(personId)))
+                .replace('{skillId}', encodeURIComponent(String(skillId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12800,7 +12800,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updatePersonTextCustomFieldRequest' is not null or undefined
             assertParamExists('updatePersonTextCustomField', 'updatePersonTextCustomFieldRequest', updatePersonTextCustomFieldRequest)
             const localVarPath = `/people/{personId}/custom-fields/text/`
-                .replace(`{${"personId"}}`, encodeURIComponent(String(personId)));
+                .replace('{personId}', encodeURIComponent(String(personId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12849,7 +12849,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateProjectRequest' is not null or undefined
             assertParamExists('updateProject', 'updateProjectRequest', updateProjectRequest)
             const localVarPath = `/projects/{projectId}`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12901,8 +12901,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateProjectBudgetRoleRequest' is not null or undefined
             assertParamExists('updateProjectBudgetRole', 'updateProjectBudgetRoleRequest', updateProjectBudgetRoleRequest)
             const localVarPath = `/projects/{projectId}/budget-roles/{roleId}`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${"roleId"}}`, encodeURIComponent(String(roleId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)))
+                .replace('{roleId}', encodeURIComponent(String(roleId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12951,7 +12951,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updatePersonCheckboxCustomFieldRequest' is not null or undefined
             assertParamExists('updateProjectCheckboxCustomField', 'updatePersonCheckboxCustomFieldRequest', updatePersonCheckboxCustomFieldRequest)
             const localVarPath = `/projects/{projectId}/custom-fields/checkbox/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13000,7 +13000,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updatePersonDateCustomFieldRequest' is not null or undefined
             assertParamExists('updateProjectDateCustomField', 'updatePersonDateCustomFieldRequest', updatePersonDateCustomFieldRequest)
             const localVarPath = `/projects/{projectId}/custom-fields/date/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13052,8 +13052,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateProjectMilestoneRequest' is not null or undefined
             assertParamExists('updateProjectMilestone', 'updateProjectMilestoneRequest', updateProjectMilestoneRequest)
             const localVarPath = `/projects/{projectId}/milestones/{milestoneId}`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${"milestoneId"}}`, encodeURIComponent(String(milestoneId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)))
+                .replace('{milestoneId}', encodeURIComponent(String(milestoneId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13105,8 +13105,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'projectOtherExpense1' is not null or undefined
             assertParamExists('updateProjectOtherExpense', 'projectOtherExpense1', projectOtherExpense1)
             const localVarPath = `/projects/{projectId}/other-expenses/{otherExpenseId}/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${"otherExpenseId"}}`, encodeURIComponent(String(otherExpenseId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)))
+                .replace('{otherExpenseId}', encodeURIComponent(String(otherExpenseId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13158,8 +13158,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateProjectPersonRequestRequest' is not null or undefined
             assertParamExists('updateProjectPersonRequest', 'updateProjectPersonRequestRequest', updateProjectPersonRequestRequest)
             const localVarPath = `/projects/{projectId}/person-requests/{personRequestId}`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${"personRequestId"}}`, encodeURIComponent(String(personRequestId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)))
+                .replace('{personRequestId}', encodeURIComponent(String(personRequestId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13211,8 +13211,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateProjectPhaseRequest' is not null or undefined
             assertParamExists('updateProjectPhase', 'updateProjectPhaseRequest', updateProjectPhaseRequest)
             const localVarPath = `/projects/{projectId}/phases/{phaseId}`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${"phaseId"}}`, encodeURIComponent(String(phaseId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)))
+                .replace('{phaseId}', encodeURIComponent(String(phaseId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13264,8 +13264,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateProjectRoleRateRequest' is not null or undefined
             assertParamExists('updateProjectRoleRate', 'updateProjectRoleRateRequest', updateProjectRoleRateRequest)
             const localVarPath = `/projects/{projectId}/project-rates/{projectRateId}/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${"projectRateId"}}`, encodeURIComponent(String(projectRateId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)))
+                .replace('{projectRateId}', encodeURIComponent(String(projectRateId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13314,7 +13314,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updatePersonSelectCustomFieldRequest' is not null or undefined
             assertParamExists('updateProjectSelectCustomField', 'updatePersonSelectCustomFieldRequest', updatePersonSelectCustomFieldRequest)
             const localVarPath = `/projects/{projectId}/custom-fields/select/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13363,7 +13363,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updatePeopleTagRequest' is not null or undefined
             assertParamExists('updateProjectTag', 'updatePeopleTagRequest', updatePeopleTagRequest)
             const localVarPath = `/project-tags/{projectTagId}`
-                .replace(`{${"projectTagId"}}`, encodeURIComponent(String(projectTagId)));
+                .replace('{projectTagId}', encodeURIComponent(String(projectTagId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13412,7 +13412,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updatePersonTextCustomFieldRequest' is not null or undefined
             assertParamExists('updateProjectTextCustomField', 'updatePersonTextCustomFieldRequest', updatePersonTextCustomFieldRequest)
             const localVarPath = `/projects/{projectId}/custom-fields/text/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13461,7 +13461,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateProjectTimesheetLockRequest' is not null or undefined
             assertParamExists('updateProjectTimesheetLock', 'updateProjectTimesheetLockRequest', updateProjectTimesheetLockRequest)
             const localVarPath = `/projects/{projectId}/timesheet-lock/`
-                .replace(`{${"projectId"}}`, encodeURIComponent(String(projectId)));
+                .replace('{projectId}', encodeURIComponent(String(projectId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13510,7 +13510,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateRateCardRequest' is not null or undefined
             assertParamExists('updateRateCard', 'updateRateCardRequest', updateRateCardRequest)
             const localVarPath = `/rate-cards/{rateCardId}`
-                .replace(`{${"rateCardId"}}`, encodeURIComponent(String(rateCardId)));
+                .replace('{rateCardId}', encodeURIComponent(String(rateCardId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13559,7 +13559,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateRoleRequest' is not null or undefined
             assertParamExists('updateRole', 'updateRoleRequest', updateRoleRequest)
             const localVarPath = `/roles/{roleId}`
-                .replace(`{${"roleId"}}`, encodeURIComponent(String(roleId)));
+                .replace('{roleId}', encodeURIComponent(String(roleId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13608,7 +13608,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateCheckboxCustomFieldRequest' is not null or undefined
             assertParamExists('updateSelectCustomField', 'updateCheckboxCustomFieldRequest', updateCheckboxCustomFieldRequest)
             const localVarPath = `/custom-fields/select/{selectFieldId}`
-                .replace(`{${"selectFieldId"}}`, encodeURIComponent(String(selectFieldId)));
+                .replace('{selectFieldId}', encodeURIComponent(String(selectFieldId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13660,8 +13660,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateSelectCustomFieldOptionRequest' is not null or undefined
             assertParamExists('updateSelectCustomFieldOption', 'updateSelectCustomFieldOptionRequest', updateSelectCustomFieldOptionRequest)
             const localVarPath = `/custom-fields/select/{selectFieldId}/options/{selectOptionId}`
-                .replace(`{${"selectFieldId"}}`, encodeURIComponent(String(selectFieldId)))
-                .replace(`{${"selectOptionId"}}`, encodeURIComponent(String(selectOptionId)));
+                .replace('{selectFieldId}', encodeURIComponent(String(selectFieldId)))
+                .replace('{selectOptionId}', encodeURIComponent(String(selectOptionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13710,7 +13710,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateSelectCustomFieldOptionRequest' is not null or undefined
             assertParamExists('updateSkill', 'updateSelectCustomFieldOptionRequest', updateSelectCustomFieldOptionRequest)
             const localVarPath = `/skills/{skillId}`
-                .replace(`{${"skillId"}}`, encodeURIComponent(String(skillId)));
+                .replace('{skillId}', encodeURIComponent(String(skillId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13759,7 +13759,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateSelectCustomFieldOptionRequest' is not null or undefined
             assertParamExists('updateTeam', 'updateSelectCustomFieldOptionRequest', updateSelectCustomFieldOptionRequest)
             const localVarPath = `/teams/{teamId}/`
-                .replace(`{${"teamId"}}`, encodeURIComponent(String(teamId)));
+                .replace('{teamId}', encodeURIComponent(String(teamId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13808,7 +13808,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateCheckboxCustomFieldRequest' is not null or undefined
             assertParamExists('updateTextCustomField', 'updateCheckboxCustomFieldRequest', updateCheckboxCustomFieldRequest)
             const localVarPath = `/custom-fields/text/{textFieldId}`
-                .replace(`{${"textFieldId"}}`, encodeURIComponent(String(textFieldId)));
+                .replace('{textFieldId}', encodeURIComponent(String(textFieldId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13857,7 +13857,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'updateWorkstreamRequest' is not null or undefined
             assertParamExists('updateWorkstream', 'updateWorkstreamRequest', updateWorkstreamRequest)
             const localVarPath = `/workstreams/{workstreamId}/`
-                .replace(`{${"workstreamId"}}`, encodeURIComponent(String(workstreamId)));
+                .replace('{workstreamId}', encodeURIComponent(String(workstreamId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -24115,39 +24115,39 @@ export class DefaultApi extends BaseAPI {
 }
 
 export const AddPeopleToSkillAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type AddPeopleToSkillAcceptVersionEnum = typeof AddPeopleToSkillAcceptVersionEnum[keyof typeof AddPeopleToSkillAcceptVersionEnum];
 export const AddPersonSkillAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type AddPersonSkillAcceptVersionEnum = typeof AddPersonSkillAcceptVersionEnum[keyof typeof AddPersonSkillAcceptVersionEnum];
 export const AddPersonToProjectAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type AddPersonToProjectAcceptVersionEnum = typeof AddPersonToProjectAcceptVersionEnum[keyof typeof AddPersonToProjectAcceptVersionEnum];
 export const AddPersonToTeamAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type AddPersonToTeamAcceptVersionEnum = typeof AddPersonToTeamAcceptVersionEnum[keyof typeof AddPersonToTeamAcceptVersionEnum];
 export const AddPlaceholderSkillAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type AddPlaceholderSkillAcceptVersionEnum = typeof AddPlaceholderSkillAcceptVersionEnum[keyof typeof AddPlaceholderSkillAcceptVersionEnum];
 export const AddPlaceholderToTeamAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type AddPlaceholderToTeamAcceptVersionEnum = typeof AddPlaceholderToTeamAcceptVersionEnum[keyof typeof AddPlaceholderToTeamAcceptVersionEnum];
 export const AddProjectTagToProjectAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type AddProjectTagToProjectAcceptVersionEnum = typeof AddProjectTagToProjectAcceptVersionEnum[keyof typeof AddProjectTagToProjectAcceptVersionEnum];
 export const AddWorkstreamToProjectAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type AddWorkstreamToProjectAcceptVersionEnum = typeof AddWorkstreamToProjectAcceptVersionEnum[keyof typeof AddWorkstreamToProjectAcceptVersionEnum];
 export const AllocateViewToUserAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type AllocateViewToUserAcceptVersionEnum = typeof AllocateViewToUserAcceptVersionEnum[keyof typeof AllocateViewToUserAcceptVersionEnum];
 export const ConvertLegacyIdModelEnum = {
@@ -24176,427 +24176,427 @@ export const ConvertLegacyIdModelEnum = {
     HolidayGroups: 'holiday_groups',
     Skills: 'skills',
     OtherExpenses: 'other_expenses',
-    PeopleNotes: 'people_notes'
+    PeopleNotes: 'people_notes',
 } as const;
 export type ConvertLegacyIdModelEnum = typeof ConvertLegacyIdModelEnum[keyof typeof ConvertLegacyIdModelEnum];
 export const ConvertLegacyIdAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ConvertLegacyIdAcceptVersionEnum = typeof ConvertLegacyIdAcceptVersionEnum[keyof typeof ConvertLegacyIdAcceptVersionEnum];
 export const CreateActualAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateActualAcceptVersionEnum = typeof CreateActualAcceptVersionEnum[keyof typeof CreateActualAcceptVersionEnum];
 export const CreateActualsBulkAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateActualsBulkAcceptVersionEnum = typeof CreateActualsBulkAcceptVersionEnum[keyof typeof CreateActualsBulkAcceptVersionEnum];
 export const CreateAssignmentAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateAssignmentAcceptVersionEnum = typeof CreateAssignmentAcceptVersionEnum[keyof typeof CreateAssignmentAcceptVersionEnum];
 export const CreateCheckboxCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateCheckboxCustomFieldAcceptVersionEnum = typeof CreateCheckboxCustomFieldAcceptVersionEnum[keyof typeof CreateCheckboxCustomFieldAcceptVersionEnum];
 export const CreateClientAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateClientAcceptVersionEnum = typeof CreateClientAcceptVersionEnum[keyof typeof CreateClientAcceptVersionEnum];
 export const CreateClientsBulkAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateClientsBulkAcceptVersionEnum = typeof CreateClientsBulkAcceptVersionEnum[keyof typeof CreateClientsBulkAcceptVersionEnum];
 export const CreateDateCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateDateCustomFieldAcceptVersionEnum = typeof CreateDateCustomFieldAcceptVersionEnum[keyof typeof CreateDateCustomFieldAcceptVersionEnum];
 export const CreateHolidayTimeOffAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateHolidayTimeOffAcceptVersionEnum = typeof CreateHolidayTimeOffAcceptVersionEnum[keyof typeof CreateHolidayTimeOffAcceptVersionEnum];
 export const CreateInvitationAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateInvitationAcceptVersionEnum = typeof CreateInvitationAcceptVersionEnum[keyof typeof CreateInvitationAcceptVersionEnum];
 export const CreateLeaveTimeOffAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateLeaveTimeOffAcceptVersionEnum = typeof CreateLeaveTimeOffAcceptVersionEnum[keyof typeof CreateLeaveTimeOffAcceptVersionEnum];
 export const CreateLeaveTimeOffsBulkAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateLeaveTimeOffsBulkAcceptVersionEnum = typeof CreateLeaveTimeOffsBulkAcceptVersionEnum[keyof typeof CreateLeaveTimeOffsBulkAcceptVersionEnum];
 export const CreateNoteForProjectAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateNoteForProjectAcceptVersionEnum = typeof CreateNoteForProjectAcceptVersionEnum[keyof typeof CreateNoteForProjectAcceptVersionEnum];
 export const CreatePeopleTagAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreatePeopleTagAcceptVersionEnum = typeof CreatePeopleTagAcceptVersionEnum[keyof typeof CreatePeopleTagAcceptVersionEnum];
 export const CreatePersonAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreatePersonAcceptVersionEnum = typeof CreatePersonAcceptVersionEnum[keyof typeof CreatePersonAcceptVersionEnum];
 export const CreatePersonContractAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreatePersonContractAcceptVersionEnum = typeof CreatePersonContractAcceptVersionEnum[keyof typeof CreatePersonContractAcceptVersionEnum];
 export const CreatePlaceholderAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreatePlaceholderAcceptVersionEnum = typeof CreatePlaceholderAcceptVersionEnum[keyof typeof CreatePlaceholderAcceptVersionEnum];
 export const CreateProjectAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateProjectAcceptVersionEnum = typeof CreateProjectAcceptVersionEnum[keyof typeof CreateProjectAcceptVersionEnum];
 export const CreateProjectBudgetRoleAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateProjectBudgetRoleAcceptVersionEnum = typeof CreateProjectBudgetRoleAcceptVersionEnum[keyof typeof CreateProjectBudgetRoleAcceptVersionEnum];
 export const CreateProjectMilestoneAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateProjectMilestoneAcceptVersionEnum = typeof CreateProjectMilestoneAcceptVersionEnum[keyof typeof CreateProjectMilestoneAcceptVersionEnum];
 export const CreateProjectOtherExpenseAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateProjectOtherExpenseAcceptVersionEnum = typeof CreateProjectOtherExpenseAcceptVersionEnum[keyof typeof CreateProjectOtherExpenseAcceptVersionEnum];
 export const CreateProjectPersonRequestAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateProjectPersonRequestAcceptVersionEnum = typeof CreateProjectPersonRequestAcceptVersionEnum[keyof typeof CreateProjectPersonRequestAcceptVersionEnum];
 export const CreateProjectPhaseAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateProjectPhaseAcceptVersionEnum = typeof CreateProjectPhaseAcceptVersionEnum[keyof typeof CreateProjectPhaseAcceptVersionEnum];
 export const CreateProjectTagAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateProjectTagAcceptVersionEnum = typeof CreateProjectTagAcceptVersionEnum[keyof typeof CreateProjectTagAcceptVersionEnum];
 export const CreateRateCardAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateRateCardAcceptVersionEnum = typeof CreateRateCardAcceptVersionEnum[keyof typeof CreateRateCardAcceptVersionEnum];
 export const CreateRoleAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateRoleAcceptVersionEnum = typeof CreateRoleAcceptVersionEnum[keyof typeof CreateRoleAcceptVersionEnum];
 export const CreateSelectCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateSelectCustomFieldAcceptVersionEnum = typeof CreateSelectCustomFieldAcceptVersionEnum[keyof typeof CreateSelectCustomFieldAcceptVersionEnum];
 export const CreateSelectCustomFieldOptionAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateSelectCustomFieldOptionAcceptVersionEnum = typeof CreateSelectCustomFieldOptionAcceptVersionEnum[keyof typeof CreateSelectCustomFieldOptionAcceptVersionEnum];
 export const CreateSkillAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateSkillAcceptVersionEnum = typeof CreateSkillAcceptVersionEnum[keyof typeof CreateSkillAcceptVersionEnum];
 export const CreateTeamAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateTeamAcceptVersionEnum = typeof CreateTeamAcceptVersionEnum[keyof typeof CreateTeamAcceptVersionEnum];
 export const CreateTextCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateTextCustomFieldAcceptVersionEnum = typeof CreateTextCustomFieldAcceptVersionEnum[keyof typeof CreateTextCustomFieldAcceptVersionEnum];
 export const CreateWorkstreamAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type CreateWorkstreamAcceptVersionEnum = typeof CreateWorkstreamAcceptVersionEnum[keyof typeof CreateWorkstreamAcceptVersionEnum];
 export const DeleteActualAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteActualAcceptVersionEnum = typeof DeleteActualAcceptVersionEnum[keyof typeof DeleteActualAcceptVersionEnum];
 export const DeleteAssignmentAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteAssignmentAcceptVersionEnum = typeof DeleteAssignmentAcceptVersionEnum[keyof typeof DeleteAssignmentAcceptVersionEnum];
 export const DeleteCheckboxCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteCheckboxCustomFieldAcceptVersionEnum = typeof DeleteCheckboxCustomFieldAcceptVersionEnum[keyof typeof DeleteCheckboxCustomFieldAcceptVersionEnum];
 export const DeleteDateCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteDateCustomFieldAcceptVersionEnum = typeof DeleteDateCustomFieldAcceptVersionEnum[keyof typeof DeleteDateCustomFieldAcceptVersionEnum];
 export const DeleteHolidayTimeOffAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteHolidayTimeOffAcceptVersionEnum = typeof DeleteHolidayTimeOffAcceptVersionEnum[keyof typeof DeleteHolidayTimeOffAcceptVersionEnum];
 export const DeleteInvitationAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteInvitationAcceptVersionEnum = typeof DeleteInvitationAcceptVersionEnum[keyof typeof DeleteInvitationAcceptVersionEnum];
 export const DeleteLeaveTimeOffAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteLeaveTimeOffAcceptVersionEnum = typeof DeleteLeaveTimeOffAcceptVersionEnum[keyof typeof DeleteLeaveTimeOffAcceptVersionEnum];
 export const DeleteLeaveTimeOffsBulkAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteLeaveTimeOffsBulkAcceptVersionEnum = typeof DeleteLeaveTimeOffsBulkAcceptVersionEnum[keyof typeof DeleteLeaveTimeOffsBulkAcceptVersionEnum];
 export const DeletePeopleTagAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeletePeopleTagAcceptVersionEnum = typeof DeletePeopleTagAcceptVersionEnum[keyof typeof DeletePeopleTagAcceptVersionEnum];
 export const DeletePersonAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeletePersonAcceptVersionEnum = typeof DeletePersonAcceptVersionEnum[keyof typeof DeletePersonAcceptVersionEnum];
 export const DeletePersonContractAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeletePersonContractAcceptVersionEnum = typeof DeletePersonContractAcceptVersionEnum[keyof typeof DeletePersonContractAcceptVersionEnum];
 export const DeleteProjectAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteProjectAcceptVersionEnum = typeof DeleteProjectAcceptVersionEnum[keyof typeof DeleteProjectAcceptVersionEnum];
 export const DeleteProjectBudgetRoleAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteProjectBudgetRoleAcceptVersionEnum = typeof DeleteProjectBudgetRoleAcceptVersionEnum[keyof typeof DeleteProjectBudgetRoleAcceptVersionEnum];
 export const DeleteProjectMilestoneAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteProjectMilestoneAcceptVersionEnum = typeof DeleteProjectMilestoneAcceptVersionEnum[keyof typeof DeleteProjectMilestoneAcceptVersionEnum];
 export const DeleteProjectPhaseAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteProjectPhaseAcceptVersionEnum = typeof DeleteProjectPhaseAcceptVersionEnum[keyof typeof DeleteProjectPhaseAcceptVersionEnum];
 export const DeleteRateCardAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteRateCardAcceptVersionEnum = typeof DeleteRateCardAcceptVersionEnum[keyof typeof DeleteRateCardAcceptVersionEnum];
 export const DeleteRosteredTimeOffAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteRosteredTimeOffAcceptVersionEnum = typeof DeleteRosteredTimeOffAcceptVersionEnum[keyof typeof DeleteRosteredTimeOffAcceptVersionEnum];
 export const DeleteSelectCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteSelectCustomFieldAcceptVersionEnum = typeof DeleteSelectCustomFieldAcceptVersionEnum[keyof typeof DeleteSelectCustomFieldAcceptVersionEnum];
 export const DeleteSelectCustomFieldOptionAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteSelectCustomFieldOptionAcceptVersionEnum = typeof DeleteSelectCustomFieldOptionAcceptVersionEnum[keyof typeof DeleteSelectCustomFieldOptionAcceptVersionEnum];
 export const DeleteSkillAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteSkillAcceptVersionEnum = typeof DeleteSkillAcceptVersionEnum[keyof typeof DeleteSkillAcceptVersionEnum];
 export const DeleteTeamAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteTeamAcceptVersionEnum = typeof DeleteTeamAcceptVersionEnum[keyof typeof DeleteTeamAcceptVersionEnum];
 export const DeleteTextCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteTextCustomFieldAcceptVersionEnum = typeof DeleteTextCustomFieldAcceptVersionEnum[keyof typeof DeleteTextCustomFieldAcceptVersionEnum];
 export const DeleteUserAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteUserAcceptVersionEnum = typeof DeleteUserAcceptVersionEnum[keyof typeof DeleteUserAcceptVersionEnum];
 export const DeleteWorkstreamAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type DeleteWorkstreamAcceptVersionEnum = typeof DeleteWorkstreamAcceptVersionEnum[keyof typeof DeleteWorkstreamAcceptVersionEnum];
 export const GetClientAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetClientAcceptVersionEnum = typeof GetClientAcceptVersionEnum[keyof typeof GetClientAcceptVersionEnum];
 export const GetCurrentUserAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetCurrentUserAcceptVersionEnum = typeof GetCurrentUserAcceptVersionEnum[keyof typeof GetCurrentUserAcceptVersionEnum];
 export const GetHolidayGroupAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetHolidayGroupAcceptVersionEnum = typeof GetHolidayGroupAcceptVersionEnum[keyof typeof GetHolidayGroupAcceptVersionEnum];
 export const GetLeaveTimeOffAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetLeaveTimeOffAcceptVersionEnum = typeof GetLeaveTimeOffAcceptVersionEnum[keyof typeof GetLeaveTimeOffAcceptVersionEnum];
 export const GetPeopleTagAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetPeopleTagAcceptVersionEnum = typeof GetPeopleTagAcceptVersionEnum[keyof typeof GetPeopleTagAcceptVersionEnum];
 export const GetPersonAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetPersonAcceptVersionEnum = typeof GetPersonAcceptVersionEnum[keyof typeof GetPersonAcceptVersionEnum];
 export const GetPersonCurrentContractAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetPersonCurrentContractAcceptVersionEnum = typeof GetPersonCurrentContractAcceptVersionEnum[keyof typeof GetPersonCurrentContractAcceptVersionEnum];
 export const GetPersonCurrentTeamAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetPersonCurrentTeamAcceptVersionEnum = typeof GetPersonCurrentTeamAcceptVersionEnum[keyof typeof GetPersonCurrentTeamAcceptVersionEnum];
 export const GetPersonHoursReportAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetPersonHoursReportAcceptVersionEnum = typeof GetPersonHoursReportAcceptVersionEnum[keyof typeof GetPersonHoursReportAcceptVersionEnum];
 export const GetPersonReportAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetPersonReportAcceptVersionEnum = typeof GetPersonReportAcceptVersionEnum[keyof typeof GetPersonReportAcceptVersionEnum];
 export const GetPersonReportPeriodTypeEnum = {
     Monthly: 'monthly',
     Weekly: 'weekly',
-    Quarterly: 'quarterly'
+    Quarterly: 'quarterly',
 } as const;
 export type GetPersonReportPeriodTypeEnum = typeof GetPersonReportPeriodTypeEnum[keyof typeof GetPersonReportPeriodTypeEnum];
 export const GetProjectAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetProjectAcceptVersionEnum = typeof GetProjectAcceptVersionEnum[keyof typeof GetProjectAcceptVersionEnum];
 export const GetProjectBudgetRoleAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetProjectBudgetRoleAcceptVersionEnum = typeof GetProjectBudgetRoleAcceptVersionEnum[keyof typeof GetProjectBudgetRoleAcceptVersionEnum];
 export const GetProjectHoursReportAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetProjectHoursReportAcceptVersionEnum = typeof GetProjectHoursReportAcceptVersionEnum[keyof typeof GetProjectHoursReportAcceptVersionEnum];
 export const GetProjectPersonRequestAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetProjectPersonRequestAcceptVersionEnum = typeof GetProjectPersonRequestAcceptVersionEnum[keyof typeof GetProjectPersonRequestAcceptVersionEnum];
 export const GetProjectPhaseAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetProjectPhaseAcceptVersionEnum = typeof GetProjectPhaseAcceptVersionEnum[keyof typeof GetProjectPhaseAcceptVersionEnum];
 export const GetProjectReportAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetProjectReportAcceptVersionEnum = typeof GetProjectReportAcceptVersionEnum[keyof typeof GetProjectReportAcceptVersionEnum];
 export const GetProjectReportPeriodTypeEnum = {
     Monthly: 'monthly',
     Weekly: 'weekly',
-    Quarterly: 'quarterly'
+    Quarterly: 'quarterly',
 } as const;
 export type GetProjectReportPeriodTypeEnum = typeof GetProjectReportPeriodTypeEnum[keyof typeof GetProjectReportPeriodTypeEnum];
 export const GetProjectTagAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetProjectTagAcceptVersionEnum = typeof GetProjectTagAcceptVersionEnum[keyof typeof GetProjectTagAcceptVersionEnum];
 export const GetProjectTimesheetLockAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetProjectTimesheetLockAcceptVersionEnum = typeof GetProjectTimesheetLockAcceptVersionEnum[keyof typeof GetProjectTimesheetLockAcceptVersionEnum];
 export const GetProjectTotalsReportAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetProjectTotalsReportAcceptVersionEnum = typeof GetProjectTotalsReportAcceptVersionEnum[keyof typeof GetProjectTotalsReportAcceptVersionEnum];
 export const GetProjectWorkstreamAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetProjectWorkstreamAcceptVersionEnum = typeof GetProjectWorkstreamAcceptVersionEnum[keyof typeof GetProjectWorkstreamAcceptVersionEnum];
 export const GetRateCardAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetRateCardAcceptVersionEnum = typeof GetRateCardAcceptVersionEnum[keyof typeof GetRateCardAcceptVersionEnum];
 export const GetRoleAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetRoleAcceptVersionEnum = typeof GetRoleAcceptVersionEnum[keyof typeof GetRoleAcceptVersionEnum];
 export const GetSkillAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetSkillAcceptVersionEnum = typeof GetSkillAcceptVersionEnum[keyof typeof GetSkillAcceptVersionEnum];
 export const GetTeamAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetTeamAcceptVersionEnum = typeof GetTeamAcceptVersionEnum[keyof typeof GetTeamAcceptVersionEnum];
 export const GetUserAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetUserAcceptVersionEnum = typeof GetUserAcceptVersionEnum[keyof typeof GetUserAcceptVersionEnum];
 export const GetWorkstreamAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type GetWorkstreamAcceptVersionEnum = typeof GetWorkstreamAcceptVersionEnum[keyof typeof GetWorkstreamAcceptVersionEnum];
 export const ListActualsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListActualsAcceptVersionEnum = typeof ListActualsAcceptVersionEnum[keyof typeof ListActualsAcceptVersionEnum];
 export const ListActualsSortByEnum = {
     CreatedAt: 'createdAt',
     UpdatedAt: 'updatedAt',
-    Id: 'id'
+    Id: 'id',
 } as const;
 export type ListActualsSortByEnum = typeof ListActualsSortByEnum[keyof typeof ListActualsSortByEnum];
 export const ListActualsOrderEnum = {
     Asc: 'asc',
-    Desc: 'desc'
+    Desc: 'desc',
 } as const;
 export type ListActualsOrderEnum = typeof ListActualsOrderEnum[keyof typeof ListActualsOrderEnum];
 export const ListAssignmentsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListAssignmentsAcceptVersionEnum = typeof ListAssignmentsAcceptVersionEnum[keyof typeof ListAssignmentsAcceptVersionEnum];
 export const ListAssignmentsSortByEnum = {
     CreatedAt: 'createdAt',
     UpdatedAt: 'updatedAt',
-    Id: 'id'
+    Id: 'id',
 } as const;
 export type ListAssignmentsSortByEnum = typeof ListAssignmentsSortByEnum[keyof typeof ListAssignmentsSortByEnum];
 export const ListAssignmentsOrderEnum = {
     Asc: 'asc',
-    Desc: 'desc'
+    Desc: 'desc',
 } as const;
 export type ListAssignmentsOrderEnum = typeof ListAssignmentsOrderEnum[keyof typeof ListAssignmentsOrderEnum];
 export const ListBudgetRolesAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListBudgetRolesAcceptVersionEnum = typeof ListBudgetRolesAcceptVersionEnum[keyof typeof ListBudgetRolesAcceptVersionEnum];
 export const ListCheckboxCustomFieldsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListCheckboxCustomFieldsAcceptVersionEnum = typeof ListCheckboxCustomFieldsAcceptVersionEnum[keyof typeof ListCheckboxCustomFieldsAcceptVersionEnum];
 export const ListCheckboxCustomFieldsModelEnum = {
     Person: 'PERSON',
-    Project: 'PROJECT'
+    Project: 'PROJECT',
 } as const;
 export type ListCheckboxCustomFieldsModelEnum = typeof ListCheckboxCustomFieldsModelEnum[keyof typeof ListCheckboxCustomFieldsModelEnum];
 export const ListClientProjectsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListClientProjectsAcceptVersionEnum = typeof ListClientProjectsAcceptVersionEnum[keyof typeof ListClientProjectsAcceptVersionEnum];
 export const ListClientsSortByEnum = {
     Id: 'id',
     CreatedAt: 'createdAt',
-    UpdatedAt: 'updatedAt'
+    UpdatedAt: 'updatedAt',
 } as const;
 export type ListClientsSortByEnum = typeof ListClientsSortByEnum[keyof typeof ListClientsSortByEnum];
 export const ListClientsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListClientsAcceptVersionEnum = typeof ListClientsAcceptVersionEnum[keyof typeof ListClientsAcceptVersionEnum];
 export const ListContractsSortByEnum = {
     Id: 'id',
     CreatedAt: 'createdAt',
-    UpdatedAt: 'updatedAt'
+    UpdatedAt: 'updatedAt',
 } as const;
 export type ListContractsSortByEnum = typeof ListContractsSortByEnum[keyof typeof ListContractsSortByEnum];
 export const ListContractsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListContractsAcceptVersionEnum = typeof ListContractsAcceptVersionEnum[keyof typeof ListContractsAcceptVersionEnum];
 export const ListDateCustomFieldsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListDateCustomFieldsAcceptVersionEnum = typeof ListDateCustomFieldsAcceptVersionEnum[keyof typeof ListDateCustomFieldsAcceptVersionEnum];
 export const ListDateCustomFieldsModelEnum = {
     Person: 'PERSON',
-    Project: 'PROJECT'
+    Project: 'PROJECT',
 } as const;
 export type ListDateCustomFieldsModelEnum = typeof ListDateCustomFieldsModelEnum[keyof typeof ListDateCustomFieldsModelEnum];
 export const ListEventsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListEventsAcceptVersionEnum = typeof ListEventsAcceptVersionEnum[keyof typeof ListEventsAcceptVersionEnum];
 export const ListEventsEventTypeEnum = {
@@ -24605,551 +24605,551 @@ export const ListEventsEventTypeEnum = {
     ContractDeleted: 'contract_deleted',
     ActualDeleted: 'actual_deleted',
     TimeOffDeleted: 'time_off_deleted',
-    AssignmentDeleted: 'assignment_deleted'
+    AssignmentDeleted: 'assignment_deleted',
 } as const;
 export type ListEventsEventTypeEnum = typeof ListEventsEventTypeEnum[keyof typeof ListEventsEventTypeEnum];
 export const ListEventsOrderByEnum = {
     Asc: 'asc',
-    Desc: 'desc'
+    Desc: 'desc',
 } as const;
 export type ListEventsOrderByEnum = typeof ListEventsOrderByEnum[keyof typeof ListEventsOrderByEnum];
 export const ListHolidayGroupHolidaysAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListHolidayGroupHolidaysAcceptVersionEnum = typeof ListHolidayGroupHolidaysAcceptVersionEnum[keyof typeof ListHolidayGroupHolidaysAcceptVersionEnum];
 export const ListHolidayGroupsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListHolidayGroupsAcceptVersionEnum = typeof ListHolidayGroupsAcceptVersionEnum[keyof typeof ListHolidayGroupsAcceptVersionEnum];
 export const ListHolidayGroupsSortByEnum = {
     CreatedAt: 'createdAt',
     UpdatedAt: 'updatedAt',
-    Id: 'id'
+    Id: 'id',
 } as const;
 export type ListHolidayGroupsSortByEnum = typeof ListHolidayGroupsSortByEnum[keyof typeof ListHolidayGroupsSortByEnum];
 export const ListHolidayGroupsOrderEnum = {
     Asc: 'asc',
-    Desc: 'desc'
+    Desc: 'desc',
 } as const;
 export type ListHolidayGroupsOrderEnum = typeof ListHolidayGroupsOrderEnum[keyof typeof ListHolidayGroupsOrderEnum];
 export const ListHolidayTimeOffsSortByEnum = {
     Id: 'id',
     CreatedAt: 'createdAt',
-    UpdatedAt: 'updatedAt'
+    UpdatedAt: 'updatedAt',
 } as const;
 export type ListHolidayTimeOffsSortByEnum = typeof ListHolidayTimeOffsSortByEnum[keyof typeof ListHolidayTimeOffsSortByEnum];
 export const ListHolidayTimeOffsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListHolidayTimeOffsAcceptVersionEnum = typeof ListHolidayTimeOffsAcceptVersionEnum[keyof typeof ListHolidayTimeOffsAcceptVersionEnum];
 export const ListInvitationsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListInvitationsAcceptVersionEnum = typeof ListInvitationsAcceptVersionEnum[keyof typeof ListInvitationsAcceptVersionEnum];
 export const ListInvitationsSortByEnum = {
     CreatedAt: 'createdAt',
     SentAt: 'sentAt',
-    Id: 'id'
+    Id: 'id',
 } as const;
 export type ListInvitationsSortByEnum = typeof ListInvitationsSortByEnum[keyof typeof ListInvitationsSortByEnum];
 export const ListInvitationsOrderEnum = {
     Asc: 'asc',
-    Desc: 'desc'
+    Desc: 'desc',
 } as const;
 export type ListInvitationsOrderEnum = typeof ListInvitationsOrderEnum[keyof typeof ListInvitationsOrderEnum];
 export const ListLeaveTimeOffsSortByEnum = {
     Id: 'id',
     CreatedAt: 'createdAt',
-    UpdatedAt: 'updatedAt'
+    UpdatedAt: 'updatedAt',
 } as const;
 export type ListLeaveTimeOffsSortByEnum = typeof ListLeaveTimeOffsSortByEnum[keyof typeof ListLeaveTimeOffsSortByEnum];
 export const ListLeaveTimeOffsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListLeaveTimeOffsAcceptVersionEnum = typeof ListLeaveTimeOffsAcceptVersionEnum[keyof typeof ListLeaveTimeOffsAcceptVersionEnum];
 export const ListMilestonesAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListMilestonesAcceptVersionEnum = typeof ListMilestonesAcceptVersionEnum[keyof typeof ListMilestonesAcceptVersionEnum];
 export const ListNotesForProjectAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListNotesForProjectAcceptVersionEnum = typeof ListNotesForProjectAcceptVersionEnum[keyof typeof ListNotesForProjectAcceptVersionEnum];
 export const ListOtherExpensesAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListOtherExpensesAcceptVersionEnum = typeof ListOtherExpensesAcceptVersionEnum[keyof typeof ListOtherExpensesAcceptVersionEnum];
 export const ListPeopleAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListPeopleAcceptVersionEnum = typeof ListPeopleAcceptVersionEnum[keyof typeof ListPeopleAcceptVersionEnum];
 export const ListPeopleSortByEnum = {
     CreatedAt: 'createdAt',
     UpdatedAt: 'updatedAt',
-    Id: 'id'
+    Id: 'id',
 } as const;
 export type ListPeopleSortByEnum = typeof ListPeopleSortByEnum[keyof typeof ListPeopleSortByEnum];
 export const ListPeopleOrderEnum = {
     Asc: 'asc',
-    Desc: 'desc'
+    Desc: 'desc',
 } as const;
 export type ListPeopleOrderEnum = typeof ListPeopleOrderEnum[keyof typeof ListPeopleOrderEnum];
 export const ListPeopleCurrentContractsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListPeopleCurrentContractsAcceptVersionEnum = typeof ListPeopleCurrentContractsAcceptVersionEnum[keyof typeof ListPeopleCurrentContractsAcceptVersionEnum];
 export const ListPeopleCustomFieldsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListPeopleCustomFieldsAcceptVersionEnum = typeof ListPeopleCustomFieldsAcceptVersionEnum[keyof typeof ListPeopleCustomFieldsAcceptVersionEnum];
 export const ListPeopleNotesAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListPeopleNotesAcceptVersionEnum = typeof ListPeopleNotesAcceptVersionEnum[keyof typeof ListPeopleNotesAcceptVersionEnum];
 export const ListPeopleSkillsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListPeopleSkillsAcceptVersionEnum = typeof ListPeopleSkillsAcceptVersionEnum[keyof typeof ListPeopleSkillsAcceptVersionEnum];
 export const ListPeopleTagsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListPeopleTagsAcceptVersionEnum = typeof ListPeopleTagsAcceptVersionEnum[keyof typeof ListPeopleTagsAcceptVersionEnum];
 export const ListPeopleTagsSortByEnum = {
     CreatedAt: 'createdAt',
     UpdatedAt: 'updatedAt',
-    Id: 'id'
+    Id: 'id',
 } as const;
 export type ListPeopleTagsSortByEnum = typeof ListPeopleTagsSortByEnum[keyof typeof ListPeopleTagsSortByEnum];
 export const ListPeopleTagsOrderEnum = {
     Asc: 'asc',
-    Desc: 'desc'
+    Desc: 'desc',
 } as const;
 export type ListPeopleTagsOrderEnum = typeof ListPeopleTagsOrderEnum[keyof typeof ListPeopleTagsOrderEnum];
 export const ListPersonActualsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListPersonActualsAcceptVersionEnum = typeof ListPersonActualsAcceptVersionEnum[keyof typeof ListPersonActualsAcceptVersionEnum];
 export const ListPersonAssignmentsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListPersonAssignmentsAcceptVersionEnum = typeof ListPersonAssignmentsAcceptVersionEnum[keyof typeof ListPersonAssignmentsAcceptVersionEnum];
 export const ListPersonContractsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListPersonContractsAcceptVersionEnum = typeof ListPersonContractsAcceptVersionEnum[keyof typeof ListPersonContractsAcceptVersionEnum];
 export const ListPersonHolidaysAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListPersonHolidaysAcceptVersionEnum = typeof ListPersonHolidaysAcceptVersionEnum[keyof typeof ListPersonHolidaysAcceptVersionEnum];
 export const ListPersonLeaveAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListPersonLeaveAcceptVersionEnum = typeof ListPersonLeaveAcceptVersionEnum[keyof typeof ListPersonLeaveAcceptVersionEnum];
 export const ListPersonProjectsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListPersonProjectsAcceptVersionEnum = typeof ListPersonProjectsAcceptVersionEnum[keyof typeof ListPersonProjectsAcceptVersionEnum];
 export const ListPersonRequestsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListPersonRequestsAcceptVersionEnum = typeof ListPersonRequestsAcceptVersionEnum[keyof typeof ListPersonRequestsAcceptVersionEnum];
 export const ListPersonRosteredTimeOffsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListPersonRosteredTimeOffsAcceptVersionEnum = typeof ListPersonRosteredTimeOffsAcceptVersionEnum[keyof typeof ListPersonRosteredTimeOffsAcceptVersionEnum];
 export const ListPersonSkillsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListPersonSkillsAcceptVersionEnum = typeof ListPersonSkillsAcceptVersionEnum[keyof typeof ListPersonSkillsAcceptVersionEnum];
 export const ListPhasesAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListPhasesAcceptVersionEnum = typeof ListPhasesAcceptVersionEnum[keyof typeof ListPhasesAcceptVersionEnum];
 export const ListPlaceholdersAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListPlaceholdersAcceptVersionEnum = typeof ListPlaceholdersAcceptVersionEnum[keyof typeof ListPlaceholdersAcceptVersionEnum];
 export const ListPlaceholdersSortByEnum = {
     CreatedAt: 'createdAt',
     UpdatedAt: 'updatedAt',
-    Id: 'id'
+    Id: 'id',
 } as const;
 export type ListPlaceholdersSortByEnum = typeof ListPlaceholdersSortByEnum[keyof typeof ListPlaceholdersSortByEnum];
 export const ListPlaceholdersOrderEnum = {
     Asc: 'asc',
-    Desc: 'desc'
+    Desc: 'desc',
 } as const;
 export type ListPlaceholdersOrderEnum = typeof ListPlaceholdersOrderEnum[keyof typeof ListPlaceholdersOrderEnum];
 export const ListProjectActualsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListProjectActualsAcceptVersionEnum = typeof ListProjectActualsAcceptVersionEnum[keyof typeof ListProjectActualsAcceptVersionEnum];
 export const ListProjectAssignmentsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListProjectAssignmentsAcceptVersionEnum = typeof ListProjectAssignmentsAcceptVersionEnum[keyof typeof ListProjectAssignmentsAcceptVersionEnum];
 export const ListProjectBudgetRolesAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListProjectBudgetRolesAcceptVersionEnum = typeof ListProjectBudgetRolesAcceptVersionEnum[keyof typeof ListProjectBudgetRolesAcceptVersionEnum];
 export const ListProjectCustomFieldsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListProjectCustomFieldsAcceptVersionEnum = typeof ListProjectCustomFieldsAcceptVersionEnum[keyof typeof ListProjectCustomFieldsAcceptVersionEnum];
 export const ListProjectMembersAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListProjectMembersAcceptVersionEnum = typeof ListProjectMembersAcceptVersionEnum[keyof typeof ListProjectMembersAcceptVersionEnum];
 export const ListProjectMilestonesAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListProjectMilestonesAcceptVersionEnum = typeof ListProjectMilestonesAcceptVersionEnum[keyof typeof ListProjectMilestonesAcceptVersionEnum];
 export const ListProjectNotesAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListProjectNotesAcceptVersionEnum = typeof ListProjectNotesAcceptVersionEnum[keyof typeof ListProjectNotesAcceptVersionEnum];
 export const ListProjectOtherExpensesAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListProjectOtherExpensesAcceptVersionEnum = typeof ListProjectOtherExpensesAcceptVersionEnum[keyof typeof ListProjectOtherExpensesAcceptVersionEnum];
 export const ListProjectPeopleAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListProjectPeopleAcceptVersionEnum = typeof ListProjectPeopleAcceptVersionEnum[keyof typeof ListProjectPeopleAcceptVersionEnum];
 export const ListProjectPersonRequestsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListProjectPersonRequestsAcceptVersionEnum = typeof ListProjectPersonRequestsAcceptVersionEnum[keyof typeof ListProjectPersonRequestsAcceptVersionEnum];
 export const ListProjectPhasesAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListProjectPhasesAcceptVersionEnum = typeof ListProjectPhasesAcceptVersionEnum[keyof typeof ListProjectPhasesAcceptVersionEnum];
 export const ListProjectRatesAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListProjectRatesAcceptVersionEnum = typeof ListProjectRatesAcceptVersionEnum[keyof typeof ListProjectRatesAcceptVersionEnum];
 export const ListProjectRoleRatesAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListProjectRoleRatesAcceptVersionEnum = typeof ListProjectRoleRatesAcceptVersionEnum[keyof typeof ListProjectRoleRatesAcceptVersionEnum];
 export const ListProjectTagsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListProjectTagsAcceptVersionEnum = typeof ListProjectTagsAcceptVersionEnum[keyof typeof ListProjectTagsAcceptVersionEnum];
 export const ListProjectTagsSortByEnum = {
     CreatedAt: 'createdAt',
     UpdatedAt: 'updatedAt',
-    Id: 'id'
+    Id: 'id',
 } as const;
 export type ListProjectTagsSortByEnum = typeof ListProjectTagsSortByEnum[keyof typeof ListProjectTagsSortByEnum];
 export const ListProjectTagsOrderEnum = {
     Asc: 'asc',
-    Desc: 'desc'
+    Desc: 'desc',
 } as const;
 export type ListProjectTagsOrderEnum = typeof ListProjectTagsOrderEnum[keyof typeof ListProjectTagsOrderEnum];
 export const ListProjectTotalsReportAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListProjectTotalsReportAcceptVersionEnum = typeof ListProjectTotalsReportAcceptVersionEnum[keyof typeof ListProjectTotalsReportAcceptVersionEnum];
 export const ListProjectWorkstreamsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListProjectWorkstreamsAcceptVersionEnum = typeof ListProjectWorkstreamsAcceptVersionEnum[keyof typeof ListProjectWorkstreamsAcceptVersionEnum];
 export const ListProjectWorkstreamsForProjectAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListProjectWorkstreamsForProjectAcceptVersionEnum = typeof ListProjectWorkstreamsForProjectAcceptVersionEnum[keyof typeof ListProjectWorkstreamsForProjectAcceptVersionEnum];
 export const ListProjectsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListProjectsAcceptVersionEnum = typeof ListProjectsAcceptVersionEnum[keyof typeof ListProjectsAcceptVersionEnum];
 export const ListProjectsSortByEnum = {
     CreatedAt: 'createdAt',
     UpdatedAt: 'updatedAt',
-    Id: 'id'
+    Id: 'id',
 } as const;
 export type ListProjectsSortByEnum = typeof ListProjectsSortByEnum[keyof typeof ListProjectsSortByEnum];
 export const ListProjectsOrderEnum = {
     Asc: 'asc',
-    Desc: 'desc'
+    Desc: 'desc',
 } as const;
 export type ListProjectsOrderEnum = typeof ListProjectsOrderEnum[keyof typeof ListProjectsOrderEnum];
 export const ListRateCardsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListRateCardsAcceptVersionEnum = typeof ListRateCardsAcceptVersionEnum[keyof typeof ListRateCardsAcceptVersionEnum];
 export const ListRateCardsSortByEnum = {
     CreatedAt: 'createdAt',
     UpdatedAt: 'updatedAt',
-    Id: 'id'
+    Id: 'id',
 } as const;
 export type ListRateCardsSortByEnum = typeof ListRateCardsSortByEnum[keyof typeof ListRateCardsSortByEnum];
 export const ListRateCardsOrderEnum = {
     Asc: 'asc',
-    Desc: 'desc'
+    Desc: 'desc',
 } as const;
 export type ListRateCardsOrderEnum = typeof ListRateCardsOrderEnum[keyof typeof ListRateCardsOrderEnum];
 export const ListRolesAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListRolesAcceptVersionEnum = typeof ListRolesAcceptVersionEnum[keyof typeof ListRolesAcceptVersionEnum];
 export const ListRolesSortByEnum = {
     CreatedAt: 'createdAt',
     UpdatedAt: 'updatedAt',
-    Id: 'id'
+    Id: 'id',
 } as const;
 export type ListRolesSortByEnum = typeof ListRolesSortByEnum[keyof typeof ListRolesSortByEnum];
 export const ListRolesOrderEnum = {
     Asc: 'asc',
-    Desc: 'desc'
+    Desc: 'desc',
 } as const;
 export type ListRolesOrderEnum = typeof ListRolesOrderEnum[keyof typeof ListRolesOrderEnum];
 export const ListRosteredTimeOffsSortByEnum = {
     Id: 'id',
     CreatedAt: 'createdAt',
-    UpdatedAt: 'updatedAt'
+    UpdatedAt: 'updatedAt',
 } as const;
 export type ListRosteredTimeOffsSortByEnum = typeof ListRosteredTimeOffsSortByEnum[keyof typeof ListRosteredTimeOffsSortByEnum];
 export const ListRosteredTimeOffsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListRosteredTimeOffsAcceptVersionEnum = typeof ListRosteredTimeOffsAcceptVersionEnum[keyof typeof ListRosteredTimeOffsAcceptVersionEnum];
 export const ListSelectCustomFieldsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListSelectCustomFieldsAcceptVersionEnum = typeof ListSelectCustomFieldsAcceptVersionEnum[keyof typeof ListSelectCustomFieldsAcceptVersionEnum];
 export const ListSelectCustomFieldsModelEnum = {
     Person: 'PERSON',
-    Project: 'PROJECT'
+    Project: 'PROJECT',
 } as const;
 export type ListSelectCustomFieldsModelEnum = typeof ListSelectCustomFieldsModelEnum[keyof typeof ListSelectCustomFieldsModelEnum];
 export const ListSkillPeopleAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListSkillPeopleAcceptVersionEnum = typeof ListSkillPeopleAcceptVersionEnum[keyof typeof ListSkillPeopleAcceptVersionEnum];
 export const ListSkillsSortByEnum = {
     Id: 'id',
     CreatedAt: 'createdAt',
-    UpdatedAt: 'updatedAt'
+    UpdatedAt: 'updatedAt',
 } as const;
 export type ListSkillsSortByEnum = typeof ListSkillsSortByEnum[keyof typeof ListSkillsSortByEnum];
 export const ListSkillsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListSkillsAcceptVersionEnum = typeof ListSkillsAcceptVersionEnum[keyof typeof ListSkillsAcceptVersionEnum];
 export const ListTeamPeopleAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListTeamPeopleAcceptVersionEnum = typeof ListTeamPeopleAcceptVersionEnum[keyof typeof ListTeamPeopleAcceptVersionEnum];
 export const ListTeamsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListTeamsAcceptVersionEnum = typeof ListTeamsAcceptVersionEnum[keyof typeof ListTeamsAcceptVersionEnum];
 export const ListTeamsSortByEnum = {
     CreatedAt: 'createdAt',
     UpdatedAt: 'updatedAt',
-    Id: 'id'
+    Id: 'id',
 } as const;
 export type ListTeamsSortByEnum = typeof ListTeamsSortByEnum[keyof typeof ListTeamsSortByEnum];
 export const ListTeamsOrderEnum = {
     Asc: 'asc',
-    Desc: 'desc'
+    Desc: 'desc',
 } as const;
 export type ListTeamsOrderEnum = typeof ListTeamsOrderEnum[keyof typeof ListTeamsOrderEnum];
 export const ListTextCustomFieldsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListTextCustomFieldsAcceptVersionEnum = typeof ListTextCustomFieldsAcceptVersionEnum[keyof typeof ListTextCustomFieldsAcceptVersionEnum];
 export const ListTextCustomFieldsModelEnum = {
     Person: 'PERSON',
-    Project: 'PROJECT'
+    Project: 'PROJECT',
 } as const;
 export type ListTextCustomFieldsModelEnum = typeof ListTextCustomFieldsModelEnum[keyof typeof ListTextCustomFieldsModelEnum];
 export const ListUserViewsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListUserViewsAcceptVersionEnum = typeof ListUserViewsAcceptVersionEnum[keyof typeof ListUserViewsAcceptVersionEnum];
 export const ListUsersAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListUsersAcceptVersionEnum = typeof ListUsersAcceptVersionEnum[keyof typeof ListUsersAcceptVersionEnum];
 export const ListViewsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListViewsAcceptVersionEnum = typeof ListViewsAcceptVersionEnum[keyof typeof ListViewsAcceptVersionEnum];
 export const ListWorkstreamsAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type ListWorkstreamsAcceptVersionEnum = typeof ListWorkstreamsAcceptVersionEnum[keyof typeof ListWorkstreamsAcceptVersionEnum];
 export const ListWorkstreamsSortByEnum = {
     CreatedAt: 'createdAt',
     UpdatedAt: 'updatedAt',
-    Id: 'id'
+    Id: 'id',
 } as const;
 export type ListWorkstreamsSortByEnum = typeof ListWorkstreamsSortByEnum[keyof typeof ListWorkstreamsSortByEnum];
 export const ListWorkstreamsOrderEnum = {
     Asc: 'asc',
-    Desc: 'desc'
+    Desc: 'desc',
 } as const;
 export type ListWorkstreamsOrderEnum = typeof ListWorkstreamsOrderEnum[keyof typeof ListWorkstreamsOrderEnum];
 export const RemovePersonFromTeamAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type RemovePersonFromTeamAcceptVersionEnum = typeof RemovePersonFromTeamAcceptVersionEnum[keyof typeof RemovePersonFromTeamAcceptVersionEnum];
 export const RemovePersonSkillAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type RemovePersonSkillAcceptVersionEnum = typeof RemovePersonSkillAcceptVersionEnum[keyof typeof RemovePersonSkillAcceptVersionEnum];
 export const RemovePlaceholderFromTeamAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type RemovePlaceholderFromTeamAcceptVersionEnum = typeof RemovePlaceholderFromTeamAcceptVersionEnum[keyof typeof RemovePlaceholderFromTeamAcceptVersionEnum];
 export const RemovePlaceholderSkillAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type RemovePlaceholderSkillAcceptVersionEnum = typeof RemovePlaceholderSkillAcceptVersionEnum[keyof typeof RemovePlaceholderSkillAcceptVersionEnum];
 export const RemoveProjectTagFromProjectAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type RemoveProjectTagFromProjectAcceptVersionEnum = typeof RemoveProjectTagFromProjectAcceptVersionEnum[keyof typeof RemoveProjectTagFromProjectAcceptVersionEnum];
 export const RemoveViewFromUserAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type RemoveViewFromUserAcceptVersionEnum = typeof RemoveViewFromUserAcceptVersionEnum[keyof typeof RemoveViewFromUserAcceptVersionEnum];
 export const RemoveWorkstreamFromProjectAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type RemoveWorkstreamFromProjectAcceptVersionEnum = typeof RemoveWorkstreamFromProjectAcceptVersionEnum[keyof typeof RemoveWorkstreamFromProjectAcceptVersionEnum];
 export const UpdateActualTimeEntryAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateActualTimeEntryAcceptVersionEnum = typeof UpdateActualTimeEntryAcceptVersionEnum[keyof typeof UpdateActualTimeEntryAcceptVersionEnum];
 export const UpdateCheckboxCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateCheckboxCustomFieldAcceptVersionEnum = typeof UpdateCheckboxCustomFieldAcceptVersionEnum[keyof typeof UpdateCheckboxCustomFieldAcceptVersionEnum];
 export const UpdateClientAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateClientAcceptVersionEnum = typeof UpdateClientAcceptVersionEnum[keyof typeof UpdateClientAcceptVersionEnum];
 export const UpdateContractAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateContractAcceptVersionEnum = typeof UpdateContractAcceptVersionEnum[keyof typeof UpdateContractAcceptVersionEnum];
 export const UpdateDateCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateDateCustomFieldAcceptVersionEnum = typeof UpdateDateCustomFieldAcceptVersionEnum[keyof typeof UpdateDateCustomFieldAcceptVersionEnum];
 export const UpdatePeopleTagAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdatePeopleTagAcceptVersionEnum = typeof UpdatePeopleTagAcceptVersionEnum[keyof typeof UpdatePeopleTagAcceptVersionEnum];
 export const UpdatePersonAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdatePersonAcceptVersionEnum = typeof UpdatePersonAcceptVersionEnum[keyof typeof UpdatePersonAcceptVersionEnum];
 export const UpdatePersonCheckboxCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdatePersonCheckboxCustomFieldAcceptVersionEnum = typeof UpdatePersonCheckboxCustomFieldAcceptVersionEnum[keyof typeof UpdatePersonCheckboxCustomFieldAcceptVersionEnum];
 export const UpdatePersonDateCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdatePersonDateCustomFieldAcceptVersionEnum = typeof UpdatePersonDateCustomFieldAcceptVersionEnum[keyof typeof UpdatePersonDateCustomFieldAcceptVersionEnum];
 export const UpdatePersonSelectCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdatePersonSelectCustomFieldAcceptVersionEnum = typeof UpdatePersonSelectCustomFieldAcceptVersionEnum[keyof typeof UpdatePersonSelectCustomFieldAcceptVersionEnum];
 export const UpdatePersonSkillAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdatePersonSkillAcceptVersionEnum = typeof UpdatePersonSkillAcceptVersionEnum[keyof typeof UpdatePersonSkillAcceptVersionEnum];
 export const UpdatePersonTextCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdatePersonTextCustomFieldAcceptVersionEnum = typeof UpdatePersonTextCustomFieldAcceptVersionEnum[keyof typeof UpdatePersonTextCustomFieldAcceptVersionEnum];
 export const UpdateProjectAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateProjectAcceptVersionEnum = typeof UpdateProjectAcceptVersionEnum[keyof typeof UpdateProjectAcceptVersionEnum];
 export const UpdateProjectBudgetRoleAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateProjectBudgetRoleAcceptVersionEnum = typeof UpdateProjectBudgetRoleAcceptVersionEnum[keyof typeof UpdateProjectBudgetRoleAcceptVersionEnum];
 export const UpdateProjectCheckboxCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateProjectCheckboxCustomFieldAcceptVersionEnum = typeof UpdateProjectCheckboxCustomFieldAcceptVersionEnum[keyof typeof UpdateProjectCheckboxCustomFieldAcceptVersionEnum];
 export const UpdateProjectDateCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateProjectDateCustomFieldAcceptVersionEnum = typeof UpdateProjectDateCustomFieldAcceptVersionEnum[keyof typeof UpdateProjectDateCustomFieldAcceptVersionEnum];
 export const UpdateProjectMilestoneAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateProjectMilestoneAcceptVersionEnum = typeof UpdateProjectMilestoneAcceptVersionEnum[keyof typeof UpdateProjectMilestoneAcceptVersionEnum];
 export const UpdateProjectOtherExpenseAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateProjectOtherExpenseAcceptVersionEnum = typeof UpdateProjectOtherExpenseAcceptVersionEnum[keyof typeof UpdateProjectOtherExpenseAcceptVersionEnum];
 export const UpdateProjectPersonRequestAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateProjectPersonRequestAcceptVersionEnum = typeof UpdateProjectPersonRequestAcceptVersionEnum[keyof typeof UpdateProjectPersonRequestAcceptVersionEnum];
 export const UpdateProjectPhaseAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateProjectPhaseAcceptVersionEnum = typeof UpdateProjectPhaseAcceptVersionEnum[keyof typeof UpdateProjectPhaseAcceptVersionEnum];
 export const UpdateProjectRoleRateAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateProjectRoleRateAcceptVersionEnum = typeof UpdateProjectRoleRateAcceptVersionEnum[keyof typeof UpdateProjectRoleRateAcceptVersionEnum];
 export const UpdateProjectSelectCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateProjectSelectCustomFieldAcceptVersionEnum = typeof UpdateProjectSelectCustomFieldAcceptVersionEnum[keyof typeof UpdateProjectSelectCustomFieldAcceptVersionEnum];
 export const UpdateProjectTagAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateProjectTagAcceptVersionEnum = typeof UpdateProjectTagAcceptVersionEnum[keyof typeof UpdateProjectTagAcceptVersionEnum];
 export const UpdateProjectTextCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateProjectTextCustomFieldAcceptVersionEnum = typeof UpdateProjectTextCustomFieldAcceptVersionEnum[keyof typeof UpdateProjectTextCustomFieldAcceptVersionEnum];
 export const UpdateProjectTimesheetLockAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateProjectTimesheetLockAcceptVersionEnum = typeof UpdateProjectTimesheetLockAcceptVersionEnum[keyof typeof UpdateProjectTimesheetLockAcceptVersionEnum];
 export const UpdateRateCardAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateRateCardAcceptVersionEnum = typeof UpdateRateCardAcceptVersionEnum[keyof typeof UpdateRateCardAcceptVersionEnum];
 export const UpdateRoleAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateRoleAcceptVersionEnum = typeof UpdateRoleAcceptVersionEnum[keyof typeof UpdateRoleAcceptVersionEnum];
 export const UpdateSelectCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateSelectCustomFieldAcceptVersionEnum = typeof UpdateSelectCustomFieldAcceptVersionEnum[keyof typeof UpdateSelectCustomFieldAcceptVersionEnum];
 export const UpdateSelectCustomFieldOptionAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateSelectCustomFieldOptionAcceptVersionEnum = typeof UpdateSelectCustomFieldOptionAcceptVersionEnum[keyof typeof UpdateSelectCustomFieldOptionAcceptVersionEnum];
 export const UpdateSkillAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateSkillAcceptVersionEnum = typeof UpdateSkillAcceptVersionEnum[keyof typeof UpdateSkillAcceptVersionEnum];
 export const UpdateTeamAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateTeamAcceptVersionEnum = typeof UpdateTeamAcceptVersionEnum[keyof typeof UpdateTeamAcceptVersionEnum];
 export const UpdateTextCustomFieldAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateTextCustomFieldAcceptVersionEnum = typeof UpdateTextCustomFieldAcceptVersionEnum[keyof typeof UpdateTextCustomFieldAcceptVersionEnum];
 export const UpdateWorkstreamAcceptVersionEnum = {
-    _100: '1.0.0'
+    _100: '1.0.0',
 } as const;
 export type UpdateWorkstreamAcceptVersionEnum = typeof UpdateWorkstreamAcceptVersionEnum[keyof typeof UpdateWorkstreamAcceptVersionEnum];
 
