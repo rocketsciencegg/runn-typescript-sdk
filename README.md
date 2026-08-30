@@ -4,6 +4,15 @@
 
 TypeScript SDK for the [Runn API](https://api.runn.io) (resource planning and project management), auto-generated from OpenAPI spec.
 
+## Requirements
+
+Node.js **22.13.0 or newer** (enforced by `engines` in `package.json`). This is the
+compatibility floor for consumers of the SDK — the oldest Node you may install it on.
+
+The SDK itself is built and released on the exact version in `.node-version`, which is
+what CI provisions via `node-version-file`. That number is ahead of the floor on purpose:
+it is the toolchain we compile with, not a requirement placed on you.
+
 ## Installation
 
 ```bash
