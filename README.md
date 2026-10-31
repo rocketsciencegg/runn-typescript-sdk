@@ -16,13 +16,13 @@ it is the toolchain we compile with, not a requirement placed on you.
 ## Installation
 
 ```bash
-npm install github:rocketsciencegg/runn-typescript-sdk
+pnpm add github:rocketsciencegg/runn-typescript-sdk
 ```
 
 Pin a specific version:
 
 ```bash
-npm install github:rocketsciencegg/runn-typescript-sdk#v1.0.0
+pnpm add github:rocketsciencegg/runn-typescript-sdk#v1.0.0
 ```
 
 ## Quick Start
@@ -52,6 +52,7 @@ See the [generated docs](docs/) for all available methods and models.
 Generated from `runn.json` using [OpenAPI Generator](https://openapi-generator.tech/) v7.19.0 (`typescript-axios`).
 
 ```bash
+pnpm install   # SDK dependencies
 just install   # System deps (Java)
 just build     # Regenerate + compile
 just compile   # TypeScript only
