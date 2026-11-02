@@ -9,8 +9,8 @@ Auto-generated TypeScript SDK for the [Runn API](https://api.runn.io) (resource 
 ## Build Commands
 
 ```bash
-npm install            # Install dependencies (also runs build via prepare hook)
-npm run build          # Compile TypeScript to dist/
+pnpm install           # Install dependencies from pnpm-lock.yaml
+pnpm run build         # Compile TypeScript to dist/
 just build             # Full regeneration: generate SDK from runn.json OpenAPI spec + compile
 just compile           # Compile TypeScript only (no regeneration)
 just install           # Install system dependencies (openjdk via Homebrew)
@@ -18,6 +18,8 @@ just clean             # Remove dist/ directory
 ```
 
 There are **no tests, linting, or formatting** configured. Source files contain `/* tslint:disable */` / `/* eslint-disable */` markers from the generator.
+
+Installs use pnpm `12.15.0` (`packageManager`). `pnpm-workspace.yaml` sets `minimumReleaseAge` to `10080` (7 days) with no exclude list, so a release younger than that is not installed.
 
 ## Architecture
 
@@ -34,6 +36,8 @@ All TypeScript source files in the root directory are **auto-generated** from th
 **Key files that are NOT auto-generated:**
 - `justfile` — build/generation orchestration
 - `runn.json` — OpenAPI spec (source of truth for the SDK)
+- `pnpm-lock.yaml` — dependency lockfile
+- `pnpm-workspace.yaml` — pnpm settings (`minimumReleaseAge`)
 - `.openapi-generator-ignore` — controls which files the generator preserves
 - `.github/` — CI/CD workflows and Dependabot config
 - `LICENSE` — MIT license

@@ -16,13 +16,13 @@ it is the toolchain we compile with, not a requirement placed on you.
 ## Installation
 
 ```bash
-npm install github:rocketsciencegg/runn-typescript-sdk
+pnpm add github:rocketsciencegg/runn-typescript-sdk
 ```
 
 Pin a specific version:
 
 ```bash
-npm install github:rocketsciencegg/runn-typescript-sdk#v1.0.0
+pnpm add github:rocketsciencegg/runn-typescript-sdk#v1.0.0
 ```
 
 ## Quick Start
