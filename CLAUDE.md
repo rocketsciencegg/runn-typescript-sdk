@@ -19,7 +19,7 @@ just clean             # Remove dist/ directory
 
 There are **no tests, linting, or formatting** configured. Source files contain `/* tslint:disable */` / `/* eslint-disable */` markers from the generator.
 
-Installs use pnpm `12.15.0` (`packageManager`). `pnpm-workspace.yaml` sets `minimumReleaseAge` to `10080` (7 days) with no exclude list, so a release younger than that is not installed.
+Installs use pnpm `12.18.0` (`packageManager`). `pnpm-workspace.yaml` sets `minimumReleaseAge` to `10080` (7 days) with no exclude list, so a release younger than that is not installed.
 
 ## Architecture
 
