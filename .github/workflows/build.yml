@@ -71,7 +71,7 @@ jobs:
           store_path="$(pnpm store path --silent)"
           echo "path=${store_path}" >> "$GITHUB_OUTPUT"
       # Clean install from the registry, then save. This job does not restore.
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Save pnpm store
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
