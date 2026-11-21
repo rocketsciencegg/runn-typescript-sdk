@@ -5,16 +5,38 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
+# Read for every job. Push-to-main install overrides with write.
+# cache-mode is an enum, not an expression: read, write, write-only, none.
+cache-mode: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .node-version
-          cache: 'pnpm'
+          package-manager-cache: false
+      - name: Resolve pnpm store path
+        id: pnpm-store
+        shell: bash
+        run: |
+          store_path="$(pnpm store path --silent)"
+          echo "path=${store_path}" >> "$GITHUB_OUTPUT"
+      - name: Restore pnpm store
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ steps.pnpm-store.outputs.path }}
+          key: pnpm-store-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('pnpm-lock.yaml') }}
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec tsc
 
@@ -26,3 +48,32 @@ jobs:
       # nothing anywhere complains.
       - name: committed dist/ must match a fresh build
         run: git diff --exit-code dist/ || (echo "::error::dist/ is stale — run 'pnpm exec tsc' and commit dist/" && exit 1)
+
+  install:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    cache-mode: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+      - name: Resolve pnpm store path
+        id: pnpm-store
+        shell: bash
+        run: |
+          store_path="$(pnpm store path --silent)"
+          echo "path=${store_path}" >> "$GITHUB_OUTPUT"
+      # Clean install from the registry, then save. This job does not restore.
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Save pnpm store
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ steps.pnpm-store.outputs.path }}
+          key: pnpm-store-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('pnpm-lock.yaml') }}
