@@ -52,9 +52,9 @@ See the [generated docs](docs/) for all available methods and models.
 Generated from `runn.json` using [OpenAPI Generator](https://openapi-generator.tech/) v7.19.0 (`typescript-axios`).
 
 ```bash
-just install   # System deps (Java)
-just build     # Regenerate + compile
-just compile   # TypeScript only
+just install-jdk  # System deps (Java)
+just build        # Regenerate + compile
+just compile      # TypeScript only
 ```
 
 ## Generated Files
