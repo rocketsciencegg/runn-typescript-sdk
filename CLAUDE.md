@@ -13,7 +13,7 @@ pnpm install           # Install dependencies from pnpm-lock.yaml
 pnpm run build         # Compile TypeScript to dist/
 just build             # Full regeneration: generate SDK from runn.json OpenAPI spec + compile
 just compile           # Compile TypeScript only (no regeneration)
-just install           # Install system dependencies (openjdk via Homebrew)
+just install-jdk       # Install system dependencies (openjdk via Homebrew)
 just clean             # Remove dist/ directory
 ```
 
